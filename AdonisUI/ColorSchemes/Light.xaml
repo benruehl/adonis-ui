@@ -11,12 +11,12 @@
     <Color x:Key="{x:Static adonisUi:Colors.Level0BackgroundColor}">#ffffff</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Level0BorderColor}">#f0f0f0</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.Level1BackgroundColor}">#e8e8e8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Level1BorderColor}">#b0b0b0</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Level1HighlightColor}">#f0f0f0</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Level1BackgroundColor}">#f0f0f0</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Level1BorderColor}">#b8b8b8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Level1HighlightColor}">#f4f4f4</Color>
     
-    <Color x:Key="{x:Static adonisUi:Colors.Level2BackgroundColor}">#dadada</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Level2BorderColor}">#b0b0b0</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Level2BackgroundColor}">#e8e8e8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Level2BorderColor}">#c8c8c8</Color>
     
     <Color x:Key="{x:Static adonisUi:Colors.Level3BackgroundColor}">#b0b0b0</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Level3BorderColor}">#a0a0a0</Color>
