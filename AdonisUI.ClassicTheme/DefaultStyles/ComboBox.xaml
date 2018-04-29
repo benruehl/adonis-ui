@@ -1,0 +1,191 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="8, 4"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentPresenter />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                    
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                        </Trigger>
+                        
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="Border"
+                    Grid.ColumnSpan="2" 
+                    BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}" 
+                    BorderThickness="1" 
+                    CornerRadius="0" 
+                    Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" />
+
+            <Border x:Name="ButtonBorder"
+                    Grid.Column="1" 
+                    Margin="1" 
+                    BorderBrush="#444" 
+                    CornerRadius="0" 
+                    BorderThickness="0" 
+                    Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" />
+
+            <Viewbox x:Name="Arrow"
+                     Grid.Column="1"
+                     Width="6"
+                     Stretch="Uniform">
+                <Path Data="M 0 0 L 8 0 L 4 4 Z"
+                      Fill="{TemplateBinding Foreground}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center" />
+            </Viewbox>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Panel.Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Level2BackgroundBrush}}"/>
+                <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Level2BackgroundBrush}}"/>
+                <Setter Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                <Setter Property="Shape.Fill" TargetName="Arrow" Value="#999"/>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{x:Type ComboBox}" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton x:Name="ToggleButton"
+                                      ClickMode="Press" 
+                                      Focusable="False"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
+
+                        <ContentPresenter x:Name="ContentSite" 
+                                          Margin="5, 3, 23, 3" 
+                                          IsHitTestVisible="False"
+                                          HorizontalAlignment="Left" 
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
+                                          ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+
+                        <TextBox x:Name="PART_EditableTextBox" 
+                                 Margin="3, 3, 23, 3"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"
+                                 Visibility="Hidden" 
+                                 Background="Transparent"
+                                 HorizontalAlignment="Left" 
+                                 VerticalAlignment="Center"
+                                 Focusable="True" >
+                            <TextBox.Template>
+                                <ControlTemplate TargetType="TextBox" >
+                                    <Border Name="PART_ContentHost" Focusable="False" />
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+
+                        <!-- Popup showing items -->
+                        <Popup x:Name="PART_Popup"
+                               Placement="Bottom"
+                               Focusable="False"
+                               AllowsTransparency="True"
+                               IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                               PopupAnimation="Slide">
+
+                            <Grid x:Name="DropDown" 
+                                  SnapsToDevicePixels="True"
+                                  MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                  MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+
+                                <Border x:Name="DropDownBorder" 
+                                        Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" 
+                                        Margin="0, 1, 0, 0"
+                                        CornerRadius="0" 
+                                        BorderThickness="1" 
+                                        BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter Property="FrameworkElement.MinHeight" TargetName="DropDownBorder" Value="95"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEditable" Value="True">
+                            <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+                            <Setter Property="UIElement.Visibility" TargetName="PART_EditableTextBox" Value="Visible"/>
+                            <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

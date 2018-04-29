@@ -1,13 +1,10 @@
-# AdonisUI 💪
-Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
+﻿<Application x:Class="AdonisUI.Demo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AdonisUI.Demo"
+             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+             StartupUri="MainWindow.xaml">
 
-## Usage
-
-1. Reference `AdonisUI` and `AdonisUI.ClassicTheme`
-2. Add resources to your application in your `App.xaml` like so:
-
-```xml
-<Application xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,5 +13,5 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
-```

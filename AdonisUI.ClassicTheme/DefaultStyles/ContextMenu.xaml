@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="-1"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border x:Name="Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Margin="0, 0, 2, 4"
+                            CornerRadius="1">
+
+                        <StackPanel IsItemsHost="True"
+                                    KeyboardNavigation.DirectionalNavigation="Cycle" />
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="True">
+                            <Setter Property="Effect" TargetName="Border">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2"
+                                                      BlurRadius="3"
+                                                      Opacity="0.2"
+                                                      Direction="315"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="*" MinWidth="130"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Grid.Column="0">
+                                
+                                <ContentPresenter x:Name="IconPresenter"
+                                                  Content="{TemplateBinding Icon}"
+                                                  Margin="5"
+                                                  TextElement.Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                            </Border>
+
+                            <Border Grid.Column="2">
+
+                                <TextBlock x:Name="ItemHeader"
+                                           Text="{TemplateBinding MenuItem.Header}" 
+                                           Foreground="{TemplateBinding Foreground}"
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Stretch" 
+                                           Margin="0, 8"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Trigger.Setters>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                                <Setter Property="Foreground" TargetName="ItemHeader" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="IconPresenter" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                            </Trigger.Setters>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.Setters>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+                            </Trigger.Setters>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.Setters>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                            </Trigger.Setters>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
