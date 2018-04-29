@@ -123,6 +123,19 @@
                                 </ListBox.Items>
                             </ListBox>
 
+                            <Grid Margin="0, 8, 0, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Label"/>
+
+                                <TextBlock Grid.Column="2"
+                                           Text="Lorem Ipsum Text Block"/>
+                            </Grid>
+
                         </WrapPanel>
 
                         <Button Content="Change Theme"
