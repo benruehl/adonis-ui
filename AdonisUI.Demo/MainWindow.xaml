@@ -60,10 +60,12 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBox Text="Please enter valid input..."
-                                            VerticalAlignment="Center"/>
+                                         IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
+                                         VerticalAlignment="Center"/>
 
                                 <Button Grid.Column="2"
-                                        Content="Lorem Ipsum"/>
+                                        Content="Lorem Ipsum"
+                                        IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"/>
                             </Grid>
 
                             <Grid Margin="0, 8, 0, 0">
@@ -128,11 +130,17 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="8"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Label"/>
 
-                                <TextBlock Grid.Column="2"
+                                <ToggleButton x:Name="ToggleButton"
+                                              Grid.Column="2"
+                                              Content="Toggle"/>
+
+                                <TextBlock Grid.Column="4"
                                            Text="Lorem Ipsum Text Block"/>
                             </Grid>
 
@@ -141,6 +149,7 @@
                         <Button Content="Change Theme"
                                 Style="{DynamicResource {x:Static adonisUi:Styles.PrimaryButton}}"
                                 Click="ChangeTheme"
+                                IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"/>
                     </Grid>

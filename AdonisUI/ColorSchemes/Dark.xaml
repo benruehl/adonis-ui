@@ -24,7 +24,7 @@
     <Color x:Key="{x:Static adonisUi:Colors.ForegroundColor}">#f0f0f0</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AccentForegroundColor}">#ffffff</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#404040</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#8E8E8E</Color>
 
     <!-- brushes -->
 

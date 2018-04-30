@@ -5,7 +5,7 @@
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
@@ -46,8 +46,8 @@
             <Border x:Name="Border"
                     Grid.ColumnSpan="2" 
                     BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}" 
-                    BorderThickness="1" 
-                    CornerRadius="0" 
+                    BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" 
+                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
                     Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" />
 
             <Border x:Name="ButtonBorder"
@@ -151,8 +151,8 @@
                                 <Border x:Name="DropDownBorder" 
                                         Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" 
                                         Margin="0, 1, 0, 0"
-                                        CornerRadius="0" 
-                                        BorderThickness="1" 
+                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
+                                        BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" 
                                         BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
 
                                 <ScrollViewer SnapsToDevicePixels="True">

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Brushes.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
+    <Compile Include="Dimensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
