@@ -49,104 +49,124 @@
                           Margin="8, 0">
 
                     <Grid Margin="8">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
                         <WrapPanel Orientation="Vertical">
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                                          HorizontalScrollBarVisibility="Disabled">
 
-                                <TextBox Text="Please enter valid input..."
-                                         IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
-                                         VerticalAlignment="Center"/>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                <Button Grid.Column="2"
-                                        Content="Lorem Ipsum"
-                                        IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"/>
-                            </Grid>
+                                        <TextBox Text="Please enter valid input..."
+                                                 IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
+                                                 VerticalAlignment="Center"/>
 
-                            <Grid Margin="0, 8, 0, 0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="2"
+                                                Content="Lorem Ipsum"
+                                                IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"/>
+                                    </Grid>
 
-                                <ComboBox>
-                                    <ComboBox.Items>
-                                        <ComboBoxItem Content="Item 1"/>
-                                        <ComboBoxItem Content="Item 2"/>
-                                        <ComboBoxItem Content="Item 3"/>
-                                    </ComboBox.Items>
-                                </ComboBox>
+                                    <Grid Margin="0, 8, 0, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                <Button Grid.Column="2"
-                                        Content="Test"/>
-                            </Grid>
+                                        <ComboBox>
+                                            <ComboBox.Items>
+                                                <ComboBoxItem Content="Item 1"/>
+                                                <ComboBoxItem Content="Item 2"/>
+                                                <ComboBoxItem Content="Item 3"/>
+                                            </ComboBox.Items>
+                                        </ComboBox>
 
-                            <Grid Margin="0, 8, 0, 0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="2"
+                                                Content="Test"/>
+                                    </Grid>
 
-                                <ComboBox IsEditable="True">
-                                    <ComboBox.Items>
-                                        <ComboBoxItem Content="Item 1"/>
-                                        <ComboBoxItem Content="Item 2"/>
-                                        <ComboBoxItem Content="Item 3"/>
-                                    </ComboBox.Items>
-                                </ComboBox>
+                                    <Grid Margin="0, 8, 0, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                <Button Grid.Column="2"
-                                        Content="Test"/>
-                            </Grid>
+                                        <ComboBox IsEditable="True">
+                                            <ComboBox.Items>
+                                                <ComboBoxItem Content="Item 1"/>
+                                                <ComboBoxItem Content="Item 2"/>
+                                                <ComboBoxItem Content="Item 3"/>
+                                            </ComboBox.Items>
+                                        </ComboBox>
 
-                            <adonisControls:SplitButton Content="Split Button"
-                                                        Margin="0, 8, 0, 0">
-                                <adonisControls:SplitButton.SplitMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="Item 1"/>
-                                        <MenuItem Header="Item 2"/>
-                                        <MenuItem Header="Item 3"/>
-                                    </ContextMenu>
-                                </adonisControls:SplitButton.SplitMenu>
-                            </adonisControls:SplitButton>
+                                        <Button Grid.Column="2"
+                                                Content="Test"/>
+                                    </Grid>
 
-                            <ListBox Margin="0, 8, 0, 0">
-                                <ListBox.Items>
-                                    <ListBoxItem Content="Item 1"/>
-                                    <ListBoxItem Content="Item 2"/>
-                                    <ListBoxItem Content="Item 3"/>
-                                </ListBox.Items>
-                            </ListBox>
+                                    <adonisControls:SplitButton Content="Split Button"
+                                                                Margin="0, 8, 0, 0">
+                                        <adonisControls:SplitButton.SplitMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="Item 1"/>
+                                                <MenuItem Header="Item 2"/>
+                                                <MenuItem Header="Item 3"/>
+                                            </ContextMenu>
+                                        </adonisControls:SplitButton.SplitMenu>
+                                    </adonisControls:SplitButton>
 
-                            <Grid Margin="0, 8, 0, 0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                    <ListBox Margin="0, 8, 0, 0">
+                                        <ListBox.Items>
+                                            <ListBoxItem Content="Item 1"/>
+                                            <ListBoxItem Content="Item 2"/>
+                                            <ListBoxItem Content="Item 3"/>
+                                        </ListBox.Items>
+                                    </ListBox>
 
-                                <Label Content="Label"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                <ToggleButton x:Name="ToggleButton"
-                                              Grid.Column="2"
-                                              Content="Toggle"/>
+                                        <Label Content="Label"
+                                               VerticalAlignment="Center"/>
 
-                                <TextBlock Grid.Column="4"
-                                           Text="Lorem Ipsum Text Block"/>
-                            </Grid>
+                                        <ToggleButton x:Name="ToggleButton"
+                                                      Grid.Column="2"
+                                                      VerticalAlignment="Top"
+                                                      Content="Toggle"/>
+
+                                    </Grid>
+
+                                    <TextBlock Margin="0, 8, 0, 0"
+                                               Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                                               TextWrapping="Wrap"/>
+
+                                    <CheckBox Margin="0, 8, 0, 0"
+                                              IsChecked="{x:Null}"
+                                              Content="Check Me"/>
+
+                                </StackPanel>
+
+                            </ScrollViewer>
 
                         </WrapPanel>
 
-                        <Button Content="Change Theme"
+                        <Button Grid.Row="1"
+                                Content="Change Theme"
                                 Style="{DynamicResource {x:Static adonisUi:Styles.PrimaryButton}}"
                                 Click="ChangeTheme"
                                 IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
