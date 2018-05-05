@@ -3,6 +3,7 @@
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
     <Style x:Key="{x:Type Window}" TargetType="Window">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level0BackgroundBrush}}"/>
     </Style>
 
