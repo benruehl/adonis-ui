@@ -24,10 +24,10 @@
             
             <Grid DockPanel.Dock="Top">
 
-                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"
+                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
                         adonisExtensions:LayerExtension.Layer="3">
                     
-                    <Button Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
+                    <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
                             HorizontalAlignment="Left"
                             Content=">"
                             Width="24"
@@ -212,9 +212,8 @@
 
                         <Button Grid.Row="1"
                                 Content="Change Theme"
-                                Style="{DynamicResource {x:Static adonisUi:Styles.PrimaryButton}}"
+                                Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
                                 Click="ChangeTheme"
-                                IsEnabled="{Binding IsChecked, ElementName=ToggleButton}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"/>
                     </Grid>

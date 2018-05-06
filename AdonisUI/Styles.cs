@@ -10,8 +10,10 @@ namespace AdonisUI
 {
     public static class Styles
     {
-        public static ComponentResourceKey PrimaryButton => new ComponentResourceKey(typeof(Styles), "PrimaryButton");
+        public static ComponentResourceKey AccentButton => new ComponentResourceKey(typeof(Styles), "AccentButton");
 
         public static ComponentResourceKey ToolbarButton => new ComponentResourceKey(typeof(Styles), "ToolbarButton");
+
+        public static ComponentResourceKey AccentToolbarButton => new ComponentResourceKey(typeof(Styles), "AccentToolbarButton");
     }
 }
