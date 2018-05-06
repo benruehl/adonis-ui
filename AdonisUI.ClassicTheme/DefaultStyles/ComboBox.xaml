@@ -23,7 +23,7 @@
                     <ControlTemplate.Triggers>
                     
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
                         </Trigger>
                         
                         <Trigger Property="IsEnabled" Value="False">
@@ -45,10 +45,10 @@
 
             <Border x:Name="Border"
                     Grid.ColumnSpan="2" 
-                    BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}" 
+                    BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}" 
                     BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" 
                     CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
-                    Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" />
+                    Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}" />
 
             <Border x:Name="ButtonBorder"
                     Grid.Column="1" 
@@ -56,7 +56,7 @@
                     BorderBrush="#444" 
                     CornerRadius="0" 
                     BorderThickness="0" 
-                    Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" />
+                    Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}" />
 
             <Viewbox x:Name="Arrow"
                      Grid.Column="1"
@@ -72,8 +72,8 @@
         <ControlTemplate.Triggers>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
-                <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
             </Trigger>
 
             <Trigger Property="IsChecked" Value="True">
@@ -81,8 +81,8 @@
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Panel.Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Level2BackgroundBrush}}"/>
-                <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Level2BackgroundBrush}}"/>
+                <Setter Property="Panel.Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
+                <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
                 <Setter Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
                 <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
                 <Setter Property="Shape.Fill" TargetName="Arrow" Value="#999"/>
@@ -149,11 +149,11 @@
                                   MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
 
                                 <Border x:Name="DropDownBorder" 
-                                        Background="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}" 
+                                        Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}" 
                                         Margin="0, 1, 0, 0"
                                         CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
                                         BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" 
-                                        BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+                                        BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
 
                                 <ScrollViewer SnapsToDevicePixels="True">
                                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />

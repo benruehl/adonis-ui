@@ -13,22 +13,27 @@ namespace AdonisUI
         public static ComponentResourceKey ForegroundColor => new ComponentResourceKey(typeof(Styles), "ForegroundColor");
 
         public static ComponentResourceKey AccentColor => new ComponentResourceKey(typeof(Styles), "AccentColor");
-        public static ComponentResourceKey AccentDarkerColor => new ComponentResourceKey(typeof(Styles), "AccentDarkerColor");
-        public static ComponentResourceKey AccentLighterColor => new ComponentResourceKey(typeof(Styles), "AccentLighterColor");
+        public static ComponentResourceKey AccentHighlightColor => new ComponentResourceKey(typeof(Styles), "AccentHighlightColor");
         public static ComponentResourceKey AccentForegroundColor => new ComponentResourceKey(typeof(Styles), "AccentForegroundColor");
 
-        public static ComponentResourceKey Level0BackgroundColor => new ComponentResourceKey(typeof(Styles), "Level0BackgroundColor");
-        public static ComponentResourceKey Level0BorderColor => new ComponentResourceKey(typeof(Styles), "Level0BorderColor");
+        public static ComponentResourceKey Layer0BackgroundColor => new ComponentResourceKey(typeof(Styles), "Layer0BackgroundColor");
+        public static ComponentResourceKey Layer0BorderColor => new ComponentResourceKey(typeof(Styles), "Layer0BorderColor");
 
-        public static ComponentResourceKey Level1BackgroundColor => new ComponentResourceKey(typeof(Styles), "Level1BackgroundColor");
-        public static ComponentResourceKey Level1BorderColor => new ComponentResourceKey(typeof(Styles), "Level1BorderColor");
-        public static ComponentResourceKey Level1HighlightColor => new ComponentResourceKey(typeof(Styles), "Level1HighlightColor");
+        public static ComponentResourceKey Layer1BackgroundColor => new ComponentResourceKey(typeof(Styles), "Layer1BackgroundColor");
+        public static ComponentResourceKey Layer1BorderColor => new ComponentResourceKey(typeof(Styles), "Layer1BorderColor");
+        public static ComponentResourceKey Layer1HighlightColor => new ComponentResourceKey(typeof(Styles), "Layer1HighlightColor");
 
-        public static ComponentResourceKey Level2BackgroundColor => new ComponentResourceKey(typeof(Styles), "Level2BackgroundColor");
-        public static ComponentResourceKey Level2BorderColor => new ComponentResourceKey(typeof(Styles), "Level2BorderColor");
+        public static ComponentResourceKey Layer2BackgroundColor => new ComponentResourceKey(typeof(Styles), "Layer2BackgroundColor");
+        public static ComponentResourceKey Layer2BorderColor => new ComponentResourceKey(typeof(Styles), "Layer2BorderColor");
+        public static ComponentResourceKey Layer2HighlightColor => new ComponentResourceKey(typeof(Styles), "Layer2HighlightColor");
 
-        public static ComponentResourceKey Level3BackgroundColor => new ComponentResourceKey(typeof(Styles), "Level3BackgroundColor");
-        public static ComponentResourceKey Level3BorderColor => new ComponentResourceKey(typeof(Styles), "Level3BorderColor");
+        public static ComponentResourceKey Layer3BackgroundColor => new ComponentResourceKey(typeof(Styles), "Layer3BackgroundColor");
+        public static ComponentResourceKey Layer3BorderColor => new ComponentResourceKey(typeof(Styles), "Layer3BorderColor");
+        public static ComponentResourceKey Layer3HighlightColor => new ComponentResourceKey(typeof(Styles), "Layer3HighlightColor");
+
+        public static ComponentResourceKey Layer4BackgroundColor => new ComponentResourceKey(typeof(Styles), "Layer4BackgroundColor");
+        public static ComponentResourceKey Layer4BorderColor => new ComponentResourceKey(typeof(Styles), "Layer4BorderColor");
+        public static ComponentResourceKey Layer4HighlightColor => new ComponentResourceKey(typeof(Styles), "Layer4HighlightColor");
 
         public static ComponentResourceKey DisabledForegroundColor => new ComponentResourceKey(typeof(Styles), "DisabledForegroundColor");
     }

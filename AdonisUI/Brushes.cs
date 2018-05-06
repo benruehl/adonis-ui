@@ -13,22 +13,27 @@ namespace AdonisUI
         public static ComponentResourceKey ForegroundBrush => new ComponentResourceKey(typeof(Styles), "ForegroundBrush");
 
         public static ComponentResourceKey AccentBrush => new ComponentResourceKey(typeof(Styles), "AccentBrush");
-        public static ComponentResourceKey AccentDarkerBrush => new ComponentResourceKey(typeof(Styles), "AccentDarkerBrush");
-        public static ComponentResourceKey AccentLighterBrush => new ComponentResourceKey(typeof(Styles), "AccentLighterBrush");
+        public static ComponentResourceKey AccentHighlightBrush => new ComponentResourceKey(typeof(Styles), "AccentHighlightBrush");
         public static ComponentResourceKey AccentForegroundBrush => new ComponentResourceKey(typeof(Styles), "AccentForegroundBrush");
 
-        public static ComponentResourceKey Level0BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Level0BackgroundBrush");
-        public static ComponentResourceKey Level0BorderBrush => new ComponentResourceKey(typeof(Styles), "Level0BorderBrush");
+        public static ComponentResourceKey Layer0BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Layer0BackgroundBrush");
+        public static ComponentResourceKey Layer0BorderBrush => new ComponentResourceKey(typeof(Styles), "Layer0BorderBrush");
 
-        public static ComponentResourceKey Level1BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Level1BackgroundBrush");
-        public static ComponentResourceKey Level1BorderBrush => new ComponentResourceKey(typeof(Styles), "Level1BorderBrush");
-        public static ComponentResourceKey Level1HightlightBrush => new ComponentResourceKey(typeof(Styles), "Level1HightlightBrush");
+        public static ComponentResourceKey Layer1BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Layer1BackgroundBrush");
+        public static ComponentResourceKey Layer1BorderBrush => new ComponentResourceKey(typeof(Styles), "Layer1BorderBrush");
+        public static ComponentResourceKey Layer1HightlightBrush => new ComponentResourceKey(typeof(Styles), "Layer1HightlightBrush");
 
-        public static ComponentResourceKey Level2BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Level2BackgroundBrush");
-        public static ComponentResourceKey Level2BorderBrush => new ComponentResourceKey(typeof(Styles), "Level2BorderBrush");
+        public static ComponentResourceKey Layer2BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Layer2BackgroundBrush");
+        public static ComponentResourceKey Layer2BorderBrush => new ComponentResourceKey(typeof(Styles), "Layer2BorderBrush");
+        public static ComponentResourceKey Layer2HightlightBrush => new ComponentResourceKey(typeof(Styles), "Layer2HightlightBrush");
 
-        public static ComponentResourceKey Level3BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Level3BackgroundBrush");
-        public static ComponentResourceKey Level3BorderBrush => new ComponentResourceKey(typeof(Styles), "Level3BorderBrush");
+        public static ComponentResourceKey Layer3BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Layer3BackgroundBrush");
+        public static ComponentResourceKey Layer3BorderBrush => new ComponentResourceKey(typeof(Styles), "Layer3BorderBrush");
+        public static ComponentResourceKey Layer3HightlightBrush => new ComponentResourceKey(typeof(Styles), "Layer3HightlightBrush");
+
+        public static ComponentResourceKey Layer4BackgroundBrush => new ComponentResourceKey(typeof(Styles), "Layer4BackgroundBrush");
+        public static ComponentResourceKey Layer4BorderBrush => new ComponentResourceKey(typeof(Styles), "Layer4BorderBrush");
+        public static ComponentResourceKey Layer4HightlightBrush => new ComponentResourceKey(typeof(Styles), "Layer4HightlightBrush");
 
         public static ComponentResourceKey DisabledForegroundBrush => new ComponentResourceKey(typeof(Styles), "DisabledForegroundBrush");
     }

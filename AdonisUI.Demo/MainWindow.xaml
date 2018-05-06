@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AdonisUI.Demo"
         xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+        xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
         mc:Ignorable="d"
         Title="Adonis UI"
         Width="720"
@@ -46,7 +47,8 @@
                 </Grid>
 
                 <GroupBox Grid.Column="1"
-                          Margin="8, 0">
+                          Margin="8, 0"
+                          adonisExtensions:LayerExtension.Layer="1">
 
                     <Grid Margin="8">
                         
@@ -158,6 +160,28 @@
                                     <CheckBox Margin="0, 8, 0, 0"
                                               IsChecked="{x:Null}"
                                               Content="Check Me"/>
+
+                                    <GroupBox Margin="0, 8, 0, 0"
+                                              adonisExtensions:LayerExtension.Layer="2">
+
+                                        <GroupBox.Header>
+                                            Test
+                                        </GroupBox.Header>
+
+                                        <StackPanel Orientation="Horizontal">
+
+                                            <Button Content="Lorem Ipsum"
+                                                    VerticalAlignment="Top"
+                                                    HorizontalAlignment="Left"/>
+
+                                            <Button Content="Lorem Ipsum"
+                                                    adonisExtensions:LayerExtension.Layer="1"
+                                                    VerticalAlignment="Top"
+                                                    HorizontalAlignment="Left"/>
+
+                                        </StackPanel>
+
+                                    </GroupBox>
 
                                 </StackPanel>
 

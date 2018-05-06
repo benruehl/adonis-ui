@@ -4,8 +4,8 @@
 
     <Style x:Key="TextBoxDefaultStyle" TargetType="Control">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="Padding" Value="4, 3"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -43,7 +43,7 @@
         <Style.Triggers>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
             </Trigger>
 
             <Trigger Property="IsFocused" Value="True">

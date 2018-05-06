@@ -5,8 +5,8 @@
 
     <Style x:Key="{x:Type controls:SplitButton}" TargetType="controls:SplitButton">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BackgroundBrush}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1BorderBrush}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="Padding" Value="8, 4"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -16,11 +16,11 @@
         <Style.Triggers>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Level1HightlightBrush}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
             </Trigger>
 
