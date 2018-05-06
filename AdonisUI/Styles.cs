@@ -11,5 +11,7 @@ namespace AdonisUI
     public static class Styles
     {
         public static ComponentResourceKey PrimaryButton => new ComponentResourceKey(typeof(Styles), "PrimaryButton");
+
+        public static ComponentResourceKey ToolbarButton => new ComponentResourceKey(typeof(Styles), "ToolbarButton");
     }
 }

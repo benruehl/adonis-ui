@@ -24,6 +24,18 @@
             
             <Grid DockPanel.Dock="Top">
 
+                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"
+                        adonisExtensions:LayerExtension.Layer="3">
+                    
+                    <Button Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
+                            HorizontalAlignment="Left"
+                            Content=">"
+                            Width="24"
+                            Height="24"
+                            Margin="8"/>
+
+                </Border>
+
             </Grid>
 
             <Grid>
@@ -165,7 +177,16 @@
                                               adonisExtensions:LayerExtension.Layer="2">
 
                                         <GroupBox.Header>
-                                            Test
+                                            <Grid>
+                                                <TextBlock Text="Lorem Ipsum"
+                                                           HorizontalAlignment="Left"/>
+                                                
+                                                <Button Content="X"
+                                                        HorizontalAlignment="Right"
+                                                        Width="24"
+                                                        Height="24"
+                                                        Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"/>
+                                            </Grid>
                                         </GroupBox.Header>
 
                                         <StackPanel Orientation="Horizontal">
