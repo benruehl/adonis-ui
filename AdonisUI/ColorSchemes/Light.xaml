@@ -10,21 +10,21 @@
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BackgroundColor}">#ffffff</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#f0f0f0</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#f0f0f0</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#b8b8b8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightColor}">#f4f4f4</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#f4f4f4</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#e8e8e8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightColor}">#f8f8f8</Color>
     
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#e8e8e8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#c8c8c8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#f0f0f0</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#fafafa</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#e4e4e4</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#fdfdfd</Color>
     
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#e0e0e0</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#b0b0b0</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#e8e8e8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#f2f2f2</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#e4e4e4</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#f8f8f8</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.Layer4BackgroundColor}">#d8d8d8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#a0a0a0</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightColor}">#e0e0e0</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4BackgroundColor}">#f8f8f8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#e4e4e4</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightColor}">#ffffff</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.ForegroundColor}">#303030</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AccentForegroundColor}">#ffffff</Color>
