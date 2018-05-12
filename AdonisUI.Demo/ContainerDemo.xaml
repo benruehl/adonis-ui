@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:extensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <DataTemplate x:Key="ContainerDemoTemplate">
+        
+        <Grid>
+            <GroupBox>
+
+                <GroupBox.Header>
+                    <Grid>
+                        <TextBlock Text="Lorem Ipsum"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="X"
+                                HorizontalAlignment="Right"
+                                Width="24"
+                                Height="24"
+                                Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"/>
+                    </Grid>
+                </GroupBox.Header>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Text="Input"
+                             HorizontalAlignment="Stretch"/>
+
+                    <Button Grid.Column="2"
+                            Content="..."/>
+
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>

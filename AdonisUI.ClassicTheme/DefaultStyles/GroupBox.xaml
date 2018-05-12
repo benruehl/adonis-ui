@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
-        <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
+        <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -56,12 +56,12 @@
 
             <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">
                 <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
-                <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"/>
+                <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3">
                 <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"/>
-                <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BackgroundBrush}}"/>
+                <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
             </DataTrigger>
 
         </Style.Triggers>
