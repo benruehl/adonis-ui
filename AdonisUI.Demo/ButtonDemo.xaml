@@ -20,11 +20,11 @@
             
             <Button Content="Button"/>
             
-            <ToggleButton Content="Toggle"
+            <ToggleButton Content="ToggleButton"
                           Grid.Row="0"
                           Grid.Column="2"/>
 
-            <adonisControls:SplitButton Content="Split"
+            <adonisControls:SplitButton Content="SplitButton (Custom)"
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3">

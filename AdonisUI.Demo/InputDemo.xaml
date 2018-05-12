@@ -20,9 +20,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Text="TextBox"/>
+            <TextBox Text="Editable TextBox"/>
             
-            <TextBox Text="TextBox"
+            <TextBox Text="ReadOnly TextBox"
                      IsReadOnly="True"
                      Grid.Row="0"
                      Grid.Column="2"/>
@@ -31,9 +31,9 @@
                       Grid.Row="2"
                       Grid.Column="0">
                 <ComboBox.Items>
-                    <ComboBoxItem Content="Item 1"/>
-                    <ComboBoxItem Content="Item 2"/>
-                    <ComboBoxItem Content="Item 3"/>
+                    <ComboBoxItem Content="Editable ComboBox Item 1"/>
+                    <ComboBoxItem Content="Editable ComboBox Item 2"/>
+                    <ComboBoxItem Content="Editable ComboBox Item 3"/>
                 </ComboBox.Items>
             </ComboBox>
 
@@ -41,9 +41,9 @@
                       Grid.Row="2"
                       Grid.Column="2">
                 <ComboBox.Items>
-                    <ComboBoxItem Content="Item 1"/>
-                    <ComboBoxItem Content="Item 2"/>
-                    <ComboBoxItem Content="Item 3"/>
+                    <ComboBoxItem Content="ReadOnly ComboBox Item 1"/>
+                    <ComboBoxItem Content="ReadOnly ComboBox Item 2"/>
+                    <ComboBoxItem Content="ReadOnly ComboBox Item 3"/>
                 </ComboBox.Items>
             </ComboBox>
 
