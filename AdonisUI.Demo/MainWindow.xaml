@@ -50,6 +50,11 @@
 
             </Grid>
 
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem Content="StatusBarItem"/>
+                <StatusBarItem Content="StatusBarItem"/>
+            </StatusBar>
+
             <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -78,7 +83,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
