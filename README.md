@@ -1,8 +1,8 @@
 # AdonisUI 💪
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
-![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.jpg)
-![Dark color scheme overview](./Docs/Img/adonis-demo-peak-dark.jpg)
+![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.png)
+![Dark color scheme overview](./Docs/Img/adonis-demo-peak-dark.png)
 
 ## What's included
 
