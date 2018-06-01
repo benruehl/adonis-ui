@@ -25,11 +25,13 @@
             <TextBox Text="ReadOnly TextBox"
                      IsReadOnly="True"
                      Grid.Row="0"
-                     Grid.Column="2"/>
+                     Grid.Column="2"
+                     HorizontalContentAlignment="Right"/>
 
             <ComboBox IsEditable="True"
                       Grid.Row="2"
-                      Grid.Column="0">
+                      Grid.Column="0"
+                      HorizontalContentAlignment="Right">
                 <ComboBox.Items>
                     <ComboBoxItem Content="Editable ComboBox Item 1"/>
                     <ComboBoxItem Content="Editable ComboBox Item 2"/>

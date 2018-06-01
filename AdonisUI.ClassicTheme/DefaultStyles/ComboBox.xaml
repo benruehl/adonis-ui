@@ -8,6 +8,8 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="Padding" Value="8, 4"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
@@ -19,7 +21,10 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <ContentPresenter />
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
                     </Border>
 
                     <ControlTemplate.Triggers>
@@ -163,6 +168,8 @@
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="Padding" Value="8, 5"/>
         <Setter Property="MinWidth" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -184,26 +191,28 @@
                         <ContentPresenter x:Name="ContentSite" 
                                           Margin="{TemplateBinding Padding}"
                                           IsHitTestVisible="False"
-                                          HorizontalAlignment="Left" 
-                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
                                           ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
 
-                        <TextBox x:Name="PART_EditableTextBox" 
-                                 Margin="{TemplateBinding Padding}"
-                                 IsReadOnly="{TemplateBinding IsReadOnly}"
-                                 Background="{TemplateBinding Background}"
-                                 Visibility="Hidden" 
-                                 HorizontalAlignment="Left" 
-                                 VerticalAlignment="Center"
-                                 Focusable="True" >
-                            <TextBox.Template>
-                                <ControlTemplate TargetType="TextBox" >
-                                    <Border Name="PART_ContentHost" Focusable="False" />
-                                </ControlTemplate>
-                            </TextBox.Template>
-                        </TextBox>
+                        <Border Margin="0, 0, 8, 0">
+                            <TextBox x:Name="PART_EditableTextBox" 
+                                     Margin="{TemplateBinding Padding}"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"
+                                     Background="{TemplateBinding Background}"
+                                     Visibility="Hidden" 
+                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     Focusable="True">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox" >
+                                        <Border Name="PART_ContentHost" Focusable="False"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                        </Border>
 
                         <!-- Popup showing items -->
                         <Popup x:Name="PART_Popup"
