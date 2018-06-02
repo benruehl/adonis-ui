@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/benruehl/adonis-ui/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/benruehl/adonis-ui</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First release of this library. It provides two color schemes, usage of component resource keys, base styles for many WPF controls and a basic layering system.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>UI Styles Themes Templates Controls WPF XAML</tags>
+  </metadata>
+</package>
