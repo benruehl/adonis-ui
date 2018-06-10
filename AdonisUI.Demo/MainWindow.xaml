@@ -20,11 +20,11 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ButtonDemo.xaml"/>
-                <ResourceDictionary Source="ContainerDemo.xaml"/>
-                <ResourceDictionary Source="InputDemo.xaml"/>
-                <ResourceDictionary Source="ListDemo.xaml"/>
-                <ResourceDictionary Source="TextDemo.xaml"/>
+                <ResourceDictionary Source="Demos/ButtonDemo.xaml"/>
+                <ResourceDictionary Source="Demos/ContainerDemo.xaml"/>
+                <ResourceDictionary Source="Demos/InputDemo.xaml"/>
+                <ResourceDictionary Source="Demos/ListDemo.xaml"/>
+                <ResourceDictionary Source="Demos/TextDemo.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -68,12 +68,20 @@
                             <TextBlock Text="Header"/>
                         </GroupBox.Header>
 
-                        <Button Content="Change Theme"
-                                Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                                Click="ChangeTheme"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top"/>
+                        <StackPanel Orientation="Vertical">
 
+                            <Button Content="Change Theme"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                    Click="ChangeTheme"
+                                    HorizontalAlignment="Stretch"/>
+
+                            <Button Content="Check Issues"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                    Click="OpenIssueDialog"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="0, 8, 0, 0"/>
+
+                        </StackPanel>
                     </GroupBox>
                 </Grid>
 

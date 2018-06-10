@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdonisUI.Demo.Issues;
 
 namespace AdonisUI.Demo
 {
@@ -33,6 +34,13 @@ namespace AdonisUI.Demo
             ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
 
             _isDark = !_isDark;
+        }
+
+        private void OpenIssueDialog(object sender, RoutedEventArgs e)
+        {
+            Window issueDialog = new IssueDialog();
+
+            issueDialog.ShowDialog();
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿<Window x:Class="AdonisUI.Demo.Issues.IssueDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:AdonisUI.Demo.Issues"
+        Width="640"
+        Height="480"
+        mc:Ignorable="d" 
+        d:DesignHeight="300" d:DesignWidth="300">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="Issue5.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="8">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl x:Name="IssueContainer"/>
+
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+            <TextBlock Text="Issue "/>
+            <TextBlock x:Name="CurrentIssueIndexTextBlock"/>
+            <TextBlock Text=" / "/>
+            <TextBlock x:Name="IssueCountTextBlock"/>
+
+        </StackPanel>
+
+        <UniformGrid Grid.Row="2"
+                     HorizontalAlignment="Right"
+                     Columns="2">
+
+            <Button x:Name="PreviousIssueButton"
+                    Content="Previous"
+                    Click="PreviousIssue"/>
+
+            <Button x:Name="NextIssueButton"
+                    Content="Next"
+                    Click="NextIssue"
+                    Margin="8, 0, 0, 0"/>
+
+        </UniformGrid>
+            
+    </Grid>
+</Window>

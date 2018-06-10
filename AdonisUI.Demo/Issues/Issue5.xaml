@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:issues="clr-namespace:AdonisUI.Demo.Issues">
+
+    <DataTemplate x:Key="Issue5Template">
+
+        <issues:IssueControl IssueTitle="Style for ComboBox breaks HorizontalContentAlignment"
+                             IssueDescription="The ComboBox has a custom item template containing two controls stretched to the left and right. As the issue describes, the control on the right is intersecting with the expander arrow which should not be the case."
+                             StepsToReproduce="Select an item to verify template."
+                             IssueLink="https://github.com/benruehl/adonis-ui/issues/5">
+
+            <issues:IssueControl.IssueContent>
+
+                <ComboBox HorizontalContentAlignment="Stretch"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+
+                    <ComboBox.Items>
+                        <ComboBoxItem Content="Item 1" />
+                        <ComboBoxItem Content="Item 2" />
+                        <ComboBoxItem Content="Item 3" />
+                    </ComboBox.Items>
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Text on the left edge -->
+                                <TextBlock Grid.Column="0" 
+                                           Text="Left edge"/>
+
+                                <!-- Text on the right edge -->
+                                <TextBlock Grid.Column="3"
+                                           Text="Right edge"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </issues:IssueControl.IssueContent>
+        </issues:IssueControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>
