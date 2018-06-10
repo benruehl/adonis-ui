@@ -82,10 +82,10 @@
 
             <Border x:Name="Border"
                     Grid.ColumnSpan="2"
-                    BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
-                    BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
                     CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
-                    Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"/>
+                    Background="Transparent"/>
 
             <Border x:Name="ButtonBorder"
                     Grid.Column="1"
@@ -168,7 +168,7 @@
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="Padding" Value="8, 5"/>
         <Setter Property="MinWidth" Value="24"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -180,67 +180,79 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <ToggleButton x:Name="ToggleButton"
-                                      ClickMode="Press" 
-                                      Focusable="False"
-                                      Foreground="{TemplateBinding Foreground}"
-                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                      Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}">
 
-                        <ContentPresenter x:Name="ContentSite" 
-                                          Margin="{TemplateBinding Padding}"
-                                          IsHitTestVisible="False"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
-                                          ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
-                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton"
+                                          ClickMode="Press" 
+                                          Focusable="False"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                          Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
 
-                        <Border Margin="0, 0, 8, 0">
-                            <TextBox x:Name="PART_EditableTextBox" 
-                                     Margin="{TemplateBinding Padding}"
-                                     IsReadOnly="{TemplateBinding IsReadOnly}"
-                                     Background="{TemplateBinding Background}"
-                                     Visibility="Hidden" 
-                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     Focusable="True">
-                                <TextBox.Template>
-                                    <ControlTemplate TargetType="TextBox" >
-                                        <Border Name="PART_ContentHost" Focusable="False"/>
-                                    </ControlTemplate>
-                                </TextBox.Template>
-                            </TextBox>
-                        </Border>
+                            <Border Margin="0, 0, 11, 0">
+                                
+                                <Grid>
+                                    <ContentPresenter x:Name="ContentSite" 
+                                                      Margin="{TemplateBinding Padding}"
+                                                      IsHitTestVisible="False"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
+                                                      ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
 
-                        <!-- Popup showing items -->
-                        <Popup x:Name="PART_Popup"
-                               Placement="Bottom"
-                               Focusable="False"
-                               AllowsTransparency="True"
-                               IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
-                               PopupAnimation="Slide">
+                            
+                                    <TextBox x:Name="PART_EditableTextBox" 
+                                             Margin="{TemplateBinding Padding}"
+                                             IsReadOnly="{TemplateBinding IsReadOnly}"
+                                             Background="{TemplateBinding Background}"
+                                             Visibility="Hidden" 
+                                             HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Stretch"
+                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                             Focusable="True">
+                                        <TextBox.Template>
+                                            <ControlTemplate TargetType="TextBox" >
+                                                <Border Name="PART_ContentHost" Focusable="False"/>
+                                            </ControlTemplate>
+                                        </TextBox.Template>
+                                    </TextBox>
+                                </Grid>
+                            </Border>
 
-                            <Grid x:Name="DropDown" 
-                                  SnapsToDevicePixels="True"
-                                  MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
-                                  MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+                            <!-- Popup showing items -->
+                            <Popup x:Name="PART_Popup"
+                                   Placement="Bottom"
+                                   Focusable="False"
+                                   AllowsTransparency="True"
+                                   IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                                   PopupAnimation="Slide">
 
-                                <Border x:Name="DropDownBorder" 
-                                        Background="{TemplateBinding Background}"
-                                        Margin="0, 1, 0, 0"
-                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
-                                        BorderThickness="{TemplateBinding BorderThickness}" 
-                                        BorderBrush="{TemplateBinding BorderBrush}"/>
+                                <Grid x:Name="DropDown" 
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                      MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
 
-                                <ScrollViewer SnapsToDevicePixels="True">
-                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
-                                </ScrollViewer>
+                                    <Border x:Name="DropDownBorder" 
+                                            Background="{TemplateBinding Background}"
+                                            Margin="0, 1, 0, 0"
+                                            CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}"/>
 
-                            </Grid>
-                        </Popup>
-                    </Grid>
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="HasItems" Value="False">
@@ -259,6 +271,8 @@
                             <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
                             <Setter Property="UIElement.Visibility" TargetName="PART_EditableTextBox" Value="Visible"/>
                             <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
+                            <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
+                            <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
