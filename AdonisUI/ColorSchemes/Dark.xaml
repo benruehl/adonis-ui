@@ -4,8 +4,8 @@
 
     <!-- colors -->
 
-    <Color x:Key="{x:Static adonisUi:Colors.AccentColor}">#5080d8</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.AccentHighlightColor}">#6C9CF6</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.AccentColor}">#425595</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.AccentHighlightColor}">#5168B7</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BackgroundColor}">#2D2E3B</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#3A3A4D</Color>
@@ -30,7 +30,7 @@
     <Color x:Key="{x:Static adonisUi:Colors.AccentForegroundColor}">#ffffff</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#8E8E8E</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.DisabledAccentForegroundColor}">#d3d3d3</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.DisabledAccentForegroundColor}">#ACACAC</Color>
 
     <!-- brushes -->
 
