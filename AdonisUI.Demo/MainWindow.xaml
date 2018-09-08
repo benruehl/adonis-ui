@@ -38,13 +38,24 @@
 
                 <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
                         adonisExtensions:LayerExtension.Layer="3">
-                    
-                    <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
-                            HorizontalAlignment="Left"
-                            Content=">"
-                            Width="24"
-                            Height="24"
-                            Margin="8"/>
+
+                    <DockPanel LastChildFill="False">
+
+                        <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
+                                DockPanel.Dock="Left"
+                                Content=">"
+                                Width="24"
+                                Height="24"
+                                Margin="8"/>
+
+                        <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
+                                IsEnabled="False"
+                                DockPanel.Dock="Right"
+                                Content="Disabled"
+                                Height="24"
+                                Margin="8"/>
+
+                    </DockPanel>
 
                 </Border>
 
@@ -78,6 +89,12 @@
                             <Button Content="Check Issues"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
                                     Click="OpenIssueDialog"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="0, 8, 0, 0"/>
+
+                            <Button Content="Disabled"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                    IsEnabled="False"
                                     HorizontalAlignment="Stretch"
                                     Margin="0, 8, 0, 0"/>
 

@@ -36,5 +36,6 @@ namespace AdonisUI
         public static ComponentResourceKey Layer4HighlightColor => new ComponentResourceKey(typeof(Styles), "Layer4HighlightColor");
 
         public static ComponentResourceKey DisabledForegroundColor => new ComponentResourceKey(typeof(Styles), "DisabledForegroundColor");
+        public static ComponentResourceKey DisabledAccentForegroundColor => new ComponentResourceKey(typeof(Styles), "AccentDisabledForegroundColor");
     }
 }

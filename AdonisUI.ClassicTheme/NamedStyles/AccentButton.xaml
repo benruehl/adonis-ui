@@ -35,7 +35,7 @@
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}}"/>
             </Trigger>
 
         </Style.Triggers>

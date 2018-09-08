@@ -36,5 +36,6 @@ namespace AdonisUI
         public static ComponentResourceKey Layer4HightlightBrush => new ComponentResourceKey(typeof(Styles), "Layer4HightlightBrush");
 
         public static ComponentResourceKey DisabledForegroundBrush => new ComponentResourceKey(typeof(Styles), "DisabledForegroundBrush");
+        public static ComponentResourceKey DisabledAccentForegroundBrush => new ComponentResourceKey(typeof(Styles), "DisabledAccentForegroundBrush");
     }
 }
