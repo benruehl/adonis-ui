@@ -11,20 +11,20 @@
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#3A3A4D</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#3A3A4D</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#45485C</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightColor}">#3F4153</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#424257</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightColor}">#4D5066</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#484860</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#54556D</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#4B4B64</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#2D2D3B</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#252530</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#3E3E51</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#404055</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#363648</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#434359</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#242430</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#1F2029</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#383A4A</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer4BackgroundColor}">#323341</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#2D2E3B</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightColor}">#363748</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#414255</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightColor}">#404155</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.ForegroundColor}">#f0f0f0</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AccentForegroundColor}">#ffffff</Color>
