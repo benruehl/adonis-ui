@@ -8,7 +8,12 @@
         Height="480"
         mc:Ignorable="d" 
         d:DesignHeight="300" d:DesignWidth="300">
-    
+
+    <Window.Style>
+        <Style TargetType="Window"
+               BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
+
     <Window.Resources>
         <ResourceDictionary Source="Issue5.xaml"/>
     </Window.Resources>
