@@ -33,7 +33,8 @@
             </DataTrigger>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
+                <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
+                <Setter Property="adonisExtensions:HighlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
             </Trigger>
 

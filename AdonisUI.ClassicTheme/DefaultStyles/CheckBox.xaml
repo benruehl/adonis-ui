@@ -74,6 +74,7 @@
 
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBorderBrush}}"/>
             </Trigger>
 
             <Trigger Property="IsFocused" Value="True">
@@ -91,6 +92,7 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
@@ -101,6 +103,7 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
@@ -111,6 +114,7 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 

@@ -15,22 +15,29 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
-                    <Border Name="Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Padding="{TemplateBinding Padding}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    <Grid>
+                        <Border Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+
+                        <Border x:Name="SpotlightLayer"
+                                Background="{TemplateBinding adonisExtensions:HighlightExtension.BackgroundBrush}"
+                                BorderBrush="{TemplateBinding adonisExtensions:HighlightExtension.BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                adonisExtensions:CursorSpotlightExtension.MouseEventSourceForSpotlight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBoxItem}}"
+                                SnapsToDevicePixels="False"/>
 
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-                    </Border>
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Grid>
 
                     <ControlTemplate.Triggers>
                     
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                            <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
                         </Trigger>
                         
                         <Trigger Property="IsEnabled" Value="False">
@@ -43,7 +50,7 @@
                                 <Condition Binding="{Binding IsHighlighted, RelativeSource={RelativeSource Self}}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
-                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
+                                <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
 
@@ -53,7 +60,7 @@
                                 <Condition Binding="{Binding IsHighlighted, RelativeSource={RelativeSource Self}}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
-                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
+                                <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
 
@@ -63,7 +70,7 @@
                                 <Condition Binding="{Binding IsHighlighted, RelativeSource={RelativeSource Self}}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
-                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
+                                <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
 
@@ -109,8 +116,8 @@
         <ControlTemplate.Triggers>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
                 <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBorderBrush}}"/>
             </Trigger>
 
             <Trigger Property="IsChecked" Value="True">
@@ -131,8 +138,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
                     <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
@@ -142,8 +149,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
                     <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
@@ -153,8 +160,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
                     <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
+                    <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
@@ -180,79 +187,86 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
-                        <Grid>
-                            <ToggleButton x:Name="ToggleButton"
-                                          ClickMode="Press" 
-                                          Focusable="False"
-                                          Foreground="{TemplateBinding Foreground}"
-                                          IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                          Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
+                        <Border x:Name="SpotlightLayer"
+                                Background="{TemplateBinding adonisExtensions:HighlightExtension.BackgroundBrush}"
+                                BorderBrush="{TemplateBinding adonisExtensions:HighlightExtension.BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                adonisExtensions:CursorSpotlightExtension.MouseEventSourceForSpotlight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
+                                SnapsToDevicePixels="False"/>
 
-                            <Border Margin="0, 0, 11, 0">
-                                
-                                <Grid>
-                                    <ContentPresenter x:Name="ContentSite" 
-                                                      Margin="{TemplateBinding Padding}"
-                                                      IsHitTestVisible="False"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                      Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
-                                                      ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
-                                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                        <ToggleButton x:Name="ToggleButton"
+                                      ClickMode="Press" 
+                                      Focusable="False"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
 
-                            
-                                    <TextBox x:Name="PART_EditableTextBox" 
-                                             Margin="{TemplateBinding Padding}"
-                                             IsReadOnly="{TemplateBinding IsReadOnly}"
-                                             Background="{TemplateBinding Background}"
-                                             Visibility="Hidden" 
-                                             HorizontalAlignment="Stretch"
-                                             VerticalAlignment="Stretch"
-                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                             Focusable="True">
-                                        <TextBox.Template>
-                                            <ControlTemplate TargetType="TextBox" >
-                                                <Border Name="PART_ContentHost" Focusable="False"/>
-                                            </ControlTemplate>
-                                        </TextBox.Template>
-                                    </TextBox>
-                                </Grid>
-                            </Border>
+                        <Border Margin="0, 0, 11, 0">
 
-                            <!-- Popup showing items -->
-                            <Popup x:Name="PART_Popup"
-                                   Placement="Bottom"
-                                   Focusable="False"
-                                   AllowsTransparency="True"
-                                   IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
-                                   PopupAnimation="Slide">
+                            <Grid>
+                                <ContentPresenter x:Name="ContentSite" 
+                                                  Margin="{TemplateBinding Padding}"
+                                                  IsHitTestVisible="False"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
+                                                  ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
 
-                                <Grid x:Name="DropDown" 
-                                      SnapsToDevicePixels="True"
-                                      MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
-                                      MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
 
-                                    <Border x:Name="DropDownBorder" 
-                                            Background="{TemplateBinding Background}"
-                                            Margin="0, 1, 0, 0"
-                                            CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
-                                            BorderThickness="{TemplateBinding BorderThickness}" 
-                                            BorderBrush="{TemplateBinding BorderBrush}"/>
+                                <TextBox x:Name="PART_EditableTextBox" 
+                                         Margin="{TemplateBinding Padding}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         Background="{TemplateBinding Background}"
+                                         Visibility="Hidden" 
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Focusable="True">
+                                    <TextBox.Template>
+                                        <ControlTemplate TargetType="TextBox" >
+                                            <Border Name="PART_ContentHost" Focusable="False"/>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+                            </Grid>
+                        </Border>
 
-                                    <ScrollViewer SnapsToDevicePixels="True">
-                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
-                                    </ScrollViewer>
+                        <!-- Popup showing items -->
+                        <Popup x:Name="PART_Popup"
+                               Placement="Bottom"
+                               Focusable="False"
+                               AllowsTransparency="True"
+                               IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                               PopupAnimation="Slide">
 
-                                </Grid>
-                            </Popup>
-                        </Grid>
-                    </Border>
+                            <Grid x:Name="DropDown" 
+                                  SnapsToDevicePixels="True"
+                                  MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                  MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+
+                                <Border x:Name="DropDownBorder" 
+                                        Background="{TemplateBinding Background}"
+                                        Margin="0, 1, 0, 0"
+                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}"/>
+
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Popup>
+                    </Grid>
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="HasItems" Value="False">
@@ -296,6 +310,44 @@
                 <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BackgroundBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BorderBrush}}"/>
             </DataTrigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                <Setter Property="adonisExtensions:HighlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBorderBrush}}"/>
+            </Trigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBrush}}"/>
+                    <Setter Property="adonisExtensions:HighlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HightlightBorderBrush}}"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBrush}}"/>
+                    <Setter Property="adonisExtensions:HighlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HightlightBorderBrush}}"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="adonisExtensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBrush}}"/>
+                    <Setter Property="adonisExtensions:HighlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}}"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
 
         </Style.Triggers>
     </Style>

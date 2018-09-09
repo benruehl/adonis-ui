@@ -68,6 +68,8 @@
     <Compile Include="Brushes.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
+    <Compile Include="Extensions\HighlightExtension.cs" />
+    <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />
     <Compile Include="Extensions\LayerExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

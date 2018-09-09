@@ -13,18 +13,22 @@
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#ededed</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#d8d8d8</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightColor}">#f8f8f8</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer1HighlightBorderColor}">#929292</Color>
     
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#f6f6f6</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#d0d0d0</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#ffffff</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightBorderColor}">#929292</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#e8e8e8</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#d4d4d4</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#f6f6f6</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightBorderColor}">#929292</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer4BackgroundColor}">#f4f4f4</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#c8c8c8</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightColor}">#ffffff</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer4HighlightBorderColor}">#929292</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.ForegroundColor}">#303030</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AccentForegroundColor}">#ffffff</Color>
@@ -43,18 +47,22 @@
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BackgroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HightlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HightlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightBorderColor}}"/>
     
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BackgroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BorderColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HightlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HightlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightBorderColor}}"/>
     
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BackgroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BorderColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HightlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HightlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightBorderColor}}"/>
 
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BackgroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BorderColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HightlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightBorderColor}}"/>
 
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ForegroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentForegroundColor}}"/>
