@@ -29,7 +29,7 @@
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3">
                 <adonisControls:SplitButton.SplitMenu>
-                    <ContextMenu>
+                    <ContextMenu MinWidth="{Binding PlacementTarget.ActualWidth, RelativeSource={RelativeSource Self}}">
                         <MenuItem Header="Item 1"/>
                         <MenuItem Header="Item 2"/>
                         <MenuItem Header="Item 3"/>

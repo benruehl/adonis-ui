@@ -23,6 +23,7 @@
                 <ResourceDictionary Source="Demos/ButtonDemo.xaml"/>
                 <ResourceDictionary Source="Demos/ContainerDemo.xaml"/>
                 <ResourceDictionary Source="Demos/InputDemo.xaml"/>
+                <ResourceDictionary Source="Demos/LayerDemo.xaml"/>
                 <ResourceDictionary Source="Demos/ListDemo.xaml"/>
                 <ResourceDictionary Source="Demos/TextDemo.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -33,7 +34,7 @@
         <DockPanel LastChildFill="True"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch">
-            
+
             <Grid DockPanel.Dock="Top">
 
                 <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
@@ -43,8 +44,7 @@
 
                         <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
                                 DockPanel.Dock="Left"
-                                Content=">"
-                                Width="24"
+                                Content="Menu"
                                 Height="24"
                                 Margin="8"/>
 
@@ -119,7 +119,7 @@
                             <StackPanel Orientation="Vertical">
                                 <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
                                 <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
+                                <!--<ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>-->
                                 <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
                                 <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
                             </StackPanel>
@@ -188,6 +188,7 @@
                 </Grid>
             </Grid>
         </DockPanel>
+
     </Grid>
 
 </Window>
