@@ -121,6 +121,9 @@ namespace AdonisUI.Extensions
         {
             double spotlightSize = Math.Max(targetElement.ActualWidth, targetElement.ActualHeight) * 1.65;
 
+            // limit blur radius size to solve rendering performance issues
+            const double maxBlurRadius = 128;
+
             return new Ellipse
             {
                 Name = SpotlightName,
@@ -129,7 +132,7 @@ namespace AdonisUI.Extensions
                 Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
                 Effect = new BlurEffect
                 {
-                    Radius = spotlightSize * 0.75,
+                    Radius = Math.Min(spotlightSize * 0.75, maxBlurRadius),
                 },
             };
         }
