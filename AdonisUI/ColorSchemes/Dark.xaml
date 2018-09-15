@@ -18,12 +18,12 @@
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#2D2D3B</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#252530</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#3E3E51</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightBorderColor}">#2A2A36</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightBorderColor}">#1F2029</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer3BackgroundColor}">#242430</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer3BorderColor}">#1F2029</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightColor}">#383A4A</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightBorderColor}">#2A2A36</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer3HighlightBorderColor}">#494960</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer4BackgroundColor}">#323341</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer4BorderColor}">#414255</Color>
