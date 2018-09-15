@@ -97,10 +97,10 @@
             <Border x:Name="ButtonBorder"
                     Grid.Column="1"
                     Margin="1"
-                    BorderBrush="#444"
                     CornerRadius="0"
                     BorderThickness="0"
-                    Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" />
+                    Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
+                    Visibility="Collapsed"/>
 
             <Viewbox x:Name="Arrow"
                      Grid.Column="1"
@@ -114,6 +114,10 @@
         </Grid>
 
         <ControlTemplate.Triggers>
+
+            <DataTrigger Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" Value="True">
+                <Setter Property="Visibility" TargetName="ButtonBorder" Value="Visible"/>
+            </DataTrigger>
 
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
