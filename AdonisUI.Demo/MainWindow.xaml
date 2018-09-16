@@ -119,7 +119,7 @@
                             <StackPanel Orientation="Vertical">
                                 <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
                                 <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                <!--<ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>-->
+                                <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
                                 <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
                                 <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
                             </StackPanel>

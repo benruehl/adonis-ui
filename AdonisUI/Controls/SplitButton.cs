@@ -25,7 +25,7 @@ namespace AdonisUI.Controls
             base.OnApplyTemplate();
 
             if (GetTemplateChild("PART_MenuExpander") is Button menuExpanderButton)
-                menuExpanderButton.PreviewMouseDown += OnMenuExpanderClick;
+                menuExpanderButton.Click += OnMenuExpanderClick;
         }
 
         private void OnMenuExpanderClick(object sender, RoutedEventArgs e)

@@ -4,7 +4,7 @@
                     xmlns:extensions="clr-namespace:AdonisUI.Extensions"
                     xmlns:adonisUi="clr-namespace:AdonisUI">
 
-    <Style x:Key="TransparentButtonStyle" TargetType="Button">
+    <Style x:Key="ButtonPartStyle" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -13,15 +13,31 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+
+                        <Border x:Name="SpotlightLayer"
+                                Background="{TemplateBinding extensions:CursorSpotlightExtension.BackgroundBrush}"
+                                BorderBrush="{TemplateBinding extensions:CursorSpotlightExtension.BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                extensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
+                                SnapsToDevicePixels="False"/>
+
+                        <Border x:Name="RippleLayer"
+                                Background="{TemplateBinding extensions:RippleExtension.BackgroundBrush}"
+                                BorderBrush="{TemplateBinding extensions:RippleExtension.BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                extensions:RippleExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
+                                extensions:RippleExtension.FadeInDuration="{TemplateBinding extensions:RippleExtension.FadeInDuration}"
+                                extensions:RippleExtension.FadeOutDuration="{TemplateBinding extensions:RippleExtension.FadeOutDuration}"/>
+
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Margin="{TemplateBinding Padding}"/>
-
-                    </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -37,13 +53,6 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"/>
 
-                        <Border x:Name="SpotlightLayer"
-                                Background="{TemplateBinding extensions:HighlightExtension.BackgroundBrush}"
-                                BorderBrush="{TemplateBinding extensions:HighlightExtension.BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                extensions:CursorSpotlightExtension.MouseEventSourceForSpotlight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:SplitButton}}"
-                                SnapsToDevicePixels="False"/>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -55,7 +64,8 @@
                                     Content="{TemplateBinding Content}"
                                     Command="{TemplateBinding Command}"
                                     Padding="{TemplateBinding Padding}"
-                                    Style="{StaticResource TransparentButtonStyle}"/>
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Style="{StaticResource ButtonPartStyle}"/>
 
                             <Border Grid.Column="1"
                                     Width="1"
@@ -68,7 +78,8 @@
                                     Grid.Column="2"
                                     Foreground="{TemplateBinding Foreground}"
                                     Width="16"
-                                    Style="{StaticResource TransparentButtonStyle}">
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Style="{StaticResource ButtonPartStyle}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <Viewbox Stretch="Uniform"

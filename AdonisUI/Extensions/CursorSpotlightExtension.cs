@@ -17,17 +17,65 @@ namespace AdonisUI.Extensions
     {
         private const string SpotlightName = "CursorSpotlightExtension_SpotlightName_Key";
 
-        public static FrameworkElement GetMouseEventSourceForSpotlight(DependencyObject obj)
+        public static FrameworkElement GetMouseEventSource(DependencyObject obj)
         {
-            return (FrameworkElement)obj.GetValue(MouseEventSourceForSpotlightProperty);
+            return (FrameworkElement)obj.GetValue(MouseEventSourceProperty);
         }
 
-        public static void SetMouseEventSourceForSpotlight(DependencyObject obj, FrameworkElement value)
+        public static void SetMouseEventSource(DependencyObject obj, FrameworkElement value)
         {
-            obj.SetValue(MouseEventSourceForSpotlightProperty, value);
+            obj.SetValue(MouseEventSourceProperty, value);
         }
 
-        public static readonly DependencyProperty MouseEventSourceForSpotlightProperty = DependencyProperty.RegisterAttached("MouseEventSourceForSpotlight", typeof(FrameworkElement), typeof(CursorSpotlightExtension), new PropertyMetadata(null, MouseEventTargetPropertyChanged));
+        public static Brush GetBackgroundBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(BackgroundBrushProperty);
+        }
+
+        public static void SetBackgroundBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(BackgroundBrushProperty, value);
+        }
+
+        public static Brush GetBorderBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(BorderBrushProperty);
+        }
+
+        public static void SetBorderBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(BorderBrushProperty, value);
+        }
+
+        public static double GetMaxBlurRadius(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MaxBlurRadiusProperty);
+        }
+
+        public static void SetMaxBlurRadius(DependencyObject obj, double value)
+        {
+            obj.SetValue(MaxBlurRadiusProperty, value);
+        }
+
+        public static double GetRelativeSpotlightSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(RelativeSpotlightSizeProperty);
+        }
+
+        public static void SetRelativeSpotlightSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(RelativeSpotlightSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty MouseEventSourceProperty = DependencyProperty.RegisterAttached("MouseEventSource", typeof(FrameworkElement), typeof(CursorSpotlightExtension), new PropertyMetadata(null, MouseEventTargetPropertyChanged));
+
+        public static readonly DependencyProperty BackgroundBrushProperty = DependencyProperty.RegisterAttached("BackgroundBrush", typeof(Brush), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(System.Windows.Media.Brushes.Transparent, FrameworkPropertyMetadataOptions.Inherits));
+
+        public static readonly DependencyProperty BorderBrushProperty = DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(System.Windows.Media.Brushes.Transparent, FrameworkPropertyMetadataOptions.Inherits));
+
+        public static readonly DependencyProperty MaxBlurRadiusProperty = DependencyProperty.RegisterAttached("MaxBlurRadius", typeof(double), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(128.0, FrameworkPropertyMetadataOptions.Inherits));
+
+        public static readonly DependencyProperty RelativeSpotlightSizeProperty = DependencyProperty.RegisterAttached("RelativeSpotlightSize", typeof(double), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(0.8, FrameworkPropertyMetadataOptions.Inherits));
 
         private static void MouseEventTargetPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
@@ -119,10 +167,7 @@ namespace AdonisUI.Extensions
 
         private static Ellipse CreateSpotlight(FrameworkElement targetElement)
         {
-            double spotlightSize = Math.Max(targetElement.ActualWidth, targetElement.ActualHeight) * 1.65;
-
-            // limit blur radius size to solve rendering performance issues
-            const double maxBlurRadius = 128;
+            double spotlightSize = Math.Max(targetElement.ActualWidth, targetElement.ActualHeight) * 2 * GetRelativeSpotlightSize(targetElement);
 
             return new Ellipse
             {
@@ -132,7 +177,7 @@ namespace AdonisUI.Extensions
                 Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
                 Effect = new BlurEffect
                 {
-                    Radius = Math.Min(spotlightSize * 0.75, maxBlurRadius),
+                    Radius = Math.Min(spotlightSize * 0.75, GetMaxBlurRadius(targetElement)),
                 },
             };
         }

@@ -7,6 +7,8 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="extensions:RippleExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+        <Setter Property="extensions:RippleExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
         <Setter Property="Padding" Value="-1"/>
         <Setter Property="HasDropShadow" Value="True"/>
         <Setter Property="Template">
@@ -52,8 +54,18 @@
                                 Background="{TemplateBinding Background}"/>
 
                         <Border x:Name="SpotlightLayer"
-                                Background="{TemplateBinding extensions:HighlightExtension.BackgroundBrush}"
-                                extensions:CursorSpotlightExtension.MouseEventSourceForSpotlight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                                Background="{TemplateBinding extensions:CursorSpotlightExtension.BackgroundBrush}"
+                                extensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+
+                        <Border x:Name="RippleLayer"
+                                Background="{TemplateBinding extensions:RippleExtension.BackgroundBrush}"
+                                BorderBrush="{TemplateBinding extensions:RippleExtension.BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                extensions:RippleExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"
+                                extensions:RippleExtension.FadeInDuration="{TemplateBinding extensions:RippleExtension.FadeInDuration}"
+                                extensions:RippleExtension.FadeOutDuration="{TemplateBinding extensions:RippleExtension.FadeOutDuration}"/>
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="24"/>
@@ -85,15 +97,9 @@
 
                         <Trigger Property="IsHighlighted" Value="True">
                             <Trigger.Setters>
-                                <Setter Property="extensions:HighlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                                <Setter Property="extensions:CursorSpotlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
                                 <Setter Property="Foreground" TargetName="ItemHeader" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
                                 <Setter Property="TextElement.Foreground" TargetName="IconPresenter" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
-                            </Trigger.Setters>
-                        </Trigger>
-
-                        <Trigger Property="IsPressed" Value="True">
-                            <Trigger.Setters>
-                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
                             </Trigger.Setters>
                         </Trigger>
 
