@@ -1,0 +1,137 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Controls"
+                    xmlns:extensions="clr-namespace:AdonisUI.Extensions"
+                    xmlns:adonisUi="clr-namespace:AdonisUI">
+
+    <Style TargetType="{x:Type local:ValidationErrorIndicator}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ValidationErrorIndicator}">
+                    <Grid>
+
+                        <local:AdornedControl HorizontalAdornerPlacement="Outside"
+                                              VerticalAdornerPlacement="Outside">
+                            <local:AdornedControl.Style>
+                                <Style TargetType="{x:Type local:AdornedControl}">
+                                    <Setter Property="IsAdornerVisible" Value="False"/>
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                                <Condition Binding="{Binding IsPopupVisibleOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding ValidatedElement.(Validation.HasError), RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <MultiDataTrigger.Setters>
+                                                <Setter Property="IsAdornerVisible" Value="True"/>
+                                            </MultiDataTrigger.Setters>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsValidatedElementFocused, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding IsPopupVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding ValidatedElement.(Validation.HasError), RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <MultiDataTrigger.Setters>
+                                                <Setter Property="IsAdornerVisible" Value="True"/>
+                                            </MultiDataTrigger.Setters>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:AdornedControl.Style>
+
+                            <ToggleButton x:Name="AlertToggleButton"
+                                          IsChecked="{Binding IsPopupVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Focusable="False">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Grid Background="Transparent">
+                                                        <ContentPresenter x:Name="Content"
+                                                                          Content="{TemplateBinding Content}"/>
+                                                    </Grid>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Effect" TargetName="Content">
+                                                                <Setter.Value>
+                                                                    <DropShadowEffect ShadowDepth="1"
+                                                                                      Color="#202020"
+                                                                                      Opacity="0.5"
+                                                                                      BlurRadius="4"/>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+
+                                <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.Error}}"
+                                                Foreground="{DynamicResource {x:Static adonisUi:Brushes.AlertBrush}}"
+                                                Background="{Binding ValidatedElement.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Focusable="False"
+                                                Width="20"
+                                                Height="20"
+                                                Margin="0, -2, 4, -2"/>
+                            </ToggleButton>
+
+                            <local:AdornedControl.AdornerContent>
+                                <Canvas>
+                                    <Grid x:Name="AdornerContent"
+                                          Canvas.Top="-48"
+                                          Canvas.Left="-1">
+                                        <Grid.Style>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="Effect">
+                                                    <Setter.Value>
+                                                        <DropShadowEffect ShadowDepth="1"
+                                                                          Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}"
+                                                                          BlurRadius="4"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                        <Setter Property="Effect" Value="{x:Null}"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+
+                                        <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                                Margin="4, 4, 4, 8"
+                                                IsHitTestVisible="False">
+
+                                            <TextBlock Text="{Binding ValidatedElement.(Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                                       Margin="8"/>
+
+                                        </Border>
+
+                                        <Path Data="M 0 0 L 16 0 L 8 8 Z"
+                                              Fill="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Bottom"
+                                              Margin="4, -2, 0, 0"/>
+                                    </Grid>
+                                </Canvas>
+                            </local:AdornedControl.AdornerContent>
+
+                        </local:AdornedControl>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

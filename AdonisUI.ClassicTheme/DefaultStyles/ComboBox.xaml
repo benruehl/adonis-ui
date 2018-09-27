@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
-                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
 
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
         <Setter Property="Background" Value="Transparent"/>
@@ -216,13 +217,13 @@
                         <Border Margin="0, 0, 11, 0">
 
                             <DockPanel Margin="{TemplateBinding Padding}">
-                                
-                                <ContentPresenter x:Name="ErrorAlertHost"
-                                                  Content="{Binding}"
-                                                  ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorAlertTemplate}}"
-                                                  Visibility="Collapsed"
-                                                  DockPanel.Dock="Left"/>
-                                
+
+                                <adonisControls:ValidationErrorIndicator x:Name="ErrorAlertHost"
+                                                                         ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                                                         IsValidatedElementFocused="False"
+                                                                         Visibility="Collapsed"
+                                                                         DockPanel.Dock="Left"/>
+
                                 <ContentPresenter x:Name="ContentSite" 
                                                   IsHitTestVisible="False"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -301,6 +302,10 @@
 
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
+                        </Trigger>
+
+                        <Trigger Property="IsFocused" SourceName="PART_EditableTextBox" Value="True">
+                            <Setter Property="IsValidatedElementFocused" TargetName="ErrorAlertHost" Value="True"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
