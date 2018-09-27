@@ -67,12 +67,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brushes.cs" />
+    <Compile Include="Controls\AdornedControl.cs" />
+    <Compile Include="Controls\AdornerPlacement.cs" />
+    <Compile Include="Controls\FrameworkElementAdorner.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />
     <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />
     <Compile Include="Extensions\LayerExtension.cs" />
+    <Compile Include="Icons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -90,6 +94,7 @@
     <Compile Include="Colors.cs" />
     <Compile Include="ResourceLocator.cs" />
     <Compile Include="Styles.cs" />
+    <Compile Include="Templates.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

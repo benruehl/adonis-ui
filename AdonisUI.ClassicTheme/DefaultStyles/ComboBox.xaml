@@ -177,7 +177,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
-        <Setter Property="Padding" Value="8, 5"/>
+        <Setter Property="Padding" Value="8, 6"/>
         <Setter Property="MinWidth" Value="24"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -188,6 +188,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorTemplate}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
@@ -214,9 +215,15 @@
 
                         <Border Margin="0, 0, 11, 0">
 
-                            <Grid>
+                            <DockPanel Margin="{TemplateBinding Padding}">
+                                
+                                <ContentPresenter x:Name="ErrorAlertHost"
+                                                  Content="{Binding}"
+                                                  ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorAlertTemplate}}"
+                                                  Visibility="Collapsed"
+                                                  DockPanel.Dock="Left"/>
+                                
                                 <ContentPresenter x:Name="ContentSite" 
-                                                  Margin="{TemplateBinding Padding}"
                                                   IsHitTestVisible="False"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -225,8 +232,7 @@
                                                   ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
 
 
-                                <TextBox x:Name="PART_EditableTextBox" 
-                                         Margin="{TemplateBinding Padding}"
+                                <TextBox x:Name="PART_EditableTextBox"
                                          IsReadOnly="{TemplateBinding IsReadOnly}"
                                          Background="{TemplateBinding Background}"
                                          Visibility="Hidden" 
@@ -241,7 +247,7 @@
                                         </ControlTemplate>
                                     </TextBox.Template>
                                 </TextBox>
-                            </Grid>
+                            </DockPanel>
                         </Border>
 
                         <!-- Popup showing items -->
@@ -291,6 +297,10 @@
                             <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
                             <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
                             <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
+                        </Trigger>
+
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
@@ -352,6 +362,11 @@
                     <Setter Property="adonisExtensions:CursorSpotlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
+
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
+                <Setter Property="adonisExtensions:CursorSpotlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
+            </Trigger>
 
         </Style.Triggers>
     </Style>

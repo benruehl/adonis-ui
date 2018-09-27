@@ -36,6 +36,9 @@
     <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#8E8E8E</Color>
     <Color x:Key="{x:Static adonisUi:Colors.DisabledAccentForegroundColor}">#ACACAC</Color>
 
+    <Color x:Key="{x:Static adonisUi:Colors.ErrorColor}">#b00020</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffc107</Color>
+
     <!-- brushes -->
 
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
@@ -70,4 +73,7 @@
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledForegroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledAccentForegroundColor}}"/>
 
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
+    
 </ResourceDictionary>
