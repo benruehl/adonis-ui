@@ -189,12 +189,13 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorTemplate}}"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <Border Background="{TemplateBinding Background}"
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
@@ -222,7 +223,8 @@
                                                                          ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                                                          IsValidatedElementFocused="False"
                                                                          Visibility="Collapsed"
-                                                                         DockPanel.Dock="Left"/>
+                                                                         DockPanel.Dock="Left"
+                                                                         Margin="0, 0, 4, 0"/>
 
                                 <ContentPresenter x:Name="ContentSite" 
                                                   IsHitTestVisible="False"
@@ -302,9 +304,15 @@
 
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
+                            <Setter Property="BorderBrush" TargetName="SpotlightLayer" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
                         </Trigger>
 
                         <Trigger Property="IsFocused" SourceName="PART_EditableTextBox" Value="True">
+                            <Setter Property="IsValidatedElementFocused" TargetName="ErrorAlertHost" Value="True"/>
+                        </Trigger>
+
+                        <Trigger Property="IsDropDownOpen" Value="True">
                             <Setter Property="IsValidatedElementFocused" TargetName="ErrorAlertHost" Value="True"/>
                         </Trigger>
 
@@ -367,11 +375,6 @@
                     <Setter Property="adonisExtensions:CursorSpotlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HightlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
-
-            <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
-                <Setter Property="adonisExtensions:CursorSpotlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"/>
-            </Trigger>
 
         </Style.Triggers>
     </Style>

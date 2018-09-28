@@ -41,6 +41,18 @@ namespace AdonisUI.Controls
             set { SetValue(IsPopupVisibleOnMouseOverProperty, value); }
         }
 
+        public double IconWidth
+        {
+            get { return (double)GetValue(IconWidthProperty); }
+            set { SetValue(IconWidthProperty, value); }
+        }
+
+        public double IconHeight
+        {
+            get { return (double)GetValue(IconHeightProperty); }
+            set { SetValue(IconHeightProperty, value); }
+        }
+
         public static readonly DependencyProperty ValidatedElementProperty = DependencyProperty.Register("ValidatedElement", typeof(FrameworkElement), typeof(ValidationErrorIndicator), new PropertyMetadata(null));
 
         public static readonly DependencyProperty IsValidatedElementFocusedProperty = DependencyProperty.Register("IsValidatedElementFocused", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(false));
@@ -48,6 +60,10 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty IsPopupVisibleOnFocusProperty = DependencyProperty.Register("IsPopupVisibleOnFocus", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
 
         public static readonly DependencyProperty IsPopupVisibleOnMouseOverProperty = DependencyProperty.Register("IsPopupVisibleOnMouseOver", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty IconWidthProperty = DependencyProperty.Register("IconWidth", typeof(double), typeof(ValidationErrorIndicator), new PropertyMetadata(20.0));
+
+        public static readonly DependencyProperty IconHeightProperty = DependencyProperty.Register("IconHeight", typeof(double), typeof(ValidationErrorIndicator), new PropertyMetadata(20.0));
 
         public override void OnApplyTemplate()
         {

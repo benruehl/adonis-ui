@@ -5,6 +5,7 @@
                     xmlns:adonisUi="clr-namespace:AdonisUI">
 
     <Style TargetType="{x:Type local:ValidationErrorIndicator}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,12 +76,12 @@
                                 </ToggleButton.Style>
 
                                 <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.Error}}"
-                                                Foreground="{DynamicResource {x:Static adonisUi:Brushes.AlertBrush}}"
-                                                Background="{Binding ValidatedElement.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Foreground="{Binding ValidatedElement.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Background="{DynamicResource {x:Static adonisUi:Brushes.AlertBrush}}"
                                                 Focusable="False"
-                                                Width="20"
-                                                Height="20"
-                                                Margin="0, -2, 4, -2"/>
+                                                Width="{Binding IconWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Height="{Binding IconHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Margin="0, -2, 0, -2"/>
                             </ToggleButton>
 
                             <local:AdornedControl.AdornerContent>
@@ -107,7 +108,7 @@
                                             </Style>
                                         </Grid.Style>
 
-                                        <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                        <Border Background="{TemplateBinding Background}"
                                                 CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                                 Margin="4, 4, 4, 8"
                                                 IsHitTestVisible="False">
@@ -118,7 +119,7 @@
                                         </Border>
 
                                         <Path Data="M 0 0 L 16 0 L 8 8 Z"
-                                              Fill="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                              Fill="{TemplateBinding Background}"
                                               HorizontalAlignment="Left"
                                               VerticalAlignment="Bottom"
                                               Margin="4, -2, 0, 0"/>
@@ -132,6 +133,25 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding Path=(extensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(extensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(extensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BorderBrush}}"/>
+            </DataTrigger>
+
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

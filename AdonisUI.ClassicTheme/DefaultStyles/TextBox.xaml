@@ -12,7 +12,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="8, 6"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorTemplate}}"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -50,13 +50,8 @@
                                                                      ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                                                      IsValidatedElementFocused="{Binding IsFocused, RelativeSource={RelativeSource TemplatedParent}}"
                                                                      Visibility="Collapsed"
-                                                                     DockPanel.Dock="Left"/>
-                            
-                            <!--<ContentPresenter x:Name="ErrorAlertHost"
-                                              Content="{Binding}"
-                                              ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorAlertTemplate}}"
-                                              Visibility="Collapsed"
-                                              DockPanel.Dock="Left"/>-->
+                                                                     DockPanel.Dock="Left"
+                                                                     Margin="0, 0, 4, 0"/>
 
                             <ScrollViewer x:Name="PART_ContentHost"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

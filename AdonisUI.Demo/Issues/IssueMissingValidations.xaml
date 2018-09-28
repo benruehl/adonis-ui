@@ -19,6 +19,13 @@
                                                 NotifyOnValidationError=True,
                                                 UpdateSourceTrigger=PropertyChanged}"/>
 
+                        <PasswordBox MinWidth="64"
+                                     Margin="0, 8, 0, 0"
+                                     Tag="{Binding Path=StringValue,
+                                                   ValidatesOnDataErrors=True,
+                                                   NotifyOnValidationError=True,
+                                                   UpdateSourceTrigger=PropertyChanged}"/>
+
                         <ComboBox MinWidth="64"
                                   Margin="0, 8, 0, 0"
                                   IsEditable="True"
@@ -26,6 +33,28 @@
                                                  ValidatesOnDataErrors=True,
                                                  NotifyOnValidationError=True,
                                                  UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <ComboBox MinWidth="64"
+                                  Margin="0, 8, 0, 0"
+                                  IsEditable="False"
+                                  Text="{Binding Path=StringValue,
+                                                 ValidatesOnDataErrors=True,
+                                                 NotifyOnValidationError=True,
+                                                 UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox.Items>
+                                <ComboBoxItem Content="Item 1"/>
+                                <ComboBoxItem Content="Item 2"/>
+                                <ComboBoxItem Content="Item 3"/>
+                                <ComboBoxItem Content="Error"/>
+                            </ComboBox.Items>
+                        </ComboBox>
+
+                        <CheckBox Margin="0, 16, 0, 0"
+                                  Content="Valid when checked"
+                                  IsChecked="{Binding Path=BoolValue,
+                                                      ValidatesOnDataErrors=True,
+                                                      NotifyOnValidationError=True,
+                                                      UpdateSourceTrigger=PropertyChanged}"/>
 
                     </StackPanel>
                 </AdornerDecorator>
