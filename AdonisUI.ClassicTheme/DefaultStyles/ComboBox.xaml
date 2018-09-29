@@ -190,6 +190,8 @@
         <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="True"/>
+        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
@@ -222,6 +224,8 @@
                                 <adonisControls:ValidationErrorIndicator x:Name="ErrorAlertHost"
                                                                          ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                                                          IsValidatedElementFocused="False"
+                                                                         IsErrorMessageDisplayOnFocusEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus}"
+                                                                         IsErrorMessageDisplayOnMouseOverEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver}"
                                                                          Visibility="Collapsed"
                                                                          DockPanel.Dock="Left"
                                                                          Margin="0, 0, 4, 0"/>

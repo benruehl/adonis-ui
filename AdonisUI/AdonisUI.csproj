@@ -81,6 +81,7 @@
     <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />
     <Compile Include="Extensions\LayerExtension.cs" />
+    <Compile Include="Extensions\ValidationExtension.cs" />
     <Compile Include="Icons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

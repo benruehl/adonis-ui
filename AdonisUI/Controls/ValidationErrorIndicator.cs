@@ -29,16 +29,28 @@ namespace AdonisUI.Controls
             set { SetValue(IsValidatedElementFocusedProperty, value); }
         }
 
-        public bool IsPopupVisibleOnFocus
+        public bool IsErrorMessageVisibleOnFocus
         {
-            get { return (bool)GetValue(IsPopupVisibleOnFocusProperty); }
-            set { SetValue(IsPopupVisibleOnFocusProperty, value); }
+            get { return (bool)GetValue(IsErrorMessageVisibleOnFocusProperty); }
+            internal set { SetValue(IsErrorMessageVisibleOnFocusProperty, value); }
         }
 
-        public bool IsPopupVisibleOnMouseOver
+        public bool IsErrorMessageVisibleOnMouseOver
         {
-            get { return (bool)GetValue(IsPopupVisibleOnMouseOverProperty); }
-            set { SetValue(IsPopupVisibleOnMouseOverProperty, value); }
+            get { return (bool)GetValue(IsErrorMessageVisibleOnMouseOverProperty); }
+            internal set { SetValue(IsErrorMessageVisibleOnMouseOverProperty, value); }
+        }
+
+        public bool IsErrorMessageDisplayOnFocusEnabled
+        {
+            get { return (bool)GetValue(IsErrorMessageDisplayOnFocusEnabledProperty); }
+            set { SetValue(IsErrorMessageDisplayOnFocusEnabledProperty, value); }
+        }
+
+        public bool IsErrorMessageDisplayOnMouseOverEnabled
+        {
+            get { return (bool)GetValue(IsErrorMessageDisplayOnMouseOverEnabledProperty); }
+            set { SetValue(IsErrorMessageDisplayOnMouseOverEnabledProperty, value); }
         }
 
         public double IconWidth
@@ -57,9 +69,13 @@ namespace AdonisUI.Controls
 
         public static readonly DependencyProperty IsValidatedElementFocusedProperty = DependencyProperty.Register("IsValidatedElementFocused", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(false));
 
-        public static readonly DependencyProperty IsPopupVisibleOnFocusProperty = DependencyProperty.Register("IsPopupVisibleOnFocus", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
+        internal static readonly DependencyProperty IsErrorMessageVisibleOnFocusProperty = DependencyProperty.Register("IsErrorMessageVisibleOnFocus", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
 
-        public static readonly DependencyProperty IsPopupVisibleOnMouseOverProperty = DependencyProperty.Register("IsPopupVisibleOnMouseOver", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
+        internal static readonly DependencyProperty IsErrorMessageVisibleOnMouseOverProperty = DependencyProperty.Register("IsErrorMessageVisibleOnMouseOver", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty IsErrorMessageDisplayOnFocusEnabledProperty = DependencyProperty.Register("IsErrorMessageDisplayOnFocusEnabled", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty IsErrorMessageDisplayOnMouseOverEnabledProperty = DependencyProperty.Register("IsErrorMessageDisplayOnMouseOverEnabled", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(true));
 
         public static readonly DependencyProperty IconWidthProperty = DependencyProperty.Register("IconWidth", typeof(double), typeof(ValidationErrorIndicator), new PropertyMetadata(20.0));
 
@@ -73,35 +89,35 @@ namespace AdonisUI.Controls
             alertToggleButton.Unchecked += AlertToggleButton_OnUnchecked;
 
             FrameworkElement adornerContent = GetTemplateChild("AdornerContent") as FrameworkElement;
-            adornerContent.MouseDown += (s, args) => IsPopupVisibleOnFocus = false;
+            adornerContent.MouseDown += (s, args) => IsErrorMessageVisibleOnFocus = false;
         }
 
         private void AlertToggleButton_OnUnchecked(object sender, RoutedEventArgs e)
         {
-            bool wasPopupVisibleValue = IsPopupVisibleOnMouseOver;
+            bool wasErrorMessageVisibleValue = IsErrorMessageVisibleOnMouseOver;
 
-            IsPopupVisibleOnMouseOver = false;
+            IsErrorMessageVisibleOnMouseOver = false;
 
-            (sender as ToggleButton).Checked += AlertToggleButton_OnChecked(wasPopupVisibleValue);
-            (sender as ToggleButton).MouseLeave += AlertToggleButton_OnMouseLeave(wasPopupVisibleValue);
+            (sender as ToggleButton).Checked += AlertToggleButton_OnChecked(wasErrorMessageVisibleValue);
+            (sender as ToggleButton).MouseLeave += AlertToggleButton_OnMouseLeave(wasErrorMessageVisibleValue);
         }
 
-        private MouseEventHandler AlertToggleButton_OnMouseLeave(bool wasPopupVisibleValue)
+        private MouseEventHandler AlertToggleButton_OnMouseLeave(bool wasErrorMessageVisibleValue)
         {
-            return (s, args) => ResetPopupVisibility(s as ToggleButton, wasPopupVisibleValue);
+            return (s, args) => ResetErrorMessageVisibility(s as ToggleButton, wasErrorMessageVisibleValue);
         }
 
-        private RoutedEventHandler AlertToggleButton_OnChecked(bool wasPopupVisibleValue)
+        private RoutedEventHandler AlertToggleButton_OnChecked(bool wasErrorMessageVisibleValue)
         {
-            return (s, args) => ResetPopupVisibility(s as ToggleButton, wasPopupVisibleValue);
+            return (s, args) => ResetErrorMessageVisibility(s as ToggleButton, wasErrorMessageVisibleValue);
         }
 
-        private void ResetPopupVisibility(ToggleButton alertToggleButton, bool wasPopupVisibleValue)
+        private void ResetErrorMessageVisibility(ToggleButton alertToggleButton, bool wasErrorMessageVisibleValue)
         {
-            IsPopupVisibleOnMouseOver = wasPopupVisibleValue;
+            IsErrorMessageVisibleOnMouseOver = wasErrorMessageVisibleValue;
 
-            (alertToggleButton as ToggleButton).Unchecked -= AlertToggleButton_OnChecked(wasPopupVisibleValue);
-            (alertToggleButton as ToggleButton).MouseLeave -= AlertToggleButton_OnMouseLeave(wasPopupVisibleValue);
+            (alertToggleButton as ToggleButton).Unchecked -= AlertToggleButton_OnChecked(wasErrorMessageVisibleValue);
+            (alertToggleButton as ToggleButton).MouseLeave -= AlertToggleButton_OnMouseLeave(wasErrorMessageVisibleValue);
         }
     }
 }

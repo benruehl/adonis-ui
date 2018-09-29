@@ -21,8 +21,9 @@
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
-                                                <Condition Binding="{Binding IsPopupVisibleOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
                                                 <Condition Binding="{Binding ValidatedElement.(Validation.HasError), RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding IsErrorMessageVisibleOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding IsErrorMessageDisplayOnMouseOverEnabled, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
                                             </MultiDataTrigger.Conditions>
                                             <MultiDataTrigger.Setters>
                                                 <Setter Property="IsAdornerVisible" Value="True"/>
@@ -31,8 +32,9 @@
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding IsValidatedElementFocused, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
-                                                <Condition Binding="{Binding IsPopupVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
                                                 <Condition Binding="{Binding ValidatedElement.(Validation.HasError), RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding IsErrorMessageVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                <Condition Binding="{Binding IsErrorMessageDisplayOnFocusEnabled, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
                                             </MultiDataTrigger.Conditions>
                                             <MultiDataTrigger.Setters>
                                                 <Setter Property="IsAdornerVisible" Value="True"/>
@@ -43,7 +45,8 @@
                             </local:AdornedControl.Style>
 
                             <ToggleButton x:Name="AlertToggleButton"
-                                          IsChecked="{Binding IsPopupVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}"
+                                          IsChecked="{Binding IsErrorMessageVisibleOnFocus, RelativeSource={RelativeSource TemplatedParent}}"
+                                          IsEnabled="{Binding IsErrorMessageDisplayOnFocusEnabled, RelativeSource={RelativeSource TemplatedParent}}"
                                           Focusable="False">
                                 <ToggleButton.Style>
                                     <Style TargetType="ToggleButton">
@@ -57,16 +60,22 @@
                                                     </Grid>
 
                                                     <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Effect" TargetName="Content">
-                                                                <Setter.Value>
-                                                                    <DropShadowEffect ShadowDepth="1"
-                                                                                      Color="#202020"
-                                                                                      Opacity="0.5"
-                                                                                      BlurRadius="4"/>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </Trigger>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                                                <Condition Binding="{Binding IsErrorMessageDisplayOnFocusEnabled, RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                                            </MultiDataTrigger.Conditions>
+                                                            <MultiDataTrigger.Setters>
+                                                                <Setter Property="Effect" TargetName="Content">
+                                                                    <Setter.Value>
+                                                                        <DropShadowEffect ShadowDepth="1"
+                                                                                          Color="#202020"
+                                                                                          Opacity="0.5"
+                                                                                          BlurRadius="4"/>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </MultiDataTrigger.Setters>
+                                                        </MultiDataTrigger>
                                                     </ControlTemplate.Triggers>
 
                                                 </ControlTemplate>
