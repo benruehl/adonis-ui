@@ -100,7 +100,6 @@ The `Layer` property is inherited to all child controls which makes items like B
 The data validation mechanism of WPF provides the ability to validate property values and assign error messages in case they are invalid. With AdonisUI, if a control binds to an invalid property the error is indicated in the control template by a red border and an error icon. The error message is displayed as a popup when the control gains keyboard focus or the user hovers over the icon. To set validation errors the interface `IDataErrorInfo` or `INotifyDataErrorInfo` from WPF can be used.
 
 ![Data validation templates in light color scheme](./Docs/Img/adonis-demo-validation-light.png)
-
 ![Data validation templates in dark color scheme](./Docs/Img/adonis-demo-validation-dark.png)
 
 By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
