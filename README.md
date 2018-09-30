@@ -15,7 +15,7 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 
 ## Getting started
 
-1. Reference `AdonisUI` and `AdonisUI.ClassicTheme`
+1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET 4.0.
 2. Add resources to your application in your `App.xaml` like so:
 
 ```xml
@@ -95,9 +95,18 @@ By default, a window starts on layer 0 with all of its UI controls being on laye
 
 The `Layer` property is inherited to all child controls which makes items like Buttons contained in this GroupBox being automatically on layer 2. Exceptions can be made as well by applying the property to specific items. Currently AdonisUI supports nesting of such containers up to layer 4. The colors of all components on all layers can be adjusted to match one's preference.
 
+### Data validation support
+
+The data validation mechanism of WPF provides the ability to validate property values and assign error messages in case they are invalid. With AdonisUI, if a control binds to an invalid property the error is indicated in the control template by a red border and an error icon. The error message is displayed as a popup when the control gains keyboard focus or the user hovers over the icon. To set validation errors the interface `IDataErrorInfo` or `INotifyDataErrorInfo` from WPF can be used.
+
+![Data validation templates in light color scheme](./Docs/Img/adonis-demo-validation-light.png)
+![Data validation templates in dark color scheme](./Docs/Img/adonis-demo-validation-dark.png)
+
+By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
+
 ### ComponentResourceKeys
 
-Resources that are provided by AdonisUI have a ComponentResourceKey assigned to make use of them in a simple way. Resources exist in the categories _Colors_, _Brushes_, _Dimensions_ and _Styles_. The foreground brush of the current color scheme for example can be used by referring to its resource key like `Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"`. ComponentResourceKeys allow auto-completion with IntelliSense which comes in handy when exploring the available resources.
+Resources that are provided by AdonisUI have a ComponentResourceKey assigned to make use of them in a simple way. Resources exist in the categories _Colors_, _Brushes_, _Dimensions_, _Styles_, _Templates_ and _Icons_. The foreground brush of the current color scheme for example can be used by referring to its resource key like `Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"`. ComponentResourceKeys allow auto-completion with IntelliSense which comes in handy when exploring the available resources.
 
 ## Demo
 

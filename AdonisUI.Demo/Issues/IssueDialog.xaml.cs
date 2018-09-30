@@ -34,6 +34,7 @@ namespace AdonisUI.Demo.Issues
 
         private readonly List<string> _issueTemplates = new List<string>
         {
+            "IssueMissingValidationsTemplate",
             "Issue5Template",
         };
 

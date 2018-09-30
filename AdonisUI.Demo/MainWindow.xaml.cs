@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI.Demo.Issues;
+using AdonisUI.Demo.ViewModels;
 
 namespace AdonisUI.Demo
 {
@@ -38,7 +39,10 @@ namespace AdonisUI.Demo
 
         private void OpenIssueDialog(object sender, RoutedEventArgs e)
         {
-            Window issueDialog = new IssueDialog();
+            Window issueDialog = new IssueDialog
+            {
+                DataContext = new IssueDialogViewModel()
+            };
 
             issueDialog.ShowDialog();
         }

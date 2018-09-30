@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/Controls/SplitButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/Controls/ValidationErrorIndicator.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
     

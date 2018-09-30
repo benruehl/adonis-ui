@@ -15,7 +15,12 @@
     </Window.Style>
 
     <Window.Resources>
-        <ResourceDictionary Source="Issue5.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Issue5.xaml"/>
+                <ResourceDictionary Source="IssueMissingValidations.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid Margin="8">
@@ -26,7 +31,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ContentControl x:Name="IssueContainer"/>
+        <ContentControl x:Name="IssueContainer"
+                        Content="{Binding}"
+                        Focusable="False"/>
 
         <StackPanel Grid.Row="2"
                     HorizontalAlignment="Left"
