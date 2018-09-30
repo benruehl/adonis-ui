@@ -1,4 +1,4 @@
-# AdonisUI 💪
+# ![Favicon](./Resources/Img/favicon-32x32.png) AdonisUI
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
 ![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.png)
