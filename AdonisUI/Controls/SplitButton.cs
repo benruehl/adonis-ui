@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace AdonisUI.Controls
 {
@@ -42,6 +44,36 @@ namespace AdonisUI.Controls
             SplitMenu.PlacementTarget = this;
             SplitMenu.Placement = PlacementMode.Bottom;
             SplitMenu.IsOpen = true;
+            SplitMenu.Closed += SplitMenu_Closed;
+        }
+
+        private void SplitMenu_Closed(object sender, RoutedEventArgs e)
+        {
+            ResetRippleEffects((FrameworkElement)sender);
+        }
+
+        private void ResetRippleEffects(FrameworkElement rootElement)
+        {
+            foreach (RippleHost rippleHost in FindVisualChildren<RippleHost>(rootElement))
+            {
+                rippleHost.Reset();
+            }
+        }
+
+        private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj == null)
+                yield break;
+            
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                if (child is T variable)
+                    yield return variable;
+
+                foreach (T childOfChild in FindVisualChildren<T>(child))
+                    yield return childOfChild;
+            }
         }
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="Controls\AdornedControl.cs" />
     <Compile Include="Controls\AdornerPlacement.cs" />
     <Compile Include="Controls\FrameworkElementAdorner.cs" />
+    <Compile Include="Controls\RippleHost.cs" />
     <Compile Include="Controls\ValidationErrorIndicator.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />

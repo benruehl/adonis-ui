@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
-                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
 
     <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
@@ -29,16 +30,25 @@
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
                                 SnapsToDevicePixels="False"/>
 
-                        <Border x:Name="RippleLayer"
-                                Background="{TemplateBinding adonisExtensions:RippleExtension.BackgroundBrush}"
-                                BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
-                                adonisExtensions:RippleExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
-                                adonisExtensions:RippleExtension.FadeInDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeInDuration}"
-                                adonisExtensions:RippleExtension.FadeOutDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeOutDuration}"/>
-
                         <ContentPresenter Margin="{TemplateBinding Padding}" />
+
+                        <adonisControls:RippleHost x:Name="RippleLayer"
+                                                   MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
+                                                   FadeInDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeInDuration}"
+                                                   FadeOutDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeOutDuration}"
+                                                   Foreground="{TemplateBinding adonisExtensions:RippleExtension.ForegroundBrush}">
+                            <Grid>
+                                <Border Background="{TemplateBinding adonisExtensions:RippleExtension.BackgroundBrush}"
+                                        BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+
+                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
+
+                            </Grid>
+
+                        </adonisControls:RippleHost>
+
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

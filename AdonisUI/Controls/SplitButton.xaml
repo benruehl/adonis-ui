@@ -25,18 +25,32 @@
                                 extensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
                                 SnapsToDevicePixels="False"/>
 
-                        <Border x:Name="RippleLayer"
-                                Background="{TemplateBinding extensions:RippleExtension.BackgroundBrush}"
-                                BorderBrush="{TemplateBinding extensions:RippleExtension.BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
-                                extensions:RippleExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
-                                extensions:RippleExtension.FadeInDuration="{TemplateBinding extensions:RippleExtension.FadeInDuration}"
-                                extensions:RippleExtension.FadeOutDuration="{TemplateBinding extensions:RippleExtension.FadeOutDuration}"/>
-
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          Margin="{TemplateBinding Padding}"/>
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        <local:RippleHost x:Name="RippleLayer"
+                                          MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
+                                          FadeInDuration="{TemplateBinding extensions:RippleExtension.FadeInDuration}"
+                                          FadeOutDuration="{TemplateBinding extensions:RippleExtension.FadeOutDuration}"
+                                          Foreground="{TemplateBinding extensions:RippleExtension.ForegroundBrush}">
+
+                            <Grid>
+                                <Border Background="{TemplateBinding extensions:RippleExtension.BackgroundBrush}"
+                                        BorderBrush="{TemplateBinding extensions:RippleExtension.BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+
+                        </local:RippleHost>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -65,7 +79,9 @@
                                     Command="{TemplateBinding Command}"
                                     Padding="{TemplateBinding Padding}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Style="{StaticResource ButtonPartStyle}"/>
+                                    Style="{StaticResource ButtonPartStyle}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
 
                             <Border Grid.Column="1"
                                     Width="1"
@@ -79,12 +95,19 @@
                                     Foreground="{TemplateBinding Foreground}"
                                     Width="16"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Style="{StaticResource ButtonPartStyle}">
+                                    Style="{StaticResource ButtonPartStyle}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    extensions:RippleExtension.FadeInDuration="0"
+                                    extensions:RippleExtension.FadeOutDuration="0"
+                                    extensions:RippleExtension.BackgroundBrush="Transparent"
+                                    extensions:RippleExtension.BorderBrush="Transparent"
+                                    extensions:RippleExtension.ForegroundBrush="{TemplateBinding Foreground}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <Viewbox Stretch="Uniform"
                                                  Margin="5, 0">
-                                            <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                            <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
                                                   Data="M 0 0 L 8 0 L 4 4 Z"/>
                                         </Viewbox>
                                     </DataTemplate>
