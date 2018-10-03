@@ -8,6 +8,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
+        <Setter Property="adonisExtensions:LayerExtension.IncreaseLayer" Value="True"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>

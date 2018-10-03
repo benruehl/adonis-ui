@@ -128,8 +128,7 @@
 
                     <GroupBox Grid.Column="1"
                               Grid.Row="0"
-                              Margin="8, 0, 0, 0"
-                              adonisExtensions:LayerExtension.Layer="1">
+                              Margin="8, 0, 0, 0">
 
                         <Grid>
                             <ScrollViewer>
@@ -146,10 +145,9 @@
 
                     <GroupBox Grid.Column="0"
                               Grid.Row="1"
-                              Margin="8, 0, 0, 0"
-                              adonisExtensions:LayerExtension.Layer="1">
+                              Margin="8, 0, 0, 0">
 
-                        <GroupBox adonisExtensions:LayerExtension.Layer="2">
+                        <GroupBox>
 
                             <Grid>
                                 <ScrollViewer>
@@ -170,7 +168,7 @@
                               Margin="8, 0, 0, 0"
                               adonisExtensions:LayerExtension.Layer="2">
 
-                        <GroupBox adonisExtensions:LayerExtension.Layer="3">
+                        <GroupBox>
 
                             <Grid>
                                 <ScrollViewer>

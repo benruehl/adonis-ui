@@ -17,6 +17,16 @@ namespace AdonisUI.Extensions
             obj.SetValue(LayerProperty, value);
         }
 
+        public static bool GetIncreaseLayer(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IncreaseLayerProperty);
+        }
+
+        public static void SetIncreaseLayer(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IncreaseLayerProperty, value);
+        }
+
         public static int GetComputedLayer(DependencyObject obj)
         {
             return (int)obj.GetValue(ComputedLayerProperty);
@@ -29,6 +39,8 @@ namespace AdonisUI.Extensions
 
         public static readonly DependencyProperty LayerProperty = DependencyProperty.RegisterAttached("Layer", typeof(int?), typeof(LayerExtension), new PropertyMetadata(null, OnLayerPropertyChanged));
 
+        public static readonly DependencyProperty IncreaseLayerProperty = DependencyProperty.RegisterAttached("IncreaseLayer", typeof(bool), typeof(LayerExtension), new PropertyMetadata(false, OnIncreaseLayerPropertyChanged));
+
         private static readonly DependencyPropertyKey ComputedLayerPropertyKey = DependencyProperty.RegisterAttachedReadOnly("ComputedLayer", typeof(int), typeof(LayerExtension), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.Inherits));
 
         public static readonly DependencyProperty ComputedLayerProperty = ComputedLayerPropertyKey.DependencyProperty;
@@ -39,25 +51,36 @@ namespace AdonisUI.Extensions
 
             int increasedLayer = (int)eventArgs.NewValue + 1;
 
-            SetComputedLayerOfChildren(depObj as FrameworkElement, increasedLayer);
-        }
-
-        private static void SetComputedLayerOfChildren(FrameworkElement element, int targetLayer)
-        {
-            if (element == null)
+            if (!(depObj is FrameworkElement targetElement))
                 return;
 
-            element.Loaded += (sender, args) =>
-            {
-                foreach (object child in LogicalTreeHelper.GetChildren((DependencyObject)sender))
-                {
-                    if (!(child is DependencyObject childObject))
-                        continue;
+            if (targetElement.IsLoaded)
+                SetComputedLayerOfChildren(targetElement, increasedLayer);
+            else
+                targetElement.Loaded += (sender, args) => SetComputedLayerOfChildren(targetElement, increasedLayer);
+        }
 
-                    if (GetLayer(childObject) == null)
-                        SetComputedLayer(childObject, targetLayer);
-                }
-            };
+        private static void OnIncreaseLayerPropertyChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            if (!(depObj is FrameworkElement targetElement))
+                return;
+
+            if (targetElement.IsLoaded)
+                SetComputedLayerOfChildren(targetElement, GetComputedLayer(targetElement) + 1);
+            else
+                targetElement.Loaded += (sender, args) => SetComputedLayerOfChildren(targetElement, GetComputedLayer(targetElement) + 1);
+        }
+
+        private static void SetComputedLayerOfChildren(FrameworkElement element, int value)
+        {
+            foreach (object child in LogicalTreeHelper.GetChildren(element))
+            {
+                if (!(child is DependencyObject childObject))
+                    continue;
+
+                if (GetLayer(childObject) == null)
+                    SetComputedLayer(childObject, value);
+            }
         }
     }
 }
