@@ -8,9 +8,10 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/benruehl/adonis-ui/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/benruehl/adonis-ui</projectUrl>
+    <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/Resources/Img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First release of this library. It provides two color schemes, usage of component resource keys, base styles for many WPF controls and a basic layering system.</releaseNotes>
+    <releaseNotes>Text boxes, combo boxes and check boxes display data validation errors. The layer of a UI control can be increased without specifying the layer explicitly. Group boxes increase the layer automatically by default. Ripple effects can apply a seperate foreground color.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
   </metadata>
