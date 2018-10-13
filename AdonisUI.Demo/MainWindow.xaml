@@ -20,12 +20,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Demos/ButtonDemo.xaml"/>
-                <ResourceDictionary Source="Demos/ContainerDemo.xaml"/>
-                <ResourceDictionary Source="Demos/InputDemo.xaml"/>
-                <ResourceDictionary Source="Demos/LayerDemo.xaml"/>
-                <ResourceDictionary Source="Demos/ListDemo.xaml"/>
-                <ResourceDictionary Source="Demos/TextDemo.xaml"/>
+                <ResourceDictionary Source="Views.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -38,22 +33,27 @@
             <Grid DockPanel.Dock="Top">
 
                 <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
-                        adonisExtensions:LayerExtension.Layer="3">
+                        adonisExtensions:LayerExtension.Layer="3"
+                        VerticalAlignment="Top">
 
                     <DockPanel LastChildFill="False">
 
-                        <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
-                                DockPanel.Dock="Left"
-                                Content="Menu"
-                                Height="24"
-                                Margin="8"/>
+                        <UniformGrid DockPanel.Dock="Right"
+                                     Columns="2"
+                                     Margin="8">
 
-                        <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
-                                IsEnabled="False"
-                                DockPanel.Dock="Right"
-                                Content="Disabled"
-                                Height="24"
-                                Margin="8"/>
+                            <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
+                                    Content="Previous"
+                                    Command="{Binding PreviousViewCommand}"
+                                    Height="24"
+                                    Margin="8, 0, 0, 0"/>
+
+                            <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
+                                    Content="Next"
+                                    Command="{Binding NextViewCommand}"
+                                    Height="24"/>
+
+                        </UniformGrid>
 
                     </DockPanel>
 
@@ -62,8 +62,7 @@
             </Grid>
 
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem Content="StatusBarItem"/>
-                <StatusBarItem Content="StatusBarItem"/>
+                <StatusBarItem Content="Ready"/>
             </StatusBar>
 
             <Grid>
@@ -76,7 +75,7 @@
                 <Grid>
                     <GroupBox>
                         <GroupBox.Header>
-                            <TextBlock Text="Header"/>
+                            <TextBlock Text="Actions"/>
                         </GroupBox.Header>
 
                         <StackPanel Orientation="Vertical">
@@ -92,100 +91,41 @@
                                     HorizontalAlignment="Stretch"
                                     Margin="0, 8, 0, 0"/>
 
-                            <Button Content="Disabled"
-                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                                    IsEnabled="False"
-                                    HorizontalAlignment="Stretch"
-                                    Margin="0, 8, 0, 0"/>
-
                         </StackPanel>
                     </GroupBox>
                 </Grid>
 
                 <Grid Grid.Column="1">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <ContentControl Content="{Binding Content}"
+                                    Margin="8"/>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Border Margin="8, 8, 0, 0">
-                        <ScrollViewer>
-                            <StackPanel Orientation="Vertical">
-                                <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
-                                <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
-                                <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
-                                <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Border>
-
-                    <GroupBox Grid.Column="1"
-                              Grid.Row="0"
-                              Margin="8, 0, 0, 0">
-
-                        <Grid>
-                            <ScrollViewer>
-                                <StackPanel Orientation="Vertical">
-                                    <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
-                                    <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                    <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
-                                    <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
-                                    <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    </GroupBox>
-
-                    <GroupBox Grid.Column="0"
-                              Grid.Row="1"
-                              Margin="8, 0, 0, 0">
-
-                        <GroupBox>
-
-                            <Grid>
-                                <ScrollViewer>
-                                    <StackPanel Orientation="Vertical">
-                                        <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </GroupBox>
-                    </GroupBox>
-
-                    <GroupBox Grid.Column="1"
-                              Grid.Row="1"
-                              Margin="8, 0, 0, 0"
-                              adonisExtensions:LayerExtension.Layer="2">
-
-                        <GroupBox>
-
-                            <Grid>
-                                <ScrollViewer>
-                                    <StackPanel Orientation="Vertical">
-                                        <ContentPresenter ContentTemplate="{StaticResource InputDemoTemplate}"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ButtonDemoTemplate}" Margin="0, 8"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource TextDemoTemplate}"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ListDemoTemplate}" Margin="0, 8"/>
-                                        <ContentPresenter ContentTemplate="{StaticResource ContainerDemoTemplate}"/>
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </GroupBox>
-                    </GroupBox>
                 </Grid>
             </Grid>
         </DockPanel>
+
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Top">
+
+            <Viewbox Stretch="Fill"
+                     Height="46"
+                     Width="192">
+                <Viewbox.Effect>
+                    <DropShadowEffect ShadowDepth="2"
+                                      BlurRadius="10"
+                                      Opacity="0.2"/>
+                </Viewbox.Effect>
+
+                <Path Data="M 0 0 L 20 0 L 18 8 L 2 8 Z"
+                      Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
+            </Viewbox>
+
+            <TextBlock Text="{Binding Content.Name}"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"
+                       FontSize="14"/>
+        </Grid>
 
     </Grid>
 

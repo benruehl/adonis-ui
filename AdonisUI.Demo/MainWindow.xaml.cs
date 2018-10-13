@@ -13,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AdonisUI.Demo.Issues;
 using AdonisUI.Demo.ViewModels;
+using IssueDialog = AdonisUI.Demo.Views.Issues.IssueDialog;
 
 namespace AdonisUI.Demo
 {
@@ -25,6 +25,7 @@ namespace AdonisUI.Demo
     {
         public MainWindow()
         {
+            DataContext = new ApplicationViewModel();
             InitializeComponent();
         }
 

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,45 +58,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ApplicationPreviousViewCommand.cs" />
+    <Compile Include="Commands\ApplicationNextViewCommand.cs" />
+    <Compile Include="Framework\Command.cs" />
+    <Compile Include="Framework\ViewModelCommand.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\IApplicationContentView.cs" />
     <Compile Include="ViewModels\IssueDialogViewModel.cs" />
-    <Compile Include="ViewModels\ViewModel.cs" />
-    <Page Include="Demos\LayerDemo.xaml">
+    <Compile Include="ViewModels\LayerDemoViewModel.cs" />
+    <Compile Include="Framework\ViewModel.cs" />
+    <Page Include="Views\Issues\IssueRippleContentInvisible.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Demos\ContainerDemo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Issues\IssueMissingValidations.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Issues\Issue5.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Demos\ListDemo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Demos\TextDemo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Demos\InputDemo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Demos\ButtonDemo.xaml">
+    <Page Include="Views\LayerDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Issues\IssueControl.xaml">
+    <Page Include="Views\Issues\Issue5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Issues\IssueControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Issues\IssueDialog.xaml">
+    <Page Include="Views\Issues\IssueDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,16 +95,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Issues\IssueControl.xaml.cs">
+    <Compile Include="ViewModels\ValidationDemoViewModel.cs" />
+    <Compile Include="ViewModels\WelcomeScreenViewModel.cs" />
+    <Compile Include="Views\Issues\IssueControl.xaml.cs">
       <DependentUpon>IssueControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Issues\IssueDialog.xaml.cs">
+    <Compile Include="Views\Issues\IssueDialog.xaml.cs">
       <DependentUpon>IssueDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidationDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WelcomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -152,6 +156,8 @@
       <Name>AdonisUI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="App.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

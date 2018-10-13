@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Views/LayerDemo.xaml"/>
+        <ResourceDictionary Source="Views/ValidationDemo.xaml"/>
+        <ResourceDictionary Source="Views/WelcomeScreen.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

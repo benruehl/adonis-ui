@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 
-namespace AdonisUI.Demo.ViewModels
+namespace AdonisUI.Demo.Framework
 {
     class ViewModel
         : INotifyPropertyChanged

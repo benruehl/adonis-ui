@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AdonisUI.Demo"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                    xmlns:issues="clr-namespace:AdonisUI.Demo.Issues">
+                    xmlns:issues="clr-namespace:AdonisUI.Demo.Views.Issues">
 
     <DataTemplate x:Key="Issue5Template">
 
