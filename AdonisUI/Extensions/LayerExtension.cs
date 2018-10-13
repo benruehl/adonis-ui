@@ -47,6 +47,9 @@ namespace AdonisUI.Extensions
 
         private static void OnLayerPropertyChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (eventArgs.NewValue == null)
+                return;
+
             SetComputedLayer(depObj, (int)eventArgs.NewValue);
 
             int increasedLayer = (int)eventArgs.NewValue + 1;
