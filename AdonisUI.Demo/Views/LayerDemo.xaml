@@ -20,12 +20,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button>
-                <StackPanel>
-                    <TextBlock Text="Test 1"/>
-                    <TextBlock Text="Test 2"/>
-                </StackPanel>
-            </Button>
+            <Button Content="Button"/>
 
             <ToggleButton Content="ToggleButton"
                           Grid.Row="0"

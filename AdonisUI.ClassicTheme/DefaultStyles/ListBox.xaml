@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
-                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI">
 
     <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
@@ -20,7 +21,8 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                Panel.ZIndex="0"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
@@ -28,28 +30,43 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
-                                SnapsToDevicePixels="False"/>
-
-                        <ContentPresenter Margin="{TemplateBinding Padding}" />
+                                SnapsToDevicePixels="False"
+                                Panel.ZIndex="1"/>
 
                         <adonisControls:RippleHost x:Name="RippleLayer"
                                                    MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
                                                    FadeInDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeInDuration}"
                                                    FadeOutDuration="{TemplateBinding adonisExtensions:RippleExtension.FadeOutDuration}"
-                                                   Foreground="{TemplateBinding adonisExtensions:RippleExtension.ForegroundBrush}">
-                            <Grid>
-                                <Border Background="{TemplateBinding adonisExtensions:RippleExtension.BackgroundBrush}"
-                                        BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                                                   Background="{TemplateBinding adonisExtensions:RippleExtension.BackgroundBrush}"
+                                                   BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
+                                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                                   Foreground="{TemplateBinding adonisExtensions:RippleExtension.ForegroundBrush}"
+                                                   Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static adonisConverters:IsImmutableFilterConverter.Instance}}"
+                                                   ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                   Padding="{TemplateBinding Padding}"
+                                                   Panel.ZIndex="2"/>
 
-                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
-
-                            </Grid>
-
-                        </adonisControls:RippleHost>
+                        <ContentPresenter Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Panel.ZIndex="3"/>
 
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        
+                        <DataTrigger Binding="{Binding ContentTemplate, RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False">
+                            <Setter Property="Panel.ZIndex" TargetName="RippleLayer" Value="4"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsImmutableToBoolConverter.Instance}}" Value="True">
+                            <Setter Property="Panel.ZIndex" TargetName="RippleLayer" Value="4"/>
+                        </DataTrigger>
+
+                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -115,6 +132,7 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}"/>
     </Style>
 
 </ResourceDictionary>

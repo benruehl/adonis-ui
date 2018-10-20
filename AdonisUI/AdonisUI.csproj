@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\RippleHost.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\ValidationErrorIndicator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,8 +80,12 @@
     <Compile Include="Controls\FrameworkElementAdorner.cs" />
     <Compile Include="Controls\RippleHost.cs" />
     <Compile Include="Controls\ValidationErrorIndicator.cs" />
+    <Compile Include="Converters\IsImmutableToBoolConverter.cs" />
+    <Compile Include="Converters\IsImmutableFilterConverter.cs" />
+    <Compile Include="Converters\IsNullToBoolConverter.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
+    <Compile Include="Extensions\MenuItemExtension.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />
     <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />

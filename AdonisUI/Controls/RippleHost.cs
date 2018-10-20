@@ -16,6 +16,11 @@ namespace AdonisUI.Controls
     {
         private const string RippleName = "RippleExtension_RippleElementName_Key";
 
+        static RippleHost()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(RippleHost), new FrameworkPropertyMetadata(typeof(RippleHost)));
+        }
+
         public FrameworkElement MouseEventSource
         {
             get => (FrameworkElement)GetValue(MouseEventSourceProperty);
@@ -93,16 +98,18 @@ namespace AdonisUI.Controls
             opacityMask.Visual = canvas;
             OpacityMask = opacityMask;
 
-            clickEventSource.PreviewMouseDown += MouseEventSourceOnMouseDown();
-            clickEventSource.PreviewMouseUp += MouseEventSourceOnMouseUp();
+            clickEventSource.PreviewMouseLeftButtonDown += MouseEventSourceOnMouseDown();
+            clickEventSource.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
+
+            IsVisibleChanged += (s, e) => Reset();
         }
 
         private void ClearRippleLayer(FrameworkElement clickEventSource)
         {
             OpacityMask = null;
 
-            clickEventSource.MouseDown -= MouseEventSourceOnMouseDown();
-            clickEventSource.MouseUp -= MouseEventSourceOnMouseUp();
+            clickEventSource.PreviewMouseLeftButtonDown -= MouseEventSourceOnMouseDown();
+            clickEventSource.PreviewMouseLeftButtonUp -= MouseEventSourceOnMouseUp();
         }
 
         private MouseButtonEventHandler MouseEventSourceOnMouseDown()
