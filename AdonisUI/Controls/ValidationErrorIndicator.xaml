@@ -96,42 +96,56 @@
                             <local:AdornedControl.AdornerContent>
                                 <Canvas>
                                     <Grid x:Name="AdornerContent"
-                                          Canvas.Top="-48"
+                                          Canvas.Top="-40"
                                           Canvas.Left="-1">
                                         <Grid.Style>
-                                            <Style TargetType="Grid">
-                                                <Setter Property="Background" Value="Transparent"/>
-                                                <Setter Property="Effect">
-                                                    <Setter.Value>
-                                                        <DropShadowEffect ShadowDepth="1"
-                                                                          Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}"
-                                                                          BlurRadius="4"/>
-                                                    </Setter.Value>
-                                                </Setter>
+                                            <Style TargetType="FrameworkElement">
                                                 <Style.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter Property="Opacity" Value="0.6"/>
-                                                        <Setter Property="Effect" Value="{x:Null}"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Grid.Style>
 
-                                        <Border Background="{TemplateBinding Background}"
-                                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
-                                                Margin="4, 4, 4, 8"
-                                                IsHitTestVisible="False">
+                                        <Grid>
+                                            <Grid.Style>
+                                                <Style TargetType="FrameworkElement">
+                                                    <Setter Property="Effect">
+                                                        <Setter.Value>
+                                                            <DropShadowEffect ShadowDepth="1"
+                                                                              Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}"
+                                                                              BlurRadius="4"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Effect" Value="{x:Null}"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
+                                            
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
 
-                                            <TextBlock Text="{Binding ValidatedElement.(Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource TemplatedParent}}"
-                                                       Margin="8"/>
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
-                                        </Border>
+                                            <Path Grid.Row="1"
+                                                  Data="M 0 0 L 16 0 L 8 8 Z"
+                                                  Fill="{TemplateBinding Background}"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Bottom"
+                                                  Margin="3, 0, 0, 0"/>
 
-                                        <Path Data="M 0 0 L 16 0 L 8 8 Z"
-                                              Fill="{TemplateBinding Background}"
-                                              HorizontalAlignment="Left"
-                                              VerticalAlignment="Bottom"
-                                              Margin="4, -2, 0, 0"/>
+                                        </Grid>
+                                        
+                                        <TextBlock Text="{Binding ValidatedElement.(Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Margin="8, 8, 8, 12"
+                                                   IsHitTestVisible="False"/>
                                     </Grid>
                                 </Canvas>
                             </local:AdornedControl.AdornerContent>
