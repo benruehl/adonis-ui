@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AdonisUI.Controls"
                     xmlns:extensions="clr-namespace:AdonisUI.Extensions"
-                    xmlns:adonisUi="clr-namespace:AdonisUI">
+                    xmlns:adonisUi="clr-namespace:AdonisUI"
+                    xmlns:converters="clr-namespace:AdonisUI.Converters">
 
     <Style TargetType="{x:Type local:ValidationErrorIndicator}">
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
@@ -96,14 +97,34 @@
                             <local:AdornedControl.AdornerContent>
                                 <Canvas>
                                     <Grid x:Name="AdornerContent"
-                                          Canvas.Top="-40"
-                                          Canvas.Left="-1">
+                                          IsSharedSizeScope="True">
                                         <Grid.Style>
                                             <Style TargetType="FrameworkElement">
                                                 <Style.Triggers>
+
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter Property="Opacity" Value="0.6"/>
                                                     </Trigger>
+
+                                                    <DataTrigger Binding="{Binding ErrorMessagePlacement, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                 Value="{x:Static local:ValidationErrorIndicatorPlacement.Top}">
+                                                        <Setter Property="Canvas.Left" Value="-1"/>
+                                                        <Setter Property="Canvas.Top" Value="{Binding ActualHeight,
+                                                                                                      RelativeSource={RelativeSource Self},
+                                                                                                      Converter={converters:MathConverter},
+                                                                                                      ConverterParameter=(x*(-1))-4}"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding ErrorMessagePlacement, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                 Value="{x:Static local:ValidationErrorIndicatorPlacement.Bottom}">
+                                                        <Setter Property="Canvas.Left" Value="-1"/>
+                                                        <Setter Property="Canvas.Top" Value="{Binding ActualHeight,
+                                                                                                      RelativeSource={RelativeSource FindAncestor,
+                                                                                                      AncestorType=Canvas},
+                                                                                                      Converter={converters:MathConverter},
+                                                                                                      ConverterParameter=x+4}"/>
+                                                    </DataTrigger>
+
                                                 </Style.Triggers>
                                             </Style>
                                         </Grid.Style>
@@ -127,25 +148,56 @@
                                             </Grid.Style>
                                             
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" SharedSizeGroup="TopTip"/>
                                                 <RowDefinition Height="*"/>
-                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto" SharedSizeGroup="BottomTip"/>
                                             </Grid.RowDefinitions>
 
-                                            <Border Background="{TemplateBinding Background}"
+                                            <Path Grid.Row="0"
+                                                  Data="M 0 8 L 16 8 L 8 0 Z"
+                                                  Fill="{TemplateBinding Background}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="3, 0, 0, 0"
+                                                  Visibility="{Binding Path=ErrorMessagePlacement,
+                                                                       RelativeSource={RelativeSource TemplatedParent},
+                                                                       Converter={x:Static converters:EqualitityToVisibilityConverter.Instance},
+                                                                       ConverterParameter={x:Static local:ValidationErrorIndicatorPlacement.Bottom}}"/>
+
+                                            <Border Grid.Row="1"
+                                                    Background="{TemplateBinding Background}"
                                                     CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
-                                            <Path Grid.Row="1"
+                                            <Path Grid.Row="2"
                                                   Data="M 0 0 L 16 0 L 8 8 Z"
                                                   Fill="{TemplateBinding Background}"
                                                   HorizontalAlignment="Left"
-                                                  VerticalAlignment="Bottom"
-                                                  Margin="3, 0, 0, 0"/>
+                                                  Margin="3, 0, 0, 0"
+                                                  Visibility="{Binding Path=ErrorMessagePlacement,
+                                                                       RelativeSource={RelativeSource TemplatedParent},
+                                                                       Converter={x:Static converters:EqualitityToVisibilityConverter.Instance},
+                                                                       ConverterParameter={x:Static local:ValidationErrorIndicatorPlacement.Top}}"/>
 
                                         </Grid>
                                         
-                                        <TextBlock Text="{Binding ValidatedElement.(Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   Margin="8, 8, 8, 12"
-                                                   IsHitTestVisible="False"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" SharedSizeGroup="TopTip"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto" SharedSizeGroup="BottomTip"/>
+                                            </Grid.RowDefinitions>
+
+                                            <ItemsControl Grid.Row="1"
+                                                          ItemsSource="{Binding ValidatedElement.(Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Margin="8"
+                                                          IsHitTestVisible="False">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding ErrorContent}"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Grid>
+                                        
                                     </Grid>
                                 </Canvas>
                             </local:AdornedControl.AdornerContent>

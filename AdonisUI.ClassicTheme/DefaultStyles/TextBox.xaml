@@ -53,6 +53,7 @@
                                                                      IsValidatedElementFocused="{Binding IsFocused, RelativeSource={RelativeSource TemplatedParent}}"
                                                                      IsErrorMessageDisplayOnFocusEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus}"
                                                                      IsErrorMessageDisplayOnMouseOverEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver}"
+                                                                     ErrorMessagePlacement="{TemplateBinding adonisExtensions:ValidationExtension.ErrorMessagePlacement}"
                                                                      Visibility="Collapsed"
                                                                      DockPanel.Dock="Left"
                                                                      Margin="0, 0, 4, 0"/>

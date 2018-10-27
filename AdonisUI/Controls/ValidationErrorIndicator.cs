@@ -65,6 +65,12 @@ namespace AdonisUI.Controls
             set { SetValue(IconHeightProperty, value); }
         }
 
+        public ValidationErrorIndicatorPlacement ErrorMessagePlacement
+        {
+            get { return (ValidationErrorIndicatorPlacement)GetValue(ErrorMessagePlacementProperty); }
+            set { SetValue(ErrorMessagePlacementProperty, value); }
+        }
+
         public static readonly DependencyProperty ValidatedElementProperty = DependencyProperty.Register("ValidatedElement", typeof(FrameworkElement), typeof(ValidationErrorIndicator), new PropertyMetadata(null));
 
         public static readonly DependencyProperty IsValidatedElementFocusedProperty = DependencyProperty.Register("IsValidatedElementFocused", typeof(bool), typeof(ValidationErrorIndicator), new PropertyMetadata(false));
@@ -80,6 +86,8 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty IconWidthProperty = DependencyProperty.Register("IconWidth", typeof(double), typeof(ValidationErrorIndicator), new PropertyMetadata(20.0));
 
         public static readonly DependencyProperty IconHeightProperty = DependencyProperty.Register("IconHeight", typeof(double), typeof(ValidationErrorIndicator), new PropertyMetadata(20.0));
+
+        public static readonly DependencyProperty ErrorMessagePlacementProperty = DependencyProperty.Register("ErrorMessagePlacement", typeof(ValidationErrorIndicatorPlacement), typeof(ValidationErrorIndicator), new PropertyMetadata(ValidationErrorIndicatorPlacement.Top));
 
         public override void OnApplyTemplate()
         {

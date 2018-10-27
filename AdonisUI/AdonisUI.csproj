@@ -80,9 +80,13 @@
     <Compile Include="Controls\FrameworkElementAdorner.cs" />
     <Compile Include="Controls\RippleHost.cs" />
     <Compile Include="Controls\ValidationErrorIndicator.cs" />
+    <Compile Include="Controls\ValidationErrorIndicatorPlacement.cs" />
+    <Compile Include="Converters\EqualitityToVisibilityConverter.cs" />
+    <Compile Include="Converters\EqualityToBoolConverter.cs" />
     <Compile Include="Converters\IsImmutableToBoolConverter.cs" />
     <Compile Include="Converters\IsImmutableFilterConverter.cs" />
     <Compile Include="Converters\IsNullToBoolConverter.cs" />
+    <Compile Include="Converters\MathConverter.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Extensions\MenuItemExtension.cs" />
