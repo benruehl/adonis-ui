@@ -4,6 +4,10 @@
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/TextBox.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -251,7 +255,11 @@
                                          Focusable="True">
                                     <TextBox.Template>
                                         <ControlTemplate TargetType="TextBox" >
-                                            <Border Name="PART_ContentHost" Focusable="False"/>
+                                            <ScrollViewer Name="PART_ContentHost"
+                                                          Focusable="False"
+                                                          HorizontalScrollBarVisibility="Hidden"
+                                                          VerticalScrollBarVisibility="Hidden"
+                                                          Template="{StaticResource TextBoxScrollViewerTemplate}"/>
                                         </ControlTemplate>
                                     </TextBox.Template>
                                 </TextBox>
