@@ -101,6 +101,13 @@ namespace AdonisUI.Controls
             clickEventSource.PreviewMouseLeftButtonDown += MouseEventSourceOnMouseDown();
             clickEventSource.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
 
+            Window parentWindow = Window.GetWindow(clickEventSource);
+            if (parentWindow != null)
+            {
+                parentWindow.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
+                parentWindow.Deactivated += ParentWindowOnDeactivated;
+            }
+
             IsVisibleChanged += (s, e) => Reset();
         }
 
@@ -110,63 +117,77 @@ namespace AdonisUI.Controls
 
             clickEventSource.PreviewMouseLeftButtonDown -= MouseEventSourceOnMouseDown();
             clickEventSource.PreviewMouseLeftButtonUp -= MouseEventSourceOnMouseUp();
+
+            Window parentWindow = Window.GetWindow(clickEventSource);
+            if (parentWindow != null)
+            {
+                parentWindow.PreviewMouseLeftButtonUp -= MouseEventSourceOnMouseUp();
+                parentWindow.Deactivated -= ParentWindowOnDeactivated;
+            }
         }
 
         private MouseButtonEventHandler MouseEventSourceOnMouseDown()
         {
-            return (sender, args) =>
+            return (sender, args) => StartRipple(args.MouseDevice.GetPosition(this));
+        }
+
+        private void StartRipple(Point cursorLocation)
+        {
+            if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
+                return;
+
+            Ellipse rippleEllipse = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
+            if (rippleEllipse == null)
             {
-                if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
-                    return;
+                rippleEllipse = CreateRippleEllipse(cursorLocation);
+                canvas.Children.Add(rippleEllipse);
+            }
 
-                Point cursorLocation = args.MouseDevice.GetPosition(this);
+            Canvas.SetTop(rippleEllipse, cursorLocation.Y - rippleEllipse.MaxHeight / 2);
+            Canvas.SetLeft(rippleEllipse, cursorLocation.X - rippleEllipse.MaxWidth / 2);
 
-                Ellipse rippleEllipse = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
-                if (rippleEllipse == null)
-                {
-                    rippleEllipse = CreateRippleEllipse(cursorLocation);
-                    canvas.Children.Add(rippleEllipse);
-                }
+            DoubleAnimation widthAnimation = CreateExpansionAnimation();
+            DoubleAnimation heightAnimation = CreateExpansionAnimation();
+            DoubleAnimation opacityAnimation = CreateExpansionAnimation();
 
-                Canvas.SetTop(rippleEllipse, cursorLocation.Y - rippleEllipse.MaxHeight / 2);
-                Canvas.SetLeft(rippleEllipse, cursorLocation.X - rippleEllipse.MaxWidth / 2);
+            ScaleTransform rippleScaleTransform = (ScaleTransform)rippleEllipse.RenderTransform;
 
-                DoubleAnimation widthAnimation = CreateExpansionAnimation();
-                DoubleAnimation heightAnimation = CreateExpansionAnimation();
-                DoubleAnimation opacityAnimation = CreateExpansionAnimation();
+            AnimationToComplete = widthAnimation;
+            widthAnimation.Completed += (s, e) => SetIsAnimationComplete(widthAnimation, true);
 
-                ScaleTransform rippleScaleTransform = (ScaleTransform)rippleEllipse.RenderTransform;
-
-                AnimationToComplete = widthAnimation;
-                widthAnimation.Completed += (s, e) => SetIsAnimationComplete(widthAnimation, true);
-
-                rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, widthAnimation);
-                rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, heightAnimation);
-                rippleEllipse.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-            };
+            rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, widthAnimation);
+            rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, heightAnimation);
+            rippleEllipse.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
         }
 
         private MouseButtonEventHandler MouseEventSourceOnMouseUp()
         {
-            return (sender, args) =>
-            {
-                if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
-                    return;
+            return (sender, args) => EndRipple();
+        }
 
-                Ellipse ripple = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
+        private void ParentWindowOnDeactivated(object sender, EventArgs args)
+        {
+            EndRipple();
+        }
 
-                if (ripple == null)
-                    return;
-                
-                Duration animationDuration = new Duration(FadeOutDuration);
-                DoubleAnimation removeAnimation = new DoubleAnimation(0, animationDuration);
-                removeAnimation.Completed += (s, e) => canvas.Children.Remove(ripple);
+        private void EndRipple()
+        {
+            if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
+                return;
 
-                if (AnimationToComplete == null || GetIsAnimationComplete(AnimationToComplete))
-                    ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
-                else
-                    AnimationToComplete.Completed += (s, e) => ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation); ;
-            };
+            Ellipse ripple = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
+
+            if (ripple == null)
+                return;
+
+            Duration animationDuration = new Duration(FadeOutDuration);
+            DoubleAnimation removeAnimation = new DoubleAnimation(0, animationDuration);
+            removeAnimation.Completed += (s, e) => canvas.Children.Remove(ripple);
+
+            if (AnimationToComplete == null || GetIsAnimationComplete(AnimationToComplete))
+                ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
+            else
+                AnimationToComplete.Completed += (s, e) => ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
         }
 
         private Ellipse CreateRippleEllipse(Point cursorLocation)
