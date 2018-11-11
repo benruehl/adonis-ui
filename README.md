@@ -1,4 +1,10 @@
 # ![Favicon](./Resources/Img/favicon-32x32.png) AdonisUI
+
+![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)
+![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)
+![.NET version: >= 4.0](https://img.shields.io/badge/.NET-%3E%3D%204.0-green.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)	
+
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
 ![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.png)
@@ -121,4 +127,4 @@ There is a WPF demo application on board that shows most features of AdonisUI in
 
 ## License
 
-MIT
+MIT © Benjamin Rühl
