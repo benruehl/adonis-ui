@@ -1,0 +1,157 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI">
+
+
+    <Style x:Key="{x:Type ProgressBar}" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid>
+                        
+                        <Border x:Name="PART_Track"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+
+                        <Border x:Name="PART_Indicator"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                HorizontalAlignment="Left">
+                            <Border.OpacityMask>
+                                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+                                    <GradientStop x:Name="AnimatedGradientStop1" Offset="-0.3" Color="Transparent"/>
+                                    <GradientStop x:Name="AnimatedGradientStop2" Offset="-0.3" Color="Transparent"/>
+                                    <GradientStop x:Name="AnimatedGradientStop3" Offset="-0.3" Color="Black"/>
+                                    <GradientStop x:Name="AnimatedGradientStop4" Offset="0" Color="Black"/>
+                                    <GradientStop x:Name="AnimatedGradientStop5" Offset="0" Color="Transparent"/>
+                                    <GradientStop x:Name="AnimatedGradientStop6" Offset="1.3" Color="Transparent"/>
+                                </LinearGradientBrush>
+                            </Border.OpacityMask>
+
+                            <Canvas ClipToBounds="True">
+                                <Ellipse x:Name="HighlightEllipse"
+                                         Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
+                                         Width="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
+                                         Height="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
+                                         Canvas.Left="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=-x}">
+                                    <Canvas.Top>
+                                        <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="-x+(y/2)">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
+                                        </MultiBinding>
+                                    </Canvas.Top>
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform x:Name="HighlightEllipseTransform"
+                                                        ScaleX="0"
+                                                        ScaleY="0"
+                                                        CenterX="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"
+                                                        CenterY="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Canvas>
+
+                        </Border>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsIndeterminate" Value="False">
+                            <Setter TargetName="PART_Indicator" Property="OpacityMask" Value="{x:Null}"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseTransform"
+                                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                         To="1"
+                                                         BeginTime="0:00:1"
+                                                         Duration="0:00:2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseTransform"
+                                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                                         To="1"
+                                                         BeginTime="0:00:1"
+                                                         Duration="0:00:2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipse"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         BeginTime="0:00:2"
+                                                         Duration="0:00:1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <Trigger Property="IsIndeterminate" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop2"
+                                                         Storyboard.TargetProperty="Offset"
+                                                         To="1"
+                                                         Duration="0:00:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop3"
+                                                         Storyboard.TargetProperty="Offset"
+                                                         To="1"
+                                                         Duration="0:00:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop4"
+                                                         Storyboard.TargetProperty="Offset"
+                                                         To="1.3"
+                                                         Duration="0:00:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop5"
+                                                         Storyboard.TargetProperty="Offset"
+                                                         To="1.3"
+                                                         Duration="0:00:2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BackgroundBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BorderBrush}}"/>
+            </DataTrigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

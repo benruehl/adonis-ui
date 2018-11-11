@@ -91,6 +91,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="8"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -161,6 +163,22 @@
                              IsChecked="False"
                              IsEnabled="False"/>
             </StackPanel>
+            
+            <Slider Grid.Row="6"
+                    Grid.Column="0"
+                    Minimum="0"
+                    Maximum="100"
+                    Value="30"
+                    TickPlacement="BottomRight"
+                    TickFrequency="10"/>
+            
+            <ProgressBar Grid.Row="6"
+                         Grid.Column="2"
+                         Minimum="0"
+                         Maximum="100"
+                         Value="70"
+                         VerticalAlignment="Bottom"
+                         Height="16"/>
 
         </Grid>
 

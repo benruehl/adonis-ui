@@ -4,11 +4,25 @@
                     xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
+    <Style x:Key="ItemGroupLabelStyle" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0, 16, 0, 4"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
     <DataTemplate DataType="{x:Type viewModels:WelcomeScreenViewModel}">
         <Grid Margin="32">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="16"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="8"/>
                 <RowDefinition Height="Auto"/>
@@ -27,7 +41,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
-                <TextBlock Text="Buttons"/>
+                <Label Content="Buttons"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
                              Columns="4"
@@ -57,7 +72,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Inputs"/>
+                <Label Content="Inputs"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
                              Columns="2"
@@ -86,7 +102,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Toggles"/>
+                <Label Content="Toggles"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
                              Columns="4"
@@ -109,6 +126,104 @@
 
                 </UniformGrid>
             </Grid>
+
+            <Grid Grid.Row="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Progress Indicators"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                <UniformGrid Grid.Row="2"
+                             Columns="2"
+                             HorizontalAlignment="Left">
+
+                    <ProgressBar Width="120"
+                                 Height="16"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="70"/>
+
+                    <ProgressBar Width="120"
+                                 Height="16"
+                                 IsIndeterminate="True"
+                                 Margin="8, 0, 0, 0"/>
+
+                </UniformGrid>
+            </Grid>
+
+            <Grid Grid.Row="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Sliders"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+
+                    <Slider Width="120"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="70"
+                            VerticalAlignment="Top"/>
+
+                    <Slider Width="120"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="30"
+                            TickFrequency="10"
+                            TickPlacement="BottomRight"
+                            Height="22"
+                            Margin="8, 0, 0, 0"/>
+
+                    <Slider Minimum="0"
+                            Maximum="100"
+                            Value="0"
+                            Orientation="Vertical"
+                            Margin="24, 0, 0, 0"/>
+
+                    <Slider Minimum="0"
+                            Maximum="100"
+                            Value="100"
+                            Orientation="Vertical"
+                            TickPlacement="BottomRight"
+                            TickFrequency="50"
+                            Width="22"
+                            Margin="24, 0, 0, 0"/>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Scroll Bars"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                <UniformGrid Grid.Row="2"
+                             Columns="1"
+                             HorizontalAlignment="Left">
+
+                    <ScrollViewer Width="240"
+                                  HorizontalScrollBarVisibility="Visible">
+                        <Border Width="400"/>
+                    </ScrollViewer>
+
+                </UniformGrid>
+            </Grid>
+
         </Grid>
     </DataTemplate>
 

@@ -73,23 +73,27 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid>
-                    <GroupBox>
+                    <GroupBox Padding="0"
+                              MinWidth="132">
                         <GroupBox.Header>
-                            <TextBlock Text="Actions"/>
+                            <TextBlock Text="Actions"
+                                       Margin="8"/>
                         </GroupBox.Header>
 
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0, 8, 0, 0">
 
                             <Button Content="Change Theme"
-                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="ChangeTheme"
-                                    HorizontalAlignment="Stretch"/>
+                                    HorizontalAlignment="Stretch"
+                                    Padding="8"/>
 
                             <Button Content="Check Issues"
-                                    Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="OpenIssueDialog"
                                     HorizontalAlignment="Stretch"
-                                    Margin="0, 8, 0, 0"/>
+                                    Padding="8"/>
 
                         </StackPanel>
                     </GroupBox>
