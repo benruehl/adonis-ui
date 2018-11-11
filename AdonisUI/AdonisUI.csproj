@@ -87,6 +87,8 @@
     <Compile Include="Converters\IsImmutableFilterConverter.cs" />
     <Compile Include="Converters\IsNullToBoolConverter.cs" />
     <Compile Include="Converters\MathConverter.cs" />
+    <Compile Include="Converters\StringIsNullOrEmptyToBoolConverter.cs" />
+    <Compile Include="Converters\StringIsNullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Extensions\MenuItemExtension.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Extensions\GroupBoxExtension.cs" />
     <Compile Include="Extensions\LayerExtension.cs" />
     <Compile Include="Extensions\ValidationExtension.cs" />
+    <Compile Include="Extensions\WatermarkExtension.cs" />
     <Compile Include="Icons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

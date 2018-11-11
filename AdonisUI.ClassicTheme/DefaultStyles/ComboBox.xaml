@@ -255,11 +255,27 @@
                                          Focusable="True">
                                     <TextBox.Template>
                                         <ControlTemplate TargetType="TextBox" >
-                                            <ScrollViewer Name="PART_ContentHost"
-                                                          Focusable="False"
-                                                          HorizontalScrollBarVisibility="Hidden"
-                                                          VerticalScrollBarVisibility="Hidden"
-                                                          Template="{StaticResource TextBoxScrollViewerTemplate}"/>
+                                            <Grid>
+                                                <ContentPresenter x:Name="PlaceholderHost"
+                                                                  Content="{Binding (adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
+                                                                  HorizontalAlignment="Stretch"
+                                                                  VerticalAlignment="Stretch"
+                                                                  Opacity="0.5"
+                                                                  IsHitTestVisible="False"
+                                                                  Visibility="Collapsed"/>
+
+                                                <ScrollViewer Name="PART_ContentHost"
+                                                              Focusable="False"
+                                                              HorizontalScrollBarVisibility="Hidden"
+                                                              VerticalScrollBarVisibility="Hidden"
+                                                              Template="{StaticResource TextBoxScrollViewerTemplate}"/>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding (adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" Value="True">
+                                                    <Setter Property="Visibility" TargetName="PlaceholderHost" Value="Visible"/>
+                                                </DataTrigger>
+                                            </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </TextBox.Template>
                                 </TextBox>

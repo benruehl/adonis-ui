@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AdonisUI.Demo.Views"
                     xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
-                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
 
     <Style x:Key="ItemGroupLabelStyle" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
         <Setter Property="FontSize" Value="14"/>
@@ -76,13 +77,20 @@
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
-                             Columns="2"
+                             Columns="3"
                              HorizontalAlignment="Left">
 
                     <TextBox Text="Text Box"
+                             adonisExtensions:WatermarkExtension.Watermark="Search ..."
                              MinWidth="160"/>
 
+                    <PasswordBox Password="Password Box"
+                                 adonisExtensions:WatermarkExtension.Watermark="Enter password"
+                                 MinWidth="160"
+                                 Margin="8, 0, 0, 0"/>
+
                     <ComboBox Text="Combo Box"
+                              adonisExtensions:WatermarkExtension.Watermark="Select an option"
                               IsEditable="True"
                               Margin="8, 0, 0, 0">
                         <ComboBox.Items>

@@ -28,7 +28,7 @@
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Margin="0"
+                                    Margin="-2, 0"
                                     CanContentScroll="{TemplateBinding CanContentScroll}"
                                     CanHorizontallyScroll="False"
                                     CanVerticallyScroll="False"
@@ -119,19 +119,35 @@
                                                                      DockPanel.Dock="Left"
                                                                      Margin="0, 0, 4, 0"/>
 
-                            <ScrollViewer x:Name="PART_ContentHost"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Template="{StaticResource TextBoxScrollViewerTemplate}"/>
+                            <Grid>
+                                <ContentPresenter x:Name="PlaceholderHost"
+                                                  Content="{TemplateBinding adonisExtensions:WatermarkExtension.Watermark}"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  Opacity="0.5"
+                                                  IsHitTestVisible="False"
+                                                  Visibility="Collapsed"/>
+
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Template="{StaticResource TextBoxScrollViewerTemplate}"/>
+                            </Grid>
 
                         </DockPanel>
 
                     </Grid>
 
                     <ControlTemplate.Triggers>
+
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
                         </Trigger>
+
+                        <DataTrigger Binding="{Binding (adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource Self}}" Value="True">
+                            <Setter Property="Visibility" TargetName="PlaceholderHost" Value="Visible"/>
+                        </DataTrigger>
+
                     </ControlTemplate.Triggers>
                     
                 </ControlTemplate>
