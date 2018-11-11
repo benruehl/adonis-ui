@@ -1,7 +1,15 @@
+﻿AdonisUI (c) Benjamin Rühl
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+Do Not Translate or Localize
+
+This project incorporates components from the projects listed below. The original copyright notices and the licenses under which such components were received are set forth below.
+
+%% MathConverter NOTICES AND INFORMATION BEGIN HERE
+=========================================
 MathConverter and accompanying samples are copyright (c) 2011 by Ivan Krivyakov
 ivan@ikriv.com. They are distributed under the Apache License http://www.apache.org/licenses/LICENSE-2.0.html
 
-```
 -------------------------------------------------------------------------
                               Apache License
                         Version 2.0, January 2004
@@ -180,4 +188,5 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    of your accepting any such warranty or additional liability.
 
 END OF TERMS AND CONDITIONS
-```
+=========================================
+END OF MathConverter NOTICES AND INFORMATION
