@@ -1,7 +1,7 @@
 # ![Favicon](./Resources/Img/favicon-32x32.png) AdonisUI
 
-![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)
-![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)
+[![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
+[![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 ![.NET version: >= 4.0](https://img.shields.io/badge/.NET-%3E%3D%204.0-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)	
 
