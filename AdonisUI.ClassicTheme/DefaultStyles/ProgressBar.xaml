@@ -20,7 +20,7 @@
                         <Border x:Name="PART_Track"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
                         <Border x:Name="PART_Indicator"

@@ -22,6 +22,7 @@
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=Slider}}"/>
         <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=Slider}}"/>
+        <Setter Property="BorderThickness" Value="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=Slider}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
@@ -29,7 +30,7 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
                 </ControlTemplate>
             </Setter.Value>
@@ -99,7 +100,7 @@
                     Height="4"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
             <Track Grid.Row="1"
@@ -169,7 +170,7 @@
                     Width="4"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
             <Track Grid.Column="1"
