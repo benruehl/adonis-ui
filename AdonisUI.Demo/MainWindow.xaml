@@ -99,7 +99,17 @@
                     </GroupBox>
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1"
+                      ClipToBounds="True">
+
+                    <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUIGrayscale}}"
+                                    Focusable="False"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Opacity="0.2"
+                                    Width="600"
+                                    Height="600"
+                                    Margin="0, 0, -64, -136"/>
 
                     <ContentControl Content="{Binding Content}"
                                     Margin="8"/>
