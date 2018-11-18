@@ -6,5 +6,7 @@
     <Thickness x:Key="{x:Static adonisUi:Dimensions.BorderThickness}">1</Thickness>
 
     <CornerRadius x:Key="{x:Static adonisUi:Dimensions.CornerRadius}">0</CornerRadius>
+    
+    <system:Double x:Key="{x:Static adonisUi:Dimensions.CursorSpotlightRelativeSize}">0.3</system:Double>
 
 </ResourceDictionary>

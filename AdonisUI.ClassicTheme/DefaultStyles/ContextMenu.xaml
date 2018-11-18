@@ -9,9 +9,9 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
-        <Setter Property="adonisExtensions:RippleExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
-        <Setter Property="adonisExtensions:RippleExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
-        <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
+        <Setter Property="adonisExtensions:RippleExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionBrush}}"/>
+        <Setter Property="adonisExtensions:RippleExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionBorderBrush}}"/>
+        <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionForegroundBrush}}"/>
         <Setter Property="Padding" Value="-1"/>
         <Setter Property="HasDropShadow" Value="True"/>
         <Setter Property="Template">
@@ -148,7 +148,8 @@
 
                         <Trigger Property="IsHighlighted" Value="True">
                             <Trigger.Setters>
-                                <Setter Property="adonisExtensions:CursorSpotlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HightlightBrush}}"/>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBrush}}"/>
+                                <Setter Property="adonisExtensions:CursorSpotlightExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1IntenseHighlightBrush}}"/>
                             </Trigger.Setters>
                         </Trigger>
 
