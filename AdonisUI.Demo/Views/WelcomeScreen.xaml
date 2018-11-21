@@ -50,7 +50,7 @@
                              HorizontalAlignment="Left">
 
                     <Button Content="Default Button"/>
-                    
+
                     <Button Content="Accent Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
                             Margin="8, 0, 0, 0"/>
@@ -113,26 +113,26 @@
                 <Label Content="Toggles"
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
-                <UniformGrid Grid.Row="2"
-                             Columns="4"
-                             HorizontalAlignment="Left">
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
 
                     <CheckBox IsChecked="True"
                               Content="Check Box"/>
 
                     <CheckBox IsChecked="False"
                               Content="Check Box"
-                              Margin="8, 0, 0, 0"/>
+                              Margin="16, 0, 0, 0"/>
 
                     <RadioButton IsChecked="True"
                                  Content="Radio Button"
-                                 Margin="8, 0, 0, 0"/>
+                                 Margin="16, 0, 0, 0"/>
 
                     <RadioButton IsChecked="False"
                                  Content="Radio Button"
-                                 Margin="8, 0, 0, 0"/>
+                                 Margin="16, 0, 0, 0"/>
 
-                </UniformGrid>
+                </StackPanel>
             </Grid>
 
             <Grid Grid.Row="8">
@@ -142,25 +142,56 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Progress Indicators"
+                <Label Content="Loading"
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
-                <UniformGrid Grid.Row="2"
-                             Columns="2"
-                             HorizontalAlignment="Left">
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    <ProgressBar Width="120"
-                                 Height="16"
-                                 Minimum="0"
-                                 Maximum="100"
-                                 Value="70"/>
+                    <UniformGrid Columns="2"
+                                 HorizontalAlignment="Left">
 
-                    <ProgressBar Width="120"
-                                 Height="16"
-                                 IsIndeterminate="True"
-                                 Margin="8, 0, 0, 0"/>
+                        <ProgressBar Width="120"
+                                     Height="16"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     Value="70"/>
 
-                </UniformGrid>
+                        <ProgressBar Width="120"
+                                     Height="16"
+                                     IsIndeterminate="True"
+                                     Margin="8, 0, 0, 0"/>
+
+                    </UniformGrid>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                Margin="24, 0, 0, 0">
+
+                        <ContentControl Focusable="False"
+                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                        Width="24"
+                                        Height="24"/>
+
+                        <ContentControl Focusable="False"
+                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingBars}}"
+                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                        Width="24"
+                                        Height="24"
+                                        Margin="24, 0, 0, 0"/>
+
+                        <ContentControl Focusable="False"
+                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingDots}}"
+                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                        Width="32"
+                                        Height="24"
+                                        Margin="24, 0, 0, 0"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
 
             <Grid Grid.Row="10">
