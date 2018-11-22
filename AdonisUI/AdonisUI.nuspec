@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/Resources/Img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Error messages can now be placed at the bottom of controls. Displaying multiple error messages for a single control is now supported. Disappearing content of controls that use the ripple effect has been fixed. Error messages are no longer blurry.</releaseNotes>
+    <releaseNotes>Default styles for progress bars and sliders added. Introducing watermark support for text boxes, combo boxes and password boxes. Additional colors / brushes for highlighting and interaction added. Further improvements and fixes.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
   </metadata>
