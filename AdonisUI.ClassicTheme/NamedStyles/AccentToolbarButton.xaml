@@ -14,6 +14,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="adonisExtensions:RippleExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentInteractionBrush}}"/>
         <Setter Property="adonisExtensions:RippleExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentInteractionBorderBrush}}"/>
         <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentInteractionForegroundBrush}}"/>

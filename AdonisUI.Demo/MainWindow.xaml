@@ -85,14 +85,12 @@
 
                             <Button Content="Change Theme"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                                    BorderThickness="0"
                                     Click="ChangeTheme"
                                     HorizontalAlignment="Stretch"
                                     Padding="8"/>
 
                             <Button Content="Check Issues"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                                    BorderThickness="0"
                                     Click="OpenIssueDialog"
                                     HorizontalAlignment="Stretch"
                                     Padding="8"/>
