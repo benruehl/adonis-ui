@@ -7,8 +7,7 @@
 
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
-![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.png)
-![Dark color scheme overview](./Docs/Img/adonis-demo-peak-dark.png)
+![Switching color schemes at runtime](./Docs/Img/adonis-demo-switch-color-schemes.gif)
 
 ## What's included
 
@@ -49,7 +48,13 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 
 ### Switching color schemes at runtime
 
-AdonisUI comes with a light and a dark color scheme. Adding custom color schemes is possible without limitations. To switch color schemes at runtime the `ResourceDictionary` containing all colors and brushes of a scheme needs to be removed from the application resources so that a different one can be added. This can be done using the built-in `ResourceLocator` class for example in a click event handler.
+AdonisUI comes with a light and a dark color scheme. Adding custom color schemes is possible without limitations.
+
+| Light Color Scheme | Dark Color Scheme |
+| --- | --- |
+| ![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.gif) | ![Dark color scheme overview](./Docs/Img/adonis-demo-peak-dark.gif)
+
+To switch color schemes at runtime the `ResourceDictionary` containing all colors and brushes of a scheme needs to be removed from the application resources so that a different one can be added. This can be done using the built-in `ResourceLocator` class for example in a click event handler.
 
 ```csharp
 AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
@@ -64,17 +69,27 @@ AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, uriToCust
 
 If one wants to switch off of a custom color scheme, this `uriToCustomColorScheme` has to be provided as the third parameter. Switching off of built-in color schemes does not require this.
 
+### Accent color
+
+While relying on uniform colors for background areas and borders, an accent color can be used for visual highlighting of important spots. By default, both color schemes use blue as their accent color. This can be changed by overriding the accent color values. A set of styles helps to display controls like Buttons on the accent color.
+
 ### Cursor Spotlight hover effect
 
 UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on interaction make use of a hover effect called Cursor Spotlight here. It makes a layer visible around the cursor when hovering over the control that is hidden otherwise. It works for both color schemes.
 
-![Layering system turned off in light color scheme](./Docs/Img/adonis-demo-cursor-spotlight.gif)
+| Light Color Scheme | Dark Color Scheme |
+| --- | --- |
+| ![Cursor spotlight in light color scheme](./Docs/Img/adonis-demo-cursor-spotlight-light.gif) | ![Cursor spotlight in dark color scheme](./Docs/Img/adonis-demo-cursor-spotlight-dark.gif)
 
 Because it works with `OpacityMasks` it is not limited to lightening up UI controls. It can be used to show an hide pretty much everything that can be rendered with WPF.
 
-### Accent color
+### Ripple effect
 
-While relying on uniform colors for background areas and borders, an accent color can be used for visual highlighting of important spots. By default, both color schemes use blue as their accent color. This can be changed by overriding the accent color values. A set of styles helps to display controls like Buttons on the accent color to avoid having the default gray colors on it.
+Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxItems support it as well but have it disabled by default.
+
+| Light Color Scheme | Dark Color Scheme |
+| --- | --- |
+| ![Cursor spotlight in light color scheme](./Docs/Img/adonis-demo-ripple-light.gif) | ![Cursor spotlight in dark color scheme](./Docs/Img/adonis-demo-ripple-dark.gif)
 
 ### Layers
 
@@ -112,8 +127,9 @@ The `Layer` property is inherited to all child controls which makes items like B
 
 The data validation mechanism of WPF provides the ability to validate property values and assign error messages in case they are invalid. With AdonisUI, if a control binds to an invalid property the error is indicated in the control template by a red border and an error icon. The error message is displayed as a popup when the control gains keyboard focus or the user hovers over the icon. To set validation errors the interface `IDataErrorInfo` or `INotifyDataErrorInfo` from WPF can be used.
 
-![Data validation templates in light color scheme](./Docs/Img/adonis-demo-validation-light.png)
-![Data validation templates in dark color scheme](./Docs/Img/adonis-demo-validation-dark.png)
+| Light Color Scheme | Dark Color Scheme |
+| --- | --- |
+| ![Data validation templates in light color scheme](./Docs/Img/adonis-demo-validation-light.png) | ![Data validation templates in dark color scheme](./Docs/Img/adonis-demo-validation-dark.png)
 
 By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
 
@@ -123,7 +139,7 @@ Resources that are provided by AdonisUI have a ComponentResourceKey assigned to 
 
 ## Demo
 
-There is a WPF demo application on board that shows most features of AdonisUI in action. Please don't hesitate to give it a try. More examples and screenshots are following soon.
+There is a WPF demo application on board that shows most features of AdonisUI in action. Please don't hesitate to give it a try. More examples, screenshots and documentation are following soon.
 
 ## License
 
