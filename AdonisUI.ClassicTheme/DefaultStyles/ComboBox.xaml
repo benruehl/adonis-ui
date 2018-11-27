@@ -147,11 +147,7 @@
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Panel.Background" TargetName="Border" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
-                <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
-                <Setter Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
-                <Setter Property="Shape.Fill" TargetName="Arrow" Value="#999"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
             </Trigger>
 
             <MultiDataTrigger>
