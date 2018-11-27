@@ -11,11 +11,11 @@
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/Resources/Img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Default styles for progress bars and sliders added. Introducing watermark support for text boxes, combo boxes and password boxes. Additional colors / brushes for highlighting and interaction added. Further improvements and fixes.</releaseNotes>
+    <releaseNotes>Border colors of light color scheme have been tweaked and the colors of disabled combo boxes have been fixed.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
     <dependencies>
-        <dependency id="AdonisUI" version="1.5.0" />
+        <dependency id="AdonisUI" version="1.5.1" />
     </dependencies>
   </metadata>
 </package>
