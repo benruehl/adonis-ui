@@ -1,4 +1,4 @@
-# ![Favicon](./Resources/Img/favicon-32x32.png) AdonisUI
+# ![Favicon](./resources/img/favicon-32x32.png) AdonisUI
 
 [![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
