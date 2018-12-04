@@ -7,7 +7,7 @@
 
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
-![Switching color schemes at runtime](./Docs/Img/adonis-demo-switch-color-schemes.gif)
+![Switching color schemes at runtime](./docs/img/adonis-demo-switch-color-schemes.gif)
 
 ## What's included
 
@@ -52,7 +52,7 @@ AdonisUI comes with a light and a dark color scheme. Adding custom color schemes
 
 | Light Color Scheme | Dark Color Scheme |
 | --- | --- |
-| ![Light color scheme overview](./Docs/Img/adonis-demo-peak-light.gif) | ![Dark color scheme overview](./Docs/Img/adonis-demo-peak-dark.gif)
+| ![Light color scheme overview](./docs/img/adonis-demo-peak-light.gif) | ![Dark color scheme overview](./docs/img/adonis-demo-peak-dark.gif)
 
 To switch color schemes at runtime the `ResourceDictionary` containing all colors and brushes of a scheme needs to be removed from the application resources so that a different one can be added. This can be done using the built-in `ResourceLocator` class for example in a click event handler.
 
@@ -79,7 +79,7 @@ UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on int
 
 | Light Color Scheme | Dark Color Scheme |
 | --- | --- |
-| ![Cursor spotlight in light color scheme](./Docs/Img/adonis-demo-cursor-spotlight-light.gif) | ![Cursor spotlight in dark color scheme](./Docs/Img/adonis-demo-cursor-spotlight-dark.gif)
+| ![Cursor spotlight in light color scheme](./docs/img/adonis-demo-cursor-spotlight-light.gif) | ![Cursor spotlight in dark color scheme](./docs/img/adonis-demo-cursor-spotlight-dark.gif)
 
 Because it works with `OpacityMasks` it is not limited to lightening up UI controls. It can be used to show an hide pretty much everything that can be rendered with WPF.
 
@@ -89,7 +89,7 @@ Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxIt
 
 | Light Color Scheme | Dark Color Scheme |
 | --- | --- |
-| ![Cursor spotlight in light color scheme](./Docs/Img/adonis-demo-ripple-light.gif) | ![Cursor spotlight in dark color scheme](./Docs/Img/adonis-demo-ripple-dark.gif)
+| ![Cursor spotlight in light color scheme](./docs/img/adonis-demo-ripple-light.gif) | ![Cursor spotlight in dark color scheme](./docs/img/adonis-demo-ripple-dark.gif)
 
 ### Layers
 
@@ -99,11 +99,11 @@ That is why AdonisUI introduces a simple layering system which automatically adj
 
 | Without Layering System | With Layering System |
 | --- | --- |
-| ![Layering system turned off in light color scheme](./Docs/Img/adonis-demo-layer-off-light.png) | ![Layering system turned on in light color scheme](./Docs/Img/adonis-demo-layer-on-light.png)
+| ![Layering system turned off in light color scheme](./docs/img/adonis-demo-layer-off-light.png) | ![Layering system turned on in light color scheme](./docs/img/adonis-demo-layer-on-light.png)
 
 | Without Layering System | With Layering System |
 | --- | --- |
-| ![Layering system turned off in dark color scheme](./Docs/Img/adonis-demo-layer-off-dark.png) | ![Layering system turned on in dark color scheme](./Docs/Img/adonis-demo-layer-on-dark.png) 
+| ![Layering system turned off in dark color scheme](./docs/img/adonis-demo-layer-off-dark.png) | ![Layering system turned on in dark color scheme](./docs/img/adonis-demo-layer-on-dark.png) 
 
 The difference between the shown images might not be obvious at first but is clearly visible for the buttons on layer 1 for example. Without using the system all instances of Button have the same background color. When this color is used as a background color for the container like it is for the GroupBox, the Buttons can become kind of hard to sport. When using the layering system, the background colors of the GroupBoxes are set automatically and the contained Buttons are adjusted in their colors.
 
@@ -129,7 +129,7 @@ The data validation mechanism of WPF provides the ability to validate property v
 
 | Light Color Scheme | Dark Color Scheme |
 | --- | --- |
-| ![Data validation templates in light color scheme](./Docs/Img/adonis-demo-validation-light.png) | ![Data validation templates in dark color scheme](./Docs/Img/adonis-demo-validation-dark.png)
+| ![Data validation templates in light color scheme](./docs/img/adonis-demo-validation-light.png) | ![Data validation templates in dark color scheme](./docs/img/adonis-demo-validation-dark.png)
 
 By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
 
