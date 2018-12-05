@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Introduction
 tagline: Get started with AdonisUI
 # description: 
