@@ -11,11 +11,11 @@ That is why AdonisUI introduces a simple layering system which automatically adj
 
 | Without Layering System | With Layering System |
 | --- | --- |
-| ![Layering system turned off in light color scheme](./docs/img/adonis-demo-layer-off-light.png) | ![Layering system turned on in light color scheme](./docs/img/adonis-demo-layer-on-light.png)
+| ![Layering system turned off in light color scheme](../img/adonis-demo-layer-off-light.png) | ![Layering system turned on in light color scheme](../img/adonis-demo-layer-on-light.png)
 
 | Without Layering System | With Layering System |
 | --- | --- |
-| ![Layering system turned off in dark color scheme](./docs/img/adonis-demo-layer-off-dark.png) | ![Layering system turned on in dark color scheme](./docs/img/adonis-demo-layer-on-dark.png)
+| ![Layering system turned off in dark color scheme](../img/adonis-demo-layer-off-dark.png) | ![Layering system turned on in dark color scheme](../img/adonis-demo-layer-on-dark.png)
 
 The difference between the shown images might not be obvious at first but is clearly visible for the buttons on layer 1 for example. Without using the system all instances of `Button` have the same background color. When this color is used as a background color for the container like it is for the GroupBox, the Buttons can become kind of hard to sport. When using the layering system, the background colors of the GroupBoxes are set automatically and the contained Buttons are adjusted in their colors.
 
