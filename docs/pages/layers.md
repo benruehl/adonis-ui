@@ -40,6 +40,7 @@ The `Layer` property is inherited to all child controls which makes items like B
 Following controls increase the layer for their children by default:
 
 - GroupBox
+- StatusBar
 
 ## Adding layering support to custom controls
 
