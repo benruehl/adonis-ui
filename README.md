@@ -18,6 +18,10 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 - Support for additional custom color schemes
 - Few custom controls for common use cases
 
+## Docs
+
+- [See docs](https://benruehl.github.io/adonis-ui)
+
 ## Getting started
 
 1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET 4.0.
@@ -60,18 +64,15 @@ To switch color schemes at runtime the `ResourceDictionary` containing all color
 AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceLocator.DarkColorScheme);
 ```
 
-The first parameter needs to be a reference to the `ResourceDictionary` containing the color scheme as part of its `MergedDictionaries`. The second parameter is a Uri to the color scheme that should be added. Switching to a custom color scheme would look like the following.
+The first parameter needs to be a reference to the `ResourceDictionary` containing the color scheme as part of its `MergedDictionaries`. The second parameter is a Uri to the color scheme that should be added.
 
-```csharp
-Uri uriToCustomColorScheme = new Uri("pack://application:,,,/MyApp;component/ColorSchemes/CustomColorScheme.xaml", UriKind.Absolute)
-AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, uriToCustomColorScheme);
-```
-
-If one wants to switch off of a custom color scheme, this `uriToCustomColorScheme` has to be provided as the third parameter. Switching off of built-in color schemes does not require this.
+[Read more about switching color schemes](docs/pages/colors-and-brushes.md#switching-color-schemes-at-runtime)
 
 ### Accent color
 
 While relying on uniform colors for background areas and borders, an accent color can be used for visual highlighting of important spots. By default, both color schemes use blue as their accent color. This can be changed by overriding the accent color values. A set of styles helps to display controls like Buttons on the accent color.
+
+[Read more about colors and brushes](docs/pages/colors-and-brushes.md)
 
 ### Cursor Spotlight hover effect
 
@@ -83,6 +84,8 @@ UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on int
 
 Because it works with `OpacityMasks` it is not limited to lightening up UI controls. It can be used to show an hide pretty much everything that can be rendered with WPF.
 
+[Read more about the Cursor Spotlight effect](docs/pages/cursor-spotlight.md)
+
 ### Ripple effect
 
 Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxItems support it as well but have it disabled by default.
@@ -90,6 +93,8 @@ Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxIt
 | Light Color Scheme | Dark Color Scheme |
 | --- | --- |
 | ![Cursor spotlight in light color scheme](./docs/img/adonis-demo-ripple-light.gif) | ![Cursor spotlight in dark color scheme](./docs/img/adonis-demo-ripple-dark.gif)
+
+[Read more about the ripple effect](docs/pages/ripple.md)
 
 ### Layers
 
@@ -107,21 +112,7 @@ That is why AdonisUI introduces a simple layering system which automatically adj
 
 The difference between the shown images might not be obvious at first but is clearly visible for the buttons on layer 1 for example. Without using the system all instances of Button have the same background color. When this color is used as a background color for the container like it is for the GroupBox, the Buttons can become kind of hard to sport. When using the layering system, the background colors of the GroupBoxes are set automatically and the contained Buttons are adjusted in their colors.
 
-By default, a window starts on layer 0 with all of its UI controls being on layer 1. To tell AdonisUI that a container represents a different layer the `IncreaseLayer` property can be set:
-
-```xml
-<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
-<GroupBox adonisExtensions:LayerExtension.IncreaseLayer="True">
-```
-
-Or alternatively the layer can be forced to a specific value by setting the `Layer` property:
-
-```xml
-<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
-<GroupBox adonisExtensions:LayerExtension.Layer="1">
-```
-
-The `Layer` property is inherited to all child controls which makes items like Buttons contained in this GroupBox being automatically on layer 2. Exceptions can be made as well by applying the property to specific items. Currently AdonisUI supports nesting of such containers up to layer 4. GroupBoxes increase the layer by default. The colors of all components on all layers can be adjusted to match one's preference.
+[Read more about the layering system](docs/pages/layers.md)
 
 ### Data validation support
 
@@ -133,9 +124,13 @@ The data validation mechanism of WPF provides the ability to validate property v
 
 By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
 
+[Read more about data validation](docs/pages/data-validation.md)
+
 ### ComponentResourceKeys
 
 Resources that are provided by AdonisUI have a ComponentResourceKey assigned to make use of them in a simple way. Resources exist in the categories _Colors_, _Brushes_, _Dimensions_, _Styles_, _Templates_ and _Icons_. The foreground brush of the current color scheme for example can be used by referring to its resource key like `Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"`. ComponentResourceKeys allow auto-completion with IntelliSense which comes in handy when exploring the available resources.
+
+[Read more about resources](docs/pages/styles-and-templates.md)
 
 ## Demo
 
