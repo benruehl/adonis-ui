@@ -18,7 +18,7 @@ namespace AdonisUI.Demo.ViewModels
 
         public IApplicationContentView GetPreviousView()
         {
-            return new WelcomeScreenViewModel();
+            return new CollectionDemoViewModel();
         }
 
         public IApplicationContentView GetNextView()

@@ -1,0 +1,99 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
+
+    <DataTemplate DataType="{x:Type viewModels:CollectionDemoViewModel}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TabControl Grid.Row="2">
+
+                <TabItem Header="List Box">
+                    <ListBox ItemsSource="{Binding Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+
+                <TabItem Header="Grid View">
+                    <ListView ItemsSource="{Binding Items}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Name"
+                                                    DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Weight"
+                                                    DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+
+                <TabItem Header="Tree View">
+                    <TreeView ItemsSource="{Binding Items}">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock Text="{Binding Name}"/>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </TabItem>
+
+                <TabItem Header="Tab Control">
+                    <TabControl>
+
+                        <TabItem Header="List Box">
+                            <ListBox ItemsSource="{Binding Items}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </TabItem>
+
+                        <TabItem Header="Grid View">
+                            <ListView ItemsSource="{Binding Items}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn Header="Name"
+                                                    DisplayMemberBinding="{Binding Name}"/>
+                                            <GridViewColumn Header="Weight"
+                                                    DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </TabItem>
+
+                        <TabItem Header="Tree View">
+                            <TreeView ItemsSource="{Binding Items}">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </TabItem>
+
+                    </TabControl>
+                </TabItem>
+
+            </TabControl>
+
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

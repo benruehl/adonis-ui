@@ -10,6 +10,8 @@ namespace AdonisUI
     {
         public static ComponentResourceKey ValidationErrorTemplate => new ComponentResourceKey(typeof(Templates), "ValidationErrorTemplate");
 
+        public static ComponentResourceKey Expander => new ComponentResourceKey(typeof(Templates), "Expander");
+
         public static ComponentResourceKey LoadingCircle => new ComponentResourceKey(typeof(Templates), "LoadingCircle");
 
         public static ComponentResourceKey LoadingBars => new ComponentResourceKey(typeof(Templates), "LoadingBars");

@@ -41,6 +41,7 @@ Following controls increase the layer for their children by default:
 
 - GroupBox
 - StatusBar
+- TabItem
 
 ## Adding layering support to custom controls
 

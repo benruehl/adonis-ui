@@ -120,15 +120,10 @@
                     Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
                     Visibility="Collapsed"/>
 
-            <Viewbox x:Name="Arrow"
-                     Grid.Column="1"
-                     Width="6"
-                     Stretch="Uniform">
-                <Path Data="M 0 0 L 8 0 L 4 4 Z"
-                      Fill="{TemplateBinding Foreground}"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center" />
-            </Viewbox>
+            <ContentPresenter Grid.Column="1"
+                              ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.Expander}}"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"/>
         </Grid>
 
         <ControlTemplate.Triggers>

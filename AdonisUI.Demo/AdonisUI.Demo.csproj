@@ -63,8 +63,10 @@
     <Compile Include="Framework\Command.cs" />
     <Compile Include="Framework\ViewModelCommand.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\CollectionDemoViewModel.cs" />
     <Compile Include="ViewModels\IApplicationContentView.cs" />
     <Compile Include="ViewModels\IssueDialogViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LayerDemoViewModel.cs" />
     <Compile Include="Framework\ViewModel.cs" />
     <Page Include="Views\Issues\IssueRippleContentInvisible.xaml">
@@ -114,6 +116,10 @@
     <Page Include="Views\ValidationDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CollectionDemo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\WelcomeScreen.xaml">
       <SubType>Designer</SubType>
