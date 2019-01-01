@@ -40,7 +40,7 @@
                                 </LinearGradientBrush>
                             </Border.OpacityMask>
 
-                            <Canvas>
+                            <Canvas IsHitTestVisible="False">
                                 <Canvas.OpacityMask>
                                     <VisualBrush Stretch="None"
                                                  AlignmentX="Left">
