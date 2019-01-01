@@ -56,6 +56,7 @@ namespace AdonisUI.Converters
                 if (targetType == typeof(int)) return (int)result;
                 if (targetType == typeof(double)) return (double)result;
                 if (targetType == typeof(long)) return (long)result;
+                if (targetType == typeof(object)) return result;
                 throw new ArgumentException(String.Format("Unsupported target type {0}", targetType.FullName));
             }
             catch (Exception ex)

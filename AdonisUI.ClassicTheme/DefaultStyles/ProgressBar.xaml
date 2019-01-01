@@ -39,7 +39,22 @@
                                 </LinearGradientBrush>
                             </Border.OpacityMask>
 
-                            <Canvas ClipToBounds="True">
+                            <Canvas>
+                                <Canvas.OpacityMask>
+                                    <VisualBrush Stretch="None"
+                                                 AlignmentX="Left">
+                                        <VisualBrush.Visual>
+                                            <Border Width="{Binding ActualWidth, ElementName=PART_Indicator}"
+                                                    Height="{Binding ActualHeight, ElementName=PART_Indicator}"
+                                                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                                    Background="White"/>
+                                        </VisualBrush.Visual>
+                                        <VisualBrush.RelativeTransform>
+                                            <TranslateTransform X="0.5"/>
+                                        </VisualBrush.RelativeTransform>
+                                    </VisualBrush>
+                                </Canvas.OpacityMask>
+
                                 <Ellipse x:Name="HighlightEllipse"
                                          Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
                                          Width="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"

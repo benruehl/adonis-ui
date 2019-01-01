@@ -26,12 +26,14 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBoxItem}}"
                                 SnapsToDevicePixels="False"/>
 
@@ -115,7 +117,7 @@
             <Border x:Name="ButtonBorder"
                     Grid.Column="1"
                     Margin="1"
-                    CornerRadius="0"
+                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                     BorderThickness="0"
                     Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
                     Visibility="Collapsed"/>

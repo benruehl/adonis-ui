@@ -46,6 +46,7 @@
                                                    BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
                                                    BorderThickness="{TemplateBinding BorderThickness}"
                                                    Foreground="{TemplateBinding adonisExtensions:RippleExtension.ForegroundBrush}"
+                                                   CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                                    Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static adonisConverters:IsImmutableFilterConverter.Instance}}"
                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
                                                    Padding="{TemplateBinding Padding}"

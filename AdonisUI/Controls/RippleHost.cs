@@ -51,6 +51,12 @@ namespace AdonisUI.Controls
             obj.SetValue(IsAnimationCompleteProperty, value);
         }
 
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
         public static readonly DependencyProperty MouseEventSourceProperty = DependencyProperty.Register("MouseEventSource", typeof(FrameworkElement), typeof(RippleHost), new FrameworkPropertyMetadata(MouseEventSourcePropertyChanged, null));
 
         public static readonly DependencyProperty FadeInDurationProperty = DependencyProperty.Register("FadeInDuration", typeof(TimeSpan), typeof(RippleHost), new PropertyMetadata(TimeSpan.FromMilliseconds(200)));
@@ -58,6 +64,8 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty FadeOutDurationProperty = DependencyProperty.Register("FadeOutDuration", typeof(TimeSpan), typeof(RippleHost), new PropertyMetadata(TimeSpan.FromMilliseconds(200)));
 
         private static readonly DependencyProperty IsAnimationCompleteProperty = DependencyProperty.RegisterAttached("IsAnimationComplete", typeof(bool), typeof(RippleHost), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(RippleHost), new PropertyMetadata(new CornerRadius(0)));
 
         public override void OnApplyTemplate()
         {

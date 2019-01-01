@@ -18,12 +18,14 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                 Panel.ZIndex="0"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding extensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding extensions:CursorSpotlightExtension.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                 extensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
                                 SnapsToDevicePixels="False"
                                 Panel.ZIndex="1"/>
@@ -35,6 +37,7 @@
                                           Background="{TemplateBinding extensions:RippleExtension.BackgroundBrush}"
                                           BorderBrush="{TemplateBinding extensions:RippleExtension.BorderBrush}"
                                           BorderThickness="{TemplateBinding BorderThickness}"
+                                          CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
                                           Foreground="{TemplateBinding extensions:RippleExtension.ForegroundBrush}"
                                           Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static converters:IsImmutableFilterConverter.Instance}}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -76,7 +79,8 @@
                     <Grid>
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>

@@ -2,13 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
-                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI">
+
+    <adonisControls:BindingProxy x:Key="CornerRadiusProxy"
+                                 Data="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
 
     <Style x:Key="{x:Type CheckBox}" TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Padding" Value="4, 0, 0, 0"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="False"/>
@@ -31,11 +36,28 @@
                                 <Viewbox Stretch="Uniform"
                                          Margin="2">
 
-                                    <Path x:Name="CheckMark"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Stroke="{TemplateBinding Foreground}"
-                                          StrokeThickness="2"
-                                          Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+                                    <Grid>
+                                        <Path x:Name="CheckMark"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              Stroke="{TemplateBinding Foreground}"
+                                              StrokeThickness="2"
+                                              Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+
+                                        <Border x:Name="CheckMarkNullState"
+                                                Width="7"
+                                                Height="7"
+                                                Background="{TemplateBinding Foreground}"
+                                                Visibility="Collapsed">
+                                            <Border.CornerRadius>
+                                                <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                                    <Binding Path="Data.TopLeft" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
+                                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
+                                                    <Binding Path="Data.BottomRight" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
+                                                    <Binding Path="Data.BottomLeft" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
+                                                </MultiBinding>
+                                            </Border.CornerRadius>
+                                        </Border>
+                                    </Grid>
                                 </Viewbox>
                             </Border>
                         </BulletDecorator.Bullet>
@@ -67,9 +89,8 @@
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter TargetName="CheckMark" Property="Data" Value="M 0 0 L 7 0 L 7 7 L 0 7 Z" />
-                            <Setter TargetName="CheckMark" Property="StrokeThickness" Value="0" />
-                            <Setter TargetName="CheckMark" Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckMarkNullState" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
