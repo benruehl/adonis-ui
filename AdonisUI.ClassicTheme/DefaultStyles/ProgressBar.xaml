@@ -141,6 +141,10 @@
                             </Trigger.EnterActions>
                         </Trigger>
 
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Visibility" TargetName="HighlightEllipse" Value="Collapsed"/>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
