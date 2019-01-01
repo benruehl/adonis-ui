@@ -31,7 +31,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                            CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -101,7 +101,7 @@
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                    CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
 
             <Track Grid.Row="1"
                    x:Name="PART_Track">
@@ -112,7 +112,8 @@
                 <Track.Thumb>
                     <Thumb Style="{StaticResource SliderThumbStyle}"
                            VerticalAlignment="Stretch"
-                           Width="10"/>
+                           Width="10"
+                           adonisExtensions:CornerRadiusExtension.CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource SliderButtonStyle}"
@@ -171,7 +172,7 @@
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                    CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
 
             <Track Grid.Column="1"
                    x:Name="PART_Track">
@@ -182,7 +183,8 @@
                 <Track.Thumb>
                     <Thumb Style="{StaticResource SliderThumbStyle}"
                            HorizontalAlignment="Stretch"
-                           Height="10"/>
+                           Height="10"
+                           adonisExtensions:CornerRadiusExtension.CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource SliderButtonStyle}"
@@ -223,6 +225,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Height" Value="16"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>

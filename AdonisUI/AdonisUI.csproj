@@ -77,7 +77,6 @@
     <Compile Include="Brushes.cs" />
     <Compile Include="Controls\AdornedControl.cs" />
     <Compile Include="Controls\AdornerPlacement.cs" />
-    <Compile Include="Controls\BindingProxy.cs" />
     <Compile Include="Controls\FrameworkElementAdorner.cs" />
     <Compile Include="Controls\RippleHost.cs" />
     <Compile Include="Controls\SortGlyphAdorner.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="Converters\ValuesToThicknessConverter.cs" />
     <Compile Include="Converters\VisibilityToInverseVisibilityConverter.cs" />
     <Compile Include="Dimensions.cs" />
+    <Compile Include="Extensions\CornerRadiusExtension.cs" />
     <Compile Include="Extensions\GridViewSortExtension.cs" />
     <Compile Include="Extensions\MenuItemExtension.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />

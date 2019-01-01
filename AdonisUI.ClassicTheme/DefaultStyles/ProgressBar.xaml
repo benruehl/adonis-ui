@@ -11,6 +11,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Template">
@@ -22,11 +23,11 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
 
                         <Border x:Name="PART_Indicator"
                                 Background="{TemplateBinding Foreground}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 HorizontalAlignment="Left">
                             <Border.OpacityMask>
                                 <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
@@ -46,7 +47,7 @@
                                         <VisualBrush.Visual>
                                             <Border Width="{Binding ActualWidth, ElementName=PART_Indicator}"
                                                     Height="{Binding ActualHeight, ElementName=PART_Indicator}"
-                                                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                                    CornerRadius="{Binding CornerRadius, ElementName=PART_Indicator}"
                                                     Background="White"/>
                                         </VisualBrush.Visual>
                                         <VisualBrush.RelativeTransform>

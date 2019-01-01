@@ -5,14 +5,12 @@
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
 
-    <adonisControls:BindingProxy x:Key="CornerRadiusProxy"
-                                 Data="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-
     <Style x:Key="{x:Type TabItem}" TargetType="TabItem">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="adonisExtensions:LayerExtension.IncreaseLayer" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -23,16 +21,16 @@
                                 BorderBrush="{TemplateBinding BorderBrush}">
                             <Border.BorderThickness>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
-                                    <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
-                                    <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
-                                    <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
+                                    <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Source="0"/>
                                 </MultiBinding>
                             </Border.BorderThickness>
                             <Border.CornerRadius>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
-                                    <Binding Path="Data.TopLeft" Source="{StaticResource CornerRadiusProxy}"/>
-                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Source="0"/>
                                     <Binding Source="0"/>
                                 </MultiBinding>
@@ -42,19 +40,19 @@
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BorderBrush}"
-                                adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=TabItem}}">
+                                adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                             <Border.BorderThickness>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
-                                    <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
-                                    <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
-                                    <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource FindAncestor, AncestorType=TabItem}"/>
+                                    <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Source="0"/>
                                 </MultiBinding>
                             </Border.BorderThickness>
                             <Border.CornerRadius>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
-                                    <Binding Path="Data.TopLeft" Source="{StaticResource CornerRadiusProxy}"/>
-                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Source="0"/>
                                     <Binding Source="0"/>
                                 </MultiBinding>
@@ -201,6 +199,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -229,9 +228,9 @@
                             <Border.CornerRadius>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
                                     <Binding Source="0"/>
-                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}"/>
-                                    <Binding Path="Data.BottomRight" Source="{StaticResource CornerRadiusProxy}"/>
-                                    <Binding Path="Data.BottomLeft" Source="{StaticResource CornerRadiusProxy}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </MultiBinding>
                             </Border.CornerRadius>
 
@@ -249,7 +248,7 @@
                             <Border.CornerRadius>
                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
                                     <Binding Source="0"/>
-                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}"/>
+                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
                                     <Binding Source="0"/>
                                     <Binding Source="0"/>
                                 </MultiBinding>

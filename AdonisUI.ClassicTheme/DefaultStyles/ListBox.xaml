@@ -10,6 +10,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Padding" Value="8, 4"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
@@ -22,14 +23,14 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 Panel.ZIndex="0"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}}"
                                 SnapsToDevicePixels="False"
                                 Panel.ZIndex="1"/>
@@ -41,6 +42,7 @@
                                                    Background="{TemplateBinding adonisExtensions:RippleExtension.BackgroundBrush}"
                                                    BorderBrush="{TemplateBinding adonisExtensions:RippleExtension.BorderBrush}"
                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                   CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                                    Foreground="{TemplateBinding adonisExtensions:RippleExtension.ForegroundBrush}"
                                                    Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static adonisConverters:IsImmutableFilterConverter.Instance}}"
                                                    ContentTemplate="{TemplateBinding ContentTemplate}"

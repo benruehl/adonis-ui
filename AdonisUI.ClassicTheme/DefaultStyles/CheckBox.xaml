@@ -5,9 +5,6 @@
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                     xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI">
 
-    <adonisControls:BindingProxy x:Key="CornerRadiusProxy"
-                                 Data="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-
     <Style x:Key="{x:Type CheckBox}" TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
@@ -28,7 +25,7 @@
                             <Border x:Name="Border"
                                     Width="14"
                                     Height="14"
-                                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                    CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                     Background="{TemplateBinding Background}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     BorderBrush="{TemplateBinding BorderBrush}">
@@ -50,10 +47,22 @@
                                                 Visibility="Collapsed">
                                             <Border.CornerRadius>
                                                 <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
-                                                    <Binding Path="Data.TopLeft" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
-                                                    <Binding Path="Data.TopRight" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
-                                                    <Binding Path="Data.BottomRight" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
-                                                    <Binding Path="Data.BottomLeft" Source="{StaticResource CornerRadiusProxy}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/2"/>
+                                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopLeft"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Converter="{adonisConverters:MathConverter}"
+                                                             ConverterParameter="x/2"/>
+                                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Converter="{adonisConverters:MathConverter}"
+                                                             ConverterParameter="x/2"/>
+                                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Converter="{adonisConverters:MathConverter}"
+                                                             ConverterParameter="x/2"/>
+                                                    <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Converter="{adonisConverters:MathConverter}"
+                                                             ConverterParameter="x/2"/>
                                                 </MultiBinding>
                                             </Border.CornerRadius>
                                         </Border>

@@ -12,6 +12,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Padding" Value="8, 4"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"/>
@@ -26,14 +27,14 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBoxItem}}"
                                 SnapsToDevicePixels="False"/>
 
@@ -111,13 +112,13 @@
                     Grid.ColumnSpan="2"
                     BorderBrush="Transparent"
                     BorderThickness="0"
-                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                    CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                     Background="Transparent"/>
 
             <Border x:Name="ButtonBorder"
                     Grid.Column="1"
                     Margin="1"
-                    CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                    CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                     BorderThickness="0"
                     Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
                     Visibility="Collapsed"/>
@@ -191,6 +192,7 @@
         <Setter Property="adonisExtensions:RippleExtension.BackgroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionBrush}}"/>
         <Setter Property="adonisExtensions:RippleExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionBorderBrush}}"/>
         <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1InteractionForegroundBrush}}"/>
+        <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Padding" Value="8, 4"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -213,13 +215,13 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
                                 BorderBrush="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
                                 SnapsToDevicePixels="False"/>
 
@@ -227,6 +229,7 @@
                                       ClickMode="Press" 
                                       Focusable="False"
                                       Foreground="{TemplateBinding Foreground}"
+                                      adonisExtensions:CornerRadiusExtension.CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                       IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                       Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
 
@@ -307,7 +310,7 @@
                                 <Border x:Name="DropDownBorder" 
                                         Background="{TemplateBinding Background}"
                                         Margin="0, 1, 0, 0"
-                                        CornerRadius="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}" 
+                                        CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                         BorderThickness="{TemplateBinding BorderThickness}" 
                                         BorderBrush="{TemplateBinding BorderBrush}"/>
 

@@ -28,3 +28,14 @@ Dimensions are a set of values that specify sizes or distances in AdonisUI. Over
 - **`Dimensions.BorderThickness`** - BorderThickness of every control styled by AdonisUI
 - **`Dimensions.CornerRadius`** - CornerRadius of every control styled by AdonisUI
 - **`Dimensions.CursorSpotlightRelativeSize`** - see [Cursor Spotlight](cursor-spotlight)
+
+### Corner Radius
+
+In addition to the global value the corner radius can be set on each individual control using the `CornerRadiusExtension`.
+
+```xml
+<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
+<Button adonisExtensions:CornerRadiusExtension.CornerRadius="4"/>
+```
+
+This is supported by all controls that have a default style shipping with AdonisUI like Buttons, TextBoxes, GroupBoxes and even controls like ListBoxItems and GridViewHeaders.
