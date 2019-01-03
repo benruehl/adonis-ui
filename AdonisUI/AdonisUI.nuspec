@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/Resources/Img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Border colors of light color scheme have been tweaked and the colors of disabled combo boxes have been fixed.</releaseNotes>
+    <releaseNotes>Default styles for ListView, TreeView and TabControl have been added. Corner radius can be set on individual controls to override the global setting. Fixed ProgressBar animation being applied even when the ProgressBar is disabled.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
   </metadata>
