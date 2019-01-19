@@ -17,5 +17,7 @@ namespace AdonisUI
         public static ComponentResourceKey LoadingBars => new ComponentResourceKey(typeof(Templates), "LoadingBars");
 
         public static ComponentResourceKey LoadingDots => new ComponentResourceKey(typeof(Templates), "LoadingDots");
+
+        public static ComponentResourceKey DatePickerDropDownButton => new ComponentResourceKey(typeof(Templates), "DatePickerDropDownButton");
     }
 }

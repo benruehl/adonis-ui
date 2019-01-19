@@ -9,10 +9,11 @@ The data validation mechanism of WPF provides the ability to validate property v
 
 AdonisUI displays data validation errors for the following controls:
 
-- TextBox
-- PasswordBox
-- ComboBox
 - CheckBox
+- ComboBox
+- DatePicker
+- PasswordBox
+- TextBox
 
 ![Data validation templates in light color scheme](../img/adonis-demo-validation-light.png)
 

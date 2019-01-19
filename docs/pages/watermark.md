@@ -10,9 +10,10 @@ A pale rendered text that can be set on some controls. It disappears as soon as 
 ![Watermark examples](../img/adonis-demo-watermark-light.png)
 
 Available for following controls:
-- `TextBox`
-- `PasswordBox`
 - `ComboBox`
+- `DatePicker`
+- `PasswordBox`
+- `TextBox`
 
 Can be set using `AdonisUI.Extensions.WatermarkExtension`:
 

@@ -77,7 +77,7 @@
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
-                             Columns="3"
+                             Rows="1"
                              HorizontalAlignment="Left">
 
                     <TextBox Text="Text Box"
@@ -99,6 +99,9 @@
                             <ComboBoxItem Content="Item 3"/>
                         </ComboBox.Items>
                     </ComboBox>
+
+                    <DatePicker adonisExtensions:WatermarkExtension.Watermark="Select a date"
+                                Margin="8, 0, 0, 0"/>
 
                 </UniformGrid>
             </Grid>

@@ -46,6 +46,13 @@
                 </ComboBox.Items>
             </ComboBox>
 
+            <DatePicker MinWidth="64"
+                        Margin="0, 8, 0, 0"
+                        SelectedDate="{Binding Path=StringValue,
+                                               ValidatesOnDataErrors=True,
+                                               NotifyOnValidationError=True,
+                                               UpdateSourceTrigger=PropertyChanged}"/>
+
             <CheckBox Margin="0, 16, 0, 0"
                       Content="Valid when checked"
                       IsChecked="{Binding Path=BoolValue,

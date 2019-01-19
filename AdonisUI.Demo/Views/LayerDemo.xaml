@@ -3,7 +3,8 @@
                     xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <DataTemplate x:Key="ButtonDemoTemplate">
 
@@ -103,11 +104,10 @@
 
             <TextBox Text="Editable TextBox"/>
 
-            <TextBox Text="ReadOnly TextBox"
-                     IsReadOnly="True"
-                     Grid.Row="0"
-                     Grid.Column="2"
-                     HorizontalContentAlignment="Right"/>
+            <DatePicker SelectedDate="{x:Static sys:DateTime.Now}"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalContentAlignment="Right"/>
 
             <ComboBox IsEditable="True"
                       Grid.Row="2"

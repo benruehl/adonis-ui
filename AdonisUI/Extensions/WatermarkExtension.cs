@@ -76,6 +76,19 @@ namespace AdonisUI.Extensions
                 passwordBox.Unloaded -= OnPasswordBoxUnloaded;
                 passwordBox.Unloaded += OnPasswordBoxUnloaded;
             }
+            else if (obj is DatePicker datePicker)
+            {
+                UpdateIsWatermarkVisible(datePicker);
+
+                Binding textBinding = new Binding
+                {
+                    Path = new PropertyPath("Text"),
+                    RelativeSource = new RelativeSource(RelativeSourceMode.Self),
+                    Converter = new StringIsNullOrEmptyToBoolConverter(),
+                };
+
+                BindingOperations.SetBinding(datePicker, IsWatermarkVisibleProperty, textBinding);
+            }
         }
 
         private static void UpdateIsWatermarkVisible(TextBox textBox)
@@ -91,6 +104,11 @@ namespace AdonisUI.Extensions
         private static void UpdateIsWatermarkVisible(PasswordBox passwordBox)
         {
             SetIsWatermarkVisible(passwordBox, String.IsNullOrEmpty(passwordBox.Password));
+        }
+
+        private static void UpdateIsWatermarkVisible(DatePicker datePicker)
+        {
+            SetIsWatermarkVisible(datePicker, String.IsNullOrEmpty(datePicker.Text));
         }
 
         private static void OnTextBoxTextChanged(object sender, RoutedEventArgs e)
