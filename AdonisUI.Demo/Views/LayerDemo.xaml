@@ -103,6 +103,12 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Text="Editable TextBox"/>
+            
+            <GridSplitter Grid.Row="0"
+                          Grid.Column="1"
+                          Grid.RowSpan="7"
+                          Width="4"
+                          ResizeDirection="Columns"/>
 
             <DatePicker SelectedDate="{x:Static sys:DateTime.Now}"
                         Grid.Row="0"
