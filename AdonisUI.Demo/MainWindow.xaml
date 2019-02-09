@@ -89,6 +89,21 @@
                                     HorizontalAlignment="Stretch"
                                     Padding="8"/>
 
+                            <Button Command="{Binding ToggleIsEnabledCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    Padding="8">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Static adonisUi:Styles.ToolbarButton}}">
+                                        <Setter Property="Content" Value="Disable All"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                                                <Setter Property="Content" Value="Enable All"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
                             <Button Content="Check Issues"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="OpenIssueDialog"
@@ -112,6 +127,7 @@
                                     Margin="0, 0, -64, -136"/>
 
                     <ContentControl Content="{Binding Content}"
+                                    IsEnabled="{Binding IsEnabled}"
                                     Margin="8"/>
 
                 </Grid>

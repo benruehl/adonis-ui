@@ -28,6 +28,21 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
+        private bool _isEnabled;
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set
+            {
+                if (_isEnabled != value)
+                {
+                    _isEnabled = value;
+                    RaisePropertyChanged(nameof(IsEnabled));
+                }
+            }
+        }
+
         private ApplicationNextViewCommand _nextViewCommand;
 
         public ApplicationNextViewCommand NextViewCommand => _nextViewCommand ?? (_nextViewCommand = new ApplicationNextViewCommand(this));
@@ -36,9 +51,14 @@ namespace AdonisUI.Demo.ViewModels
 
         public ApplicationPreviousViewCommand PreviousViewCommand => _previousViewCommand ?? (_previousViewCommand = new ApplicationPreviousViewCommand(this));
 
+        private ApplicationToggleIsEnabledCommand _toggleIsEnabledCommand;
+
+        public ApplicationToggleIsEnabledCommand ToggleIsEnabledCommand => _toggleIsEnabledCommand ?? (_toggleIsEnabledCommand = new ApplicationToggleIsEnabledCommand(this));
+
         public ApplicationViewModel()
         {
             _content = new WelcomeScreenViewModel();
+            IsEnabled = true;
         }
     }
 }

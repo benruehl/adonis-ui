@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\ApplicationPreviousViewCommand.cs" />
     <Compile Include="Commands\ApplicationNextViewCommand.cs" />
+    <Compile Include="Commands\ApplicationToggleIsEnabledCommand.cs" />
     <Compile Include="Framework\Command.cs" />
     <Compile Include="Framework\ViewModelCommand.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
