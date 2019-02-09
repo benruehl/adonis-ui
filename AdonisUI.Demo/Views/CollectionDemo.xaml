@@ -13,6 +13,54 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="New">
+                        <MenuItem Header="File"
+                                  InputGestureText="Ctrl+N"/>
+                        <MenuItem Header="Directory"
+                                  InputGestureText="Ctrl+Shift+N"/>
+                    </MenuItem>
+                    <MenuItem Header="Open"/>
+                    <MenuItem Header="Save"
+                              InputGestureText="Ctrl+S"/>
+                    <Separator/>
+                    <MenuItem Header="Exit"
+                              InputGestureText="Alt+F4">
+                        <adonisExtensions:MenuItemExtension.IconTemplate>
+                            <DataTemplate>
+                                <Viewbox>
+                                    <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.Error}}"
+                                                    Background="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"
+                                                    Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
+                                </Viewbox>
+                            </DataTemplate>
+                        </adonisExtensions:MenuItemExtension.IconTemplate>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Copy"
+                              InputGestureText="Ctrl+C"/>
+                    <MenuItem Header="Paste"
+                              InputGestureText="Ctrl+V"/>
+                </MenuItem>
+                <MenuItem Header="Settings">
+                    <MenuItem Header="Option 1"
+                              IsChecked="True"/>
+                    <MenuItem Header="Option 2"
+                              adonisExtensions:MenuItemExtension.IconTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUIGrayscale}}"/>
+                    <MenuItem Header="Option Group">
+                        <MenuItem Header="Option 1"
+                                  IsChecked="True"/>
+                        <MenuItem Header="Option 2"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About"
+                              adonisExtensions:MenuItemExtension.IconTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUI}}"/>
+                </MenuItem>
+            </Menu>
+
             <TabControl Grid.Row="2">
 
                 <TabItem Header="List Box">
