@@ -149,7 +149,7 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="adonisExtensions:RippleExtension.ForegroundBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Template">
             <Setter.Value>
