@@ -27,9 +27,9 @@
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BackgroundColor}">#32323F</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2BorderColor}">#272730</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#464657</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightColor}">#3D3D4C</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2HighlightBorderColor}">#585871</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer2IntenseHighlightColor}">#535369</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer2IntenseHighlightColor}">#454555</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer2IntenseHighlightBorderColor}">#7B7B99</Color>
     <DynamicResource x:Key="{x:Static adonisUi:Colors.Layer2InteractionColor}" ResourceKey="{x:Static adonisUi:Colors.AccentColor}"/>
     <DynamicResource x:Key="{x:Static adonisUi:Colors.Layer2InteractionBorderColor}" ResourceKey="{x:Static adonisUi:Colors.AccentColor}"/>
