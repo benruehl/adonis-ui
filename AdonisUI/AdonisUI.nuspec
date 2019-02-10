@@ -11,8 +11,8 @@
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/Resources/Img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Default styles for ListView, TreeView and TabControl have been added. Corner radius can be set on individual controls to override the global setting. Fixed ProgressBar animation being applied even when the ProgressBar is disabled.</releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <releaseNotes>Default styles for Calendar, DatePicker, GridSplitter and Menu have been added. MenuItems now support SubMenus and IsChecked. The progress animation of ProgressBars can be disabled. Hovering over ToolbarButtons on layer 2 in dark theme has better visible contrast.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
   </metadata>
 </package>
