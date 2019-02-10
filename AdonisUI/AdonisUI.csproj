@@ -97,6 +97,7 @@
     <Compile Include="Extensions\CornerRadiusExtension.cs" />
     <Compile Include="Extensions\GridViewSortExtension.cs" />
     <Compile Include="Extensions\MenuItemExtension.cs" />
+    <Compile Include="Extensions\ProgressBarExtension.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />
     <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />

@@ -12,6 +12,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+        <Setter Property="adonisExtensions:ProgressBarExtension.IsProgressAnimationEnabled" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Template">
@@ -56,25 +57,28 @@
                                     </VisualBrush>
                                 </Canvas.OpacityMask>
 
-                                <Ellipse x:Name="HighlightEllipse"
-                                         Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
-                                         Width="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
-                                         Height="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
-                                         Canvas.Left="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=-x}">
+                                <ContentControl x:Name="HighlightEllipseContainer"
+                                                Canvas.Left="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=-x}">
                                     <Canvas.Top>
                                         <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="-x+(y/2)">
                                             <Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
                                             <Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
                                         </MultiBinding>
                                     </Canvas.Top>
-                                    <Ellipse.RenderTransform>
-                                        <ScaleTransform x:Name="HighlightEllipseTransform"
-                                                        ScaleX="0"
-                                                        ScaleY="0"
-                                                        CenterX="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"
-                                                        CenterY="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"/>
-                                    </Ellipse.RenderTransform>
-                                </Ellipse>
+
+                                    <Ellipse x:Name="HighlightEllipse"
+                                             Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
+                                             Width="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
+                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}">
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform x:Name="HighlightEllipseTransform"
+                                                            ScaleX="0"
+                                                            ScaleY="0"
+                                                            CenterX="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"
+                                                            CenterY="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"/>
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                </ContentControl>
                             </Canvas>
 
                         </Border>
@@ -141,8 +145,12 @@
                             </Trigger.EnterActions>
                         </Trigger>
 
+                        <Trigger Property="adonisExtensions:ProgressBarExtension.IsProgressAnimationEnabled" Value="False">
+                            <Setter Property="Content" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
+                        </Trigger>
+                        
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Visibility" TargetName="HighlightEllipse" Value="Collapsed"/>
+                            <Setter Property="Content" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
