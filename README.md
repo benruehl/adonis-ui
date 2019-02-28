@@ -11,12 +11,19 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 
 ## What's included
 
-- Default styles with templates for most common WPF controls
+- Default styles with templates for almost all WPF controls
 - Additional styles for convenience that can be used as required
 - Two color schemes (light and dark) that can be used in custom styles as well
 - Support for changing the color scheme at runtime
 - Support for additional custom color schemes
+- Extensions for built-in controls providing features like watermarks
 - Few custom controls for common use cases
+
+## Goals
+
+1. Stay close to WPF's original look and feel
+2. Do not require any configuration but provide options for those who want to control global and individual behavior
+3. Favor extension of WPF's built-in controls over creation of new ones in order to be a drop-in replacement for existing applications
 
 ## Docs
 
@@ -98,19 +105,17 @@ Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxIt
 
 ### Layers
 
-In UI design it is common to have containers grouping items that belong together. In WPF this can easily be achieved using GroupBoxes for example. If the container has a different background color assigned to better differentiate between the grouped items and their surroundings, color contrast can become an issue. Gray buttons might look good on a white application background in the first place, but when they are moved into a GroupBox that has a gray background as well, they can loose visibility.
+In UI design it is common to have containers grouping items that belong together. In WPF this can easily be achieved using GroupBoxes for example. If the container has a different background color assigned to better differentiate between the grouped items and their surroundings, color contrast can become an issue. Gray Buttons might look good on a white application background in the first place, but when they are moved into a GroupBox that has a gray background as well, they can loose visibility.
 
-That is why AdonisUI introduces a simple layering system which automatically adjusts the colors of UI controls depending on the layer they belong to. The feature is completely optional but recommended to use if containers are nested.
+That is why AdonisUI introduces a simple layering system which automatically adjusts the colors of UI controls depending on the layer they belong to. All styles of AdonisUI respect the system automatically by default, but it can be disabled as well.
 
-| Without Layering System | With Layering System |
+| Light Color Scheme | Dark Color Scheme |
 | --- | --- |
-| ![Layering system turned off in light color scheme](./docs/img/adonis-demo-layer-off-light.png) | ![Layering system turned on in light color scheme](./docs/img/adonis-demo-layer-on-light.png)
+| ![Layering system turned off in light color scheme](./docs/img/adonis-demo-layer-on-light.png) | ![Layering system turned on in light color scheme](./docs/img/adonis-demo-layer-on-dark.png)
 
-| Without Layering System | With Layering System |
-| --- | --- |
-| ![Layering system turned off in dark color scheme](./docs/img/adonis-demo-layer-off-dark.png) | ![Layering system turned on in dark color scheme](./docs/img/adonis-demo-layer-on-dark.png) 
+The images show a simple layout consisting of Buttons and GroupBoxes. All controls use their default styles without any properties set other than their contents. The layering system is responsible for slightly adjusting the colors of the Buttons and the GroupBoxes' backgrounds on each layer. It ensures that there is always a difference between the background of the container and the background of the controls in the container. Without the system all Buttons would have the exact same background color.
 
-The difference between the shown images might not be obvious at first but is clearly visible for the buttons on layer 1 for example. Without using the system all instances of Button have the same background color. When this color is used as a background color for the container like it is for the GroupBox, the Buttons can become kind of hard to sport. When using the layering system, the background colors of the GroupBoxes are set automatically and the contained Buttons are adjusted in their colors.
+The system is fully customizable. It works for all controls and not just for Buttons, of course. Every control can be configured to increase the layer for its children, but it is already enabled by default for some controls like GroupBoxes. Controls can also be forced to reside on a specific layer.
 
 [Read more about the layering system](docs/pages/layers.md)
 
