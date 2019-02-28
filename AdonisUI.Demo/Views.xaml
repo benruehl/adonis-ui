@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Views/CollectionDemo.xaml"/>
         <ResourceDictionary Source="Views/LayerDemo.xaml"/>
+        <ResourceDictionary Source="Views/LayerSimpleDemo.xaml"/>
         <ResourceDictionary Source="Views/ValidationDemo.xaml"/>
         <ResourceDictionary Source="Views/WelcomeScreen.xaml"/>
     </ResourceDictionary.MergedDictionaries>

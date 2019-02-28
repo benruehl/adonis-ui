@@ -64,7 +64,7 @@ namespace AdonisUI.Demo.ViewModels
 
         public IApplicationContentView GetNextView()
         {
-            return new LayerDemoViewModel();
+            return new LayerSimpleDemoViewModel();
         }
     }
 }

@@ -6,11 +6,11 @@ using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class LayerDemoViewModel
+    class LayerSimpleDemoViewModel
         : ViewModel
         , IApplicationContentView
     {
-        public string Name => "Layers (Complex)";
+        public string Name => "Layers (Simple)";
 
         public bool HasPreviousView => true;
 
@@ -18,12 +18,12 @@ namespace AdonisUI.Demo.ViewModels
 
         public IApplicationContentView GetPreviousView()
         {
-            return new LayerSimpleDemoViewModel();
+            return new CollectionDemoViewModel();
         }
 
         public IApplicationContentView GetNextView()
         {
-            return new ValidationDemoViewModel();
+            return new LayerDemoViewModel();
         }
     }
 }
