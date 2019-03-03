@@ -120,8 +120,8 @@
                                     Width="16"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Style="{StaticResource ButtonPartStyle}"
-                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
                                     extensions:RippleExtension.FadeInDuration="0"
                                     extensions:RippleExtension.FadeOutDuration="0"
                                     extensions:RippleExtension.BackgroundBrush="Transparent"
@@ -137,11 +137,10 @@
                                 </extensions:CornerRadiusExtension.CornerRadius>
                                 <Button.ContentTemplate>
                                     <DataTemplate>
-                                        <Viewbox Stretch="Uniform"
-                                                 Margin="5, 0">
-                                            <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
-                                                  Data="M 0 0 L 8 0 L 4 4 Z"/>
-                                        </Viewbox>
+                                        <ContentPresenter ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.Expander}}"
+                                                          Margin="5, 0"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch"/>
                                     </DataTemplate>
                                 </Button.ContentTemplate>
                             </Button>
