@@ -9,7 +9,7 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="Margin" Value="0, 16, 0, 4"/>
+        <Setter Property="Margin" Value="{adonisUi:Space 0, 2, 0, 0.5}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
 
@@ -17,17 +17,17 @@
         <Grid Margin="32">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="16"/>
+                <RowDefinition Height="{adonisUi:Space 2}"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -38,7 +38,7 @@
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
@@ -53,15 +53,15 @@
 
                     <Button Content="Accent Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                            Margin="8, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     <Button Content="Toolbar Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                            Margin="8, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     <Button Content="Accent Toolbar Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
-                            Margin="8, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                 </UniformGrid>
             </Grid>
@@ -69,7 +69,7 @@
             <Grid Grid.Row="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
@@ -87,12 +87,12 @@
                     <PasswordBox Password="Password Box"
                                  adonisExtensions:WatermarkExtension.Watermark="Enter password"
                                  MinWidth="160"
-                                 Margin="8, 0, 0, 0"/>
+                                 Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     <ComboBox Text="Combo Box"
                               adonisExtensions:WatermarkExtension.Watermark="Select an option"
                               IsEditable="True"
-                              Margin="8, 0, 0, 0">
+                              Margin="{adonisUi:Space 1, 0, 0, 0}">
                         <ComboBox.Items>
                             <ComboBoxItem Content="Item 1"/>
                             <ComboBoxItem Content="Item 2"/>
@@ -101,7 +101,7 @@
                     </ComboBox>
 
                     <DatePicker adonisExtensions:WatermarkExtension.Watermark="Select a date"
-                                Margin="8, 0, 0, 0"/>
+                                Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                 </UniformGrid>
             </Grid>
@@ -109,7 +109,7 @@
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
@@ -125,15 +125,15 @@
 
                     <CheckBox IsChecked="False"
                               Content="Check Box"
-                              Margin="16, 0, 0, 0"/>
+                              Margin="{adonisUi:Space 2, 0, 0, 0}"/>
 
                     <RadioButton IsChecked="True"
                                  Content="Radio Button"
-                                 Margin="16, 0, 0, 0"/>
+                                 Margin="{adonisUi:Space 2, 0, 0, 0}"/>
 
                     <RadioButton IsChecked="False"
                                  Content="Radio Button"
-                                 Margin="16, 0, 0, 0"/>
+                                 Margin="{adonisUi:Space 2, 0, 0, 0}"/>
 
                 </StackPanel>
             </Grid>
@@ -141,7 +141,7 @@
             <Grid Grid.Row="8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
@@ -166,13 +166,13 @@
                         <ProgressBar Width="120"
                                      Height="16"
                                      IsIndeterminate="True"
-                                     Margin="8, 0, 0, 0"/>
+                                     Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     </UniformGrid>
 
                     <StackPanel Grid.Column="1"
                                 Orientation="Horizontal"
-                                Margin="24, 0, 0, 0">
+                                Margin="{adonisUi:Space 3, 0, 0, 0}">
 
                         <ContentControl Focusable="False"
                                         ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
@@ -185,14 +185,14 @@
                                         Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
                                         Width="24"
                                         Height="24"
-                                        Margin="24, 0, 0, 0"/>
+                                        Margin="{adonisUi:Space 3, 0, 0, 0}"/>
 
                         <ContentControl Focusable="False"
                                         ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingDots}}"
                                         Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
                                         Width="32"
                                         Height="24"
-                                        Margin="24, 0, 0, 0"/>
+                                        Margin="{adonisUi:Space 3, 0, 0, 0}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -200,7 +200,7 @@
             <Grid Grid.Row="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
@@ -224,13 +224,13 @@
                             TickFrequency="10"
                             TickPlacement="BottomRight"
                             Height="22"
-                            Margin="8, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     <Slider Minimum="0"
                             Maximum="100"
                             Value="0"
                             Orientation="Vertical"
-                            Margin="24, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
 
                     <Slider Minimum="0"
                             Maximum="100"
@@ -239,7 +239,7 @@
                             TickPlacement="BottomRight"
                             TickFrequency="50"
                             Width="22"
-                            Margin="24, 0, 0, 0"/>
+                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
 
                 </StackPanel>
             </Grid>
@@ -247,7 +247,7 @@
             <Grid Grid.Row="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 

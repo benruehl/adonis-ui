@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdonisUI.Demo.Views.Issues"
              xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch"
              mc:Ignorable="d" 
@@ -19,7 +20,7 @@
                                    FontWeight="Bold"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
-                                   Margin="0, 0, 0, 8"/>
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
                         
                         <TextBlock Text=" ("/>
 
@@ -36,7 +37,7 @@
                     <TextBlock Text="{Binding IssueDescription, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueControl}}"
                                TextWrapping="Wrap"
                                HorizontalAlignment="Left"
-                               Margin="0, 0, 0, 8"/>
+                               Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
                 </WrapPanel>
             </GroupBox.Header>
@@ -48,7 +49,7 @@
                            TextWrapping="Wrap"
                            DockPanel.Dock="Top"
                            HorizontalAlignment="Left"
-                           Margin="0, 0, 0, 8"/>
+                           Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
                 <ContentPresenter Content="{Binding IssueContent, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueControl}}"/>
 

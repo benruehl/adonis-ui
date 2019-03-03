@@ -72,7 +72,7 @@
                         </Grid>
                     </Button>
 
-                    <Button Margin="0, 8, 0, 0">
+                    <Button Margin="{adonisUi:Space 0, 1, 0, 0}">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -82,7 +82,7 @@
                         </Button.ContentTemplate>
                     </Button>
 
-                    <adonisControls:SplitButton Margin="0, 8, 0, 0"
+                    <adonisControls:SplitButton Margin="{adonisUi:Space 0, 1, 0, 0}"
                                                 Content="Simple Split Button">
                         <adonisControls:SplitButton.SplitMenu>
                             <ContextMenu>
@@ -91,7 +91,7 @@
                         </adonisControls:SplitButton.SplitMenu>
                     </adonisControls:SplitButton>
 
-                    <adonisControls:SplitButton Margin="0, 8, 0, 0"
+                    <adonisControls:SplitButton Margin="{adonisUi:Space 0, 1, 0, 0}"
                                                 Content="Split Button">
                         <adonisControls:SplitButton.ContentTemplate>
                             <DataTemplate>
@@ -100,7 +100,7 @@
                         </adonisControls:SplitButton.ContentTemplate>
                     </adonisControls:SplitButton>
 
-                    <ListBox Margin="0, 8, 0, 0"
+                    <ListBox Margin="{adonisUi:Space 0, 1, 0, 0}"
                              adonisExtensions:RippleExtension.BackgroundBrush="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
                              adonisExtensions:RippleExtension.BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
                              adonisExtensions:RippleExtension.ForegroundBrush="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}">

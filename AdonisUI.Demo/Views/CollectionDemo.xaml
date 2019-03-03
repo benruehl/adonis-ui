@@ -9,7 +9,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="8"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 

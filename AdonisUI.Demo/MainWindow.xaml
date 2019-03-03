@@ -40,18 +40,16 @@
 
                         <UniformGrid DockPanel.Dock="Right"
                                      Columns="2"
-                                     Margin="8">
+                                     Margin="{adonisUi:Space 1}">
 
                             <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
                                     Content="Previous"
                                     Command="{Binding PreviousViewCommand}"
-                                    Height="24"
-                                    Margin="8, 0, 0, 0"/>
+                                    Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                             <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
                                     Content="Next"
-                                    Command="{Binding NextViewCommand}"
-                                    Height="24"/>
+                                    Command="{Binding NextViewCommand}"/>
 
                         </UniformGrid>
 
@@ -77,11 +75,11 @@
                               MinWidth="132">
                         <GroupBox.Header>
                             <TextBlock Text="Actions"
-                                       Margin="8"/>
+                                       Margin="{adonisUi:Space 1}"/>
                         </GroupBox.Header>
 
                         <StackPanel Orientation="Vertical"
-                                    Margin="0, 8, 0, 0">
+                                    Margin="{adonisUi:Space 0, 1, 0, 0}">
 
                             <Button Content="Change Theme"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
@@ -128,7 +126,7 @@
 
                     <ContentControl Content="{Binding Content}"
                                     IsEnabled="{Binding IsEnabled}"
-                                    Margin="8"/>
+                                    Margin="{adonisUi:Space 1}"/>
 
                 </Grid>
             </Grid>

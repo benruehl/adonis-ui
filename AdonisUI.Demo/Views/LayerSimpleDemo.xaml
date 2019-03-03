@@ -13,14 +13,14 @@
                     VerticalAlignment="Center"
                     Background="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"
                     BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}"
-                    Padding="16">
+                    Padding="{adonisUi:Space 2}">
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="{adonisUi:Space 2}"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="{adonisUi:Space 2}"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -31,11 +31,11 @@
 
                     <GroupBox Grid.Row="4"
                               Header="GroupBox on Layer 1"
-                              Padding="16, 12">
+                              Padding="{adonisUi:Space 2, 1.5}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="16"/>
+                                <RowDefinition Height="{adonisUi:Space 2}"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
@@ -43,11 +43,11 @@
 
                             <GroupBox Header="GroupBox on Layer 2"
                                       Grid.Row="2"
-                                      Padding="16, 12">
+                                      Padding="{adonisUi:Space 2, 1.5}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="16"/>
+                                        <RowDefinition Height="{adonisUi:Space 2}"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
@@ -55,7 +55,7 @@
 
                                     <GroupBox Header="GroupBox on Layer 3"
                                               Grid.Row="2"
-                                              Padding="16, 12">
+                                              Padding="{adonisUi:Space 2, 1.5}">
 
                                         <Button Content="Button on Layer 4"/>
 

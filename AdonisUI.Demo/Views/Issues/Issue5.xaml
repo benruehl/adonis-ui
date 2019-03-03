@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AdonisUI.Demo"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                    xmlns:issues="clr-namespace:AdonisUI.Demo.Views.Issues">
+                    xmlns:issues="clr-namespace:AdonisUI.Demo.Views.Issues"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
     <DataTemplate x:Key="Issue5Template">
 
@@ -28,7 +29,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="{adonisUi:Space 1}"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
