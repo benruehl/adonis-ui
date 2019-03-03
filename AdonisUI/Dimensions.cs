@@ -13,6 +13,10 @@ namespace AdonisUI
 
         public static ComponentResourceKey BorderThickness => new ComponentResourceKey(typeof(Dimensions), "BorderThickness");
 
+        public static ComponentResourceKey HorizontalSpace => new ComponentResourceKey(typeof(Dimensions), "HorizontalSpace");
+
+        public static ComponentResourceKey VerticalSpace => new ComponentResourceKey(typeof(Dimensions), "VerticalSpace");
+
         public static ComponentResourceKey CursorSpotlightRelativeSize => new ComponentResourceKey(typeof(double), "CursorSpotlightRelativeSize");
     }
 }

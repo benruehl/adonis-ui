@@ -11,7 +11,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-        <Setter Property="Padding" Value="4, 0, 0, 0"/>
+        <Setter Property="Padding" Value="{adonisUi:Space 0.5, 0, 0, 0}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="False"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>

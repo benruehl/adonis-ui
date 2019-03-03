@@ -6,6 +6,10 @@
     <Thickness x:Key="{x:Static adonisUi:Dimensions.BorderThickness}">1</Thickness>
 
     <CornerRadius x:Key="{x:Static adonisUi:Dimensions.CornerRadius}">0</CornerRadius>
+
+    <system:Double x:Key="{x:Static adonisUi:Dimensions.HorizontalSpace}">8</system:Double>
+
+    <system:Double x:Key="{x:Static adonisUi:Dimensions.VerticalSpace}">8</system:Double>
     
     <system:Double x:Key="{x:Static adonisUi:Dimensions.CursorSpotlightRelativeSize}">0.75</system:Double>
 

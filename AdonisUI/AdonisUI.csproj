@@ -102,6 +102,7 @@
     <Compile Include="Extensions\CursorSpotlightExtension.cs" />
     <Compile Include="Extensions\GroupBoxExtension.cs" />
     <Compile Include="Extensions\LayerExtension.cs" />
+    <Compile Include="SpaceExtension.cs" />
     <Compile Include="Extensions\TreeViewItemMouseOverExtension.cs" />
     <Compile Include="Extensions\ValidationExtension.cs" />
     <Compile Include="Extensions\WatermarkExtension.cs" />

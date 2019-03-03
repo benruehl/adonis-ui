@@ -235,7 +235,7 @@
                             </Border.CornerRadius>
 
                             <ContentPresenter x:Name="PART_SelectedContentHost"
-                                              Margin="8, 12, 8, 8"
+                                              Margin="{adonisUi:Space 1, 1+4, 1, 1}"
                                               ContentSource="SelectedContent" />
                         </Border>
 

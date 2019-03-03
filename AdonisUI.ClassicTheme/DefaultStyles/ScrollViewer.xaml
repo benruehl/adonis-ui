@@ -10,7 +10,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Padding" Value="{adonisUi:Space 0.5}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Template">
             <Setter.Value>
