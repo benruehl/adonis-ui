@@ -58,6 +58,7 @@
                                 </Canvas.OpacityMask>
 
                                 <ContentControl x:Name="HighlightEllipseContainer"
+                                                Focusable="False"
                                                 Canvas.Left="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=-x}">
                                     <Canvas.Top>
                                         <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="-x+(y/2)">
