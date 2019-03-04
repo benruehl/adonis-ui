@@ -39,8 +39,8 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.LightColorScheme}"/>
-                <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.ClassicTheme}"/>
+                <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/ColorSchemes/Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
