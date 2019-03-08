@@ -155,16 +155,6 @@
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
 
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
-            </Trigger>
-
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
-            </Trigger>
-
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding (adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
@@ -219,6 +209,24 @@
                     <Setter Property="adonisExtensions:CursorSpotlightExtension.BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4IntenseHighlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
+
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="False"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}}"/>
+            </MultiTrigger>
 
         </Style.Triggers>
     </Style>

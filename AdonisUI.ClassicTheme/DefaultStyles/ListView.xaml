@@ -294,6 +294,14 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
             </Trigger>
 
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="False"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}}"/>
+            </MultiTrigger>
+
         </Style.Triggers>
     </Style>
 
