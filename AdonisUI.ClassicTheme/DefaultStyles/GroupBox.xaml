@@ -78,6 +78,10 @@
                 <Setter Property="adonisExtensions:GroupBoxExtension.HeaderBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
             </DataTrigger>
 
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+            </Trigger>
+
         </Style.Triggers>
     </Style>
 
