@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/benruehl/adonis-ui/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/benruehl/adonis-ui</projectUrl>
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/resources/img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
