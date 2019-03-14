@@ -1,5 +1,6 @@
 # ![Favicon](./resources/img/favicon-32x32.png) AdonisUI
 
+[![Build Status](https://dev.azure.com/devruehl/AdonisUI/_apis/build/status/benruehl.adonis-ui?branchName=master)](https://dev.azure.com/devruehl/AdonisUI/_build/latest?definitionId=1&branchName=master)
 [![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 ![.NET version: >= 4.0](https://img.shields.io/badge/.NET-%3E%3D%204.0-green.svg)
