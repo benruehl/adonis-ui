@@ -41,46 +41,27 @@
                                 </LinearGradientBrush>
                             </Border.OpacityMask>
 
-                            <Canvas IsHitTestVisible="False">
-                                <Canvas.OpacityMask>
-                                    <VisualBrush Stretch="None"
-                                                 AlignmentX="Left">
-                                        <VisualBrush.Visual>
-                                            <Border Width="{Binding ActualWidth, ElementName=PART_Indicator}"
-                                                    Height="{Binding ActualHeight, ElementName=PART_Indicator}"
-                                                    CornerRadius="{Binding CornerRadius, ElementName=PART_Indicator}"
-                                                    Background="White"/>
-                                        </VisualBrush.Visual>
-                                        <VisualBrush.RelativeTransform>
-                                            <TranslateTransform X="0.5"/>
-                                        </VisualBrush.RelativeTransform>
-                                    </VisualBrush>
-                                </Canvas.OpacityMask>
-
-                                <ContentControl x:Name="HighlightEllipseContainer"
-                                                Focusable="False"
-                                                Canvas.Left="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=-x}">
-                                    <Canvas.Top>
-                                        <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="-x+(y/2)">
-                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
-                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
-                                        </MultiBinding>
-                                    </Canvas.Top>
-
-                                    <Ellipse x:Name="HighlightEllipse"
-                                             Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"
-                                             Width="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}"
-                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x*2}">
-                                        <Ellipse.RenderTransform>
-                                            <ScaleTransform x:Name="HighlightEllipseTransform"
-                                                            ScaleX="0"
-                                                            ScaleY="0"
-                                                            CenterX="{Binding ActualWidth, ElementName=PART_Indicator, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"
-                                                            CenterY="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}, Converter={adonisConverters:MathConverter}, ConverterParameter=x}"/>
-                                        </Ellipse.RenderTransform>
-                                    </Ellipse>
-                                </ContentControl>
-                            </Canvas>
+                            <Border x:Name="HighlightEllipseContainer">
+                                <Border.Background>
+                                    <RadialGradientBrush x:Name="HighlightEllipseBrush"
+                                                         GradientOrigin="0, 0.5"
+                                                         Center="0, 0.5"
+                                                         RadiusX="0">
+                                        <RadialGradientBrush.RadiusY>
+                                            <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="(x/y)*z">
+                                                <Binding Path="ActualWidth" ElementName="PART_Indicator"/>
+                                                <Binding Path="ActualHeight" ElementName="PART_Indicator"/>
+                                                <Binding Path="RadiusX" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadialGradientBrush.RadiusY>
+                                        <RadialGradientBrush.GradientStops>
+                                            <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="0"/>
+                                            <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="1"/>
+                                            <GradientStop Color="Transparent" Offset="1"/>
+                                        </RadialGradientBrush.GradientStops>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                            </Border>
 
                         </Border>
 
@@ -93,8 +74,8 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard RepeatBehavior="Forever">
-                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseTransform"
-                                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseBrush"
+                                                         Storyboard.TargetProperty="(RadialGradientBrush.RadiusX)"
                                                          To="1"
                                                          BeginTime="0:00:1"
                                                          Duration="0:00:2">
@@ -102,16 +83,7 @@
                                                 <CubicEase EasingMode="EaseOut"/>
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseTransform"
-                                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                                         To="1"
-                                                         BeginTime="0:00:1"
-                                                         Duration="0:00:2">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipse"
+                                        <DoubleAnimation Storyboard.TargetName="HighlightEllipseBrush"
                                                          Storyboard.TargetProperty="Opacity"
                                                          To="0"
                                                          BeginTime="0:00:2"
@@ -147,11 +119,11 @@
                         </Trigger>
 
                         <Trigger Property="adonisExtensions:ProgressBarExtension.IsProgressAnimationEnabled" Value="False">
-                            <Setter Property="Content" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
+                            <Setter Property="Background" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
                         </Trigger>
                         
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Content" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
+                            <Setter Property="Background" TargetName="HighlightEllipseContainer" Value="{x:Null}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
