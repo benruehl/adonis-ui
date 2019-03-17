@@ -15,8 +15,6 @@ namespace AdonisUI.Extensions
 {
     public class CursorSpotlightExtension
     {
-        private const string SpotlightName = "CursorSpotlightExtension_SpotlightName_Key";
-
         public static FrameworkElement GetMouseEventSource(DependencyObject obj)
         {
             return (FrameworkElement)obj.GetValue(MouseEventSourceProperty);
@@ -73,7 +71,7 @@ namespace AdonisUI.Extensions
 
         public static readonly DependencyProperty BorderBrushProperty = DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(System.Windows.Media.Brushes.Transparent, FrameworkPropertyMetadataOptions.Inherits));
 
-        public static readonly DependencyProperty MaxBlurRadiusProperty = DependencyProperty.RegisterAttached("MaxBlurRadius", typeof(double), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(128.0, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty MaxBlurRadiusProperty = DependencyProperty.RegisterAttached("MaxBlurRadius", typeof(double), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(double.MaxValue, FrameworkPropertyMetadataOptions.Inherits));
 
         public static readonly DependencyProperty RelativeSpotlightSizeProperty = DependencyProperty.RegisterAttached("RelativeSpotlightSize", typeof(double), typeof(CursorSpotlightExtension), new FrameworkPropertyMetadata(0.8, FrameworkPropertyMetadataOptions.Inherits));
 
@@ -127,7 +125,7 @@ namespace AdonisUI.Extensions
                 if (!((spotlightTarget.OpacityMask as VisualBrush)?.Visual is Canvas canvas))
                     return;
 
-                canvas.Children.Add(CreateSpotlight(spotlightTarget));
+                canvas.Background = CreateSpotlight(spotlightTarget);
             };
         }
 
@@ -138,17 +136,17 @@ namespace AdonisUI.Extensions
                 if (!((spotlightTarget.OpacityMask as VisualBrush)?.Visual is Canvas canvas))
                     return;
 
-                Ellipse spotlight = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == SpotlightName);
-                if (spotlight == null)
+                if (!(canvas.Background is RadialGradientBrush spotlight))
                 {
                     spotlight = CreateSpotlight(spotlightTarget);
-                    canvas.Children.Add(spotlight);
+                    canvas.Background = spotlight;
                 }
 
                 Point cursorLocation = args.MouseDevice.GetPosition(spotlightTarget);
+                Point relativeCursorLocation = new Point(cursorLocation.X / canvas.ActualWidth, cursorLocation.Y / canvas.ActualHeight);
 
-                Canvas.SetTop(spotlight, cursorLocation.Y - spotlight.ActualHeight / 2);
-                Canvas.SetLeft(spotlight, cursorLocation.X - spotlight.ActualWidth / 2);
+                spotlight.Center = relativeCursorLocation;
+                spotlight.GradientOrigin = relativeCursorLocation;
             };
         }
 
@@ -159,25 +157,28 @@ namespace AdonisUI.Extensions
                 if (!((spotlightTarget.OpacityMask as VisualBrush)?.Visual is Canvas canvas))
                     return;
 
-                Ellipse spotlight = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == SpotlightName);
-                if (spotlight != null)
-                    canvas.Children.Remove(spotlight);
+                canvas.Background = null;
             };
         }
 
-        private static Ellipse CreateSpotlight(FrameworkElement targetElement)
+        private static RadialGradientBrush CreateSpotlight(FrameworkElement targetElement)
         {
-            double spotlightSize = Math.Max(targetElement.ActualWidth, targetElement.ActualHeight) * 2 * GetRelativeSpotlightSize(targetElement);
+            double maxSize = Math.Max(targetElement.ActualWidth, targetElement.ActualHeight);
+            double relativeWidth = maxSize / targetElement.ActualWidth;
+            double relativeHeight = maxSize / targetElement.ActualHeight;
 
-            return new Ellipse
+            double relativeSpotlightSize = GetRelativeSpotlightSize(targetElement);
+            double blurRadius = Math.Min(relativeSpotlightSize * 0.75, GetMaxBlurRadius(targetElement) / maxSize);
+
+            return new RadialGradientBrush
             {
-                Name = SpotlightName,
-                Width = spotlightSize,
-                Height = spotlightSize,
-                Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
-                Effect = new BlurEffect
+                RadiusX = relativeWidth,
+                RadiusY = relativeHeight,
+                GradientStops = new GradientStopCollection
                 {
-                    Radius = Math.Min(spotlightSize * 0.75, GetMaxBlurRadius(targetElement)),
+                    new GradientStop(Color.FromArgb(255, 0, 0, 0), 0),
+                    new GradientStop(Color.FromArgb(255, 0, 0, 0), relativeSpotlightSize - blurRadius / 2),
+                    new GradientStop(Color.FromArgb(0, 0, 0, 0), relativeSpotlightSize + blurRadius / 2),
                 },
             };
         }
