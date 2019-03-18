@@ -14,8 +14,6 @@ namespace AdonisUI.Controls
 {
     public class RippleHost : ContentControl
     {
-        private const string RippleName = "RippleExtension_RippleElementName_Key";
-
         static RippleHost()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RippleHost), new FrameworkPropertyMetadata(typeof(RippleHost)));
@@ -95,15 +93,16 @@ namespace AdonisUI.Controls
             });
 
             var opacityMask = new VisualBrush();
-            var canvas = new Canvas();
+            var rippleContainer = new Canvas();
 
-            BindingOperations.SetBinding(canvas, FrameworkElement.WidthProperty, new Binding("ActualWidth"));
-            BindingOperations.SetBinding(canvas, FrameworkElement.HeightProperty, new Binding("ActualHeight"));
+            BindingOperations.SetBinding(rippleContainer, FrameworkElement.WidthProperty, new Binding("ActualWidth"));
+            BindingOperations.SetBinding(rippleContainer, FrameworkElement.HeightProperty, new Binding("ActualHeight"));
 
-            canvas.ClipToBounds = true;
-            canvas.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            rippleContainer.ClipToBounds = true;
+            rippleContainer.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            rippleContainer.Opacity = 0.25;
 
-            opacityMask.Visual = canvas;
+            opacityMask.Visual = rippleContainer;
             OpacityMask = opacityMask;
 
             clickEventSource.PreviewMouseLeftButtonDown += MouseEventSourceOnMouseDown();
@@ -139,33 +138,34 @@ namespace AdonisUI.Controls
             return (sender, args) => StartRipple(args.MouseDevice.GetPosition(this));
         }
 
-        private void StartRipple(Point cursorLocation)
+        private void StartRipple(Point center)
         {
-            if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
+            if (!((OpacityMask as VisualBrush)?.Visual is Panel rippleContainer))
                 return;
 
-            Ellipse rippleEllipse = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
-            if (rippleEllipse == null)
+            if (!(rippleContainer.Background is RadialGradientBrush ripple))
             {
-                rippleEllipse = CreateRippleEllipse(cursorLocation);
-                canvas.Children.Add(rippleEllipse);
+                ripple = CreateRipple(center);
+                rippleContainer.Background = ripple;
             }
 
-            Canvas.SetTop(rippleEllipse, cursorLocation.Y - rippleEllipse.MaxHeight / 2);
-            Canvas.SetLeft(rippleEllipse, cursorLocation.X - rippleEllipse.MaxWidth / 2);
+            Point relativeCenter = new Point(center.X / rippleContainer.ActualWidth, center.Y / rippleContainer.ActualHeight);
+
+            ripple.Center = relativeCenter;
+            ripple.GradientOrigin = relativeCenter;
 
             DoubleAnimation widthAnimation = CreateExpansionAnimation();
             DoubleAnimation heightAnimation = CreateExpansionAnimation();
-            DoubleAnimation opacityAnimation = CreateExpansionAnimation();
+            DoubleAnimation opacityAnimation = CreateFadeInAnimation();
 
-            ScaleTransform rippleScaleTransform = (ScaleTransform)rippleEllipse.RenderTransform;
+            ScaleTransform rippleScaleTransform = (ScaleTransform)ripple.RelativeTransform;
 
             AnimationToComplete = widthAnimation;
             widthAnimation.Completed += (s, e) => SetIsAnimationComplete(widthAnimation, true);
 
             rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, widthAnimation);
             rippleScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, heightAnimation);
-            rippleEllipse.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
+            rippleContainer.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
         }
 
         private MouseButtonEventHandler MouseEventSourceOnMouseUp()
@@ -180,43 +180,49 @@ namespace AdonisUI.Controls
 
         private void EndRipple()
         {
-            if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
+            if (!((OpacityMask as VisualBrush)?.Visual is Panel rippleContainer))
                 return;
 
-            Ellipse ripple = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
+            Brush ripple = rippleContainer.Background;
 
             if (ripple == null)
                 return;
 
             Duration animationDuration = new Duration(FadeOutDuration);
             DoubleAnimation removeAnimation = new DoubleAnimation(0, animationDuration);
-            removeAnimation.Completed += (s, e) => canvas.Children.Remove(ripple);
+            removeAnimation.Completed += (s, e) => rippleContainer.Background = null;
 
             if (AnimationToComplete == null || GetIsAnimationComplete(AnimationToComplete))
-                ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
+                rippleContainer.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
             else
-                AnimationToComplete.Completed += (s, e) => ripple.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
+                AnimationToComplete.Completed += (s, e) => rippleContainer.BeginAnimation(UIElement.OpacityProperty, removeAnimation);
         }
 
-        private Ellipse CreateRippleEllipse(Point cursorLocation)
+        private RadialGradientBrush CreateRipple(Point center)
         {
-            double distanceToTopLeftCoordinate = Point.Subtract(new Point(0, 0), cursorLocation).Length;
-            double distanceToTopRightCoordinate = Point.Subtract(new Point(ActualWidth, 0), cursorLocation).Length;
-            double distanceToButtomLeftCoordinate = Point.Subtract(new Point(0, ActualHeight), cursorLocation).Length;
-            double distanceToBottomRightCoordinate = Point.Subtract(new Point(ActualWidth, ActualHeight), cursorLocation).Length;
+            double distanceToTopLeftCoordinate = Point.Subtract(new Point(0, 0), center).Length;
+            double distanceToTopRightCoordinate = Point.Subtract(new Point(ActualWidth, 0), center).Length;
+            double distanceToButtomLeftCoordinate = Point.Subtract(new Point(0, ActualHeight), center).Length;
+            double distanceToBottomRightCoordinate = Point.Subtract(new Point(ActualWidth, ActualHeight), center).Length;
 
-            double maxRippleSize = 2 * Math.Max(Math.Max(Math.Max(distanceToTopLeftCoordinate, distanceToTopRightCoordinate), distanceToButtomLeftCoordinate), distanceToBottomRightCoordinate);
+            double maxSize = Math.Max(Math.Max(Math.Max(distanceToTopLeftCoordinate, distanceToTopRightCoordinate), distanceToButtomLeftCoordinate), distanceToBottomRightCoordinate);
+            double relativeWidth = maxSize / ActualWidth;
+            double relativeHeight = maxSize / ActualHeight;
+            Point relativeCenter = new Point(center.X / ActualWidth, center.Y / ActualHeight);
 
-            return new Ellipse
+            return new RadialGradientBrush
             {
-                Name = RippleName,
-                Width = maxRippleSize,
-                Height = maxRippleSize,
-                MaxWidth = maxRippleSize,
-                MaxHeight = maxRippleSize,
-                Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
-                Opacity = 0.25,
-                RenderTransform = new ScaleTransform(0, 0, maxRippleSize / 2, maxRippleSize / 2),
+                RadiusX = relativeWidth,
+                RadiusY = relativeHeight,
+                GradientOrigin = relativeCenter,
+                Center = relativeCenter,
+                RelativeTransform = new ScaleTransform(0, 0, relativeCenter.X, relativeCenter.Y),
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Color.FromArgb(255, 0, 0, 0), 0),
+                    new GradientStop(Color.FromArgb(255, 0, 0, 0), 1),
+                    new GradientStop(Color.FromArgb(0, 0, 0, 0), 1),
+                },
             };
         }
 
@@ -237,17 +243,29 @@ namespace AdonisUI.Controls
             return sizeAnimation;
         }
 
+        private DoubleAnimation CreateFadeInAnimation()
+        {
+            Duration animationDuration = new Duration(new TimeSpan((long)(FadeInDuration.Ticks * 0.5)));
+
+            DoubleAnimation sizeAnimation = new DoubleAnimation(1, animationDuration)
+            {
+                EasingFunction = new CircleEase
+                {
+                    EasingMode = EasingMode.EaseInOut,
+                },
+            };
+
+            Timeline.SetDesiredFrameRate(sizeAnimation, 60);
+
+            return sizeAnimation;
+        }
+
         public void Reset()
         {
-            if (!((OpacityMask as VisualBrush)?.Visual is Canvas canvas))
+            if (!((OpacityMask as VisualBrush)?.Visual is Panel rippleContainer))
                 return;
 
-            Ellipse ripple = canvas.Children.OfType<Ellipse>().FirstOrDefault(e => e.Name == RippleName);
-
-            if (ripple == null)
-                return;
-
-            canvas.Children.Remove(ripple);
+            rippleContainer.Background = null;
         }
     }
 }
