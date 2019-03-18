@@ -63,6 +63,7 @@
 
     <Color x:Key="{x:Static adonisUi:Colors.ErrorColor}">#dd2c00</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffa000</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.HyperlinkColor}">#0645ad</Color>
 
     <!-- brushes -->
 
@@ -125,5 +126,6 @@
 
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}"/>
 
 </ResourceDictionary>
