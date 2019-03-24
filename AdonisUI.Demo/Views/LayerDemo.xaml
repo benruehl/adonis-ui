@@ -47,7 +47,30 @@
     <DataTemplate x:Key="ContainerDemoTemplate">
 
         <Grid>
-            <GroupBox>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Expander Header="Expander">
+                <Grid Margin="{adonisUi:Space 0, 1, 0, 0}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{adonisUi:Space 1}"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Text="Input"
+                             HorizontalAlignment="Stretch"/>
+
+                    <Button Grid.Column="2"
+                            Content="..."/>
+
+                </Grid>
+            </Expander>
+
+            <GroupBox Grid.Row="2">
 
                 <GroupBox.Header>
                     <Grid>
