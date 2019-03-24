@@ -11,11 +11,11 @@
     <iconUrl>https://github.com/benruehl/adonis-ui/blob/master/resources/img/favicon-256x256.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>New Space System. Disabled controls have greater visual difference compared to enabled ones. GridSplitters are now ignored by tab navigation by default. SplitButton's control template now makes use of global ExpanderTemplate. Further Bugfixes.</releaseNotes>
+    <releaseNotes>Added default style for Expander and Hyperlink. Performance improvements for cursor spotlight effect, ripple effect and ProgressBar's animation.</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>UI Styles Themes Templates Controls WPF XAML</tags>
     <dependencies>
-        <dependency id="AdonisUI" version="1.8.0" />
+        <dependency id="AdonisUI" version="1.9.0" />
     </dependencies>
   </metadata>
 </package>
