@@ -523,6 +523,10 @@
                             </Trigger.ExitActions>
                         </Trigger>
 
+                        <Trigger Property="IsExpanded" Value="False">
+                            <Setter Property="KeyboardNavigation.TabNavigation" TargetName="ExpandSite" Value="None"/>
+                        </Trigger>
+
                         <Trigger Property="IsMouseOver" SourceName="HeaderSite" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
                         </Trigger>
