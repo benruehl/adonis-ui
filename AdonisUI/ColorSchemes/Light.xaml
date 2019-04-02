@@ -61,7 +61,7 @@
     <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#808080</Color>
     <Color x:Key="{x:Static adonisUi:Colors.DisabledAccentForegroundColor}">#d3d3d3</Color>
 
-    <Color x:Key="{x:Static adonisUi:Colors.SuccessColor}">#2ecc71</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.SuccessColor}">#00b94e</Color>
     <Color x:Key="{x:Static adonisUi:Colors.ErrorColor}">#dd2c00</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffa000</Color>
     <Color x:Key="{x:Static adonisUi:Colors.HyperlinkColor}">#0645ad</Color>
