@@ -91,6 +91,7 @@ Each color has a related brush with the same name that just ends with *"Brush"* 
   - `DisabledAccentForegroundColor`
   - `ErrorColor`
   - `AlertColor`
+  - `SuccessColor`
 
 ## Overriding colors
 
