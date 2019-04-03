@@ -67,6 +67,7 @@ namespace AdonisUI
         public static ComponentResourceKey DisabledForegroundBrush => new ComponentResourceKey(typeof(Brushes), "DisabledForegroundBrush");
         public static ComponentResourceKey DisabledAccentForegroundBrush => new ComponentResourceKey(typeof(Brushes), "DisabledAccentForegroundBrush");
 
+        public static ComponentResourceKey SuccessBrush => new ComponentResourceKey(typeof(Brushes), "SuccessBrush");
         public static ComponentResourceKey ErrorBrush => new ComponentResourceKey(typeof(Brushes), "ErrorBrush");
         public static ComponentResourceKey AlertBrush => new ComponentResourceKey(typeof(Brushes), "AlertBrush");
         public static ComponentResourceKey HyperlinkBrush => new ComponentResourceKey(typeof(Brushes), "HyperlinkBrush");

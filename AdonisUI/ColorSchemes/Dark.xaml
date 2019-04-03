@@ -61,6 +61,7 @@
     <Color x:Key="{x:Static adonisUi:Colors.DisabledForegroundColor}">#8E8E8E</Color>
     <Color x:Key="{x:Static adonisUi:Colors.DisabledAccentForegroundColor}">#ACACAC</Color>
 
+    <Color x:Key="{x:Static adonisUi:Colors.SuccessColor}">#00b14a</Color>
     <Color x:Key="{x:Static adonisUi:Colors.ErrorColor}">#b00020</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffc107</Color>
     <Color x:Key="{x:Static adonisUi:Colors.HyperlinkColor}">#3377c6</Color>
@@ -124,6 +125,7 @@
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledForegroundColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledAccentForegroundColor}}"/>
 
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.SuccessBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.SuccessColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}"/>
