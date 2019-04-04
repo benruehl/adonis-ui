@@ -11,9 +11,9 @@ namespace AdonisUI
     public class SpaceExtension
         : MarkupExtension
     {
-        protected static readonly double HorizontalSpace;
+        private static double? _horizontalSpace;
 
-        protected static readonly double VerticalSpace;
+        private static double? _verticalSpace;
 
         public double? Factor { get; set; }
 
@@ -53,12 +53,6 @@ namespace AdonisUI
                 OffsetTop = value;
                 OffsetBottom = value;
             }
-        }
-
-        static SpaceExtension()
-        {
-            HorizontalSpace = (double) Application.Current.TryFindResource(Dimensions.HorizontalSpace);
-            VerticalSpace = (double) Application.Current.TryFindResource(Dimensions.VerticalSpace);
         }
 
         public SpaceExtension()
@@ -127,6 +121,19 @@ namespace AdonisUI
             OffsetBottom = bottomOffset;
         }
 
+        public static void SetSpace(double horizontalSpace, double verticalSpace)
+        {
+            _horizontalSpace = horizontalSpace;
+            _verticalSpace = verticalSpace;
+        }
+
+        private static FrameworkElement _resourceOwnerFallback;
+
+        public static void SetSpaceResourceOwnerFallback(FrameworkElement resourceOwner)
+        {
+            _resourceOwnerFallback = resourceOwner;
+        }
+
         /// <summary>
         /// Expects an expression in the form of [x+y] or [x-y] where x is parsed as factor and y as offset
         /// </summary>
@@ -135,8 +142,11 @@ namespace AdonisUI
             factor = 0;
             offset = 0;
 
+            if (String.IsNullOrEmpty(expression))
+                return false;
+
             char sign;
-            
+
             if (expression.Contains('+'))
                 sign = '+';
             else if (expression.Contains('-'))
@@ -162,31 +172,33 @@ namespace AdonisUI
         {
             IProvideValueTarget service = (IProvideValueTarget)serviceProvider.GetService(typeof(IProvideValueTarget));
             DependencyProperty targetProperty = GetTargetProperty(service);
+            double horizontalSpace = GetHorizontalSpace(service);
+            double verticalSpace = GetVerticalSpace(service);
 
             if (targetProperty != null && targetProperty.PropertyType == typeof(GridLength) && Factor.HasValue && Offset.HasValue)
             {
                 if (Orientation.HasValue)
-                    return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? HorizontalSpace : VerticalSpace) + Offset;
+                    return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
 
                 if (targetProperty.OwnerType == typeof(RowDefinition))
-                    return new GridLength(Factor.Value * VerticalSpace + Offset.Value);
+                    return new GridLength(Factor.Value * verticalSpace + Offset.Value);
 
-                return new GridLength(Factor.Value * HorizontalSpace + Offset.Value);
+                return new GridLength(Factor.Value * horizontalSpace + Offset.Value);
             }
 
             if (targetProperty != null && targetProperty.PropertyType == typeof(Thickness) || !Factor.HasValue)
                 return new Thickness(
-                    Left * HorizontalSpace + OffsetLeft,
-                    Top * VerticalSpace + OffsetTop,
-                    Right * HorizontalSpace + OffsetRight,
-                    Bottom * VerticalSpace + OffsetBottom);
+                    Left * horizontalSpace + OffsetLeft,
+                    Top * verticalSpace + OffsetTop,
+                    Right * horizontalSpace + OffsetRight,
+                    Bottom * verticalSpace + OffsetBottom);
 
             if (Orientation.HasValue)
-                return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? HorizontalSpace : VerticalSpace) + Offset;
+                return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
 
             Orientation? guessedOrientation = GuessPreferredOrientation(targetProperty);
             if (guessedOrientation != null)
-                return Factor * (guessedOrientation.Value == System.Windows.Controls.Orientation.Horizontal ? HorizontalSpace : VerticalSpace) + Offset;
+                return Factor * (guessedOrientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
 
             throw new InvalidOperationException($"Cannot determine target orientation for property ${service.TargetProperty} on type ${service.TargetObject.GetType().FullName}. Orientation must be specified manually.");
         }
@@ -199,6 +211,50 @@ namespace AdonisUI
                 targetProperty = setter.Property;
 
             return targetProperty;
+        }
+
+        protected virtual double GetHorizontalSpace(IProvideValueTarget service)
+        {
+            if (_verticalSpace.HasValue)
+                return _verticalSpace.Value;
+
+            object horizontalSpace = TryFindResource(service, Dimensions.HorizontalSpace);
+
+            if (horizontalSpace == null)
+                throw new InvalidOperationException("Cannot find Dimensions.HorizontalSpace resource.");
+
+            _horizontalSpace = (double)horizontalSpace;
+
+            return (double)horizontalSpace;
+        }
+
+        protected virtual double GetVerticalSpace(IProvideValueTarget service)
+        {
+            if (_verticalSpace.HasValue)
+                return _verticalSpace.Value;
+
+            object verticalSpace = TryFindResource(service, Dimensions.VerticalSpace);
+
+            if (verticalSpace == null)
+                throw new InvalidOperationException("Cannot find Dimensions.VerticalSpace resource.");
+
+            _horizontalSpace = (double)verticalSpace;
+
+            return (double)verticalSpace;
+        }
+
+        private object TryFindResource(IProvideValueTarget service, object resourceKey)
+        {
+            if (service.TargetObject is FrameworkElement element)
+                return element.TryFindResource(resourceKey);
+
+            if (_resourceOwnerFallback != null)
+                return _resourceOwnerFallback.FindResource(resourceKey);
+
+            if (Application.Current != null)
+                return Application.Current.TryFindResource(resourceKey);
+
+            return null;
         }
 
         protected virtual Orientation? GuessPreferredOrientation(DependencyProperty targetProperty)
