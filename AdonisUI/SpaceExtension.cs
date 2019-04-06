@@ -11,9 +11,9 @@ namespace AdonisUI
     public class SpaceExtension
         : MarkupExtension
     {
-        private static double? _horizontalSpace;
+        private static double? _cachedHorizontalSpace;
 
-        private static double? _verticalSpace;
+        private static double? _cachedVerticalSpace;
 
         public double? Factor { get; set; }
 
@@ -123,8 +123,8 @@ namespace AdonisUI
 
         public static void SetSpace(double horizontalSpace, double verticalSpace)
         {
-            _horizontalSpace = horizontalSpace;
-            _verticalSpace = verticalSpace;
+            _cachedHorizontalSpace = horizontalSpace;
+            _cachedVerticalSpace = verticalSpace;
         }
 
         private static FrameworkElement _resourceOwnerFallback;
@@ -178,7 +178,7 @@ namespace AdonisUI
             if (targetProperty != null && targetProperty.PropertyType == typeof(GridLength) && Factor.HasValue && Offset.HasValue)
             {
                 if (Orientation.HasValue)
-                    return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
+                    return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? horizontalSpace : verticalSpace) + Offset;
 
                 if (targetProperty.OwnerType == typeof(RowDefinition))
                     return new GridLength(Factor.Value * verticalSpace + Offset.Value);
@@ -194,11 +194,11 @@ namespace AdonisUI
                     Bottom * verticalSpace + OffsetBottom);
 
             if (Orientation.HasValue)
-                return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
+                return Factor * (Orientation.Value == System.Windows.Controls.Orientation.Horizontal ? horizontalSpace : verticalSpace) + Offset;
 
             Orientation? guessedOrientation = GuessPreferredOrientation(targetProperty);
             if (guessedOrientation != null)
-                return Factor * (guessedOrientation.Value == System.Windows.Controls.Orientation.Horizontal ? _horizontalSpace : _verticalSpace) + Offset;
+                return Factor * (guessedOrientation.Value == System.Windows.Controls.Orientation.Horizontal ? horizontalSpace : verticalSpace) + Offset;
 
             throw new InvalidOperationException($"Cannot determine target orientation for property ${service.TargetProperty} on type ${service.TargetObject.GetType().FullName}. Orientation must be specified manually.");
         }
@@ -215,30 +215,30 @@ namespace AdonisUI
 
         protected virtual double GetHorizontalSpace(IProvideValueTarget service)
         {
-            if (_verticalSpace.HasValue)
-                return _verticalSpace.Value;
+            if (_cachedHorizontalSpace.HasValue)
+                return _cachedHorizontalSpace.Value;
 
             object horizontalSpace = TryFindResource(service, Dimensions.HorizontalSpace);
 
             if (horizontalSpace == null)
                 throw new InvalidOperationException("Cannot find Dimensions.HorizontalSpace resource.");
 
-            _horizontalSpace = (double)horizontalSpace;
+            _cachedHorizontalSpace = (double)horizontalSpace;
 
             return (double)horizontalSpace;
         }
 
         protected virtual double GetVerticalSpace(IProvideValueTarget service)
         {
-            if (_verticalSpace.HasValue)
-                return _verticalSpace.Value;
+            if (_cachedVerticalSpace.HasValue)
+                return _cachedVerticalSpace.Value;
 
             object verticalSpace = TryFindResource(service, Dimensions.VerticalSpace);
 
             if (verticalSpace == null)
                 throw new InvalidOperationException("Cannot find Dimensions.VerticalSpace resource.");
 
-            _horizontalSpace = (double)verticalSpace;
+            _cachedHorizontalSpace = (double)verticalSpace;
 
             return (double)verticalSpace;
         }
