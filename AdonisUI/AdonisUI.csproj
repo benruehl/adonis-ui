@@ -81,6 +81,7 @@
     <Compile Include="Converters\IsImmutableFilterConverter.cs" />
     <Compile Include="Converters\IsNullToBoolConverter.cs" />
     <Compile Include="Converters\MathConverter.cs" />
+    <Compile Include="Converters\RectConverter.cs" />
     <Compile Include="Converters\StringIsNullOrEmptyToBoolConverter.cs" />
     <Compile Include="Converters\StringIsNullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Converters\ValuesToCornerRadiusConverter.cs" />

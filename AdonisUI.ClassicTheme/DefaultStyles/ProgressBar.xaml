@@ -12,19 +12,30 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+        <Setter Property="adonisExtensions:ProgressBarExtension.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+        <Setter Property="adonisExtensions:ProgressBarExtension.ProgressAnimationForeground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
         <Setter Property="adonisExtensions:ProgressBarExtension.IsProgressAnimationEnabled" Value="True"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ProgressBar">
                     <Grid>
-                        
                         <Border x:Name="PART_Track"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
+
+                        <ContentControl Content="{TemplateBinding adonisExtensions:ProgressBarExtension.Content}"
+                                        ContentTemplate="{TemplateBinding adonisExtensions:ProgressBarExtension.ContentTemplate}"
+                                        Foreground="{TemplateBinding adonisExtensions:ProgressBarExtension.Foreground}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Margin="{TemplateBinding Padding}"
+                                        Focusable="False"/>
 
                         <Border x:Name="PART_Indicator"
                                 Background="{TemplateBinding Foreground}"
@@ -41,28 +52,60 @@
                                 </LinearGradientBrush>
                             </Border.OpacityMask>
 
-                            <Border x:Name="HighlightEllipseContainer">
-                                <Border.Background>
-                                    <RadialGradientBrush x:Name="HighlightEllipseBrush"
-                                                         GradientOrigin="0, 0.5"
-                                                         Center="0, 0.5"
-                                                         RadiusX="0">
-                                        <RadialGradientBrush.RadiusY>
-                                            <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="(x/y)*z">
-                                                <Binding Path="ActualWidth" ElementName="PART_Indicator"/>
-                                                <Binding Path="ActualHeight" ElementName="PART_Indicator"/>
-                                                <Binding Path="RadiusX" RelativeSource="{RelativeSource Self}"/>
-                                            </MultiBinding>
-                                        </RadialGradientBrush.RadiusY>
-                                        <RadialGradientBrush.GradientStops>
-                                            <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="0"/>
-                                            <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="1"/>
-                                            <GradientStop Color="Transparent" Offset="1"/>
-                                        </RadialGradientBrush.GradientStops>
-                                    </RadialGradientBrush>
-                                </Border.Background>
-                            </Border>
+                            <Grid>
+                                <Border x:Name="HighlightEllipseContainer">
+                                    <Border.Background>
+                                        <RadialGradientBrush x:Name="HighlightEllipseBrush"
+                                                             GradientOrigin="0, 0.5"
+                                                             Center="0, 0.5"
+                                                             RadiusX="0">
+                                            <RadialGradientBrush.RadiusY>
+                                                <MultiBinding Converter="{adonisConverters:MathConverter}" ConverterParameter="(x/y)*z">
+                                                    <Binding Path="ActualWidth" ElementName="PART_Indicator"/>
+                                                    <Binding Path="ActualHeight" ElementName="PART_Indicator"/>
+                                                    <Binding Path="RadiusX" RelativeSource="{RelativeSource Self}"/>
+                                                </MultiBinding>
+                                            </RadialGradientBrush.RadiusY>
+                                            <RadialGradientBrush.GradientStops>
+                                                <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="0"/>
+                                                <GradientStop Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" Offset="1"/>
+                                                <GradientStop Color="Transparent" Offset="1"/>
+                                            </RadialGradientBrush.GradientStops>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
 
+                                <ContentControl x:Name="IndeterminateContentPresenter"
+                                                Content="{TemplateBinding adonisExtensions:ProgressBarExtension.Content}"
+                                                ContentTemplate="{TemplateBinding adonisExtensions:ProgressBarExtension.ContentTemplate}"
+                                                Foreground="{TemplateBinding adonisExtensions:ProgressBarExtension.ProgressAnimationForeground}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Margin="{TemplateBinding Padding}"
+                                                Focusable="False"/>
+                            </Grid>
+                        </Border>
+
+                        <Border>
+                            <Border.Clip>
+                                <RectangleGeometry>
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{x:Static adonisConverters:RectConverter.Instance}">
+                                            <Binding Path="ActualWidth" ElementName="PART_Indicator"/>
+                                            <Binding Path="ActualHeight" ElementName="PART_Indicator"/>
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+
+                            <ContentControl x:Name="DeterminateContentPresenter"
+                                            Content="{TemplateBinding adonisExtensions:ProgressBarExtension.Content}"
+                                            ContentTemplate="{TemplateBinding adonisExtensions:ProgressBarExtension.ContentTemplate}"
+                                            Foreground="{TemplateBinding adonisExtensions:ProgressBarExtension.ProgressAnimationForeground}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Margin="{TemplateBinding Padding}"
+                                            Focusable="False"/>
                         </Border>
 
                     </Grid>
@@ -71,6 +114,7 @@
 
                         <Trigger Property="IsIndeterminate" Value="False">
                             <Setter TargetName="PART_Indicator" Property="OpacityMask" Value="{x:Null}"/>
+                            <Setter TargetName="IndeterminateContentPresenter" Property="Visibility" Value="Collapsed"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard RepeatBehavior="Forever">
@@ -94,6 +138,7 @@
                         </Trigger>
 
                         <Trigger Property="IsIndeterminate" Value="True">
+                            <Setter TargetName="DeterminateContentPresenter" Property="Visibility" Value="Collapsed"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard RepeatBehavior="Forever">
