@@ -20,7 +20,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
-                    <BulletDecorator Background="Transparent">
+                    <BulletDecorator Background="Transparent"
+                                     SnapsToDevicePixels="False">
                         <BulletDecorator.Bullet>
                             <Border x:Name="Border"
                                     Width="14"
@@ -38,7 +39,7 @@
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                               Stroke="{TemplateBinding Foreground}"
                                               StrokeThickness="2"
-                                              Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+                                              Data="M 0.5 0.5 L 7.5 7.5 M 0.5 7.5 L 7.5 0.5" />
 
                                         <Border x:Name="CheckMarkNullState"
                                                 Width="7"
