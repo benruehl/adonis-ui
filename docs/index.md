@@ -51,6 +51,7 @@ You are now automatically using the default styles of AdonisUI. If you wish to u
 - [Data validation](./pages/data-validation)
 - [Dimensions](./pages/dimensions)
 - [Layers](./pages/layers)
+- [Loading and Progress](./pages/loading)
 - [Ripple effect](./pages/ripple)
 - [Space](./pages/space)
 - [Styles, templates and icons](./pages/styles-and-templates)
