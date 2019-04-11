@@ -15,6 +15,8 @@ namespace AdonisUI
 
         private static double? _cachedVerticalSpace;
 
+        private static FrameworkElement _resourceOwnerFallback;
+
         public double? Factor { get; set; }
 
         public double Left { get; set; }
@@ -127,11 +129,14 @@ namespace AdonisUI
             _cachedVerticalSpace = verticalSpace;
         }
 
-        private static FrameworkElement _resourceOwnerFallback;
-
         public static void SetSpaceResourceOwnerFallback(FrameworkElement resourceOwner)
         {
             _resourceOwnerFallback = resourceOwner;
+        }
+
+        private static void ReleaseSpaceResourceOwnerFallback()
+        {
+            _resourceOwnerFallback = null;
         }
 
         /// <summary>
@@ -218,14 +223,12 @@ namespace AdonisUI
             if (_cachedHorizontalSpace.HasValue)
                 return _cachedHorizontalSpace.Value;
 
-            object horizontalSpace = TryFindResource(service, Dimensions.HorizontalSpace);
+            FindAndCacheSpaceResources(service);
 
-            if (horizontalSpace == null)
-                throw new InvalidOperationException("Cannot find Dimensions.HorizontalSpace resource.");
+            if (!_cachedHorizontalSpace.HasValue)
+                throw new Exception("Dimensions.HorizontalSpace could not be retrieved.");
 
-            _cachedHorizontalSpace = (double)horizontalSpace;
-
-            return (double)horizontalSpace;
+            return _cachedHorizontalSpace.Value;
         }
 
         protected virtual double GetVerticalSpace(IProvideValueTarget service)
@@ -233,23 +236,37 @@ namespace AdonisUI
             if (_cachedVerticalSpace.HasValue)
                 return _cachedVerticalSpace.Value;
 
-            object verticalSpace = TryFindResource(service, Dimensions.VerticalSpace);
+            FindAndCacheSpaceResources(service);
 
-            if (verticalSpace == null)
-                throw new InvalidOperationException("Cannot find Dimensions.VerticalSpace resource.");
+            if (!_cachedVerticalSpace.HasValue)
+                throw new Exception("Dimensions.VerticalSpace could not be retrieved.");
 
-            _cachedHorizontalSpace = (double)verticalSpace;
-
-            return (double)verticalSpace;
+            return _cachedVerticalSpace.Value;
         }
 
-        private object TryFindResource(IProvideValueTarget service, object resourceKey)
+        private void FindAndCacheSpaceResources(IProvideValueTarget service)
+        {
+            object horizontalSpace = TryFindResource(service, Dimensions.HorizontalSpace);
+            object verticalSpace = TryFindResource(service, Dimensions.VerticalSpace);
+
+            if (horizontalSpace == null)
+                throw new ResourceReferenceKeyNotFoundException("Cannot find Dimensions.HorizontalSpace resource.", Dimensions.HorizontalSpace);
+            if (verticalSpace == null)
+                throw new ResourceReferenceKeyNotFoundException("Cannot find Dimensions.VerticalSpace resource.", Dimensions.VerticalSpace);
+
+            _cachedHorizontalSpace = (double) horizontalSpace;
+            _cachedVerticalSpace = (double) verticalSpace;
+
+            ReleaseSpaceResourceOwnerFallback();
+        }
+
+        protected virtual object TryFindResource(IProvideValueTarget service, object resourceKey)
         {
             if (service.TargetObject is FrameworkElement element)
                 return element.TryFindResource(resourceKey);
 
             if (_resourceOwnerFallback != null)
-                return _resourceOwnerFallback.FindResource(resourceKey);
+                return _resourceOwnerFallback.TryFindResource(resourceKey);
 
             if (Application.Current != null)
                 return Application.Current.TryFindResource(resourceKey);
