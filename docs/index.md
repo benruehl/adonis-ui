@@ -43,6 +43,9 @@ Additionally, AdonisUI offers the following features:
 
 You are now automatically using the default styles of AdonisUI. If you wish to use the dark theme instead, exchange `ResourceLocator.LightColorScheme` with `ResourceLocator.DarkColorScheme`.
 
+> In case AdonisUI's resources cannot be included in the application's resources for some reason but instead are inserted in the window's resources or the resources of some other control, further steps need to be made.
+> See [here](./pages/space#remarks-when-adonisui-is-not-included-in-the-application-resources) for further info.
+
 # Docs
 
 - [Colors and Brushes](./pages/colors-and-brushes)

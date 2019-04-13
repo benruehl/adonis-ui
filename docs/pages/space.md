@@ -44,3 +44,26 @@ The following resources can be placed in the application resources right after i
 <system:Double x:Key="{x:Static adonisUi:Dimensions.HorizontalSpace}">8</system:Double>
 <system:Double x:Key="{x:Static adonisUi:Dimensions.VerticalSpace}">8</system:Double>
 ```
+
+## Remarks when AdonisUI is not included in the application resources
+
+The following is only relevant if AdonisUI's resources have not been included in the application's resources but instead in the window's resources or the resources of some other control.
+
+The space system does a resource lookup to find the globally configured space values. To be able to find the values in that case, a reference to the resource owner must be passed to the system manually. Otherwise, its usage and even the usage of controls depending on it throws exceptions. To avoid that, the following should be included before the visual tree is build:
+
+```csharp
+AdonisUI.SpaceExtension.SetSpaceResourceOwnerFallback(resourceOwner);
+```
+
+If the main window owns the resources for example, it can be inserted in its constructor before calling `InitializeComponent()`.
+
+```csharp
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        AdonisUI.SpaceExtension.SetSpaceResourceOwnerFallback(this);
+        InitializeComponent();
+    }
+}
+```
