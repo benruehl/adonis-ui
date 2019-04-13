@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: ''
+labels: 'bug'
 assignees: ''
 
 ---
@@ -22,9 +22,6 @@ A clear and concise description of what you expected to happen.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
-
-**Version**
-Specify version number or branch you are using
 
 **Additional context**
 Add any other context about the problem here.
