@@ -33,17 +33,21 @@
                                 SnapsToDevicePixels="False"/>
 
                         <Border x:Name="InnerShadowHost"
-                                BorderThickness="0, 1, 0, 0"
+                                BorderThickness="1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
-                                Opacity="0.05"
+                                Opacity="0.5"
+                                ClipToBounds="True"
                                 Visibility="Hidden">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
-                                    <GradientStop Color="#000000" Offset="0"/>
-                                    <GradientStop Color="#ffffff" Offset="0.5"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
+                            <Border Background="Transparent"
+                                    BorderBrush="Black"
+                                    BorderThickness="2, 10, 2, 1"
+                                    Margin="-3, -11, -3, -3">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0"
+                                                      BlurRadius="8"/>
+                                </Border.Effect>
+                            </Border>
                         </Border>
 
                         <ContentPresenter Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
