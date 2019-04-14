@@ -22,7 +22,8 @@
                             <ScrollViewer DockPanel.Dock="Top"
                                           Focusable="False"
                                           HorizontalScrollBarVisibility="Hidden"
-                                          VerticalScrollBarVisibility="Hidden">
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Padding="0">
 
                                 <GridViewHeaderRowPresenter x:Name="PART_GridViewHeaderRowPresenter"
                                                             AllowsColumnReorder="{Binding Path=TemplatedParent.View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}"
