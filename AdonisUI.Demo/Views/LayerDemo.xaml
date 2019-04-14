@@ -78,11 +78,19 @@
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"/>
 
-                        <Button Content="X"
-                                HorizontalAlignment="Right"
-                                Width="24"
-                                Height="24"
-                                Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+
+                            <ToggleButton Content="X"
+                                          Width="24"
+                                          Height="24"
+                                          Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarToggleButton}}"/>
+
+                            <Button Content="X"
+                                    Width="24"
+                                    Height="24"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"/>
+                        </StackPanel>
                     </Grid>
                 </GroupBox.Header>
 

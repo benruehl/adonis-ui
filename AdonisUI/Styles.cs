@@ -15,5 +15,7 @@ namespace AdonisUI
         public static ComponentResourceKey ToolbarButton => new ComponentResourceKey(typeof(Styles), "ToolbarButton");
 
         public static ComponentResourceKey AccentToolbarButton => new ComponentResourceKey(typeof(Styles), "AccentToolbarButton");
+
+        public static ComponentResourceKey ToolbarToggleButton => new ComponentResourceKey(typeof(Styles), "ToolbarToggleButton");
     }
 }

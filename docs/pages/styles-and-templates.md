@@ -32,6 +32,7 @@ Example:
 - **`Styles.AccentButton`** - For buttons that should gain attention (accent color as background)
 - **`Styles.ToolbarButton`** - For buttons being placed in a toolbar (transparent background until hovering)
 - **`Styles.AccentToolbarButton`** - For buttons being placed in a toolbar that should gain attention when hovering
+- **`Styles.ToolbarToggleButton`** - For toggle buttons being placed in a toolbar (transparent background until hovering)
 
 ## Available templates
 
