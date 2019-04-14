@@ -300,7 +300,7 @@
                                         <ControlTemplate TargetType="TextBox" >
                                             <Grid>
                                                 <ContentPresenter x:Name="PlaceholderHost"
-                                                                  Content="{Binding (adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
+                                                                  Content="{Binding Path=(adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
                                                                   HorizontalAlignment="Stretch"
                                                                   VerticalAlignment="Stretch"
                                                                   Opacity="0.5"
@@ -315,7 +315,7 @@
                                             </Grid>
 
                                             <ControlTemplate.Triggers>
-                                                <DataTrigger Binding="{Binding (adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" Value="True">
+                                                <DataTrigger Binding="{Binding Path=(adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" Value="True">
                                                     <Setter Property="Visibility" TargetName="PlaceholderHost" Value="Visible"/>
                                                 </DataTrigger>
                                             </ControlTemplate.Triggers>
