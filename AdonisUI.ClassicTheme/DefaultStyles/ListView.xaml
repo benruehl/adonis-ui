@@ -61,6 +61,15 @@
                                    Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
 
                     </Grid>
+                    
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Columns, ElementName=PART_GridViewHeaderRowPresenter}" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="PART_GridViewHeaderRowPresenter" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Columns.Count, ElementName=PART_GridViewHeaderRowPresenter}" Value="0">
+                            <Setter Property="Visibility" TargetName="PART_GridViewHeaderRowPresenter" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
