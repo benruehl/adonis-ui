@@ -35,6 +35,7 @@ The code for the example above:
              Padding="0, 2"/>
 ```
 
+In case the content is more than simple text but consists of child controls, the `ContentTemplate` property should be used instead of `Content`. Otherwise, the progress bar will probably not be rendered correctly.
 A more complex example:
 
 ![Progress bar with content template](../img/adonis-demo-progressbar-contenttemplate-light.png)
