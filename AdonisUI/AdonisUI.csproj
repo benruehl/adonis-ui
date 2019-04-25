@@ -30,15 +30,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ColorSchemes\Dark.xaml" />
-    <None Remove="ColorSchemes\Light.xaml" />
-    <None Remove="Controls\RippleHost.xaml" />
-    <None Remove="Controls\SplitButton.xaml" />
-    <None Remove="Controls\ValidationErrorIndicator.xaml" />
-    <None Remove="Themes\Generic.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Include="ColorSchemes\Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
