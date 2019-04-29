@@ -17,11 +17,9 @@
     <PackageTags>UI Styles Themes Templates Controls WPF XAML</PackageTags>
     <PackageReleaseNotes>Progress bars can have content now that changes its foreground according to the current progress. Added style for ToggleButtons in toolbars. Added green success color and brush. ToggleButton's default style has been reworked. Further bugfixes.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net40\AdonisUI.xml</DocumentationFile>
-  </PropertyGroup>
 
   <ItemGroup>
     <Page Include="ColorSchemes\Dark.xaml">
