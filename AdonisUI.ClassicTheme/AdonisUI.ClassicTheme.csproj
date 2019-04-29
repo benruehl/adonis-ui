@@ -1,14 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net40</TargetFramework>
-    <RootNamespace>AdonisUI.ClassicTheme</RootNamespace>
-    <AssemblyName>AdonisUI.ClassicTheme</AssemblyName>
     <LangVersion>latest</LangVersion>
     <Version>1.10</Version>
     <Description>Styles implementing AdonisUI's theme definitions to provide classic look and feel.</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
-    <Product>AdonisUI.ClassicTheme</Product>
     <PackageId>AdonisUI.ClassicTheme</PackageId>
     <Copyright>Copyright ©  2019 Benjamin Rühl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,9 +17,6 @@
     <PackageTags></PackageTags>
     <PackageReleaseNotes>Progress bars can have content now that changes its foreground according to the current progress. Added style for ToggleButtons in toolbars. Added green success color and brush. ToggleButton's default style has been reworked. Further bugfixes.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.10.0.0</AssemblyVersion>
-    <FileVersion>1.10.0.0</FileVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
