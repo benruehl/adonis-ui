@@ -3,6 +3,7 @@
     <TargetFramework>net40</TargetFramework>
     <RootNamespace>AdonisUI</RootNamespace>
     <AssemblyName>AdonisUI</AssemblyName>
+    <LangVersion>latest</LangVersion>
     <Version>1.10</Version>
     <Description>Core theme definitions for AdonisUI - a lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals</Description>
     <Company>benruehl</Company>
@@ -25,7 +26,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <LangVersion>latest</LangVersion>
     <DocumentationFile>bin\Release\net40\AdonisUI.xml</DocumentationFile>
   </PropertyGroup>
 

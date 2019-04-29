@@ -3,6 +3,7 @@
     <TargetFramework>net40</TargetFramework>
     <RootNamespace>AdonisUI.ClassicTheme</RootNamespace>
     <AssemblyName>AdonisUI.ClassicTheme</AssemblyName>
+    <LangVersion>latest</LangVersion>
     <Version>1.10</Version>
     <Description>Styles implementing AdonisUI's theme definitions to provide classic look and feel.</Description>
     <Company>benruehl</Company>
@@ -25,7 +26,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <LangVersion>latest</LangVersion>
     <DocumentationFile>bin\Release\net40\AdonisUI.ClassicTheme.xml</DocumentationFile>
   </PropertyGroup>
 
