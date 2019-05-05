@@ -19,6 +19,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Issue5.xaml"/>
+                <ResourceDictionary Source="Issue23.xaml"/>
                 <ResourceDictionary Source="IssueRippleContentInvisible.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
