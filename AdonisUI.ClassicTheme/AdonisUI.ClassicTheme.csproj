@@ -1,74 +1,36 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C41D016-993D-41B5-B9DB-4581867829D6}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>AdonisUI.ClassicTheme</RootNamespace>
-    <AssemblyName>AdonisUI.ClassicTheme</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
+    <TargetFramework>net40</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Version>1.10</Version>
+    <Description>Styles implementing AdonisUI's theme definitions to provide classic look and feel.</Description>
+    <Company>benruehl</Company>
+    <Authors>benruehl</Authors>
+    <PackageId>AdonisUI.ClassicTheme</PackageId>
+    <Copyright>Copyright ©  2019 Benjamin Rühl</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/benruehl/adonis-ui</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/benruehl/adonis-ui.git</RepositoryUrl>
+    <PackageIconUrl>https://github.com/benruehl/adonis-ui/blob/master/resources/img/favicon-256x256.png?raw=true</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>UI Styles Themes Templates Controls WPF XAML</PackageTags>
+    <PackageReleaseNotes>Progress bars can have content now that changes its foreground according to the current progress. Added style for ToggleButtons in toolbars. Added green success color and brush. ToggleButton's default style has been reworked. Further bugfixes.</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <PackageReference Include="AdonisUI" Version="1.10.0" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AdonisUI\AdonisUI.csproj">
-      <Project>{45e54988-48a0-43ab-810b-0ee50e77f8fc}</Project>
-      <Name>AdonisUI</Name>
-    </ProjectReference>
-  </ItemGroup>
+
   <ItemGroup>
     <Page Include="DefaultStyles\Expander.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -231,5 +193,4 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
