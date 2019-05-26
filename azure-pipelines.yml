@@ -13,9 +13,9 @@ variables:
 
 steps:
 - task: DotNetCoreInstaller@0
-  displayName: 'Install .NET Core 3.0 Preview 3'
+  displayName: 'Install .NET Core 3.0 Preview 5'
   inputs:
-    version: '3.0.100-preview3-010431'
+    version: '3.0.100-preview5-011323'
 
 - task: NuGetToolInstaller@1
 
