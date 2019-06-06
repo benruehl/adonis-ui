@@ -12,9 +12,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: DotNetCoreInstaller@0
+- task: UseDotNet@2
   displayName: 'Install .NET Core 3.0 Preview 5'
   inputs:
+    packageType: 'sdk'
     version: '3.0.100-preview5-011323'
 
 - task: NuGetToolInstaller@1
