@@ -10,7 +10,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  MSBuildSDKsPath: 'C:\\hostedtoolcache\\windows\\dncs\\3.0.100-preview5-011323\\x64\\sdk\\3.0.100-preview5-011568\\Sdks'
 
 steps:
 - task: DotNetCoreInstaller@0
