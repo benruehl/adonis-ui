@@ -88,6 +88,15 @@
                     </ListView>
                 </TabItem>
 
+                <TabItem Header="Data Grid">
+                    <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                
                 <TabItem Header="Tree View">
                     <TreeView ItemsSource="{Binding Items}">
                         <TreeView.ItemTemplate>
@@ -124,6 +133,15 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
+                        </TabItem>
+
+                        <TabItem Header="Data Grid">
+                            <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </TabItem>
 
                         <TabItem Header="Tree View">
