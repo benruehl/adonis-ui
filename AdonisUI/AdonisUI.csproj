@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net40;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>1.10</Version>
+    <Version>1.11.0-preview1</Version>
     <Description>Core theme definitions for AdonisUI - a lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
@@ -15,7 +15,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>git</RepositoryType>
     <PackageTags>UI Styles Themes Templates Controls WPF XAML</PackageTags>
-    <PackageReleaseNotes>Progress bars can have content now that changes its foreground according to the current progress. Added style for ToggleButtons in toolbars. Added green success color and brush. ToggleButton's default style has been reworked. Further bugfixes.</PackageReleaseNotes>
+    <PackageReleaseNotes>.NET Core 3.0 is now supported.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
