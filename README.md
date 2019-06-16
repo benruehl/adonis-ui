@@ -3,7 +3,8 @@
 [![Build Status](https://dev.azure.com/devruehl/AdonisUI/_apis/build/status/benruehl.adonis-ui?branchName=master)](https://dev.azure.com/devruehl/AdonisUI/_build/latest?definitionId=1&branchName=master)
 [![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
-![.NET version: >= 4.0](https://img.shields.io/badge/.NET-%3E%3D%204.0-green.svg)
+![.NET Core Version: >= 3.0](https://img.shields.io/badge/.NET%20Core-%3E%3D%203.0-green.svg)
+![.NET Framework version: >= 4.0](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.0-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)	
 
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
@@ -32,7 +33,7 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 
 ## Getting started
 
-1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET 4.0.
+1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET Framework 4.0 or .NET Core 3.0.
 2. Add resources to your application in your `App.xaml` like so:
 
 ```xml
