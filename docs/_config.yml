@@ -3,3 +3,5 @@ description: >- # this means to ignore newlines until next key
   Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 github_username:  benruehl
 theme: jekyll-theme-cayman
+github: [metadata]
+nuget_url: https://www.nuget.org/packages/AdonisUI.ClassicTheme/

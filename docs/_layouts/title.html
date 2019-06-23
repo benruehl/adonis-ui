@@ -21,18 +21,17 @@
     <link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <header class="page-header top-bar" role="menubar">
-      <div class="page-header-content">
+    <header class="page-header bg-lights" role="banner">
+      <div class="page-header-content banner">
         <h1 class="project-name">
-          <a href="{{ site.baseurl }}">
-            <img src="{{ site.baseurl }}/img/logo-horizontal.svg" alt="{{ site.title | default: site.github.repository_name }}" class="project-logo"/>
-          </a>
+          <img src="{{ site.baseurl }}/img/logo-horizontal.svg" alt="{{ site.title | default: site.github.repository_name }}" class="project-logo"/>
         </h1>
+        <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
         <div class="external-links">
           {% if site.github.is_project_page %}
-            <a href="{{ site.github.repository_url }}" class="btn">GitHub & Demo</a>
+            <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
           {% endif %}
-          <a href="{{ site.nuget_url }}" class="btn">NuGet</a>
+          <a href="{{ site.nuget_url }}" class="btn">View on NuGet</a>
         </div>
       </div>
     </header>
