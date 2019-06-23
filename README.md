@@ -21,7 +21,7 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 - Extensions for built-in controls providing features like watermarks
 - Few custom controls for common use cases
 
-## Goals
+## Design principles
 
 1. Stay close to WPF's original look and feel
 2. Do not require any configuration but provide options for those who want to control global and individual behavior
