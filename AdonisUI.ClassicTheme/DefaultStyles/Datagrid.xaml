@@ -20,7 +20,7 @@
                 <ControlTemplate>
                     <adonisControls:ValidationErrorIndicator 
                         x:Name="ErrorAlertHost"
-                        ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                        ValidatedElement="{Binding Path=., RelativeSource={RelativeSource TemplatedParent}}"
                         IsValidatedElementFocused="{Binding IsFocused, RelativeSource={RelativeSource TemplatedParent}}"
                         IsErrorMessageDisplayOnFocusEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus}"
                         IsErrorMessageDisplayOnMouseOverEnabled="{TemplateBinding adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver}"
