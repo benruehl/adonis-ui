@@ -49,36 +49,37 @@
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
                                 SnapsToDevicePixels="False"/>
 
-                        <DataGridCellsPresenter ItemsPanel="{TemplateBinding ItemsPanel}"
-                                                Margin="{TemplateBinding Margin}"
-                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        <!-- TODO; DataGridDetailsPresenter -->
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </SelectiveScrollingGrid.RowDefinitions>
+
+                            <!-- NOTE; Data cells of DataGridRow -->
+                            <DataGridCellsPresenter Grid.Column="1"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    Margin="{TemplateBinding Margin}"
+                                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            
+                            <!-- TODO; DataGridDetailsPresenter -->
+                            
+                            <!-- NOTE; RowHeader space, located left of the data cells -->
+                            <DataGridRowHeader Grid.RowSpan="2"
+                                               SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                               Visibility="{Binding HeadersVisibility,
+                                                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}},
+                                                            ConverterParameter={x:Static DataGridHeadersVisibility.Row},
+                                                            Converter={x:Static DataGrid.HeadersVisibilityConverter}}"/>
+                        </SelectiveScrollingGrid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <Style x:Key="{x:Type DataGrid}" TargetType="{x:Type DataGrid}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type DataGrid}">
-                    <ScrollViewer Focusable="False">
-                        <ItemsPresenter />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsGrouping" Value="True">
-                <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
-            </Trigger>
-        </Style.Triggers>
     </Style>
 </ResourceDictionary>
