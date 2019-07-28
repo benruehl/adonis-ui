@@ -13,7 +13,7 @@
     <DynamicResource x:Key="{x:Static adonisUi:Colors.AccentInteractionForegroundColor}" ResourceKey="{x:Static adonisUi:Colors.AccentForegroundColor}"/>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BackgroundColor}">#2A2B34</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#3A3A4D</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#2A2B34</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#3D3D4C</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#4A4A5E</Color>
