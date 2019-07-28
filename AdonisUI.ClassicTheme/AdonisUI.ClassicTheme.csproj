@@ -27,8 +27,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <PackageReference Include="AdonisUI" Version="1.11.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\AdonisUI\AdonisUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
