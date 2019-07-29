@@ -47,10 +47,19 @@ namespace AdonisUI.Controls
         public Button CloseButton { get; protected set; }
 
         /// <summary>
+        /// Gets or sets the visibility of the icon component of the window.
+        /// </summary>
+        public Visibility IconVisibility
+        {
+            get => (Visibility)GetValue(IconVisibilityProperty);
+            set => SetValue(IconVisibilityProperty, value);
+        }
+
+        /// <summary>
         /// Gets or sets the window's icon as <see cref="ImageSource">ImageSource</see>.
         /// When the <see cref="Window.IconProperty">IconProperty</see> property changes, this is updated accordingly.
         /// </summary>
-        public ImageSource IconSource
+        protected internal ImageSource IconSource
         {
             get => (ImageSource)GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
@@ -75,11 +84,13 @@ namespace AdonisUI.Controls
             private set => SetValue(MaximizeBorderThicknessPropertyKey, value);
         }
 
-        public static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
+        public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
+
+        protected internal readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarContentProperty = DependencyProperty.Register("TitleBarContent", typeof(object), typeof(AdonisWindow), new PropertyMetadata(null));
 
-        public static readonly DependencyPropertyKey MaximizeBorderThicknessPropertyKey = DependencyProperty.RegisterReadOnly("MaximizeBorderThickness", typeof(Thickness), typeof(AdonisWindow), new PropertyMetadata(new Thickness()));
+        protected internal static readonly DependencyPropertyKey MaximizeBorderThicknessPropertyKey = DependencyProperty.RegisterReadOnly("MaximizeBorderThickness", typeof(Thickness), typeof(AdonisWindow), new PropertyMetadata(new Thickness()));
 
         protected internal static readonly DependencyProperty MaximizeBorderThicknessProperty = MaximizeBorderThicknessPropertyKey.DependencyProperty;
 
@@ -91,8 +102,12 @@ namespace AdonisUI.Controls
 
         private static void OnIconPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is AdonisWindow sourceWindow)
-                sourceWindow.IconSource = new BitmapImage(new Uri(e.NewValue.ToString()));
+            if (!(d is AdonisWindow sourceWindow))
+                return;
+
+            string newIcon = e.NewValue.ToString();
+
+            sourceWindow.IconSource = String.IsNullOrEmpty(newIcon) ? null : new BitmapImage(new Uri(newIcon));
         }
 
         /// <inheritdoc/>

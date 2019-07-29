@@ -52,16 +52,17 @@
                                               Margin="8, 0, 0, 0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="5"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
                                             <Image x:Name="PART_Icon"
                                                    Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                   Visibility="{Binding IconVisibility, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                    Width="16"
-                                                   Height="16"/>
+                                                   Height="16"
+                                                   Margin="0, 0, 5, 0"/>
 
-                                            <TextBlock Grid.Column="2"
+                                            <TextBlock Grid.Column="1"
                                                        Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                        VerticalAlignment="Center"
                                                        FontSize="11.5"
