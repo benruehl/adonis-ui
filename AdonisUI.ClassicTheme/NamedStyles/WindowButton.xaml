@@ -6,7 +6,9 @@
     <Style x:Key="{x:Static adonisUi:Styles.WindowButton}"
            TargetType="Button">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.WindowButtonHighlightBrush}}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Width" Value="45"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="1, 0, 0, 1"/>
@@ -18,6 +20,8 @@
                     <Grid>
                         <Border x:Name="Border"
                                 Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
                                 Opacity="0"/>
 
                         <ContentPresenter Content="{TemplateBinding Content}"
@@ -56,7 +60,11 @@
         </Setter>
 
         <Style.Triggers>
-        
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.WindowButtonInteractionBrush}}"/>
+            </Trigger>
+
             <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
             </DataTrigger>
@@ -75,6 +83,9 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="#ffffff"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#f1707a"/>
             </Trigger>
         </Style.Triggers>
     </Style>

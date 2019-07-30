@@ -66,6 +66,9 @@
     <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffc107</Color>
     <Color x:Key="{x:Static adonisUi:Colors.HyperlinkColor}">#3377c6</Color>
 
+    <Color x:Key="{x:Static adonisUi:Colors.WindowButtonHighlightColor}">#3D3D4C</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.WindowButtonInteractionColor}">#4C4F62</Color>
+
     <!-- brushes -->
 
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
@@ -129,5 +132,8 @@
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}"/>
+
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonHighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonInteractionColor}}"/>
     
 </ResourceDictionary>
