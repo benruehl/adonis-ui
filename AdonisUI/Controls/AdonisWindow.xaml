@@ -130,6 +130,9 @@
                             <Setter Property="BorderThickness"
                                     TargetName="Border"
                                     Value="{Binding MaximizeBorderThickness, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush"
+                                    TargetName="Border"
+                                    Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter Property="Content"
                                     TargetName="PART_MaximizeRestoreButton">
                                 <Setter.Value>
