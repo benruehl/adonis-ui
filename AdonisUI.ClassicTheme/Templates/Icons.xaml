@@ -102,5 +102,45 @@
             </Canvas>
         </Viewbox>
     </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static adonisUi:Icons.WindowMinimize}">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="2048"
+                    Height="2048">
+                <Path Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Control}}"
+                      Data="M2048 819v205H0V819h2048z"/>
+            </Canvas>
+        </Viewbox>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static adonisUi:Icons.WindowMaximize}">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="2048"
+                    Height="2048">
+                <Path Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Control}}"
+                      Data="M2048 0v2048H0V0h2048zm-205 205H205v1638h1638V205z"/>
+            </Canvas>
+        </Viewbox>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static adonisUi:Icons.WindowRestore}">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="2048"
+                    Height="2048">
+                <Path Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Control}}"
+                      Data="M2048 1638h-410v410H0V410h410V0h1638v1638zM1434 614H205v1229h1229V614zm409-409H614v205h1024v1024h205V205z"/>
+            </Canvas>
+        </Viewbox>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static adonisUi:Icons.WindowClose}">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="2048"
+                    Height="2048">
+                <Path Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Control}}"
+                      Data="M1169 1024l879 879-145 145-879-879-879 879L0 1903l879-879L0 145 145 0l879 879L1903 0l145 145z"/>
+            </Canvas>
+        </Viewbox>
+    </DataTemplate>
     
 </ResourceDictionary>

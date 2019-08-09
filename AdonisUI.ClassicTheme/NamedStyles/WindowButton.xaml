@@ -12,8 +12,11 @@
         <Setter Property="Width" Value="45"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="1, 0, 0, 1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="TextElement.FontFamily" Value="Segoe MDL2 Assets"/>
         <Setter Property="TextElement.FontSize" Value="10"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -25,8 +28,10 @@
                                 Opacity="0"/>
 
                         <ContentPresenter Content="{TemplateBinding Content}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
                                           RenderOptions.ClearTypeHint="Auto"
                                           TextOptions.TextRenderingMode="Auto"
                                           TextOptions.TextFormattingMode="Display"/>

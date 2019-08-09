@@ -87,18 +87,27 @@
 
                                         <Button x:Name="PART_MinimizeButton"
                                                 Grid.Column="0"
-                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
-                                                Content="&#xE949;"/>
+                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}">
+                                            <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMinimize}}"
+                                                            Width="10"
+                                                            Height="10"/>
+                                        </Button>
 
                                         <Button x:Name="PART_MaximizeRestoreButton"
                                                 Grid.Column="1"
-                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
-                                                Content="&#xE739;"/>
+                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}">
+                                            <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMaximize}}"
+                                                            Width="10"
+                                                            Height="10"/>
+                                        </Button>
 
                                         <Button x:Name="PART_CloseButton"
                                                 Grid.Column="2"
-                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowCloseButton}}"
-                                                Content="&#xE106;"/>
+                                                Style="{DynamicResource {x:Static adonisUi:Styles.WindowCloseButton}}">
+                                            <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowClose}}"
+                                                            Width="10"
+                                                            Height="10"/>
+                                        </Button>
                                     </Grid>
                                 </Grid>
                             </Border>
@@ -122,8 +131,13 @@
                                     TargetName="Border"
                                     Value="{Binding MaximizeBorderThickness, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter Property="Content"
-                                    TargetName="PART_MaximizeRestoreButton"
-                                    Value="&#xE923;"/>
+                                    TargetName="PART_MaximizeRestoreButton">
+                                <Setter.Value>
+                                    <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowRestore}}"
+                                                    Width="10"
+                                                    Height="10"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
 
                         <Trigger Property="WindowStyle" Value="ToolWindow">
