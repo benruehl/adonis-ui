@@ -16,7 +16,7 @@
                 <WindowChrome ResizeBorderThickness="{Binding Source={x:Static SystemParameters.WindowResizeBorderThickness}}"
                               CaptionHeight="{Binding TitleHeight}"
                               CornerRadius="0"
-                              GlassFrameThickness="1"
+                              GlassFrameThickness="1, 2, 1, 1"
                               NonClientFrameEdges="None"/>
             </Setter.Value>
         </Setter>
