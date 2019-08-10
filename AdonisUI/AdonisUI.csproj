@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net40;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Version>1.11.0</Version>
     <Description>Core theme definitions for AdonisUI - a lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals</Description>
@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Controls\AdonisWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Include="ColorSchemes\Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -35,6 +39,10 @@
     <Page Include="ColorSchemes\Light.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AdonisWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RippleHost.xaml">
       <Generator>MSBuild:Compile</Generator>

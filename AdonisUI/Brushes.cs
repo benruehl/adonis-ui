@@ -70,5 +70,8 @@ namespace AdonisUI
         public static ComponentResourceKey ErrorBrush => new ComponentResourceKey(typeof(Brushes), "ErrorBrush");
         public static ComponentResourceKey AlertBrush => new ComponentResourceKey(typeof(Brushes), "AlertBrush");
         public static ComponentResourceKey HyperlinkBrush => new ComponentResourceKey(typeof(Brushes), "HyperlinkBrush");
+
+        public static ComponentResourceKey WindowButtonHighlightBrush => new ComponentResourceKey(typeof(Brushes), "WindowButtonHighlightBrush");
+        public static ComponentResourceKey WindowButtonInteractionBrush => new ComponentResourceKey(typeof(Brushes), "WindowButtonInteractionBrush");
     }
 }

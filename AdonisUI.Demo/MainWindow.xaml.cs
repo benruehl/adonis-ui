@@ -13,15 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdonisUI.Controls;
 using AdonisUI.Demo.ViewModels;
 using IssueDialog = AdonisUI.Demo.Views.Issues.IssueDialog;
 
 namespace AdonisUI.Demo
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : AdonisWindow
     {
         public MainWindow()
         {
