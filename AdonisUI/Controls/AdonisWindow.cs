@@ -23,7 +23,7 @@ namespace AdonisUI.Controls
     /// Window with custom chrome supporting theming of non-client areas
     /// </summary>
     [TemplatePart(Name = PART_DragMoveThumb, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = PART_Icon, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = PART_IconPresenter, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = PART_MinimizeButton, Type = typeof(Button))]
     [TemplatePart(Name = PART_MaximizeRestoreButton, Type = typeof(Button))]
     [TemplatePart(Name = PART_CloseButton, Type = typeof(Button))]
@@ -31,14 +31,14 @@ namespace AdonisUI.Controls
         : Window
     {
         private const string PART_DragMoveThumb = "PART_DragMoveThumb";
-        private const string PART_Icon = "PART_Icon";
+        private const string PART_IconPresenter = "PART_IconPresenter";
         private const string PART_MinimizeButton = "PART_MinimizeButton";
         private const string PART_MaximizeRestoreButton = "PART_MaximizeRestoreButton";
         private const string PART_CloseButton = "PART_CloseButton";
 
         public FrameworkElement DragMoveThumb { get; protected set; }
 
-        public FrameworkElement Icon { get; protected set; }
+        public FrameworkElement IconPresenter { get; protected set; }
 
         public Button MinimizeButton { get; protected set; }
 
@@ -145,15 +145,15 @@ namespace AdonisUI.Controls
             base.OnApplyTemplate();
 
             DragMoveThumb = GetTemplateChild(PART_DragMoveThumb) as FrameworkElement;
-            Icon = GetTemplateChild(PART_Icon) as FrameworkElement;
+            IconPresenter = GetTemplateChild(PART_IconPresenter) as FrameworkElement;
             MinimizeButton = GetTemplateChild(PART_MinimizeButton) as Button;
             MaximizeRestoreButton = GetTemplateChild(PART_MaximizeRestoreButton) as Button;
             CloseButton = GetTemplateChild(PART_CloseButton) as Button;
 
             if (DragMoveThumb != null)
                 InitDragMoveThumb(DragMoveThumb);
-            if (Icon != null)
-                InitIcon(Icon);
+            if (IconPresenter != null)
+                InitIconPresenter(IconPresenter);
             if (MinimizeButton != null)
                 InitMinimizeButton(MinimizeButton);
             if (MaximizeRestoreButton != null)
@@ -219,12 +219,12 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
-        /// Initializes functionality of the icon component of the window's title bar.
+        /// Initializes functionality of the icon presenter component of the window's title bar.
         /// </summary>
-        /// <param name="icon">The icon component of the window</param>
-        protected virtual void InitIcon(FrameworkElement icon)
+        /// <param name="iconPresenter">The icon presenter component of the window</param>
+        protected virtual void InitIconPresenter(FrameworkElement iconPresenter)
         {
-            icon.MouseLeftButtonDown += (s, e) =>
+            iconPresenter.MouseLeftButtonDown += (s, e) =>
             {
                 if (e.ClickCount == 2)
                 {
@@ -232,7 +232,7 @@ namespace AdonisUI.Controls
                     return;
                 }
 
-                var anchorElement = DragMoveThumb ?? Icon;
+                var anchorElement = DragMoveThumb ?? IconPresenter;
                 var menuPosition = anchorElement.TranslatePoint(new Point(0, anchorElement.ActualHeight), this);
                 OpenSystemContextMenu(menuPosition);
             };

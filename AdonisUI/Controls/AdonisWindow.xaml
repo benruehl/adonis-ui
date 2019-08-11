@@ -55,7 +55,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Image x:Name="PART_Icon"
+                                            <Image x:Name="PART_IconPresenter"
                                                    Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                    Visibility="{Binding IconVisibility, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                    Width="16"
