@@ -12,10 +12,6 @@
                              Width="1280"
                              Height="720">
 
-    <Window.Style>
-        <Style TargetType="{x:Type adonisControls:AdonisWindow}"/>
-    </Window.Style>
-    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
