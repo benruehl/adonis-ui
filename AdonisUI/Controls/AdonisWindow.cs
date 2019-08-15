@@ -160,6 +160,8 @@ namespace AdonisUI.Controls
                 InitMaximizeRestoreButton(MaximizeRestoreButton);
             if (CloseButton != null)
                 InitCloseButton(CloseButton);
+
+            UpdateLayoutForSizeToContent();
         }
 
         /// <summary>
@@ -309,6 +311,26 @@ namespace AdonisUI.Controls
         protected virtual void OpenSystemContextMenu(Point positionInWindow)
         {
             SystemContextMenu.OpenSystemContextMenu(this, positionInWindow);
+        }
+
+        /// <summary>
+        /// When using <see cref="SizeToContent.WidthAndHeight"/> the layout might not be calculated correctly
+        /// which can result in the window being too large and having large black borders filling the remaining space.
+        /// This method can be used to force a layout update again to recalculate the window size correctly.
+        /// See https://social.msdn.microsoft.com/Forums/vstudio/en-US/89fe6959-ce1a-4064-bdde-94151df7dc01/gradient-style-issue-when-sizetocontentheightandwidth-with-customchrome?forum=wpf
+        /// </summary>
+        private void UpdateLayoutForSizeToContent()
+        {
+            if (SizeToContent == SizeToContent.WidthAndHeight)
+            {
+                var previousSizeToContent = SizeToContent;
+                SizeToContent = SizeToContent.Manual;
+
+                Dispatcher?.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                {
+                    SizeToContent = previousSizeToContent;
+                }));
+            }
         }
     }
 }
