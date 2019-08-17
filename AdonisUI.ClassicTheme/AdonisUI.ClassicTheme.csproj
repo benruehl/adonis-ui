@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>1.12.0-preview1</Version>
+    <Version>1.12.0-preview2</Version>
     <Description>Styles implementing AdonisUI's theme definitions to provide classic look and feel.</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageReference Include="AdonisUI" Version="1.12.0-preview1" />
+    <PackageReference Include="AdonisUI" Version="1.12.0-preview2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
