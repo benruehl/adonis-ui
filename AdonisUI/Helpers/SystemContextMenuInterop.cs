@@ -8,7 +8,7 @@ namespace AdonisUI.Helpers
     /// <summary>
     /// Helper class for interactions with the system's native context menu
     /// </summary>
-    internal static class SystemContextMenu
+    internal static class SystemContextMenuInterop
     {
         public static uint TPM_LEFTALIGN = 0;
 

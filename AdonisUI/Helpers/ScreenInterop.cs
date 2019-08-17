@@ -13,7 +13,7 @@ namespace AdonisUI.Helpers
     /// Represents a display device or multiple display devices on a single system.
     /// See https://github.com/micdenny/WpfScreenHelper/
     /// </summary>
-    internal class Screen
+    internal class ScreenInterop
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern bool GetMonitorInfo(HandleRef hmonitor, [In, Out] MONITORINFOEX info);
@@ -177,17 +177,17 @@ namespace AdonisUI.Helpers
 
         private static readonly bool MultiMonitorSupport;
 
-        static Screen()
+        static ScreenInterop()
         {
             MultiMonitorSupport = GetSystemMetrics(SM_CMONITORS) != 0;
         }
 
-        private Screen(IntPtr monitor)
+        private ScreenInterop(IntPtr monitor)
             : this(monitor, IntPtr.Zero)
         {
         }
 
-        private Screen(IntPtr monitor, IntPtr hdc)
+        private ScreenInterop(IntPtr monitor, IntPtr hdc)
         {
             if (!MultiMonitorSupport || monitor == (IntPtr)PRIMARY_MONITOR)
             {
@@ -217,7 +217,7 @@ namespace AdonisUI.Helpers
         /// Gets an array of all displays on the system.
         /// </summary>
         /// <returns>An enumerable of type Screen, containing all displays on the system.</returns>
-        public static IEnumerable<Screen> AllScreens
+        public static IEnumerable<ScreenInterop> AllScreens
         {
             get
             {
@@ -229,10 +229,10 @@ namespace AdonisUI.Helpers
                     EnumDisplayMonitors(NullHandleRef, null, proc, IntPtr.Zero);
 
                     if (closure.Screens.Count > 0)
-                        return closure.Screens.Cast<Screen>();
+                        return closure.Screens.Cast<ScreenInterop>();
                 }
 
-                return new[] { new Screen((IntPtr)PRIMARY_MONITOR) };
+                return new[] { new ScreenInterop((IntPtr)PRIMARY_MONITOR) };
             }
         }
 
@@ -258,7 +258,7 @@ namespace AdonisUI.Helpers
         /// Gets the primary display.
         /// </summary>
         /// <returns>The primary display.</returns>
-        public static Screen PrimaryScreen
+        public static ScreenInterop PrimaryScreen
         {
             get
             {
@@ -266,7 +266,7 @@ namespace AdonisUI.Helpers
                 {
                     return AllScreens.FirstOrDefault(t => t.Primary);
                 }
-                return new Screen((IntPtr)PRIMARY_MONITOR);
+                return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
             }
         }
 
@@ -296,13 +296,13 @@ namespace AdonisUI.Helpers
         /// </summary>
         /// <param name="hwnd">The window handle for which to retrieve the Screen.</param>
         /// <returns>A Screen for the display that contains the largest region of the object. In multiple display environments where no display contains any portion of the specified window, the display closest to the object is returned.</returns>
-        public static Screen FromHandle(IntPtr hwnd)
+        public static ScreenInterop FromHandle(IntPtr hwnd)
         {
             if (MultiMonitorSupport)
             {
-                return new Screen(MonitorFromWindow(new HandleRef(null, hwnd), 2));
+                return new ScreenInterop(MonitorFromWindow(new HandleRef(null, hwnd), 2));
             }
-            return new Screen((IntPtr)PRIMARY_MONITOR);
+            return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
         }
 
         /// <summary>
@@ -310,14 +310,14 @@ namespace AdonisUI.Helpers
         /// </summary>
         /// <param name="point">A <see cref="T:System.Windows.Point" /> that specifies the location for which to retrieve a Screen.</param>
         /// <returns>A Screen for the display that contains the point. In multiple display environments where no display contains the point, the display closest to the specified point is returned.</returns>
-        public static Screen FromPoint(Point point)
+        public static ScreenInterop FromPoint(Point point)
         {
             if (MultiMonitorSupport)
             {
                 var pt = new POINTSTRUCT((int)point.X, (int)point.Y);
-                return new Screen(MonitorFromPoint(pt, MONITOR_DEFAULTTONEAREST));
+                return new ScreenInterop(MonitorFromPoint(pt, MONITOR_DEFAULTTONEAREST));
             }
-            return new Screen((IntPtr)PRIMARY_MONITOR);
+            return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace AdonisUI.Helpers
         /// <returns>true if the specified object is equal to this Screen; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
-            return obj is Screen monitor && hmonitor == monitor.hmonitor;
+            return obj is ScreenInterop monitor && hmonitor == monitor.hmonitor;
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace AdonisUI.Helpers
 
             public bool Callback(IntPtr monitor, IntPtr hdc, IntPtr lprcMonitor, IntPtr lparam)
             {
-                this.Screens.Add(new Screen(monitor, hdc));
+                this.Screens.Add(new ScreenInterop(monitor, hdc));
                 return true;
             }
         }

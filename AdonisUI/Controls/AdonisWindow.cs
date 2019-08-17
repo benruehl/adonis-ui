@@ -290,7 +290,7 @@ namespace AdonisUI.Controls
 
             Point positionInWindow = e.MouseDevice.GetPosition(this);
             Point positionOnScreen = PointToScreen(positionInWindow);
-            Screen currentScreen = Screen.FromPoint(positionOnScreen);
+            ScreenInterop currentScreen = ScreenInterop.FromPoint(positionOnScreen);
 
             double restoreLeft = positionOnScreen.X - (RestoreBounds.Width * 0.5);
             double restoreTop = positionOnScreen.Y - (positionInWindow.Y - MaximizeBorderThickness.Top);
@@ -314,7 +314,7 @@ namespace AdonisUI.Controls
         /// <param name="positionInWindow">Coordinate of top left corner of the context menu relative to the window</param>
         protected virtual void OpenSystemContextMenu(Point positionInWindow)
         {
-            SystemContextMenu.OpenSystemContextMenu(this, positionInWindow);
+            SystemContextMenuInterop.OpenSystemContextMenu(this, positionInWindow);
         }
 
         /// <summary>
