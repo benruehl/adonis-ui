@@ -276,9 +276,9 @@ namespace AdonisUI.Controls
         protected virtual void ToggleWindowState()
         {
             if (WindowState == WindowState.Normal)
-                HwndInterop.Maximize();
+                WindowState = WindowState.Maximized;
             else
-                HwndInterop.Restore();
+                WindowState = WindowState.Normal;
         }
 
         private void RestoreOnMouseMove(object sender, MouseEventArgs e)
@@ -303,7 +303,7 @@ namespace AdonisUI.Controls
 
             Left = restoreLeft;
             Top = restoreTop;
-            HwndInterop.Restore();
+            WindowState = WindowState.Normal;
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
