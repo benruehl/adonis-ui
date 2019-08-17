@@ -166,6 +166,7 @@ namespace AdonisUI.Controls
                 InitCloseButton(CloseButton);
 
             UpdateLayoutForSizeToContent();
+            HwndInterop.PositionChanging += DisableSizeToContentWhenMaximizing;
         }
 
         /// <summary>
@@ -334,6 +335,18 @@ namespace AdonisUI.Controls
                 {
                     SizeToContent = previousSizeToContent;
                 }));
+            }
+        }
+
+        /// <summary>
+        /// In order to maximize the window correctly, <see cref="SizeToContent.WidthAndHeight"/> must not be set.
+        /// This method ensures that <see cref="SizeToContent.Manual"/> is set when the window is about to be maximized.
+        /// </summary>
+        private void DisableSizeToContentWhenMaximizing(object sender, HwndInteropPositionChangingEventArgs e)
+        {
+            if (e.Type == HwndInteropPositionChangingEventArgs.PositionChangeType.MAXIMIZERESTORE)
+            {
+                SizeToContent = SizeToContent.Manual;
             }
         }
     }
