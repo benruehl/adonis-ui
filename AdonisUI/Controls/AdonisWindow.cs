@@ -36,6 +36,8 @@ namespace AdonisUI.Controls
         private const string PART_MaximizeRestoreButton = "PART_MaximizeRestoreButton";
         private const string PART_CloseButton = "PART_CloseButton";
 
+        protected HwndInterop HwndInterop { get; private set; }
+
         public FrameworkElement DragMoveThumb { get; protected set; }
 
         public FrameworkElement IconPresenter { get; protected set; }
@@ -143,6 +145,8 @@ namespace AdonisUI.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
+            HwndInterop = new HwndInterop(this);
 
             DragMoveThumb = GetTemplateChild(PART_DragMoveThumb) as FrameworkElement;
             IconPresenter = GetTemplateChild(PART_IconPresenter) as FrameworkElement;
@@ -271,9 +275,9 @@ namespace AdonisUI.Controls
         protected virtual void ToggleWindowState()
         {
             if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
+                HwndInterop.Maximize();
             else
-                WindowState = WindowState.Normal;
+                HwndInterop.Restore();
         }
 
         private void RestoreOnMouseMove(object sender, MouseEventArgs e)
@@ -298,7 +302,7 @@ namespace AdonisUI.Controls
 
             Left = restoreLeft;
             Top = restoreTop;
-            WindowState = WindowState.Normal;
+            HwndInterop.Restore();
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
