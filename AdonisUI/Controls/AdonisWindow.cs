@@ -292,17 +292,20 @@ namespace AdonisUI.Controls
             Point positionInWindow = e.MouseDevice.GetPosition(this);
             Point positionOnScreen = PointToScreen(positionInWindow);
             ScreenInterop currentScreen = ScreenInterop.FromPoint(positionOnScreen);
+            Point restoreSizeOnScreen = PointToScreen(new Point(RestoreBounds.Width, RestoreBounds.Height));
 
-            double restoreLeft = positionOnScreen.X - (RestoreBounds.Width * 0.5);
+            double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.X * 0.5);
             double restoreTop = positionOnScreen.Y - (positionInWindow.Y - MaximizeBorderThickness.Top);
 
             if (restoreLeft < currentScreen.Bounds.Left)
                 restoreLeft = currentScreen.Bounds.Left;
-            else if (restoreLeft + RestoreBounds.Width > currentScreen.Bounds.Right)
-                restoreLeft = currentScreen.Bounds.Right - RestoreBounds.Width;
+            else if (restoreLeft + restoreSizeOnScreen.X > currentScreen.Bounds.Right)
+                restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.X;
 
-            Left = restoreLeft;
-            Top = restoreTop;
+            Point restoreSizeOnApp = PointFromScreen(new Point(restoreLeft, restoreTop));
+
+            Left = restoreSizeOnApp.X;
+            Top = restoreSizeOnApp.Y;
             WindowState = WindowState.Normal;
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
