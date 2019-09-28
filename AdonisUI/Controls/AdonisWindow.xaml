@@ -33,6 +33,8 @@
 
                                 <Border x:Name="TitleBar"
                                         DockPanel.Dock="Top"
+                                        KeyboardNavigation.TabNavigation="None"
+                                        KeyboardNavigation.DirectionalNavigation="None"
                                         Background="{TemplateBinding BorderBrush}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>

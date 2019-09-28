@@ -16,6 +16,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="TextElement.FontFamily" Value="Segoe MDL2 Assets"/>
         <Setter Property="TextElement.FontSize" Value="10"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
