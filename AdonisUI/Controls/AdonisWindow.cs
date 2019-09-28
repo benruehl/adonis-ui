@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using AdonisUI.Helpers;
+using Brush = System.Windows.Media.Brush;
 using Point = System.Windows.Point;
 using Size = System.Windows.Size;
 
@@ -79,6 +80,34 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
+        /// Gets or sets the foreground brush of the window's title bar.
+        /// </summary>
+        public Brush TitleBarForeground
+        {
+            get { return (Brush)GetValue(TitleBarForegroundProperty); }
+            set { SetValue(TitleBarForegroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the background brush of the window's title bar.
+        /// </summary>
+        public Brush TitleBarBackground
+        {
+            get { return (Brush)GetValue(TitleBarBackgroundProperty); }
+            set { SetValue(TitleBarBackgroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the background brush of the minimize, maximize and restore
+        /// buttons when they are hovered.
+        /// </summary>
+        public Brush WindowButtonHighlightBrush
+        {
+            get { return (Brush)GetValue(WindowButtonHighlightBrushProperty); }
+            set { SetValue(WindowButtonHighlightBrushProperty, value); }
+        }
+
+        /// <summary>
         /// Gets the size of the display overlapping area when the window is maximized.
         /// </summary>
         protected internal Thickness MaximizeBorderThickness
@@ -92,6 +121,12 @@ namespace AdonisUI.Controls
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarContentProperty = DependencyProperty.Register("TitleBarContent", typeof(object), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBarForegroundProperty = DependencyProperty.Register("TitleBarForeground", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBarBackgroundProperty = DependencyProperty.Register("TitleBarBackground", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty WindowButtonHighlightBrushProperty = DependencyProperty.Register("WindowButtonHighlightBrush", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
 
         protected internal static readonly DependencyPropertyKey MaximizeBorderThicknessPropertyKey = DependencyProperty.RegisterReadOnly("MaximizeBorderThickness", typeof(Thickness), typeof(AdonisWindow), new PropertyMetadata(new Thickness()));
 

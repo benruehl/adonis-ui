@@ -11,6 +11,9 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="TitleBarForeground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+        <Setter Property="TitleBarBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}"/>
+        <Setter Property="WindowButtonHighlightBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.WindowButtonHighlightBrush}}"/>
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome ResizeBorderThickness="{Binding Source={x:Static SystemParameters.WindowResizeBorderThickness}}"
@@ -35,7 +38,8 @@
                                         DockPanel.Dock="Top"
                                         KeyboardNavigation.TabNavigation="None"
                                         KeyboardNavigation.DirectionalNavigation="None"
-                                        Background="{TemplateBinding BorderBrush}">
+                                        Background="{TemplateBinding TitleBarBackground}"
+                                        TextElement.Foreground="{TemplateBinding TitleBarForeground}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -90,7 +94,9 @@
 
                                             <Button x:Name="PART_MinimizeButton"
                                                     Grid.Column="0"
-                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}">
+                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
+                                                    Foreground="{TemplateBinding TitleBarForeground}"
+                                                    Background="{TemplateBinding WindowButtonHighlightBrush}">
                                                 <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMinimize}}"
                                                                 Width="10"
                                                                 Height="10"/>
@@ -98,7 +104,9 @@
 
                                             <Button x:Name="PART_MaximizeRestoreButton"
                                                     Grid.Column="1"
-                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}">
+                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
+                                                    Foreground="{TemplateBinding TitleBarForeground}"
+                                                    Background="{TemplateBinding WindowButtonHighlightBrush}">
                                                 <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMaximize}}"
                                                                 Width="10"
                                                                 Height="10"/>
@@ -106,7 +114,8 @@
 
                                             <Button x:Name="PART_CloseButton"
                                                     Grid.Column="2"
-                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowCloseButton}}">
+                                                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowCloseButton}}"
+                                                    Foreground="{TemplateBinding TitleBarForeground}">
                                                 <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowClose}}"
                                                                 Width="10"
                                                                 Height="10"/>
@@ -126,7 +135,16 @@
                         
                         <Trigger Property="IsActive" Value="False">
                             <Setter Property="TextElement.Foreground"
-                                    TargetName="PART_DragMoveThumb"
+                                    TargetName="TitleBar"
+                                    Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                            <Setter Property="Foreground"
+                                    TargetName="PART_MinimizeButton"
+                                    Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                            <Setter Property="Foreground"
+                                    TargetName="PART_MaximizeRestoreButton"
+                                    Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                            <Setter Property="Foreground"
+                                    TargetName="PART_CloseButton"
                                     Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
                         </Trigger>
 
