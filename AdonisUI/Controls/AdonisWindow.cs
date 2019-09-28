@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using System.Xml.Serialization;
 using AdonisUI.Helpers;
 using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace AdonisUI.Controls
 {
@@ -292,14 +293,15 @@ namespace AdonisUI.Controls
             Point positionInWindow = e.MouseDevice.GetPosition(this);
             Point positionOnScreen = PointToScreen(positionInWindow);
             ScreenInterop currentScreen = ScreenInterop.FromPoint(positionOnScreen);
+            Size restoreSizeOnScreen = SizeToScreen(new Size(RestoreBounds.Width, RestoreBounds.Height));
 
-            double restoreLeft = positionOnScreen.X - (RestoreBounds.Width * 0.5);
+            double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.Width * 0.5);
             double restoreTop = positionOnScreen.Y - (positionInWindow.Y - MaximizeBorderThickness.Top);
 
             if (restoreLeft < currentScreen.Bounds.Left)
                 restoreLeft = currentScreen.Bounds.Left;
-            else if (restoreLeft + RestoreBounds.Width > currentScreen.Bounds.Right)
-                restoreLeft = currentScreen.Bounds.Right - RestoreBounds.Width;
+            else if (restoreLeft + restoreSizeOnScreen.Width > currentScreen.Bounds.Right)
+                restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.Width;
 
             Left = restoreLeft;
             Top = restoreTop;
@@ -307,6 +309,21 @@ namespace AdonisUI.Controls
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        /// <summary>
+        /// Converts a Size that represents the current coordinate system of the window
+        /// into a Size in screen coordinates.
+        /// </summary>
+        protected Size SizeToScreen(Size size)
+        {
+            PresentationSource presentationSource = PresentationSource.FromVisual(this);
+
+            if (presentationSource?.CompositionTarget == null)
+                return size;
+
+            Matrix transformToDevice = presentationSource.CompositionTarget.TransformToDevice;
+            return (Size)transformToDevice.Transform(new Vector(size.Width, size.Height));
         }
 
         /// <summary>
