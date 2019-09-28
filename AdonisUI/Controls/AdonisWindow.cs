@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using System.Xml.Serialization;
 using AdonisUI.Helpers;
 using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace AdonisUI.Controls
 {
@@ -292,24 +293,37 @@ namespace AdonisUI.Controls
             Point positionInWindow = e.MouseDevice.GetPosition(this);
             Point positionOnScreen = PointToScreen(positionInWindow);
             ScreenInterop currentScreen = ScreenInterop.FromPoint(positionOnScreen);
-            Point restoreSizeOnScreen = PointToScreen(new Point(RestoreBounds.Width, RestoreBounds.Height));
+            Size restoreSizeOnScreen = SizeToScreen(new Size(RestoreBounds.Width, RestoreBounds.Height));
 
-            double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.X * 0.5);
+            double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.Width * 0.5);
             double restoreTop = positionOnScreen.Y - (positionInWindow.Y - MaximizeBorderThickness.Top);
 
             if (restoreLeft < currentScreen.Bounds.Left)
                 restoreLeft = currentScreen.Bounds.Left;
-            else if (restoreLeft + restoreSizeOnScreen.X > currentScreen.Bounds.Right)
-                restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.X;
+            else if (restoreLeft + restoreSizeOnScreen.Width > currentScreen.Bounds.Right)
+                restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.Width;
 
-            Point restoreSizeOnApp = PointFromScreen(new Point(restoreLeft, restoreTop));
-
-            Left = restoreSizeOnApp.X;
-            Top = restoreSizeOnApp.Y;
+            Left = restoreLeft;
+            Top = restoreTop;
             WindowState = WindowState.Normal;
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        /// <summary>
+        /// Converts a Size that represents the current coordinate system of the window
+        /// into a Size in screen coordinates.
+        /// </summary>
+        protected Size SizeToScreen(Size size)
+        {
+            PresentationSource presentationSource = PresentationSource.FromVisual(this);
+
+            if (presentationSource?.CompositionTarget == null)
+                return size;
+
+            Matrix transformToDevice = presentationSource.CompositionTarget.TransformToDevice;
+            return (Size)transformToDevice.Transform(new Vector(size.Width, size.Height));
         }
 
         /// <summary>
