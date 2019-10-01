@@ -338,12 +338,27 @@ namespace AdonisUI.Controls
             else if (restoreLeft + restoreSizeOnScreen.Width > currentScreen.Bounds.Right)
                 restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.Width;
 
-            Left = restoreLeft;
-            Top = restoreTop;
+            // since we calculated with screen values, we need to convert back to window values
+            Point screenPoint = new Point(restoreLeft, restoreTop);
+            Point windowPoint = PointToWindow(screenPoint);
+
+            Left = windowPoint.X;
+            Top = windowPoint.Y;
             WindowState = WindowState.Normal;
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        protected Point PointToWindow(Point point)
+        {
+            PresentationSource presentationSource = PresentationSource.FromVisual(this);
+
+            if (presentationSource?.CompositionTarget == null)
+                return point;
+
+            Matrix transformFromDevice = presentationSource.CompositionTarget.TransformFromDevice;
+            return transformFromDevice.Transform(point);
         }
 
         /// <summary>
