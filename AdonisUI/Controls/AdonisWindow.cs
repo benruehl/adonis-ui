@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -331,7 +331,7 @@ namespace AdonisUI.Controls
             Size restoreSizeOnScreen = SizeToScreen(new Size(RestoreBounds.Width, RestoreBounds.Height));
 
             double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.Width * 0.5);
-            double restoreTop = positionOnScreen.Y - (positionInWindow.Y - MaximizeBorderThickness.Top);
+            double restoreTop = positionOnScreen.Y - MaximizeBorderThickness.Top;
 
             if (restoreLeft < currentScreen.Bounds.Left)
                 restoreLeft = currentScreen.Bounds.Left;
