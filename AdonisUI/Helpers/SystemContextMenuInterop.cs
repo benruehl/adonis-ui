@@ -26,17 +26,11 @@ namespace AdonisUI.Helpers
         [DllImport("user32.dll", CharSet = CharSet.None, ExactSpelling = false)]
         public static extern int TrackPopupMenuEx(IntPtr hmenu, uint fuFlags, int x, int y, IntPtr hwnd, IntPtr lptpm);
 
-        private static int c = 0;
-
         public static void OpenSystemContextMenu(Window window, Point positionInWindow)
         {
             Point screenCoordinate = window.PointToScreen(positionInWindow);
             IntPtr windowHandle = new WindowInteropHelper(window).Handle;
             IntPtr systemMenu = GetSystemMenu(windowHandle, false);
-
-            c++;
-
-            EnableMenuItem(systemMenu, 61488, c % 2 == 0 ? (window.WindowState != WindowState.Maximized ? 0 : (uint)1) : 2);
 
             int track = TrackPopupMenuEx(
                 systemMenu,
