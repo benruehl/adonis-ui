@@ -170,6 +170,10 @@
                             <Setter TargetName="PART_MaximizeRestoreButton" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
+                        <Trigger Property="IsMouseOver" SourceName="PART_CloseButton" Value="True">
+                            <Setter Property="Foreground" TargetName="PART_CloseButton" Value="#ffffff"/>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
