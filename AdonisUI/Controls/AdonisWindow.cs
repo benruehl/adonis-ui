@@ -323,49 +323,43 @@ namespace AdonisUI.Controls
             if (dragMoveThumb == null)
                 return;
 
+            // detach event handler to ensure it is called only once per mouse down
             dragMoveThumb.MouseMove -= RestoreOnMouseMove;
 
+            // collect given window and screen data
             Point positionInWindow = e.MouseDevice.GetPosition(this);
             Point positionOnScreen = PointToScreen(positionInWindow);
             ScreenInterop currentScreen = ScreenInterop.FromPoint(positionOnScreen);
-            Size restoreSizeOnScreen = SizeToScreen(new Size(RestoreBounds.Width, RestoreBounds.Height));
+            Size restoreSizeOnScreen = TransformToScreenCoordinates(new Size(RestoreBounds.Width, RestoreBounds.Height));
 
+            // calculate window's new top left coordinate
             double restoreLeft = positionOnScreen.X - (restoreSizeOnScreen.Width * 0.5);
             double restoreTop = positionOnScreen.Y - MaximizeBorderThickness.Top;
 
+            // make sure the restore bounds are within the current screen bounds
             if (restoreLeft < currentScreen.Bounds.Left)
                 restoreLeft = currentScreen.Bounds.Left;
             else if (restoreLeft + restoreSizeOnScreen.Width > currentScreen.Bounds.Right)
                 restoreLeft = currentScreen.Bounds.Right - restoreSizeOnScreen.Width;
 
             // since we calculated with screen values, we need to convert back to window values
-            Point screenPoint = new Point(restoreLeft, restoreTop);
-            Point windowPoint = PointToWindow(screenPoint);
+            Point restoreTopLeftOnScreen = new Point(restoreLeft, restoreTop);
+            Point restoreTopLeft = TransformToWindowCoordinates(restoreTopLeftOnScreen);
 
-            Left = windowPoint.X;
-            Top = windowPoint.Y;
+            // restore window to calculated position
+            Left = restoreTopLeft.X;
+            Top = restoreTopLeft.Y;
             WindowState = WindowState.Normal;
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
 
-        protected Point PointToWindow(Point point)
-        {
-            PresentationSource presentationSource = PresentationSource.FromVisual(this);
-
-            if (presentationSource?.CompositionTarget == null)
-                return point;
-
-            Matrix transformFromDevice = presentationSource.CompositionTarget.TransformFromDevice;
-            return transformFromDevice.Transform(point);
-        }
-
         /// <summary>
         /// Converts a Size that represents the current coordinate system of the window
         /// into a Size in screen coordinates.
         /// </summary>
-        protected Size SizeToScreen(Size size)
+        protected Size TransformToScreenCoordinates(Size size)
         {
             PresentationSource presentationSource = PresentationSource.FromVisual(this);
 
@@ -374,6 +368,21 @@ namespace AdonisUI.Controls
 
             Matrix transformToDevice = presentationSource.CompositionTarget.TransformToDevice;
             return (Size)transformToDevice.Transform(new Vector(size.Width, size.Height));
+        }
+
+        /// <summary>
+        /// Converts a Point that represents the native coordinate system of the screen
+        /// into a Point in device independent coordinates.
+        /// </summary>
+        protected Point TransformToWindowCoordinates(Point point)
+        {
+            PresentationSource presentationSource = PresentationSource.FromVisual(this);
+
+            if (presentationSource?.CompositionTarget == null)
+                return point;
+
+            Matrix transformFromDevice = presentationSource.CompositionTarget.TransformFromDevice;
+            return transformFromDevice.Transform(point);
         }
 
         /// <summary>
