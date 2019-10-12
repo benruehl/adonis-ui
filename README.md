@@ -83,6 +83,17 @@ While relying on uniform colors for background areas and borders, an accent colo
 
 [Read more about colors and brushes](docs/pages/colors-and-brushes.md)
 
+### Custom window title bar
+
+AdonisUI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages. First, it respects the current color scheme so it gets dark when switching to the dark color scheme. Second, its colors can also be set independently of the color scheme e.g. via bindings and triggers. And third, its content can be easily customized for example by hiding the icon, adding additional buttons or putting tabs in it.
+
+|  |  |
+| --- | --- |
+| ![Custom green title bar](./docs/img/adonis-titlebar-green.png) | ![Custom yellow title bar](./docs/img/adonis-titlebar-yellow.png)
+| ![Custom red title bar](./docs/img/adonis-titlebar-red.png) | ![Custom gradient title bar](./docs/img/adonis-titlebar-gradient.png)
+
+[Read more about windows](docs/pages/window.md)
+
 ### Cursor Spotlight hover effect
 
 UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on interaction make use of a hover effect called Cursor Spotlight here. It makes a layer visible around the cursor when hovering over the control that is hidden otherwise. It works for both color schemes.

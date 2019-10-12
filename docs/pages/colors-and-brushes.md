@@ -92,6 +92,9 @@ Each color has a related brush with the same name that just ends with *"Brush"* 
   - `ErrorColor`
   - `AlertColor`
   - `SuccessColor`
+  - `HyperlinkColor`
+  - `WindowButtonHighlightColor`
+  - `WindowButtonInteractionColor`
 
 ## Overriding colors
 

@@ -59,3 +59,4 @@ You are now automatically using the default styles of AdonisUI. If you wish to u
 - [Space](./pages/space)
 - [Styles, templates and icons](./pages/styles-and-templates)
 - [Watermarks](./pages/watermark)
+- [Windows](./pages/window)
