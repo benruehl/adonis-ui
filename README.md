@@ -85,7 +85,7 @@ While relying on uniform colors for background areas and borders, an accent colo
 
 ### Custom window title bar
 
-AdonisUI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages. First, it respects the current color scheme so it gets dark when switching to the dark color scheme. Second, its colors can also be set independently of the color scheme e.g. via bindings and triggers. And third, its content can be easily customized for example by hiding the icon, adding additional buttons or putting tabs in it.
+AdonisUI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages. First, it respects the current color scheme so it gets dark when switching to the dark color scheme. Second, its colors can also be set independently of the color scheme e.g. via bindings and triggers. And third, its content can be easily customized for example by hiding the icon, adding additional buttons or putting tabs in it. Derive your windows from `AdonisWindow` to receive these features.
 
 |  |  |
 | --- | --- |
