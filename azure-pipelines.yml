@@ -9,13 +9,13 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
 
 steps:
 - task: DotNetCoreInstaller@0
-  displayName: 'Install .NET Core 3.0 Preview 5'
+  displayName: 'Install .NET Core 3.0'
   inputs:
-    version: '3.0.100-preview5-011323'
+    version: '3.0.100'
 
 - task: NuGetToolInstaller@1
 

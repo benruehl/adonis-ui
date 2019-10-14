@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net40;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>1.11.0</Version>
+    <Version>1.12.0</Version>
     <Description>Core theme definitions for AdonisUI - a lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
@@ -15,9 +15,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>git</RepositoryType>
     <PackageTags>UI Styles Themes Templates Controls WPF XAML</PackageTags>
-    <PackageReleaseNotes>.NET Core 3.0 is now supported.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added AdonisWindow which supports theming of the window chrome.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UseWpf>true</UseWpf>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'netcoreapp3.0'">
@@ -27,30 +28,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="ColorSchemes\Dark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ColorSchemes\Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\RippleHost.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\SplitButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ValidationErrorIndicator.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
   </ItemGroup>
 </Project>

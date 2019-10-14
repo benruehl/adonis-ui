@@ -4,7 +4,7 @@
 [![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 ![.NET Core Version: >= 3.0](https://img.shields.io/badge/.NET%20Core-%3E%3D%203.0-green.svg)
-![.NET Framework version: >= 4.0](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.0-green.svg)
+![.NET Framework version: >= 4.5](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.5-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)	
 
 Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
@@ -33,7 +33,7 @@ Lightweight UI toolkit for WPF applications offering classic but enhanced window
 
 ## Getting started
 
-1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET Framework 4.0 or .NET Core 3.0.
+1. Reference `AdonisUI` and `AdonisUI.ClassicTheme` in your WPF project. It is available via [NuGet](https://www.nuget.org/packages/AdonisUI.ClassicTheme/) or [manual download](https://github.com/benruehl/adonis-ui/releases). Currently it requires at least .NET Framework 4.5 or .NET Core 3.0.
 2. Add resources to your application in your `App.xaml` like so:
 
 ```xml
@@ -82,6 +82,17 @@ The first parameter needs to be a reference to the `ResourceDictionary` containi
 While relying on uniform colors for background areas and borders, an accent color can be used for visual highlighting of important spots. By default, both color schemes use blue as their accent color. This can be changed by overriding the accent color values. A set of styles helps to display controls like Buttons on the accent color.
 
 [Read more about colors and brushes](docs/pages/colors-and-brushes.md)
+
+### Custom window title bar
+
+AdonisUI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages. First, it respects the current color scheme so it gets dark when switching to the dark color scheme. Second, its colors can also be set independently of the color scheme e.g. via bindings and triggers. And third, its content can be easily customized for example by hiding the icon, adding additional buttons or putting tabs in it. Derive your windows from `AdonisWindow` to receive these features.
+
+|  |  |
+| --- | --- |
+| ![Custom green title bar](./docs/img/adonis-titlebar-green.png) | ![Custom yellow title bar](./docs/img/adonis-titlebar-yellow.png)
+| ![Custom red title bar](./docs/img/adonis-titlebar-red.png) | ![Custom gradient title bar](./docs/img/adonis-titlebar-gradient.png)
+
+[Read more about windows](docs/pages/window.md)
 
 ### Cursor Spotlight hover effect
 

@@ -46,6 +46,7 @@
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/NamedStyles/AccentToolbarButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/NamedStyles/ToolbarButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/NamedStyles/ToolbarToggleButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/NamedStyles/WindowButton.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 

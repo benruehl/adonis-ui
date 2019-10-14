@@ -13,5 +13,13 @@ namespace AdonisUI
         public static ComponentResourceKey AdonisUIGrayscale => new ComponentResourceKey(typeof(Icons), "AdonisUIGrayscale");
 
         public static ComponentResourceKey Error => new ComponentResourceKey(typeof(Icons), "Error");
+
+        public static ComponentResourceKey WindowMinimize => new ComponentResourceKey(typeof(Icons), "WindowMinimize");
+
+        public static ComponentResourceKey WindowMaximize => new ComponentResourceKey(typeof(Icons), "WindowMaximize");
+
+        public static ComponentResourceKey WindowRestore => new ComponentResourceKey(typeof(Icons), "WindowRestore");
+
+        public static ComponentResourceKey WindowClose => new ComponentResourceKey(typeof(Icons), "WindowClose");
     }
 }

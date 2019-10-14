@@ -13,7 +13,7 @@
     <DynamicResource x:Key="{x:Static adonisUi:Colors.AccentInteractionForegroundColor}" ResourceKey="{x:Static adonisUi:Colors.AccentForegroundColor}"/>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer0BackgroundColor}">#2A2B34</Color>
-    <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#3A3A4D</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.Layer0BorderColor}">#2A2B34</Color>
 
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BackgroundColor}">#3D3D4C</Color>
     <Color x:Key="{x:Static adonisUi:Colors.Layer1BorderColor}">#4A4A5E</Color>
@@ -65,6 +65,9 @@
     <Color x:Key="{x:Static adonisUi:Colors.ErrorColor}">#b00020</Color>
     <Color x:Key="{x:Static adonisUi:Colors.AlertColor}">#ffc107</Color>
     <Color x:Key="{x:Static adonisUi:Colors.HyperlinkColor}">#3377c6</Color>
+
+    <Color x:Key="{x:Static adonisUi:Colors.WindowButtonHighlightColor}">#3D3D4C</Color>
+    <Color x:Key="{x:Static adonisUi:Colors.WindowButtonInteractionColor}">#4C4F62</Color>
 
     <!-- brushes -->
 
@@ -129,5 +132,8 @@
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
     <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}"/>
+
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonHighlightColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonInteractionColor}}"/>
     
 </ResourceDictionary>
