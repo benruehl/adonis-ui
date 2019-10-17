@@ -6,20 +6,16 @@
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI">
 
-    <s:Boolean x:Key="True">True</s:Boolean>
-    <s:Boolean x:Key="False">False</s:Boolean>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/Button.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}"
-           TargetType="{x:Type Button}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid>
-                        <Rectangle Fill="Red"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     </Style>
 
     <Style x:Key="RowHeaderGripperStyle" TargetType="{x:Type Thumb}">
@@ -89,15 +85,13 @@
                             <StackPanel Orientation="Horizontal">
                                 <ContentPresenter VerticalAlignment="Center"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <Control SnapsToDevicePixels="false"
+                                <Control x:Name="ValidationErrorContainer"
+                                         SnapsToDevicePixels="False"
                                          MaxWidth="16"
                                          VerticalAlignment="Top"
                                          Template="{Binding ValidationErrorTemplate, 
-                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                         Visibility="{Binding (Validation.HasError), 
-                                                        Converter={x:Static adonisConverters:EqualitityToVisibilityConverter.Instance},
-                                                        ConverterParameter={StaticResource True},
-                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+                                                            RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
+                                         Visibility="Hidden" />
                             </StackPanel>
                         </Border>
                         <!-- TODO Correctly define horizontal grippers -->
@@ -108,6 +102,12 @@
                                Style="{StaticResource RowHeaderGripperStyle}"
                                VerticalAlignment="Bottom" />-->
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
+                                     Value="True">
+                            <Setter Property="Visibility" TargetName="ValidationErrorContainer" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -417,10 +417,33 @@
                                 Command="{x:Static DataGrid.SelectAllCommand}"
                                 Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}"
                                 Visibility="{Binding HeadersVisibility, 
-                                                ConverterParameter={x:Static DataGridHeadersVisibility.All}, 
-                                                Converter={x:Static DataGrid.HeadersVisibilityConverter}, 
+                                                ConverterParameter={x:Static DataGridHeadersVisibility.All},
+                                                Converter={x:Static DataGrid.HeadersVisibilityConverter},
                                                 RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                            <Viewbox Stretch="Uniform">
+                                <Grid Width="10"
+                                      Height="10">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" Value="False">
+                                                    <Setter Property="Opacity" Value="0.3"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+
+                                    <Border BorderBrush="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
+                                            BorderThickness="1"
+                                            CornerRadius="10"/>
+                                    <Border Background="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
+                                            CornerRadius="4"
+                                            Width="4"
+                                            Height="4"/>
+                                </Grid>
+                            </Viewbox>
+                        </Button>
 
                         <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
                                                         Grid.Row="0"
@@ -465,12 +488,13 @@
     </Style>
 
     <Style TargetType="{x:Type DataGrid}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}" />
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}" />
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
-        <!-- NOTE; ScrollViewer is a property coming from the MSDN template for DataGrid! -->
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
@@ -479,13 +503,28 @@
                 <ControlTemplate TargetType="{x:Type DataGrid}">
                     <ScrollViewer x:Name="DG_ScrollViewer"
                                   Style="{StaticResource DataGridScrollViewerStyle}"
-                                  Focusable="false">
+                                  Focusable="False">
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </ScrollViewer>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">
+                <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
+                <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3">
+                <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
+                <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4">
+                <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BorderBrush}}"/>
+                <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BorderBrush}}"/>
+            </DataTrigger>
+
             <Trigger Property="IsGrouping" Value="True">
                 <!-- TODO; Find out if this actaully targets our scrollviewer property! -->
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
