@@ -430,8 +430,8 @@
                                                 RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                             <Viewbox Stretch="Uniform">
-                                <Grid Width="10"
-                                      Height="10">
+                                <Grid Width="12"
+                                      Height="12">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
                                             <Style.Triggers>
@@ -442,13 +442,10 @@
                                         </Style>
                                     </Grid.Style>
 
-                                    <Border BorderBrush="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
-                                            BorderThickness="1"
-                                            CornerRadius="10"/>
-                                    <Border Background="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
-                                            CornerRadius="4"
-                                            Width="4"
-                                            Height="4"/>
+                                    <Path Data="M 8 0 L 8 8 L 0 8 Z"
+                                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Bottom"/>
                                 </Grid>
                             </Viewbox>
                         </Button>
