@@ -76,6 +76,12 @@
                         <StackPanel Orientation="Vertical"
                                     Margin="{adonisUi:Space 0, 1, 0, 0}">
 
+                            <Button Content="Swap Adonis Theme"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
+                                    Click="SwapAdonisTheme"
+                                    HorizontalAlignment="Stretch"
+                                    Padding="8"/>
+                            
                             <Button Content="Change Theme"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="ChangeTheme"

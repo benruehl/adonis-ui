@@ -30,7 +30,22 @@ namespace AdonisUI.Demo
             InitializeComponent();
         }
 
+        private bool _isAdonis = true;
         private bool _isDark;
+
+        private void SwapAdonisTheme(object sender, RoutedEventArgs e)
+        {
+            if (_isAdonis)
+            {
+                ResourceLocator.RemoveAdonisStyle(Application.Current.Resources);
+            }
+            else
+            {
+                ResourceLocator.AddAdonisStyle(Application.Current.Resources);
+            }
+
+            _isAdonis = !_isAdonis;
+        }
 
         private void ChangeTheme(object sender, RoutedEventArgs e)
         {

@@ -17,6 +17,31 @@ namespace AdonisUI
         public static Uri DarkColorScheme => new Uri("pack://application:,,,/AdonisUI;component/ColorSchemes/Dark.xaml", UriKind.Absolute);
 
         /// <summary>
+        /// Removes the Adonis theme from the provided resource dictionary.
+        /// </summary>
+        /// <param name="rootResourceDictionary">The resource dictionary containing the currently active color scheme. Expected are the resource dictionaries of the app or window.</param>
+        public static void RemoveAdonisStyle(ResourceDictionary rootResourceDictionary)
+        {
+            Uri[] knownColorSchemes = new[] { ClassicTheme };
+            ResourceDictionary currentTheme = FindColorSchemeInResources(rootResourceDictionary, knownColorSchemes);
+
+            if (currentTheme != null)
+            {
+                if (!RemoveResourceDictionaryFromResourcesDeep(currentTheme, rootResourceDictionary))
+                    throw new Exception("The currently active color scheme was found but could not be removed.");
+            }
+        }
+
+        /// <summary>
+        /// Adds any Adonis theme to the provided resource dictionary.
+        /// </summary>
+        /// <param name="rootResourceDictionary">The resource dictionary containing the currently active color scheme. Expected are the resource dictionaries of the app or window.</param>
+        public static void AddAdonisStyle(ResourceDictionary rootResourceDictionary)
+        {
+            rootResourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = ClassicTheme });
+        }
+
+        /// <summary>
         /// Adds a resource dictionary with the specified uri to the MergedDictionaries collection of the <see cref="rootResourceDictionary"/>.
         /// Additionally all child ResourceDictionaries are traversed recursively to find the current color scheme which is removed if found.
         /// </summary>
