@@ -16,6 +16,45 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <Grid.Resources>
+                <ControlTemplate x:Key="DataGridTemplate" x:Shared="false">
+                    <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" FrozenColumnCount="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="200"/>
+                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="500" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="50"/>
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Image DockPanel.Dock="Left" Source="{Binding ImageUrl}" Height="64" Margin="10" />
+                                    <Grid Margin="0,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="ID: " FontWeight="Bold" />
+                                        <TextBlock Text="IDVALUE" Grid.Column="1" />
+                                        <TextBlock Text="Name: " FontWeight="Bold" Grid.Row="1" />
+                                        <TextBlock Text="NAMEVALUE" Grid.Column="1" Grid.Row="1" />
+                                        <TextBlock Text="Birthday: " FontWeight="Bold" Grid.Row="2" />
+                                        <TextBlock Text="BDAYVALUE" Grid.Column="1" Grid.Row="2" />
+
+                                    </Grid>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </ControlTemplate>
+            </Grid.Resources>
+
             <Menu>
                 <MenuItem Header="File">
                     <MenuItem Header="New">
@@ -92,41 +131,9 @@
                 </TabItem>
 
                 <TabItem Header="Data Grid" IsSelected="True">
-                    <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" FrozenColumnCount="1">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="200"/>
-                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="500" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="50"/>
-                        </DataGrid.Columns>
-
-                        <DataGrid.RowDetailsTemplate>
-                            <DataTemplate>
-                                <DockPanel>
-                                    <Image DockPanel.Dock="Left" Source="{Binding ImageUrl}" Height="64" Margin="10" />
-                                    <Grid Margin="0,10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Text="ID: " FontWeight="Bold" />
-                                        <TextBlock Text="IDVALUE" Grid.Column="1" />
-                                        <TextBlock Text="Name: " FontWeight="Bold" Grid.Row="1" />
-                                        <TextBlock Text="NAMEVALUE" Grid.Column="1" Grid.Row="1" />
-                                        <TextBlock Text="Birthday: " FontWeight="Bold" Grid.Row="2" />
-                                        <TextBlock Text="BDAYVALUE" Grid.Column="1" Grid.Row="2" />
-
-                                    </Grid>
-                                </DockPanel>
-                            </DataTemplate>
-                        </DataGrid.RowDetailsTemplate>
-                    </DataGrid>
+                    <Control Template="{StaticResource DataGridTemplate}"/>
                 </TabItem>
+
 
                 <TabItem Header="Tree View">
                     <TreeView ItemsSource="{Binding Items}">
@@ -167,12 +174,7 @@
                         </TabItem>
 
                         <TabItem Header="Data Grid">
-                            <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                                    <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                            <Control Template="{StaticResource DataGridTemplate}"/>
                         </TabItem>
 
                         <TabItem Header="Tree View">
