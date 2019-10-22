@@ -83,32 +83,52 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
-                    <Grid>
-                        <!-- NOTE; The Width value is fixed because this is applied to 'each' row!
-                             TODO; Find out how to correctly grow the 'entire' column depending on error validation, eg the column is small
-                                    by default but expands due to error icon on of the rows.
-                        -->
-                        <Border Width="16">
-                            <StackPanel Orientation="Horizontal">
-                                <ContentPresenter VerticalAlignment="Center"
+                    <Border Margin="0">
+                        <Grid>
+                            <!-- TODO; Make note of shared width -->
+                            <Grid VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderContentSize"/>
+                                    <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderErrorTemplateSize">
+                                        <!--
+                                        <ColumnDefinition.Style>
+                                            <Style TargetType="{x:Type ColumnDefinition}">
+                                                <Setter Property="SharedSizeGroup" Value="NullSizeGroup"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                                        Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
+                                                        Value="True">
+                                                        <Setter Property="SharedSizeGroup" Value="AdonisRowHeaderErrorTemplateSize"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ColumnDefinition.Style>
+                                        -->
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter Grid.Column="0" 
+                                                  VerticalAlignment="Center"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
                                 <Control x:Name="ValidationErrorContainer"
+                                         Grid.Column="1"
+                                         VerticalAlignment="Center"
                                          SnapsToDevicePixels="False"
-                                         MaxWidth="16"
-                                         VerticalAlignment="Top"
                                          Template="{Binding ValidationErrorTemplate, 
                                                             RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                         Visibility="Hidden" />
-                            </StackPanel>
-                        </Border>
-                        <!-- TODO Correctly define horizontal grippers -->
-                        <!--<Thumb x:Name="PART_TopHeaderGripper"
+                                         Visibility="Collapsed" />
+                            </Grid>
+
+                            <!-- TODO Correctly define horizontal grippers -->
+                            <Thumb x:Name="PART_TopHeaderGripper"
                                Style="{StaticResource RowHeaderGripperStyle}"
                                VerticalAlignment="Top" />
-                        <Thumb x:Name="PART_BottomHeaderGripper"
+                            <Thumb x:Name="PART_BottomHeaderGripper"
                                Style="{StaticResource RowHeaderGripperStyle}"
-                               VerticalAlignment="Bottom" />-->
-                    </Grid>
+                               VerticalAlignment="Bottom" />
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
                                      Value="True">
@@ -136,6 +156,7 @@
                 <ControlTemplate>
                     <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.Error}}"
                                     VerticalAlignment="Center"
+                                    MaxWidth="25"
                                     Background="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"
                                     Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
                 </ControlTemplate>
@@ -161,7 +182,7 @@
 
                         <SelectiveScrollingGrid Margin="{TemplateBinding Padding}">
                             <SelectiveScrollingGrid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" /> <!-- SharedSizeGroup="AdonisDataGridRowHeader"/> -->
                                 <ColumnDefinition Width="*" />
                             </SelectiveScrollingGrid.ColumnDefinitions>
 
@@ -184,6 +205,7 @@
                                                                              Converter={x:Static DataGrid.RowDetailsScrollingConverter}, 
                                                                              RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
 
+                            <!-- NOTE; Rowspan=2 because row details are placed on the second row! -->
                             <DataGridRowHeader Grid.Column="0"
                                                Grid.RowSpan="2"
                                                SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
@@ -462,6 +484,7 @@
                         <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                                 Grid.ColumnSpan="2"
                                                 Grid.Row="1"
+                                                Grid.IsSharedSizeScope="True"
                                                 CanContentScroll="{TemplateBinding CanContentScroll}" />
 
                         <ScrollBar x:Name="PART_VerticalScrollBar"
