@@ -32,6 +32,12 @@
                             <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="50"/>
                         </DataGrid.Columns>
 
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Header"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
                                 <DockPanel>
