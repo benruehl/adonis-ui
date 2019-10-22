@@ -17,8 +17,15 @@
             </Grid.RowDefinitions>
 
             <Grid.Resources>
+                <CollectionViewSource x:Key="DataGridData" Source="{Binding Items}">
+                    <CollectionViewSource.GroupDescriptions>
+                        <PropertyGroupDescription PropertyName="Weight"/>
+                        <PropertyGroupDescription PropertyName="Name"/>
+                    </CollectionViewSource.GroupDescriptions>
+                </CollectionViewSource>
+
                 <ControlTemplate x:Key="DataGridTemplate" x:Shared="false">
-                    <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" FrozenColumnCount="1">
+                    <DataGrid ItemsSource="{Binding Source={StaticResource DataGridData}}" AutoGenerateColumns="False" FrozenColumnCount="1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="200"/>
                             <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="500" IsReadOnly="True"/>
