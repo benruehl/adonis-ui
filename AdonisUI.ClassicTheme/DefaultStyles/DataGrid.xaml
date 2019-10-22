@@ -174,7 +174,7 @@
                                                     ItemsPanel="{TemplateBinding ItemsPanel}"
                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                            <!-- TODO; Figure out how to freeze the GridRowDetails in horizontal scroll -->
+                            <!-- NOTE; GridRowDetails are not frozen in horizontal scroll! The entire content is scrolled into overflow. -->
                             <DataGridDetailsPresenter Grid.Column="1"
                                                       Grid.Row="1"
                                                       Visibility="{TemplateBinding DetailsVisibility}"
