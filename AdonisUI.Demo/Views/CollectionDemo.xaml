@@ -17,19 +17,31 @@
             </Grid.RowDefinitions>
 
             <Grid.Resources>
-                <CollectionViewSource x:Key="DataGridData" Source="{Binding Items}">
+                <CollectionViewSource x:Key="DataGridData"
+                                      Source="{Binding Items}">
                     <CollectionViewSource.GroupDescriptions>
                         <PropertyGroupDescription PropertyName="Weight"/>
                         <PropertyGroupDescription PropertyName="Name"/>
                     </CollectionViewSource.GroupDescriptions>
                 </CollectionViewSource>
 
-                <ControlTemplate x:Key="DataGridTemplate" x:Shared="false">
-                    <DataGrid ItemsSource="{Binding Source={StaticResource DataGridData}}" AutoGenerateColumns="False" FrozenColumnCount="1">
+                <ControlTemplate x:Key="DataGridTemplate" x:Shared="False">
+                    <DataGrid ItemsSource="{Binding Source={StaticResource DataGridData}}"
+                              AutoGenerateColumns="False"
+                              FrozenColumnCount="1">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="200"/>
-                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="500" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight, StringFormat=N2}" MinWidth="50"/>
+                            <DataGridTextColumn Header="Name"
+                                                Binding="{Binding Name}"
+                                                MinWidth="200"/>
+
+                            <DataGridTextColumn Header="Weight"
+                                                Binding="{Binding Weight, StringFormat=N2}"
+                                                MinWidth="500"
+                                                IsReadOnly="True"/>
+
+                            <DataGridTextColumn Header="Weight"
+                                                Binding="{Binding Weight, StringFormat=N2}"
+                                                MinWidth="50"/>
                         </DataGrid.Columns>
 
                         <DataGrid.RowHeaderTemplate>
@@ -41,7 +53,11 @@
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
                                 <DockPanel>
-                                    <Image DockPanel.Dock="Left" Source="{Binding ImageUrl}" Height="64" Margin="10" />
+                                    <Image DockPanel.Dock="Left"
+                                           Source="{Binding ImageUrl}"
+                                           Height="64"
+                                           Margin="10" />
+
                                     <Grid Margin="0,10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -53,13 +69,27 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="ID: " FontWeight="Bold" />
-                                        <TextBlock Text="IDVALUE" Grid.Column="1" />
-                                        <TextBlock Text="Name: " FontWeight="Bold" Grid.Row="1" />
-                                        <TextBlock Text="NAMEVALUE" Grid.Column="1" Grid.Row="1" />
-                                        <TextBlock Text="Birthday: " FontWeight="Bold" Grid.Row="2" />
-                                        <TextBlock Text="BDAYVALUE" Grid.Column="1" Grid.Row="2" />
+                                        <TextBlock Text="ID: "
+                                                   FontWeight="Bold" />
 
+                                        <TextBlock Text="IDVALUE"
+                                                   Grid.Column="1" />
+
+                                        <TextBlock Text="Name: "
+                                                   FontWeight="Bold"
+                                                   Grid.Row="1" />
+
+                                        <TextBlock Text="NAMEVALUE"
+                                                   Grid.Column="1"
+                                                   Grid.Row="1" />
+
+                                        <TextBlock Text="Birthday: "
+                                                   FontWeight="Bold"
+                                                   Grid.Row="2" />
+
+                                        <TextBlock Text="BDAYVALUE"
+                                                   Grid.Column="1"
+                                                   Grid.Row="2" />
                                     </Grid>
                                 </DockPanel>
                             </DataTemplate>
