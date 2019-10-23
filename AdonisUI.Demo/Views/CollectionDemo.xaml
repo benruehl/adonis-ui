@@ -46,7 +46,12 @@
 
                         <DataGrid.RowHeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Header"/>
+                                <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUI}}"
+                                                VerticalAlignment="Top"
+                                                Width="16"
+                                                Height="16"
+                                                Margin="{adonisUi:Space 0.5, 0}"
+                                                Focusable="False"/>
                             </DataTemplate>
                         </DataGrid.RowHeaderTemplate>
 

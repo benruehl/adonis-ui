@@ -80,13 +80,14 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Border Margin="0">
                         <Grid>
                             <!-- TODO; Make note of shared width -->
-                            <Grid VerticalAlignment="Center">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderContentSize"/>
                                     <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderErrorTemplateSize">
@@ -108,12 +109,12 @@
                                 </Grid.ColumnDefinitions>
 
                                 <ContentPresenter Grid.Column="0" 
-                                                  VerticalAlignment="Center"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                                 <Control x:Name="ValidationErrorContainer"
                                          Grid.Column="1"
-                                         VerticalAlignment="Center"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                          SnapsToDevicePixels="False"
                                          Template="{Binding ValidationErrorTemplate, 
                                                             RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
@@ -122,11 +123,11 @@
 
                             <!-- TODO Correctly define horizontal grippers -->
                             <Thumb x:Name="PART_TopHeaderGripper"
-                               Style="{StaticResource RowHeaderGripperStyle}"
-                               VerticalAlignment="Top" />
+                                   Style="{StaticResource RowHeaderGripperStyle}"
+                                   VerticalAlignment="Top" />
                             <Thumb x:Name="PART_BottomHeaderGripper"
-                               Style="{StaticResource RowHeaderGripperStyle}"
-                               VerticalAlignment="Bottom" />
+                                   Style="{StaticResource RowHeaderGripperStyle}"
+                                   VerticalAlignment="Bottom" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
