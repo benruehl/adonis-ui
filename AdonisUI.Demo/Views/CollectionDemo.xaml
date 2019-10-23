@@ -34,12 +34,12 @@
                                                 Binding="{Binding Name}"
                                                 MinWidth="200"/>
 
-                            <DataGridTextColumn Header="Weight"
+                            <DataGridTextColumn Header="Weight (read-only)"
                                                 Binding="{Binding Weight, StringFormat=N2}"
                                                 MinWidth="500"
                                                 IsReadOnly="True"/>
 
-                            <DataGridTextColumn Header="Weight"
+                            <DataGridTextColumn Header="Weight (editable)"
                                                 Binding="{Binding Weight, StringFormat=N2}"
                                                 MinWidth="50"/>
                         </DataGrid.Columns>
