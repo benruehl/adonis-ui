@@ -452,25 +452,25 @@
                                                 Converter={x:Static DataGrid.HeadersVisibilityConverter},
                                                 RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
-                            <Viewbox Stretch="Uniform">
-                                <Grid Width="12"
-                                      Height="12">
-                                    <Grid.Style>
-                                        <Style TargetType="Grid">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" Value="False">
-                                                    <Setter Property="Opacity" Value="0.3"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Grid.Style>
+                            <Grid Width="12"
+                                  Height="12"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Bottom">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" Value="False">
+                                                <Setter Property="Opacity" Value="0.3"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
 
-                                    <Path Data="M 8 0 L 8 8 L 0 8 Z"
-                                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
-                                          HorizontalAlignment="Right"
-                                          VerticalAlignment="Bottom"/>
-                                </Grid>
-                            </Viewbox>
+                                <Path Data="M 8 0 L 8 8 L 0 8 Z"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Bottom"/>
+                            </Grid>
                         </Button>
 
                         <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
