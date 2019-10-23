@@ -30,21 +30,28 @@ namespace AdonisUI.Demo
             InitializeComponent();
         }
 
-        private bool _isAdonis = true;
         private bool _isDark;
 
-        private void SwapAdonisTheme(object sender, RoutedEventArgs e)
+        public bool IsAdonisUiIncluded
         {
-            if (_isAdonis)
+            get => (bool)GetValue(IsAdonisUiIncludedProperty);
+            set => SetValue(IsAdonisUiIncludedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsAdonisUiIncludedProperty = DependencyProperty.Register("IsAdonisUiIncluded", typeof(bool), typeof(MainWindow), new PropertyMetadata(true));
+
+        private void ToggleAdonisResources(object sender, RoutedEventArgs e)
+        {
+            if (IsAdonisUiIncluded)
             {
-                ResourceLocator.RemoveAdonisStyle(Application.Current.Resources);
+                ResourceLocator.RemoveAdonisResources(Application.Current.Resources);
             }
             else
             {
-                ResourceLocator.AddAdonisStyle(Application.Current.Resources);
+                ResourceLocator.AddAdonisResources(Application.Current.Resources);
             }
 
-            _isAdonis = !_isAdonis;
+            IsAdonisUiIncluded = !IsAdonisUiIncluded;
         }
 
         private void ChangeTheme(object sender, RoutedEventArgs e)

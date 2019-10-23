@@ -17,13 +17,13 @@ namespace AdonisUI
         public static Uri DarkColorScheme => new Uri("pack://application:,,,/AdonisUI;component/ColorSchemes/Dark.xaml", UriKind.Absolute);
 
         /// <summary>
-        /// Removes the Adonis theme from the provided resource dictionary.
+        /// Removes all resources of AdonisUI from the provided resource dictionary.
         /// </summary>
-        /// <param name="rootResourceDictionary">The resource dictionary containing the currently active color scheme. Expected are the resource dictionaries of the app or window.</param>
-        public static void RemoveAdonisStyle(ResourceDictionary rootResourceDictionary)
+        /// <param name="rootResourceDictionary">The resource dictionary containing AdonisUI's resources. Expected are the resource dictionaries of the app or window.</param>
+        public static void RemoveAdonisResources(ResourceDictionary rootResourceDictionary)
         {
-            Uri[] knownColorSchemes = new[] { ClassicTheme };
-            ResourceDictionary currentTheme = FindColorSchemeInResources(rootResourceDictionary, knownColorSchemes);
+            Uri[] adonisResources = { ClassicTheme };
+            ResourceDictionary currentTheme = FindFirstContainedResourceDictionaryByUri(rootResourceDictionary, adonisResources);
 
             if (currentTheme != null)
             {
@@ -35,8 +35,8 @@ namespace AdonisUI
         /// <summary>
         /// Adds any Adonis theme to the provided resource dictionary.
         /// </summary>
-        /// <param name="rootResourceDictionary">The resource dictionary containing the currently active color scheme. Expected are the resource dictionaries of the app or window.</param>
-        public static void AddAdonisStyle(ResourceDictionary rootResourceDictionary)
+        /// <param name="rootResourceDictionary">The resource dictionary containing AdonisUI's resources. Expected are the resource dictionaries of the app or window.</param>
+        public static void AddAdonisResources(ResourceDictionary rootResourceDictionary)
         {
             rootResourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = ClassicTheme });
         }
@@ -52,7 +52,7 @@ namespace AdonisUI
         {
             Uri[] knownColorSchemes = currentColorSchemeResourceUri != null ? new [] { currentColorSchemeResourceUri } : new [] { LightColorScheme, DarkColorScheme};
 
-            ResourceDictionary currentTheme = FindColorSchemeInResources(rootResourceDictionary, knownColorSchemes);
+            ResourceDictionary currentTheme = FindFirstContainedResourceDictionaryByUri(rootResourceDictionary, knownColorSchemes);
 
             if (currentTheme != null)
             {
@@ -63,7 +63,7 @@ namespace AdonisUI
             rootResourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = colorSchemeResourceUri });
         }
 
-        private static ResourceDictionary FindColorSchemeInResources(ResourceDictionary resourceDictionary, Uri[] knownColorSchemes)
+        private static ResourceDictionary FindFirstContainedResourceDictionaryByUri(ResourceDictionary resourceDictionary, Uri[] knownColorSchemes)
         {
             if (knownColorSchemes.Any(scheme => resourceDictionary.Source != null && resourceDictionary.Source.AbsoluteUri.Equals(scheme.AbsoluteUri)))
                 return resourceDictionary;
@@ -71,7 +71,7 @@ namespace AdonisUI
             if (!resourceDictionary.MergedDictionaries.Any())
                 return null;
 
-            return resourceDictionary.MergedDictionaries.FirstOrDefault(d => FindColorSchemeInResources(d, knownColorSchemes) != null);
+            return resourceDictionary.MergedDictionaries.FirstOrDefault(d => FindFirstContainedResourceDictionaryByUri(d, knownColorSchemes) != null);
         }
 
         private static bool RemoveResourceDictionaryFromResourcesDeep(ResourceDictionary resourceDictionaryToRemove, ResourceDictionary rootResourceDictionary)
