@@ -171,7 +171,8 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"/>
+                                CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
+                                Margin="{TemplateBinding Padding, Converter={x:Static adonisConverters:ThicknessToInverseThicknessConverter.Instance}}"/>
 
                         <Border x:Name="SpotlightLayer"
                                 Background="{TemplateBinding adonisExtensions:CursorSpotlightExtension.BackgroundBrush}"
@@ -179,9 +180,10 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
                                 adonisExtensions:CursorSpotlightExtension.MouseEventSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
-                                SnapsToDevicePixels="False"/>
+                                SnapsToDevicePixels="False"
+                                Margin="{TemplateBinding Padding, Converter={x:Static adonisConverters:ThicknessToInverseThicknessConverter.Instance}}"/>
 
-                        <SelectiveScrollingGrid Margin="{TemplateBinding Padding}">
+                        <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" /> <!-- SharedSizeGroup="AdonisDataGridRowHeader"/> -->
                                 <ColumnDefinition Width="*" />
