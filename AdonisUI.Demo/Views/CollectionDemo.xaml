@@ -28,7 +28,9 @@
                 <ControlTemplate x:Key="DataGridTemplate" x:Shared="False">
                     <DataGrid ItemsSource="{Binding Source={StaticResource DataGridData}}"
                               AutoGenerateColumns="False"
-                              FrozenColumnCount="1">
+                              FrozenColumnCount="1"
+                              EnableRowVirtualization="True"
+                              EnableColumnVirtualization="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name"
                                                 Binding="{Binding Name}"
