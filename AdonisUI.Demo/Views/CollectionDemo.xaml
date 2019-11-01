@@ -101,6 +101,43 @@
                                 </DockPanel>
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
+
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Margin" Value="0,0,0,5"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                    <Expander IsExpanded="True">
+                                                        <Expander.Header>
+                                                            <DockPanel>
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" Margin="5,0,0,0" Width="100"/>
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount}"/>
+                                                            </DockPanel>
+                                                        </Expander.Header>
+                                                        <Expander.Content>
+                                                            <ItemsPresenter />
+                                                        </Expander.Content>
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <TextBlock Text="{Binding Path=Name}" Margin="30,0,0,0" Width="100"/>
+                                            <TextBlock Text="{Binding Path=ItemCount}" />
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
                     </DataGrid>
                 </ControlTemplate>
             </Grid.Resources>
