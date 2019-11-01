@@ -86,25 +86,19 @@
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Border Margin="0">
                         <Grid>
-                            <!-- TODO; Make note of shared width -->
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <!-- 
+                                        Shared size group is used to synchronize column width accross grids. 
+                                        This works by tagging the container of grids to keep track of the set groups.
+                                        Each grid will attempt to keep the width of same group columns the same.
+                                    -->
+                                    <!-- WARN; This feature doesn't work as expected in all cases. Virtualized grid rows 
+                                        can not properly update.
+                                        This was confirmed on https://github.com/benruehl/adonis-ui/pull/30#issuecomment-547575893
+                                    -->
                                     <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderContentSize"/>
                                     <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderErrorTemplateSize">
-                                        <!--
-                                        <ColumnDefinition.Style>
-                                            <Style TargetType="{x:Type ColumnDefinition}">
-                                                <Setter Property="SharedSizeGroup" Value="NullSizeGroup"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger 
-                                                        Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                                        Value="True">
-                                                        <Setter Property="SharedSizeGroup" Value="AdonisRowHeaderErrorTemplateSize"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ColumnDefinition.Style>
-                                        -->
                                     </ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
@@ -121,7 +115,6 @@
                                          Visibility="Collapsed" />
                             </Grid>
 
-                            <!-- TODO Correctly define horizontal grippers -->
                             <Thumb x:Name="PART_TopHeaderGripper"
                                    Style="{StaticResource RowHeaderGripperStyle}"
                                    VerticalAlignment="Top" />
@@ -185,7 +178,7 @@
 
                         <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" /> <!-- SharedSizeGroup="AdonisDataGridRowHeader"/> -->
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </SelectiveScrollingGrid.ColumnDefinitions>
 
@@ -199,7 +192,8 @@
                                                     ItemsPanel="{TemplateBinding ItemsPanel}"
                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                            <!-- NOTE; GridRowDetails are not frozen in horizontal scroll! The entire content is scrolled into overflow. -->
+                            <!-- NOTE; GridRowDetails are not frozen in horizontal scroll! 
+                                The content of the details control is intended to scroll into overflow. -->
                             <DataGridDetailsPresenter Grid.Column="1"
                                                       Grid.Row="1"
                                                       Visibility="{TemplateBinding DetailsVisibility}"
@@ -208,7 +202,7 @@
                                                                              Converter={x:Static DataGrid.RowDetailsScrollingConverter}, 
                                                                              RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
 
-                            <!-- NOTE; Rowspan=2 because row details are placed on the second row! -->
+                            <!-- NOTE; Rowspan=2 because header spans both row and details controls! -->
                             <DataGridRowHeader Grid.Column="0"
                                                Grid.RowSpan="2"
                                                SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
@@ -345,11 +339,12 @@
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-
-                        <!-- TODO; Grippers don't look exactly right in comparison to ListView -->
-                        <!--<Thumb x:Name="PART_LeftHeaderGripper"
-                                   HorizontalAlignment="Left"
-                                   Style="{StaticResource ColumnHeaderGripperStyle}" />-->
+                        <!-- WARN; Gripper margins should be set according to the defined size!-->
+                        <Thumb x:Name="PART_LeftHeaderGripper"
+                               Margin="-8,0,0,0"             
+                               HorizontalAlignment="Left"                                
+                               Style="{StaticResource ColumnHeaderGripperStyle}" />
+                        
                         <Thumb x:Name="PART_RightHeaderGripper"
                                Margin="0,0,-8,0"
                                HorizontalAlignment="Right"
