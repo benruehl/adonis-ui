@@ -97,9 +97,13 @@
                                                     Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
                                                     Foreground="{TemplateBinding TitleBarForeground}"
                                                     Background="{TemplateBinding WindowButtonHighlightBrush}">
-                                                <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMinimize}}"
+                                                <Button.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMinimize}}"
                                                                 Width="10"
                                                                 Height="10"/>
+                                                    </DataTemplate>
+                                                </Button.ContentTemplate>
                                             </Button>
 
                                             <Button x:Name="PART_MaximizeRestoreButton"
@@ -107,18 +111,26 @@
                                                     Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
                                                     Foreground="{TemplateBinding TitleBarForeground}"
                                                     Background="{TemplateBinding WindowButtonHighlightBrush}">
-                                                <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMaximize}}"
+                                                <Button.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMaximize}}"
                                                                 Width="10"
                                                                 Height="10"/>
+                                                    </DataTemplate>
+                                                </Button.ContentTemplate>
                                             </Button>
 
                                             <Button x:Name="PART_CloseButton"
                                                     Grid.Column="2"
                                                     Style="{DynamicResource {x:Static adonisUi:Styles.WindowCloseButton}}"
                                                     Foreground="{TemplateBinding TitleBarForeground}">
-                                                <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowClose}}"
+                                                <Button.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowClose}}"
                                                                 Width="10"
                                                                 Height="10"/>
+                                                    </DataTemplate>
+                                                </Button.ContentTemplate>
                                             </Button>
                                         </Grid>
                                     </Grid>
@@ -181,8 +193,6 @@
 
                         <Trigger Property="ResizeMode" Value="CanMinimize">
                             <Setter TargetName="PART_MaximizeRestoreButton" Property="IsEnabled" Value="False"/>
-                            <Setter Property="Foreground" TargetName="PART_MaximizeRestoreButton"
-                                    Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
