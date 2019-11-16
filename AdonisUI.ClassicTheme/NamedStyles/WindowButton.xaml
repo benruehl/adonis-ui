@@ -28,7 +28,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Opacity="0"/>
 
-                        <ContentPresenter Content="{TemplateBinding Content}"
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -59,6 +60,9 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
