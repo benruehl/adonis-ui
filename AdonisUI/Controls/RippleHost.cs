@@ -12,8 +12,16 @@ using System.Windows.Shapes;
 
 namespace AdonisUI.Controls
 {
+    /// <summary>
+    /// A control offering elliptical fade-in and fade-out animations for its content on mouse down.
+    /// </summary>
+    [TemplatePart(Name = "PART_ContentHost", Type = typeof(FrameworkElement))]
     public class RippleHost : ContentControl
     {
+        private const string PART_ContentHost = "PART_ContentHost";
+
+        public FrameworkElement ContentHost { get; protected set; }
+
         static RippleHost()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RippleHost), new FrameworkPropertyMetadata(typeof(RippleHost)));
@@ -69,6 +77,8 @@ namespace AdonisUI.Controls
         {
             base.OnApplyTemplate();
 
+            ContentHost = GetTemplateChild(PART_ContentHost) as FrameworkElement;
+
             FrameworkElement mouseEventSource = MouseEventSource ?? this;
 
             InitRippleLayer(mouseEventSource);
@@ -84,6 +94,38 @@ namespace AdonisUI.Controls
         }
 
         private void InitRippleLayer(FrameworkElement clickEventSource)
+        {
+            if (ContentHost != null)
+            {
+                BindDataContext(ContentHost);
+            }
+
+            InitRippleOpacityMask();
+
+            clickEventSource.PreviewMouseLeftButtonDown += MouseEventSourceOnMouseDown();
+            clickEventSource.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
+
+            Window parentWindow = Window.GetWindow(clickEventSource);
+            if (parentWindow != null)
+            {
+                parentWindow.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
+                parentWindow.Deactivated += ParentWindowOnDeactivated;
+            }
+
+            IsVisibleChanged += (s, e) => Reset();
+        }
+
+        private void BindDataContext(DependencyObject elementToInheritDataContext)
+        {
+            BindingOperations.SetBinding(elementToInheritDataContext, FrameworkElement.DataContextProperty, new Binding
+            {
+                Path = new PropertyPath("DataContext"),
+                Source = LogicalTreeHelper.GetParent(this),
+                Mode = BindingMode.OneWay,
+            });
+        }
+
+        private void InitRippleOpacityMask()
         {
             // binding required to enable bindings to target's size in visual brush
             // see https://social.msdn.microsoft.com/Forums/vstudio/en-US/21580413-6f42-429c-b9e0-17331bae87cc/binding-width-and-height-of-a-border-in-a-visualbrush-resource?forum=wpf
@@ -104,18 +146,6 @@ namespace AdonisUI.Controls
 
             opacityMask.Visual = rippleContainer;
             OpacityMask = opacityMask;
-
-            clickEventSource.PreviewMouseLeftButtonDown += MouseEventSourceOnMouseDown();
-            clickEventSource.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
-
-            Window parentWindow = Window.GetWindow(clickEventSource);
-            if (parentWindow != null)
-            {
-                parentWindow.PreviewMouseLeftButtonUp += MouseEventSourceOnMouseUp();
-                parentWindow.Deactivated += ParentWindowOnDeactivated;
-            }
-
-            IsVisibleChanged += (s, e) => Reset();
         }
 
         private void ClearRippleLayer(FrameworkElement clickEventSource)
