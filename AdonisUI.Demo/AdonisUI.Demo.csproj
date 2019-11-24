@@ -65,6 +65,10 @@
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LayerDemoViewModel.cs" />
     <Compile Include="Framework\ViewModel.cs" />
+    <Page Include="Views\Issues\Issue26.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Issues\Issue23.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
