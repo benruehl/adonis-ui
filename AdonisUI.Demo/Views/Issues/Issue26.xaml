@@ -25,7 +25,8 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Content="{Binding}">
+                    <Button Content="{Binding}"
+                            Margin="{adonisUi:Space 0, 1, 0, 0}">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -46,7 +47,31 @@
                         </Button.ContentTemplate>
                     </Button>
 
-                    <ListBox ItemsSource="{Binding Items}">
+                    <ListBox ItemsSource="{Binding Items}"
+                             Margin="{adonisUi:Space 0, 1, 0, 0}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Content="CheckBox"
+                                              IsChecked="{Binding Flag}">
+                                        <CheckBox.Foreground>
+                                            <PriorityBinding>
+                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
+                                            </PriorityBinding>
+                                        </CheckBox.Foreground>
+                                    </CheckBox>
+
+                                    <TextBlock Text="{Binding Name}"
+                                               Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Items}"
+                             ItemContainerStyle="{DynamicResource {x:Static adonisUi:Styles.ButtonListBoxItem}}"
+                             Margin="{adonisUi:Space 0, 1, 0, 0}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
