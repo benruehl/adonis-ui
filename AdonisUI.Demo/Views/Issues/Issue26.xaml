@@ -52,14 +52,15 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Content="CheckBox"
-                                              IsChecked="{Binding Flag}">
-                                        <CheckBox.Foreground>
-                                            <PriorityBinding>
-                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
-                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
-                                            </PriorityBinding>
-                                        </CheckBox.Foreground>
+                                    <CheckBox IsChecked="{Binding Flag}">
+                                        <TextBlock Text="CheckBox">
+                                            <TextBlock.Foreground>
+                                                <PriorityBinding>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
+                                                </PriorityBinding>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
                                     </CheckBox>
 
                                     <TextBlock Text="{Binding Name}"
@@ -70,19 +71,20 @@
                     </ListBox>
 
                     <ListBox ItemsSource="{Binding Items}"
-                             ItemContainerStyle="{DynamicResource {x:Static adonisUi:Styles.ButtonListBoxItem}}"
+                             ItemContainerStyle="{DynamicResource {x:Static adonisUi:Styles.RippleListBoxItem}}"
                              Margin="{adonisUi:Space 0, 1, 0, 0}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Content="CheckBox"
-                                              IsChecked="{Binding Flag}">
-                                        <CheckBox.Foreground>
-                                            <PriorityBinding>
-                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
-                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
-                                            </PriorityBinding>
-                                        </CheckBox.Foreground>
+                                    <CheckBox IsChecked="{Binding Flag}">
+                                        <TextBlock Text="CheckBox">
+                                            <TextBlock.Foreground>
+                                                <PriorityBinding>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
+                                                </PriorityBinding>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
                                     </CheckBox>
 
                                     <TextBlock Text="{Binding Name}"
