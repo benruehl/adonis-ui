@@ -30,13 +30,44 @@ namespace AdonisUI.Demo
             InitializeComponent();
         }
 
-        private bool _isDark;
+        private enum Theme
+        {
+            Light,
+            Dark,
+            DarkEmber
+        }
+
+        private Theme _currentTheme;
+
+        private static Uri GetColorScheme(Theme theme)
+        {
+            switch (theme)
+            {
+                case Theme.Light: return ResourceLocator.LightColorScheme;
+                case Theme.Dark: return ResourceLocator.DarkColorScheme;
+                case Theme.DarkEmber: return ResourceLocator.DarkEmberColorScheme;
+                default: throw new NotSupportedException("This theme is not supported");
+            }
+        }
 
         private void ChangeTheme(object sender, RoutedEventArgs e)
         {
-            ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
-
-            _isDark = !_isDark;
+            Theme newTheme;
+            switch (_currentTheme)
+            {
+                case Theme.Light:
+                    newTheme = Theme.Dark;
+                    break;
+                case Theme.Dark:
+                    newTheme = Theme.DarkEmber;
+                    break;
+                case Theme.DarkEmber:
+                    newTheme = Theme.Light;
+                    break;
+                default: throw new NotSupportedException("This theme is not supported");
+            }
+            ResourceLocator.SetColorScheme(Application.Current.Resources, GetColorScheme(newTheme), GetColorScheme(_currentTheme));
+            _currentTheme = newTheme;
         }
 
         private void OpenIssueDialog(object sender, RoutedEventArgs e)

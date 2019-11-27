@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,8 @@ namespace AdonisUI
 
         public static Uri DarkColorScheme => new Uri("pack://application:,,,/AdonisUI;component/ColorSchemes/Dark.xaml", UriKind.Absolute);
 
+        public static Uri DarkEmberColorScheme => new Uri("pack://application:,,,/AdonisUI;component/ColorSchemes/DarkEmber.xaml", UriKind.Absolute);
+
         /// <summary>
         /// Adds a resource dictionary with the specified uri to the MergedDictionaries collection of the <see cref="rootResourceDictionary"/>.
         /// Additionally all child ResourceDictionaries are traversed recursively to find the current color scheme which is removed if found.
@@ -25,7 +27,7 @@ namespace AdonisUI
         /// <param name="currentColorSchemeResourceUri">Optional uri to an external color scheme that is not provided by AdonisUI.</param>
         public static void SetColorScheme(ResourceDictionary rootResourceDictionary, Uri colorSchemeResourceUri, Uri currentColorSchemeResourceUri = null)
         {
-            Uri[] knownColorSchemes = currentColorSchemeResourceUri != null ? new [] { currentColorSchemeResourceUri } : new [] { LightColorScheme, DarkColorScheme};
+            Uri[] knownColorSchemes = currentColorSchemeResourceUri != null ? new [] { currentColorSchemeResourceUri } : new [] { LightColorScheme, DarkColorScheme, DarkEmberColorScheme };
 
             ResourceDictionary currentTheme = FindColorSchemeInResources(rootResourceDictionary, knownColorSchemes);
 
