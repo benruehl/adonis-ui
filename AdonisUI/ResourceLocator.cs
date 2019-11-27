@@ -40,7 +40,7 @@ namespace AdonisUI
 
         private static ResourceDictionary FindColorSchemeInResources(ResourceDictionary resourceDictionary, Uri[] knownColorSchemes)
         {
-            if (knownColorSchemes.Any(scheme => resourceDictionary.Source != null && resourceDictionary.Source.AbsoluteUri.Equals(scheme.AbsoluteUri)))
+            if (knownColorSchemes.Any(scheme => resourceDictionary.Source != null && resourceDictionary.Source.IsAbsoluteUri && resourceDictionary.Source.AbsoluteUri.Equals(scheme.AbsoluteUri)))
                 return resourceDictionary;
 
             if (!resourceDictionary.MergedDictionaries.Any())
