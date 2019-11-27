@@ -20,5 +20,7 @@ namespace AdonisUI
         public static ComponentResourceKey WindowButton => new ComponentResourceKey(typeof(Styles), "WindowButton");
 
         public static ComponentResourceKey WindowCloseButton => new ComponentResourceKey(typeof(Styles), "WindowCloseButton");
+        
+        public static ComponentResourceKey RippleListBoxItem => new ComponentResourceKey(typeof(Styles), "RippleListBoxItem");
     }
 }

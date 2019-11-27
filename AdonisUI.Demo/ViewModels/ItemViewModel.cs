@@ -41,6 +41,21 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
+        private bool _flag;
+        public bool Flag
+        {
+            get => _flag;
+            set
+            {
+                if (_flag != value)
+                {
+                    _flag = value;
+
+                    RaisePropertyChanged(nameof(Flag));
+                }
+            }
+        }
+
         private readonly ObservableCollection<ItemViewModel> _children = new ObservableCollection<ItemViewModel>();
 
         public ReadOnlyObservableCollection<ItemViewModel> Children { get; set; }

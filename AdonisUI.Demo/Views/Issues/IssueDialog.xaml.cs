@@ -25,6 +25,7 @@ namespace AdonisUI.Demo.Views.Issues
             "Issue5Template",
             "IssueRippleContentInvisibleTemplate",
             "Issue23Template",
+            "Issue26Template",
         };
 
         public IssueDialog()
