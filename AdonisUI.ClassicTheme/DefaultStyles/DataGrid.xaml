@@ -19,7 +19,7 @@
     </Style>
 
     <Style x:Key="RowHeaderGripperStyle" TargetType="{x:Type Thumb}">
-        <Setter Property="Height" Value="16" />
+        <Setter Property="Height" Value="4" />
         <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRowHeader}}" />
         <Setter Property="Cursor" Value="SizeNS" />
         <Setter Property="Template">
@@ -126,7 +126,7 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
                                      Value="True">
-                            <Setter Property="Visibility" TargetName="ValidationErrorContainer" Value="Visible"></Setter>
+                            <Setter Property="Visibility" TargetName="ValidationErrorContainer" Value="Visible"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -144,15 +144,25 @@
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="True"/>
+        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver" Value="True"/>
+        <Setter Property="adonisExtensions:ValidationExtension.ErrorMessagePlacement" Value="Bottom"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.Error}}"
-                                    VerticalAlignment="Center"
-                                    MaxWidth="25"
-                                    Background="{DynamicResource {x:Static adonisUi:Brushes.ErrorBrush}}"
-                                    Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
+                    <adonisControls:ValidationErrorIndicator x:Name="ErrorAlertHost"
+                                                             ValidatedElement="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             IsValidatedElementFocused="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             IsErrorMessageDisplayOnFocusEnabled="{Binding (adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus), RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             IsErrorMessageDisplayOnMouseOverEnabled="{Binding (adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver), RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             ErrorMessagePlacement="{Binding (adonisExtensions:ValidationExtension.ErrorMessagePlacement), RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                                             Width="16"
+                                                             Height="16"
+                                                             IconWidth="16"
+                                                             IconHeight="16"
+                                                             Margin="0, 0, 4, 0"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

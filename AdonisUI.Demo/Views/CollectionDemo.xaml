@@ -31,18 +31,40 @@
                               FrozenColumnCount="1"
                               EnableRowVirtualization="True"
                               EnableColumnVirtualization="True">
+
+                        <DataGrid.Resources>
+                            <Style x:Key="CellErrorStyle"
+                                   TargetType="{x:Type TextBlock}">
+                                <Setter Property="Validation.ErrorTemplate"
+                                        Value="{DynamicResource {x:Static adonisUi:Templates.ValidationErrorTemplate}}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"
+                                                                 Opacity="0.25"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
+
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name"
-                                                Binding="{Binding Name}"
+                                                Binding="{Binding Name, ValidatesOnDataErrors=True}"
+                                                ElementStyle="{StaticResource CellErrorStyle}"
                                                 MinWidth="200"/>
 
                             <DataGridTextColumn Header="Weight (read-only)"
-                                                Binding="{Binding Weight, StringFormat=N2}"
+                                                Binding="{Binding Weight, StringFormat=N2, ValidatesOnDataErrors=True}"
+                                                ElementStyle="{StaticResource CellErrorStyle}"
                                                 MinWidth="500"
                                                 IsReadOnly="True"/>
 
                             <DataGridTextColumn Header="Weight (editable)"
-                                                Binding="{Binding Weight, StringFormat=N2}"
+                                                Binding="{Binding Weight, StringFormat=N2, ValidatesOnDataErrors=True}"
+                                                ElementStyle="{StaticResource CellErrorStyle}"
                                                 MinWidth="50"/>
                         </DataGrid.Columns>
 
@@ -112,6 +134,11 @@
                                 </DockPanel>
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
+
+                        <DataGrid.RowValidationRules>
+                            <DataErrorValidationRule ValidatesOnTargetUpdated="True" ValidationStep="UpdatedValue" />
+                        </DataGrid.RowValidationRules>
+
                     </DataGrid>
                 </ControlTemplate>
             </Grid.Resources>
