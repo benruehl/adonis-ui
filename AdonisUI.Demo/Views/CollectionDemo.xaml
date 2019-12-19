@@ -220,7 +220,7 @@
                         </ListView>
                     </TabItem>
 
-                    <TabItem Header="Data Grid" IsSelected="True">
+                    <TabItem Header="Data Grid">
                         <Control Template="{StaticResource DataGridTemplate}"/>
                     </TabItem>
 
