@@ -94,7 +94,10 @@ namespace AdonisUI.Extensions
             DataGrid parentDataGrid = FindVisualParent<DataGrid>(dataGridRow);
             DependencyPropertyDescriptor hasErrorProperty = DependencyPropertyDescriptor.FromProperty(Validation.HasErrorProperty, typeof(DataGridRow));
 
-            UpdateDataGridHasAnyRowError(parentDataGrid);
+            if (parentDataGrid != null)
+            {
+                UpdateDataGridHasAnyRowError(parentDataGrid);
+            }
 
             if ((bool) e.NewValue)
             {
@@ -111,8 +114,11 @@ namespace AdonisUI.Extensions
             DataGridRow dataGridRow = (DataGridRow) sender;
             DataGrid parentDataGrid = FindVisualParent<DataGrid>(dataGridRow);
 
-            UpdateDataGridHasAnyRowError(parentDataGrid);
-            UpdateDataGridHadAnyRowError(parentDataGrid);
+            if (parentDataGrid != null)
+            {
+                UpdateDataGridHasAnyRowError(parentDataGrid);
+                UpdateDataGridHadAnyRowError(parentDataGrid);
+            }
         }
 
         private static void UpdateDataGridHasAnyRowError(DataGrid dataGrid)
