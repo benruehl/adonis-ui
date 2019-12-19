@@ -440,7 +440,7 @@
 
     <Style x:Key="DataGridScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="CanContentScroll" Value="{Binding (ScrollViewer.CanContentScroll), RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -568,7 +568,6 @@
             </DataTrigger>
 
             <Trigger Property="IsGrouping" Value="True">
-                <!-- TODO; Find out if this actaully targets our scrollviewer property! -->
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
             </Trigger>
         </Style.Triggers>
