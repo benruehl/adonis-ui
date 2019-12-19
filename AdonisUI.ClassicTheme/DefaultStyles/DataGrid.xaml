@@ -84,22 +84,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
-                    <Border Margin="0">
+                    <Border>
                         <Grid>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <!-- 
-                                        Shared size group is used to synchronize column width accross grids. 
-                                        This works by tagging the container of grids to keep track of the set groups.
-                                        Each grid will attempt to keep the width of same group columns the same.
-                                    -->
-                                    <!-- WARN; This feature doesn't work as expected in all cases. Virtualized grid rows 
-                                        can not properly update.
-                                        This was confirmed on https://github.com/benruehl/adonis-ui/pull/30#issuecomment-547575893
-                                    -->
-                                    <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderContentSize"/>
-                                    <ColumnDefinition Width="Auto" SharedSizeGroup="AdonisRowHeaderErrorTemplateSize">
-                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
                                 <ContentPresenter Grid.Column="0" 
@@ -123,11 +113,26 @@
                                    VerticalAlignment="Bottom" />
                         </Grid>
                     </Border>
+
                     <ControlTemplate.Triggers>
+
+                        <!-- Collapsing ValidationErrorContainer leads to desynchronized header sizes when virtualization is active which is prevented here. -->
+                        <!-- A MultiBinding is used because somehow a MultiDataTrigger does not seem to behave correctly when virtualization is active. -->
+                        <DataTrigger Value="True">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{x:Static adonisConverters:AllBoolsToBoolConverter.Instance}">
+                                    <Binding Path="(adonisExtensions:DataGridExtension.HadAnyRowError)" RelativeSource="{RelativeSource FindAncestor, AncestorType=DataGrid}"/>
+                                    <Binding Path="EnableRowVirtualization" RelativeSource="{RelativeSource FindAncestor, AncestorType=DataGrid}"/>
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Visibility" TargetName="ValidationErrorContainer" Value="Hidden"/>
+                        </DataTrigger>
+
                         <DataTrigger Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
                                      Value="True">
                             <Setter Property="Visibility" TargetName="ValidationErrorContainer" Value="Visible"/>
                         </DataTrigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -144,9 +149,10 @@
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="True"/>
+        <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="False"/>
         <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver" Value="True"/>
         <Setter Property="adonisExtensions:ValidationExtension.ErrorMessagePlacement" Value="Bottom"/>
+        <Setter Property="adonisExtensions:DataGridExtension.IsReportingErrorsToDataGrid" Value="True"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
@@ -492,7 +498,6 @@
                         <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                                 Grid.ColumnSpan="2"
                                                 Grid.Row="1"
-                                                Grid.IsSharedSizeScope="True"
                                                 CanContentScroll="{TemplateBinding CanContentScroll}" />
 
                         <ScrollBar x:Name="PART_VerticalScrollBar"
