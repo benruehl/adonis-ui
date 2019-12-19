@@ -191,94 +191,113 @@
                 </MenuItem>
             </Menu>
 
-            <TabControl Grid.Row="2">
+            <Grid Grid.Row="2">
 
-                <TabItem Header="List Box">
-                    <ListBox ItemsSource="{Binding Items}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </TabItem>
+                <TabControl>
 
-                <TabItem Header="Grid View">
-                    <ListView ItemsSource="{Binding Items}">
-                        <ListView.View>
-                            <GridView>
-                                <GridView.Columns>
-                                    <GridViewColumn Header="Name"
-                                                    DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Header="Weight"
-                                                    DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
-                                </GridView.Columns>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </TabItem>
+                    <TabItem Header="List Box">
+                        <ListBox ItemsSource="{Binding Items}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </TabItem>
 
-                <TabItem Header="Data Grid" IsSelected="True">
-                    <Control Template="{StaticResource DataGridTemplate}"/>
-                </TabItem>
+                    <TabItem Header="Grid View">
+                        <ListView ItemsSource="{Binding Items}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn Header="Name"
+                                                        DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="Weight"
+                                                        DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabItem>
+
+                    <TabItem Header="Data Grid" IsSelected="True">
+                        <Control Template="{StaticResource DataGridTemplate}"/>
+                    </TabItem>
 
 
-                <TabItem Header="Tree View">
-                    <TreeView ItemsSource="{Binding Items}">
-                        <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                <TextBlock Text="{Binding Name}"/>
-                            </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>
-                    </TreeView>
-                </TabItem>
+                    <TabItem Header="Tree View">
+                        <TreeView ItemsSource="{Binding Items}">
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                        </TreeView>
+                    </TabItem>
 
-                <TabItem Header="Tab Control">
-                    <TabControl>
+                    <TabItem Header="Tab Control">
+                        <TabControl>
 
-                        <TabItem Header="List Box">
-                            <ListBox ItemsSource="{Binding Items}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </TabItem>
+                            <TabItem Header="List Box">
+                                <ListBox ItemsSource="{Binding Items}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </TabItem>
 
-                        <TabItem Header="Grid View">
-                            <ListView ItemsSource="{Binding Items}">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridView.Columns>
-                                            <GridViewColumn Header="Name"
-                                                    DisplayMemberBinding="{Binding Name}"/>
-                                            <GridViewColumn Header="Weight"
-                                                    DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
-                                        </GridView.Columns>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </TabItem>
+                            <TabItem Header="Grid View">
+                                <ListView ItemsSource="{Binding Items}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="Name"
+                                                        DisplayMemberBinding="{Binding Name}"/>
+                                                <GridViewColumn Header="Weight"
+                                                        DisplayMemberBinding="{Binding Weight, StringFormat=N2}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </TabItem>
 
-                        <TabItem Header="Data Grid">
-                            <Control Template="{StaticResource DataGridTemplate}"/>
-                        </TabItem>
+                            <TabItem Header="Data Grid">
+                                <Control Template="{StaticResource DataGridTemplate}"/>
+                            </TabItem>
 
-                        <TabItem Header="Tree View">
-                            <TreeView ItemsSource="{Binding Items}">
-                                <TreeView.ItemTemplate>
-                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </HierarchicalDataTemplate>
-                                </TreeView.ItemTemplate>
-                            </TreeView>
-                        </TabItem>
+                            <TabItem Header="Tree View">
+                                <TreeView ItemsSource="{Binding Items}">
+                                    <TreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </HierarchicalDataTemplate>
+                                    </TreeView.ItemTemplate>
+                                </TreeView>
+                            </TabItem>
 
-                    </TabControl>
-                </TabItem>
+                        </TabControl>
+                    </TabItem>
 
-            </TabControl>
+                </TabControl>
+
+                <Button Command="{Binding AddItemCommand}"
+                        Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                        Height="24"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="+"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Margin="0, -8, 0, 0"/>
+                        
+                        <TextBlock Text="Add Item"
+                                   Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
 
         </Grid>
     </DataTemplate>
