@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
@@ -41,7 +42,7 @@ namespace AdonisUI.Demo.ViewModels
             {
                 var item = new ItemViewModel
                 {
-                    Name = $"Item {i + 1}",
+                    Name = CreateItemName(i + 1),
                     Weight = random.NextDouble(),
                 };
 
@@ -56,6 +57,41 @@ namespace AdonisUI.Demo.ViewModels
                 yield return item;
             }
         }
+
+        public ItemViewModel CreateItemInItems()
+        {
+            var newItem = new ItemViewModel
+            {
+                Name = GetNextUniqueItemName(),
+                Weight = new Random().NextDouble(),
+            };
+
+            _items.Add(newItem);
+            return newItem;
+        }
+
+        private string GetNextUniqueItemName()
+        {
+            int iteration = 1;
+            string itemName = CreateItemName(iteration);
+
+            while (_items.Any(item => item.Name == itemName))
+            {
+                iteration++;
+                itemName = CreateItemName(iteration);
+            }
+
+            return itemName;
+        }
+
+        private string CreateItemName(int itemId)
+        {
+            return $"Item {itemId}";
+        }
+
+        private CollectionDemoAddItemCommand _addItemCommand;
+
+        public CollectionDemoAddItemCommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new CollectionDemoAddItemCommand(this));
 
         public IApplicationContentView GetPreviousView()
         {

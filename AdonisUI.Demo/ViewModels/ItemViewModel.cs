@@ -20,6 +20,11 @@ namespace AdonisUI.Demo.ViewModels
                 {
                     _name = value;
 
+                    ClearValidationErrors(nameof(Name));
+
+                    if (String.IsNullOrEmpty(value))
+                        AddValidationError(nameof(Name), "Name must not be null or empty.");
+
                     RaisePropertyChanged(nameof(Name));
                 }
             }

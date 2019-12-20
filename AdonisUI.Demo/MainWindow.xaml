@@ -80,11 +80,13 @@
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="ChangeTheme"
                                     HorizontalAlignment="Stretch"
-                                    Padding="8"/>
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8"/>
 
                             <Button Command="{Binding ToggleIsEnabledCommand}"
                                     HorizontalAlignment="Stretch"
-                                    Padding="8">
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8">
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource {x:Static adonisUi:Styles.ToolbarButton}}">
                                         <Setter Property="Content" Value="Disable All"/>
@@ -101,7 +103,24 @@
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="OpenIssueDialog"
                                     HorizontalAlignment="Stretch"
-                                    Padding="8"/>
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8"/>
+
+                            <Button Click="ToggleAdonisResources"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Static adonisUi:Styles.ToolbarButton}}">
+                                        <Setter Property="Content" Value="Restore Default Styles"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsAdonisUiIncluded, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}}" Value="False">
+                                                <Setter Property="Content" Value="Add AdonisUI Styles"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
 
                         </StackPanel>
                     </GroupBox>

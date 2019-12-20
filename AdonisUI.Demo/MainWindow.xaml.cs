@@ -32,6 +32,28 @@ namespace AdonisUI.Demo
 
         private bool _isDark;
 
+        public bool IsAdonisUiIncluded
+        {
+            get => (bool)GetValue(IsAdonisUiIncludedProperty);
+            set => SetValue(IsAdonisUiIncludedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsAdonisUiIncludedProperty = DependencyProperty.Register("IsAdonisUiIncluded", typeof(bool), typeof(MainWindow), new PropertyMetadata(true));
+
+        private void ToggleAdonisResources(object sender, RoutedEventArgs e)
+        {
+            if (IsAdonisUiIncluded)
+            {
+                ResourceLocator.RemoveAdonisResources(Application.Current.Resources);
+            }
+            else
+            {
+                ResourceLocator.AddAdonisResources(Application.Current.Resources);
+            }
+
+            IsAdonisUiIncluded = !IsAdonisUiIncluded;
+        }
+
         private void ChangeTheme(object sender, RoutedEventArgs e)
         {
             ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
