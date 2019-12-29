@@ -137,6 +137,7 @@
                                               Content="{TemplateBinding Header}"
                                               ContentTemplate="{TemplateBinding HeaderTemplate}"
                                               TextElement.Foreground="{TemplateBinding Foreground}"
+                                              RecognizesAccessKey="True"
                                               VerticalAlignment="Center" 
                                               HorizontalAlignment="Stretch" 
                                               Margin="4, 0"/>

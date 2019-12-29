@@ -144,7 +144,7 @@
             </Grid.Resources>
 
             <Menu>
-                <MenuItem Header="File">
+                <MenuItem Header="_File">
                     <MenuItem Header="New">
                         <MenuItem Header="File"
                                   InputGestureText="Ctrl+N"/>
@@ -168,13 +168,13 @@
                         </adonisExtensions:MenuItemExtension.IconTemplate>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Edit">
+                <MenuItem Header="_Edit">
                     <MenuItem Header="Copy"
                               InputGestureText="Ctrl+C"/>
                     <MenuItem Header="Paste"
                               InputGestureText="Ctrl+V"/>
                 </MenuItem>
-                <MenuItem Header="Settings">
+                <MenuItem Header="_Settings">
                     <MenuItem Header="Option 1"
                               IsChecked="True"/>
                     <MenuItem Header="Option 2"
@@ -185,7 +185,7 @@
                         <MenuItem Header="Option 2"/>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Help">
+                <MenuItem Header="_Help">
                     <MenuItem Header="About"
                               adonisExtensions:MenuItemExtension.IconTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUI}}"/>
                 </MenuItem>
