@@ -104,7 +104,6 @@
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.WindowButtonInteractionBrush}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}" />
             </Trigger>
 
             <Trigger Property="IsFocused" Value="True">
