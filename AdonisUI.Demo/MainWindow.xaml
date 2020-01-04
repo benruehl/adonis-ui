@@ -99,6 +99,20 @@
                                 </Button.Style>
                             </Button>
 
+                            <Button Content="Show Message Box"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
+                                    Click="OpenMessageBox"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8"/>
+
+                            <Button Content="Show Message Box (Default)"
+                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
+                                    Click="OpenDefaultMessageBox"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    Padding="16, 8"/>
+
                             <Button Content="Check Issues"
                                     Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
                                     Click="OpenIssueDialog"
