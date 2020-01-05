@@ -3,7 +3,8 @@
                     xmlns:local="clr-namespace:AdonisUI.Controls"
                     xmlns:extensions="clr-namespace:AdonisUI.Extensions"
                     xmlns:adonisUi="clr-namespace:AdonisUI"
-                    xmlns:adonisConverters="clr-namespace:AdonisUI.Converters">
+                    xmlns:converters="clr-namespace:AdonisUI.Converters"
+                    xmlns:drawing="clr-namespace:System.Drawing;assembly=System.Drawing">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/Controls/AdonisWindow.xaml"/>
@@ -35,25 +36,29 @@
                         </Grid.RowDefinitions>
 
                         <!-- Content -->
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1"
+                              Margin="12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <!-- Icon -->
-                            <!-- TODO: show the icon in Grid.Column="0" -->
+                            <Image x:Name="Icon"
+                                   Margin="0, 0, 12, 0"
+                                   Stretch="Uniform"
+                                   MaxHeight="32"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"/>
 
                             <!-- Text -->
                             <TextBlock Grid.Column="1"
-                                       Margin="12"
                                        Text="{Binding Text}"
                                        TextWrapping="Wrap"/>
                         </Grid>
 
                         <!-- Buttons -->
                         <!-- TODO: localization of buttons -->
-                        <!-- TODO: Binding to Button.Visibility depending on DataContext.Button -->
                         <!-- TODO: Binding to Button.IsDefault depending on DataContext.DefaultResult -->
                         <Border Grid.Row="3"
                                 Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBox}}}"
@@ -106,6 +111,8 @@
 
                     <DataTemplate.Triggers>
 
+                        <!--#region Button Visibility Triggers-->
+
                         <DataTrigger Binding="{Binding Buttons}" Value="{x:Static local:MessageBoxButtons.OK}">
                             <Setter Property="Visibility" TargetName="PART_OkButton" Value="Visible"/>
                         </DataTrigger>
@@ -126,6 +133,10 @@
                             <Setter Property="Visibility" TargetName="PART_CancelButton" Value="Visible"/>
                         </DataTrigger>
 
+                        <!--#endregion-->
+
+                        <!--#region Custom Button Label Triggers-->
+
                         <DataTrigger Binding="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)OK], FallbackValue={x:Null}}"
                                      Value="{x:Null}">
                             <Setter Property="Content" TargetName="PART_OkButton" Value="OK"/>
@@ -145,6 +156,48 @@
                                      Value="{x:Null}">
                             <Setter Property="Content" TargetName="PART_CancelButton" Value="Cancel"/>
                         </DataTrigger>
+
+                        <!--#endregion-->
+
+                        <!--#region Icon Source Triggers-->
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.None}">
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Asterisk}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Asterisk}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Error}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Error}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Exclamation}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Exclamation}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Hand}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Hand}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Information}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Information}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Question}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Question}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Stop}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Hand}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Icon}" Value="{x:Static local:MessageBoxImage.Warning}">
+                            <Setter Property="Source" TargetName="Icon" Value="{Binding Source={x:Static drawing:SystemIcons.Warning}, Converter={x:Static converters:IconToBitmapSourceConverter.Instance}}"/>
+                        </DataTrigger>
+
+                        <!--#endregion-->
 
                     </DataTemplate.Triggers>
                 </DataTemplate>
