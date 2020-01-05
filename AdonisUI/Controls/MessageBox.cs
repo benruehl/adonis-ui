@@ -148,13 +148,8 @@ namespace AdonisUI.Controls
         /// <returns>A <see cref="MessageBoxResult"/> value that specifies which message box button is clicked by the user.</returns>
         public static MessageBoxResult Show(IMessageBoxViewModel messageBoxModel)
         {
-            var messageBox = new MessageBox
-            {
-                ViewModel = messageBoxModel,
-            };
-
-            messageBox.ShowDialog();
-            return messageBoxModel.Result;
+            Window activeWindow = Application.Current?.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
+            return Show(activeWindow, messageBoxModel);
         }
 
         /// <summary>

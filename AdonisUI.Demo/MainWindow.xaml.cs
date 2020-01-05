@@ -65,12 +65,12 @@ namespace AdonisUI.Demo
 
         private void OpenMessageBox(object sender, RoutedEventArgs e)
         {
-            Controls.MessageBox.Show(this, CreateMessage(), "Error", AdonisUI.Controls.MessageBoxButtons.OKCancel, AdonisUI.Controls.MessageBoxImage.Error);
+            Controls.MessageBox.Show(CreateMessage(), "Error", AdonisUI.Controls.MessageBoxButtons.OKCancel, AdonisUI.Controls.MessageBoxImage.Error);
         }
 
         private void OpenDefaultMessageBox(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show(this, CreateMessage(), "Error", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show(CreateMessage(), "Error", MessageBoxButton.OKCancel, MessageBoxImage.Error);
         }
 
         private string CreateMessage()
