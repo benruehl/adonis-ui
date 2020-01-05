@@ -17,6 +17,7 @@
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="WindowStyle" Value="ToolWindow"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
         <Setter Property="MaxWidth" Value="470"/>
         <Setter Property="MinWidth" Value="120"/>
         <Setter Property="MinHeight" Value="60"/>
