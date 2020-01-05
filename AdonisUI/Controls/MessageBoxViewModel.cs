@@ -73,6 +73,14 @@ namespace AdonisUI.Controls
             _customButtonLabels[button] = label;
         }
 
+        private bool _isSoundEnabled = true;
+
+        public bool IsSoundEnabled
+        {
+            get => _isSoundEnabled;
+            set => SetProperty(ref _isSoundEnabled, value);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>

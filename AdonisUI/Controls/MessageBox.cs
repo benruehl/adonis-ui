@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -96,6 +97,32 @@ namespace AdonisUI.Controls
             DialogResult = false;
         }
 
+        /// <summary>
+        /// Plays a system sound depending on the associated <see cref="MessageBoxImage"/>.
+        /// </summary>
+        protected virtual void PlayOpeningSound()
+        {
+            switch (ViewModel.Icon)
+            {
+                case MessageBoxImage.Asterisk:
+                case MessageBoxImage.Information:
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case MessageBoxImage.Error:
+                case MessageBoxImage.Hand:
+                case MessageBoxImage.Stop:
+                    SystemSounds.Hand.Play();
+                    break;
+                case MessageBoxImage.Exclamation:
+                case MessageBoxImage.Warning:
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case MessageBoxImage.Question:
+                    SystemSounds.Question.Play();
+                    break;
+            }
+        }
+
         public static MessageBoxResult Show(string text)
         {
             var messageBoxModel = new MessageBoxViewModel
@@ -113,6 +140,9 @@ namespace AdonisUI.Controls
                 ViewModel = messageBoxModel,
             };
 
+            if (messageBoxModel.IsSoundEnabled)
+                messageBox.PlayOpeningSound();
+
             messageBox.ShowDialog();
             return messageBoxModel.Result;
         }
@@ -124,6 +154,9 @@ namespace AdonisUI.Controls
                 Owner = owner,
                 ViewModel = messageBoxModel,
             };
+
+            if (messageBoxModel.IsSoundEnabled)
+                messageBox.PlayOpeningSound();
 
             messageBox.ShowDialog();
             return messageBoxModel.Result;

@@ -21,5 +21,7 @@ namespace AdonisUI.Controls
         MessageBoxResult Result { get; set; }
 
         Dictionary<MessageBoxButton, string> CustomButtonLabels { get; set; }
+
+        bool IsSoundEnabled { get; set; }
     }
 }
