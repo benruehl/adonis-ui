@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AdonisUI.Controls
 {
     /// <summary>
-    /// The default implementation of <see cref="IMessageBoxViewModel"/> used to configure the appearance and behavior of a <see cref="MessageBox"/>.
+    /// The default implementation of <see cref="IMessageBoxViewModel"/> used to configure the appearance and behavior of a <see cref="MessageBoxWindow"/>.
     /// </summary>
     public class MessageBoxViewModel
         : IMessageBoxViewModel

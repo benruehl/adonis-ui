@@ -11,7 +11,7 @@
     </ResourceDictionary.MergedDictionaries>
 
 
-    <Style TargetType="{x:Type local:MessageBox}"
+    <Style TargetType="{x:Type local:MessageBoxWindow}"
            BasedOn="{StaticResource {x:Type local:AdonisWindow}}">
         <Setter Property="Title" Value="{Binding Caption}"/>
         <Setter Property="DialogButtonsBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
@@ -61,7 +61,7 @@
                         <!-- TODO: localization of buttons -->
                         <!-- TODO: Binding to Button.IsDefault depending on DataContext.DefaultResult -->
                         <Border Grid.Row="3"
-                                Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBox}}}"
+                                Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                 extensions:LayerExtension.IncreaseLayer="True">
 
                             <UniformGrid Rows="1"
