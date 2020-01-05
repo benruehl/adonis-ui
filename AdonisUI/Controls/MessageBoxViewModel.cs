@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 
 namespace AdonisUI.Controls
 {
+    /// <summary>
+    /// The default implementation of <see cref="IMessageBoxViewModel"/> used to configure the appearance and behavior of a <see cref="MessageBox"/>.
+    /// </summary>
     public class MessageBoxViewModel
         : IMessageBoxViewModel
         , INotifyPropertyChanged
     {
         private string _text;
 
+        /// <inheritdoc/>
         public string Text
         {
             get => _text;
@@ -22,6 +26,7 @@ namespace AdonisUI.Controls
 
         private string _caption;
 
+        /// <inheritdoc/>
         public string Caption
         {
             get => _caption;
@@ -30,6 +35,7 @@ namespace AdonisUI.Controls
 
         private MessageBoxButtons _buttons;
 
+        /// <inheritdoc/>
         public MessageBoxButtons Buttons
         {
             get => _buttons;
@@ -38,6 +44,7 @@ namespace AdonisUI.Controls
 
         private MessageBoxImage _icon;
 
+        /// <inheritdoc/>
         public MessageBoxImage Icon
         {
             get => _icon;
@@ -46,6 +53,7 @@ namespace AdonisUI.Controls
 
         private MessageBoxResult _defaultResult;
 
+        /// <inheritdoc/>
         public MessageBoxResult DefaultResult
         {
             get => _defaultResult;
@@ -54,6 +62,7 @@ namespace AdonisUI.Controls
 
         private MessageBoxResult _result;
 
+        /// <inheritdoc/>
         public MessageBoxResult Result
         {
             get => _result;
@@ -62,12 +71,18 @@ namespace AdonisUI.Controls
 
         private Dictionary<MessageBoxButton, string> _customButtonLabels = new Dictionary<MessageBoxButton, string>();
 
+        /// <inheritdoc/>
         public Dictionary<MessageBoxButton, string> CustomButtonLabels
         {
             get => _customButtonLabels;
             set => SetProperty(ref _customButtonLabels, value);
         }
 
+        /// <summary>
+        /// Adds or updates an entry of <see cref="CustomButtonLabels"/>.
+        /// </summary>
+        /// <param name="button">The message box button whose label should be overridden.</param>
+        /// <param name="label">The new label the message box button should receive.</param>
         public void SetCustomButtonLabel(MessageBoxButton button, string label)
         {
             _customButtonLabels[button] = label;
@@ -75,12 +90,14 @@ namespace AdonisUI.Controls
 
         private bool _isSoundEnabled = true;
 
+        /// <inheritdoc/>
         public bool IsSoundEnabled
         {
             get => _isSoundEnabled;
             set => SetProperty(ref _isSoundEnabled, value);
         }
 
+        /// <inheritdoc/>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
