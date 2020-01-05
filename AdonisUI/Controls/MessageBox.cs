@@ -67,6 +67,9 @@ namespace AdonisUI.Controls
 
             if (cancelButton != null)
                 cancelButton.Click += CancelButton_Click;
+
+            if (ViewModel.IsSoundEnabled)
+                PlayOpeningSound();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -150,9 +153,6 @@ namespace AdonisUI.Controls
                 ViewModel = messageBoxModel,
             };
 
-            if (messageBoxModel.IsSoundEnabled)
-                messageBox.PlayOpeningSound();
-
             messageBox.ShowDialog();
             return messageBoxModel.Result;
         }
@@ -170,9 +170,6 @@ namespace AdonisUI.Controls
                 Owner = owner,
                 ViewModel = messageBoxModel,
             };
-
-            if (messageBoxModel.IsSoundEnabled)
-                messageBox.PlayOpeningSound();
 
             messageBox.ShowDialog();
             return messageBoxModel.Result;
