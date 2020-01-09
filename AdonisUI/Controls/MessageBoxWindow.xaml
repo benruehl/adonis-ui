@@ -59,105 +59,35 @@
 
                         <!-- Buttons -->
                         <!-- TODO: localization of buttons -->
-                        <!-- TODO: Binding to Button.IsDefault depending on DataContext.DefaultResult -->
                         <Border Grid.Row="3"
                                 Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                 extensions:LayerExtension.IncreaseLayer="True">
 
-                            <UniformGrid Rows="1"
-                                         HorizontalAlignment="Right"
-                                         Margin="30, 12, 6, 12">
-
-                                <!-- OK -->
-                                <Button x:Name="PART_OkButton"
-                                        Content="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)OK]}"
-                                        IsDefault="{Binding IsValid}"
-                                        MinWidth="78"
-                                        Margin="0, 0, 12, 0"
-                                        Padding="{adonisUi:Space 2, 0.5}"
-                                        Visibility="Collapsed"/>
-
-                                <!-- Yes -->
-                                <Button x:Name="PART_YesButton" 
-                                        Content="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)Yes]}"
-                                        IsDefault="{Binding IsValid}"
-                                        MinWidth="78"
-                                        Margin="0, 0, 12, 0"
-                                        Padding="{adonisUi:Space 2, 0.5}"
-                                        Visibility="Collapsed"/>
-
-                                <!-- No -->
-                                <Button x:Name="PART_NoButton"
-                                        Content="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)No]}"
-                                        IsCancel="True"
-                                        MinWidth="78"
-                                        Margin="0, 0, 12, 0"
-                                        Padding="{adonisUi:Space 2, 0.5}"
-                                        Visibility="Collapsed"/>
-
-                                <!-- Cancel -->
-                                <Button x:Name="PART_CancelButton"
-                                        Content="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)Cancel]}"
-                                        IsCancel="True"
-                                        MinWidth="78"
-                                        Margin="0, 0, 12, 0"
-                                        Padding="{adonisUi:Space 2, 0.5}"
-                                        Visibility="Collapsed"/>
-
-                            </UniformGrid>
-
+                            <ItemsControl x:Name="PART_MessageBoxButtonContainer"
+                                          ItemsSource="{Binding Buttons}"
+                                          HorizontalAlignment="Right"
+                                          Margin="30, 12, 6, 12"
+                                          Focusable="False">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Label}"
+                                                IsDefault="{Binding IsDefault}"
+                                                IsCancel="{Binding IsCancel}"
+                                                MinWidth="78"
+                                                Margin="0, 0, 12, 0"
+                                                Padding="{adonisUi:Space 2, 0.5}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Rows="1"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
                         </Border>
                     </Grid>
 
                     <DataTemplate.Triggers>
-
-                        <!--#region Button Visibility Triggers-->
-
-                        <DataTrigger Binding="{Binding Buttons}" Value="{x:Static local:MessageBoxButtons.OK}">
-                            <Setter Property="Visibility" TargetName="PART_OkButton" Value="Visible"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Buttons}" Value="{x:Static local:MessageBoxButtons.OKCancel}">
-                            <Setter Property="Visibility" TargetName="PART_OkButton" Value="Visible"/>
-                            <Setter Property="Visibility" TargetName="PART_CancelButton" Value="Visible"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Buttons}" Value="{x:Static local:MessageBoxButtons.YesNo}">
-                            <Setter Property="Visibility" TargetName="PART_YesButton" Value="Visible"/>
-                            <Setter Property="Visibility" TargetName="PART_NoButton" Value="Visible"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Buttons}" Value="{x:Static local:MessageBoxButtons.YesNoCancel}">
-                            <Setter Property="Visibility" TargetName="PART_YesButton" Value="Visible"/>
-                            <Setter Property="Visibility" TargetName="PART_NoButton" Value="Visible"/>
-                            <Setter Property="Visibility" TargetName="PART_CancelButton" Value="Visible"/>
-                        </DataTrigger>
-
-                        <!--#endregion-->
-
-                        <!--#region Custom Button Label Triggers-->
-
-                        <DataTrigger Binding="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)OK], FallbackValue={x:Null}}"
-                                     Value="{x:Null}">
-                            <Setter Property="Content" TargetName="PART_OkButton" Value="OK"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)Yes], FallbackValue={x:Null}}"
-                                     Value="{x:Null}">
-                            <Setter Property="Content" TargetName="PART_YesButton" Value="Yes"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)No], FallbackValue={x:Null}}"
-                                     Value="{x:Null}">
-                            <Setter Property="Content" TargetName="PART_NoButton" Value="No"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=CustomButtonLabels[(local:MessageBoxButton)Cancel], FallbackValue={x:Null}}"
-                                     Value="{x:Null}">
-                            <Setter Property="Content" TargetName="PART_CancelButton" Value="Cancel"/>
-                        </DataTrigger>
-
-                        <!--#endregion-->
 
                         <!--#region Icon Source Triggers-->
 

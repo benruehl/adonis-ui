@@ -18,6 +18,7 @@ using AdonisUI.Demo.ViewModels;
 using IssueDialog = AdonisUI.Demo.Views.Issues.IssueDialog;
 using MessageBoxButton = System.Windows.MessageBoxButton;
 using MessageBoxImage = System.Windows.MessageBoxImage;
+using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
 namespace AdonisUI.Demo
 {
@@ -65,12 +66,24 @@ namespace AdonisUI.Demo
 
         private void OpenMessageBox(object sender, RoutedEventArgs e)
         {
-            Controls.MessageBox.Show(CreateMessage(), "Error", AdonisUI.Controls.MessageBoxButtons.OKCancel, AdonisUI.Controls.MessageBoxImage.Error);
+            Controls.MessageBox.Show(new MessageBoxModel
+            {
+                Text = CreateMessage(),
+                Caption = "Error",
+                Icon = Controls.MessageBoxImage.Error,
+                Buttons = new[]
+                {
+                    new MessageBoxButtonModel("Extra Cheese", MessageBoxResult.Custom),
+                    MessageBoxButtons.Custom("Extra Sauce"),
+                    MessageBoxButtons.Yes("Both please"),
+                    MessageBoxButtons.Cancel(),
+                }
+            });
         }
 
         private void OpenDefaultMessageBox(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show(CreateMessage(), "Error", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show(CreateMessage(), "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
         }
 
         private string CreateMessage()

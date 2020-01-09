@@ -14,21 +14,15 @@ namespace AdonisUI.Controls
     /// <summary>
     /// Displays a message box.
     /// </summary>
-    [TemplatePart(Name = PART_OkButton, Type = typeof(Button))]
-    [TemplatePart(Name = PART_YesButton, Type = typeof(Button))]
-    [TemplatePart(Name = PART_NoButton, Type = typeof(Button))]
-    [TemplatePart(Name = PART_CancelButton, Type = typeof(Button))]
+    [TemplatePart(Name = PART_MessageBoxButtonContainer, Type = typeof(DependencyObject))]
     public class MessageBoxWindow
         : AdonisWindow
     {
-        private const string PART_OkButton = "PART_OkButton";
-        private const string PART_YesButton = "PART_YesButton";
-        private const string PART_NoButton = "PART_NoButton";
-        private const string PART_CancelButton = "PART_CancelButton";
+        private const string PART_MessageBoxButtonContainer = "PART_MessageBoxButtonContainer";
 
-        public IMessageBoxViewModel ViewModel
+        public IMessageBoxModel ViewModel
         {
-            get => DataContext as IMessageBoxViewModel;
+            get => DataContext as IMessageBoxModel;
             set => DataContext = value;
         }
 
@@ -51,55 +45,46 @@ namespace AdonisUI.Controls
         public MessageBoxWindow()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             Loaded += OnLoaded;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var okButton = UINavigator.FindVisualChild<Button>(this, PART_OkButton);
-            var yesButton = UINavigator.FindVisualChild<Button>(this, PART_YesButton);
-            var noButton = UINavigator.FindVisualChild<Button>(this, PART_NoButton);
-            var cancelButton = UINavigator.FindVisualChild<Button>(this, PART_CancelButton);
+            var buttonContainer = UINavigator.FindVisualChild<DependencyObject>(this, PART_MessageBoxButtonContainer);
 
-            if (okButton != null)
-                okButton.Click += OkButton_Click;
+            if (buttonContainer == null)
+                throw new InvalidOperationException($"An element named ${PART_MessageBoxButtonContainer} must be present in the message box control template.");
 
-            if (yesButton != null)
-                yesButton.Click += YesButton_Click;
+            var buttons = UINavigator.FindVisualChildren<Button>(buttonContainer);
 
-            if (noButton != null)
-                noButton.Click += NoButton_Click;
+            foreach (Button button in buttons)
+            {
+                button.Click += MessageBoxButton_Click;
 
-            if (cancelButton != null)
-                cancelButton.Click += CancelButton_Click;
+                if (button.IsDefault)
+                    button.Focus();
+            }
 
-            if (ViewModel.IsSoundEnabled)
+            if (ViewModel != null && ViewModel.IsSoundEnabled)
                 PlayOpeningSound();
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles a click on one of the displayed message box buttons.
+        /// </summary>
+        /// <param name="sender">The button that was clicked on.</param>
+        /// <param name="e">Event arguments.</param>
+        protected virtual void MessageBoxButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Result = MessageBoxResult.OK;
-            DialogResult = true;
-        }
+            IMessageBoxButtonModel buttonModel = (IMessageBoxButtonModel) ((FrameworkElement) sender).DataContext;
 
-        private void YesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Result = MessageBoxResult.Yes;
-            DialogResult = true;
-        }
+            if (ViewModel != null)
+            {
+                ViewModel.Result = buttonModel.CausedResult;
+                ViewModel.ButtonPressed = buttonModel;
+            }
 
-        private void NoButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Result = MessageBoxResult.No;
-            DialogResult = false;
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Result = MessageBoxResult.Cancel;
-            DialogResult = false;
+            DialogResult = buttonModel.CausedResult != MessageBoxResult.No && buttonModel.CausedResult != MessageBoxResult.Cancel;
         }
 
         /// <summary>

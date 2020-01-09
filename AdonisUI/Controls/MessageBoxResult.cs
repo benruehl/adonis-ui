@@ -13,5 +13,6 @@ namespace AdonisUI.Controls
         Cancel,
         Yes,
         No,
+        Custom,
     }
 }
