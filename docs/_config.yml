@@ -1,7 +1,44 @@
-title: AdonisUI
+title: Adonis UI
 description: >- # this means to ignore newlines until next key
   Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
+
 github_username:  benruehl
-theme: jekyll-theme-cayman
+remote_theme: pmarsceill/just-the-docs
+theme: "just-the-docs"
+
 repository: benruehl/adonis-ui
 nuget_url: https://www.nuget.org/packages/AdonisUI.ClassicTheme/
+
+permalink: pretty
+exclude: ["Gemfile", "Gemfile.lock"]
+
+# Set a path/url to a logo that will be displayed instead of the title
+logo: "/img/logo-horizontal.svg"
+
+# Enable or disable the site search
+search_enabled: true
+
+# Set the search token separator for hyphenated-word search:
+search_tokenizer_separator: /[\s/]+/
+
+# Enable or disable heading anchors
+heading_anchors: true
+
+# Aux links for the upper right navigation
+aux_links:
+  "Adonis UI on GitHub":
+    - "//github.com/benruehl/adonis-ui"
+
+# Footer content appears at the bottom of every page's main content
+footer_content: "Copyright &copy; 2018-2020 Benjamin Rühl. Distributed by an <a href=\"https://github.com/benruehl/adonis-ui/tree/master/LICENSE\">MIT license.</a>"
+
+# Color scheme currently only supports "dark" or nil (default)
+color_scheme: nil
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
