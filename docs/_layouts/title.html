@@ -1,50 +1,91 @@
+---
+layout: table_wrappers
+---
+
 <!DOCTYPE html>
+
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
+{% include head.html %}
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="link" viewBox="0 0 16 16">
+      <title>Link</title>
+      <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+    </symbol>
+  </svg>
 
-    {% if site.google_analytics %}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.google_analytics }}');
-      </script>
-    {% endif %}
-    <meta charset="UTF-8">
+  <header class="page-header js-page-header shadow transparent-on-scroll-top">
+    <div class="site-header">
+      <a href="{{ site.url }}{{ site.baseurl }}" class="site-title lh-tight">{% include title.html %}</a>
+      <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button>
+    </div>
+    {% include nav.html %}
+  </header>
 
-{% seo %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#eaf2f6">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <header class="page-header bg-lights" role="banner">
-      <div class="page-header-content banner">
+  <div class="page-wrap">
+    <div class="hero-wrap bg-lights">
+      <div class="hero">
         <h1 class="project-name">
           <img src="{{ site.baseurl }}/img/logo-horizontal.svg" alt="{{ site.title | default: site.github.repository_name }}" class="project-logo"/>
         </h1>
         <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
         <div class="external-links">
-          {% if site.github.is_project_page %}
-            <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-          {% endif %}
-          <a href="{{ site.nuget_url }}" class="btn">View on NuGet</a>
+          <a href="{{ site.baseurl }}/getting-started/introduction" class="btn">Get started</a>
+          <a href="{{ site.nuget_url }}" class="btn">Download</a>
         </div>
       </div>
-    </header>
+    </div>
+    <div class="main-content-wrap js-main-content" tabindex="0">
+      <div class="main-content">
+        <div class="page">
+          {% unless page.url == "/" %}
+            {% if page.parent %}
+              <nav class="breadcrumb-nav">
+                <ol class="breadcrumb-nav-list">
+                  {% if page.grand_parent %}
+                    <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
+                    <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
+                  {% else %}
+                    <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
+                  {% endif %}
+                  <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+                </ol>
+              </nav>
+            {% endif %}
+          {% endunless %}
+          <div id="main-content" class="page-content" role="main">
+            {% if site.heading_anchors != false %}
+              {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#link\"></use></svg>" anchorClass="anchor-heading" %}
+            {% else %}
+              {{ content }}
+            {% endif %}
 
-    <main id="content" class="main-content" role="main">
-      {{ content }}
+          {% if page.has_children == true and page.has_toc != false %}
+            <hr>
+            <h2 class="text-delta">Table of contents</h2>
+            {% assign children_list = site.pages | sort:"nav_order" %}
+            <ul>
+              {% for child in children_list %}
+                {% if child.parent == page.title and child.title != page.title %}
+                <li>
+                  <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
 
-      <footer class="site-footer">
-        {% if site.github.is_project_page %}
-          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
-        {% endif %}
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-      </footer>
-    </main>
-  </body>
+          {% if site.footer_content != nil %}
+            <hr>
+            <footer role="contentinfo">
+              <p class="text-small text-grey-dk-000 mb-0">{{ site.footer_content }}</p>
+            </footer>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>

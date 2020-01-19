@@ -1,0 +1,332 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-font-family;
+}
+
+.page-wrap {
+    flex-direction: column;
+    overflow: unset;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 1rem;
+    z-index: 200;
+    
+    @include mq(md) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &.nav-open {
+        flex-direction: column;
+
+        @include mq(md) {
+            flex-direction: row;
+        }
+    }
+}
+
+.site-header {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 0.4rem 0;
+
+    @include mq(md) {
+        width: calc(#{$nav-width} - 2rem);
+    }
+}
+
+.site-title {
+    padding: 0.2rem 0;
+}
+
+// hack: somehow the site title receives height=0 when the menu is opened and only setting it explicitly seems to help
+.nav-open {
+    .site-title {
+        height: 44px;
+        @include mq(md) {
+            height: auto;
+        }
+    }
+}
+
+.site-logo {
+    background-size: auto;
+}
+
+.hero-wrap {
+    width: 100%;
+}
+
+.hero {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: calc(2rem + #{$header-height}) 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+        
+    &:after {
+        content: "";
+        position: relative;
+        align-self: center;
+        height: 4px;
+        width: 60%;
+        max-width: 8rem;
+        background: linear-gradient(to right, $theme-dark-red-color, $theme-light-red-color);
+    }
+
+    @include mq(lg) {
+        padding: calc(5rem + #{$header-height}) 6rem;
+    }
+        
+    @include mq(sm) {
+        flex-direction: column;
+    }
+
+    .project-name {
+        font-size: 8rem;
+        height: 8rem;
+        width: 36rem;
+    }
+
+    .external-links {
+        margin-bottom: 4rem;
+    }
+}
+
+.project-name {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: 1em;
+    width: 4em;
+    max-width: 80vw;
+
+    &>a {
+        flex: 1;
+    }
+}
+
+.project-logo {
+    height: 100%;
+    width: 100%;
+}
+
+.project-tagline {
+    color: $theme-dark-blue-color;
+    font-weight: 100;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+
+    @include mq(sm) {
+        font-size: 22px!important;
+    }
+}
+
+.external-links {
+    margin: 0 0 0 1rem;
+
+    @include mq(sm) {
+        margin: 1rem 0 0 0;
+    }
+}
+
+.side-bar {
+    @include mq(md) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: $nav-width;
+        min-width: $nav-width;
+        padding-bottom: $header-height;
+        margin-top: $header-height;
+    }
+}
+
+.main-content-wrap {
+    flex: auto;
+    position: initial;
+    width: auto;
+    height: auto;
+    overflow-x: visible;
+    overflow-y: visible;
+
+    @include mq(md) {
+        &.docs {
+            margin-top: $header-height;
+            margin-left: $nav-width;
+        }
+    }
+}
+
+.main-content {
+    @include mq(md) {
+        margin: 0 auto;
+    }
+}
+
+.navigation {
+    padding-bottom: 1rem;
+
+    @include mq(md) {
+        padding-bottom: 0;
+        padding-top: 1rem;
+    }
+}
+
+.header-nav {
+    display: none;
+    flex: 1;
+
+    @include mq(md) {
+        display: block;
+    }
+
+    &.nav-open {
+        display: block;
+    }
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: column;
+
+    &.horizontal {
+        flex-direction: row;
+        align-items: stretch;
+        height: 100%;
+    }
+}
+
+.navigation-list-link {
+    color: $grey-dk-000;
+
+    &.active,
+    &:hover,
+    &:focus {
+        color: $link-color;
+    }
+}
+
+.header-navigation-list-item {
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+
+    a {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 1rem $sp-4;
+        background: transparent;
+
+        &:before {
+            content: "";
+            position: absolute;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, $theme-light-red-color, $theme-dark-red-color);
+            visibility: hidden;
+            border-radius: $border-radius;
+            transform: scaleX(0);
+            transition: .15s ease-in-out;
+        }
+
+        .active,
+        &:hover {
+            background: linear-gradient($grey-lt-000, $grey-lt-000) padding-box;
+            color: $theme-dark-red-color;
+        }
+
+        .active,
+        &:hover:before,
+        &:focus:before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+    }
+}
+
+.aux-nav {
+    display: none;
+
+    @include mq(md) {
+        display: block;
+    }
+}
+
+.search {
+    display: none;
+    padding: 1rem 1rem;
+    
+    @include mq(lg) {
+        display: block;
+        flex: 0;
+        width: $nav-width;
+    }
+
+    &.nav-open {
+        display: block;
+    }
+}
+
+.search-input-wrap {
+    border: $border;
+    border-radius: $border-radius;
+    padding: 0 1rem;
+}
+
+.search-input {
+    background-color: transparent;
+}
+
+.search-results-wrap {
+    overflow-x: hidden;
+}
+
+.btn {
+    color: $btn-text-color;
+
+    &:hover {
+        color: $btn-text-color;
+        background-color: $theme-light-red-color;
+    }
+}
+
+.shadow {
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.04);
+}
+
+.bg-lights {
+    background: -webkit-linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), -webkit-linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
+    background: -o-linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), -o-linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
+    background: -moz-linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), -moz-linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
+    background: linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
+}
+
+.transparent-on-scroll-top {
+    transition: all 0.2s linear;
+}
+
+html[data-scroll="0"] {
+    .transparent-on-scroll-top {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}

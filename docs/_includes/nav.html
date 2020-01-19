@@ -1,0 +1,10 @@
+<nav class="header-nav js-header-nav" role="navigation" aria-label="Main navigation">
+    <ul class="navigation-list horizontal">
+        {%- assign nav_list = site.data.nav.items -%}
+        {%- for node in nav_list -%}
+        <li class="header-navigation-list-item">
+            <a class="{% if page.url.startsWith(node.url) %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+        </li>
+        {%- endfor -%}
+    </ul>
+</nav>
