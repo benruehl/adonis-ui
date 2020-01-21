@@ -20,6 +20,8 @@ layout: table_wrappers
       <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button>
     </div>
     {% include nav.html %}
+    <!-- invisible placeholder for js classes to prevent script errors -->
+    <div class="js-main-nav js-search js-search-input"></div>
   </header>
 
   <div class="page-wrap">
@@ -30,8 +32,8 @@ layout: table_wrappers
         </h1>
         <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
         <div class="external-links">
-          <a href="{{ site.baseurl }}/getting-started/introduction" class="btn">Get started</a>
-          <a href="{{ site.nuget_url }}" class="btn">Download</a>
+          <a href="{{ site.baseurl }}/getting-started/introduction" class="btn primary">Get started</a>
+          <a href="{{ site.nuget_url }}" class="btn primary">Download</a>
         </div>
       </div>
     </div>

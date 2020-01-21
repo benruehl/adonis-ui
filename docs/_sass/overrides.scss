@@ -7,6 +7,26 @@ h6 {
     font-family: $heading-font-family;
 }
 
+blockquote {
+    margin-bottom: 16px;
+    margin-top: 0;
+    border-left: .25em solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
+
+    &>:first-child {
+        margin-top: 0;
+    }
+
+    &>:last-child {
+        margin-bottom: 0;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .page-wrap {
     flex-direction: column;
     overflow: unset;
@@ -67,6 +87,11 @@ h6 {
 
 .hero-wrap {
     width: 100%;
+
+    @include mq(lg) {
+        margin-bottom: -10rem;
+        padding-bottom: 8rem;
+    }
 }
 
 .hero {
@@ -91,10 +116,6 @@ h6 {
 
     @include mq(lg) {
         padding: calc(5rem + #{$header-height}) 6rem;
-    }
-        
-    @include mq(sm) {
-        flex-direction: column;
     }
 
     .project-name {
@@ -301,11 +322,22 @@ h6 {
 }
 
 .btn {
-    color: $btn-text-color;
+    color: $grey-dk-100;
+    background-color: $grey-lt-100;
+    box-shadow: none;
 
     &:hover {
+        background-color: $grey-lt-300;
+    }
+
+    &.primary {
         color: $btn-text-color;
-        background-color: $theme-light-red-color;
+        background-color: $theme-dark-red-color;
+    
+        &:hover {
+            color: $btn-text-color;
+            background-color: $theme-light-red-color;
+        }
     }
 }
 
@@ -318,6 +350,21 @@ h6 {
     background: -o-linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), -o-linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
     background: -moz-linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), -moz-linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
     background: linear-gradient(70deg, $header-bg-color-primary  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, $header-bg-color-secondary 60%, $header-bg-color-tertiary 60%);
+}
+
+.stripe-segment {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: 150vw;
+        margin-left: -50vw;
+        height: 100%;
+        z-index: -1;
+        background: $grey-lt-000;
+        border: 1px solid $grey-lt-100;
+    }
 }
 
 .transparent-on-scroll-top {
