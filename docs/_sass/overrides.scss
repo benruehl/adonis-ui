@@ -270,24 +270,28 @@ body {
         &:before {
             content: "";
             position: absolute;
-            height: 3px;
+            height: 2.5px;
             bottom: 0;
             left: 0;
             right: 0;
             background: linear-gradient(to right, $theme-light-red-color, $theme-dark-red-color);
             visibility: hidden;
-            border-radius: $border-radius;
             transform: scaleX(0);
             transition: .15s ease-in-out;
         }
 
-        .active,
+        &.active,
+        &:focus,
         &:hover {
-            background: linear-gradient($grey-lt-000, $grey-lt-000) padding-box;
             color: $theme-dark-red-color;
         }
 
-        .active,
+        &:focus,
+        &:hover {
+            background: linear-gradient($grey-lt-000, $grey-lt-000) padding-box;
+        }
+
+        &.active:before,
         &:hover:before,
         &:focus:before {
             visibility: visible;

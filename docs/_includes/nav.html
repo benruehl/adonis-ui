@@ -3,7 +3,9 @@
         {%- assign nav_list = site.data.nav.items -%}
         {%- for node in nav_list -%}
         <li class="header-navigation-list-item">
-            <a class="{% if page.url.startsWith(node.url) %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+            {%- assign page_url_segments = page.url | split: "/" -%}
+            {%- assign node_url_segments = node.url | split: "/" -%}
+            <a class="{% if page_url_segments[1] == node_url_segments[1] %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
         </li>
         {%- endfor -%}
     </ul>
