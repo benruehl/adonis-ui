@@ -1,13 +1,14 @@
 ---
 layout: default
 title: Loading and Progress
+parent: Guides
 ---
 
 # Loading and Progress
 
 Progress bars have two different appearances depending on the value of the [`IsIndeterminate`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.progressbar.isindeterminate) property.
 
-![Determinate and indeterminate progress bars](../img/adonis-demo-progressbar-light.gif)
+![Determinate and indeterminate progress bars](../../img/adonis-demo-progressbar-light.gif)
 
 ## Animation
 
@@ -22,7 +23,7 @@ The determinate progress bar (left) has an additional ripple animation which can
 
 AdonisUI extends the default progress bars with properties for setting direct content. This eliminates the need of placing content on top of progress bars using grids. It further has the advantage that the content's foreground is adjusted when it intersects with the progress.
 
-![Progress bar with content](../img/adonis-demo-progressbar-content-light.png)
+![Progress bar with content](../../img/adonis-demo-progressbar-content-light.png)
 
 The code for the example above:
 
@@ -38,7 +39,7 @@ The code for the example above:
 In case the content is more than simple text but consists of child controls, the `ContentTemplate` property should be used instead of `Content`. Otherwise, the progress bar will probably not be rendered correctly.
 A more complex example:
 
-![Progress bar with content template](../img/adonis-demo-progressbar-contenttemplate-light.png)
+![Progress bar with content template](../../img/adonis-demo-progressbar-contenttemplate-light.png)
 
 ```xml
 <!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
@@ -69,15 +70,15 @@ Currently, the following loading indicators can be used:
 
 ### Loading Circle
 
-![Loading Circle](../img/adonis-demo-loadingcircle-light.gif)
+![Loading Circle](../../img/adonis-demo-loadingcircle-light.gif)
 
 ### Loading Bars
 
-![Loading Bars](../img/adonis-demo-loadingbars-light.gif)
+![Loading Bars](../../img/adonis-demo-loadingbars-light.gif)
 
 ### Loading Dots
 
-![Loading Dots](../img/adonis-demo-loadingdots-light.gif)
+![Loading Dots](../../img/adonis-demo-loadingdots-light.gif)
 
 All of them are simple `DataTemplates` that can be used like so:
 

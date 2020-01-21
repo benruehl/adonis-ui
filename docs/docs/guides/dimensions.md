@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Dimensions
+parent: Guides
 ---
 
 # Dimensions
@@ -27,7 +28,7 @@ Dimensions are a set of values that specify sizes or distances in AdonisUI. Over
 
 - **`Dimensions.BorderThickness`** - BorderThickness of every control styled by AdonisUI
 - **`Dimensions.CornerRadius`** - CornerRadius of every control styled by AdonisUI
-- **`Dimensions.CursorSpotlightRelativeSize`** - see [Cursor Spotlight](cursor-spotlight)
+- **`Dimensions.CursorSpotlightRelativeSize`** - see [Cursor Spotlight](cursor-spotlight.md)
 
 ### Corner Radius
 

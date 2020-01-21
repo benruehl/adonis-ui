@@ -231,6 +231,18 @@ body {
         align-items: stretch;
         height: 100%;
     }
+
+    &>.navigation-list-item:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.navigation-list-item .navigation-list-child-list {
+    display: block;
+
+    .navigation-list-item:before {
+        display: none;
+    }
 }
 
 .navigation-list-link {

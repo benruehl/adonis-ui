@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Data validation
+parent: Guides
 ---
 
 # Data validation
@@ -15,15 +16,15 @@ AdonisUI displays data validation errors for the following controls:
 - PasswordBox
 - TextBox
 
-![Data validation templates in light color scheme](../img/adonis-demo-validation-light.png)
+![Data validation templates in light color scheme](../../img/adonis-demo-validation-light.png)
 
-![Data validation templates in dark color scheme](../img/adonis-demo-validation-dark.png)
+![Data validation templates in dark color scheme](../../img/adonis-demo-validation-dark.png)
 
 ## Customization
 
 ### Colors
 
-The error template makes use of `ErrorColor` for the control's border and `AlertColor` for the error icon. Both can be changed for each color scheme (see [Colors and Brushes](colors-and-brushes)).
+The error template makes use of `ErrorColor` for the control's border and `AlertColor` for the error icon. Both can be changed for each color scheme (see [Colors and Brushes](colors-and-brushes.md)).
 
 ### Validation message popup
 

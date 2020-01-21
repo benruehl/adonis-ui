@@ -1,15 +1,16 @@
 ---
 layout: default
 title: Ripple effect
+parent: Guides
 ---
 
 # Ripple effect
 
 The ripple effect consists of an ellipse that expands on click with its center set to the click position. Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxItems support it as well but have it disabled by default. 
 
-![Cursor spotlight in light color scheme](../img/adonis-demo-ripple-light.gif)
+![Cursor spotlight in light color scheme](../../img/adonis-demo-ripple-light.gif)
 
-![Cursor spotlight in dark color scheme](../img/adonis-demo-ripple-dark.gif)
+![Cursor spotlight in dark color scheme](../../img/adonis-demo-ripple-dark.gif)
 
 ## Customization
 
@@ -17,7 +18,7 @@ Properties of the ripple effect can be customized using the `RippleExtension`.
 
 ### Colors
 
-The ripple effect makes use of a background brush, a border brush and a foreground brush. By default, their values are provided by the `Interaction` colors of the respective layer (See [Colors and Brushes](colors-and-brushes)). To set them directly on individual controls, use the `RippleExtension`:
+The ripple effect makes use of a background brush, a border brush and a foreground brush. By default, their values are provided by the `Interaction` colors of the respective layer (See [Colors and Brushes](colors-and-brushes.md)). To set them directly on individual controls, use the `RippleExtension`:
 
 ```xml
 <!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->

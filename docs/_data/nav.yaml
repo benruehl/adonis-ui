@@ -2,6 +2,6 @@ items:
 - title: Home
   url: /
 - title: Docs
-  url: /pages/
+  url: /docs/getting-started/introduction
 - title: Expo
-  url: /expo/
+  url: /expo/introduction

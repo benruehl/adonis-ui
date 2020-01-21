@@ -1,15 +1,16 @@
 ---
 layout: default
 title: Cursor Spotlight hover effect
+parent: Guides
 ---
 
 # Cursor Spotlight hover effect
 
 UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on interaction make use of a hover effect called Cursor Spotlight here. It makes a layer visible around the cursor when hovering over the control that is hidden otherwise. It works for both color schemes.
 
-![Cursor spotlight in light color scheme](../img/adonis-demo-cursor-spotlight-light.gif)
+![Cursor spotlight in light color scheme](../../img/adonis-demo-cursor-spotlight-light.gif)
 
-![Cursor spotlight in dark color scheme](../img/adonis-demo-cursor-spotlight-dark.gif)
+![Cursor spotlight in dark color scheme](../../img/adonis-demo-cursor-spotlight-dark.gif)
 
 ## Customization
 
@@ -17,7 +18,7 @@ Properties of the ripple effect can be customized using the `CursorSpotlightExte
 
 ### Colors
 
-The Cursor Spotlight has a background brush and border brush that can be controlled. By default, the `IntenseHighlight` colors of the current layer are used (see [Colors and Brushes](colors-and-brushes)). Changing them will change every Cursor Spotlight of AdonisUI. Alternatively the colors can be changed for individual controls or styles using the `CursorSpotlightExtension`:
+The Cursor Spotlight has a background brush and border brush that can be controlled. By default, the `IntenseHighlight` colors of the current layer are used (see [Colors and Brushes](colors-and-brushes.md)). Changing them will change every Cursor Spotlight of AdonisUI. Alternatively the colors can be changed for individual controls or styles using the `CursorSpotlightExtension`:
 
 ```xml
 <!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->

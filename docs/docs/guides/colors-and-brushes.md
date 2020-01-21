@@ -1,21 +1,22 @@
 ---
 layout: default
 title: Colors and Brushes
+parent: Guides
 ---
 
 # Colors and Brushes
 
-AdonisUI tries to get along with as few colors as possible. The color definitions go hand in hand with the [layering system](./layers). For each layer there are a total of nine colors except for the base layer which needs only two. For each color there is also a brush with the same name.
+AdonisUI tries to get along with as few colors as possible. The color definitions go hand in hand with the [layering system](./layers.md). For each layer there are a total of nine colors except for the base layer which needs only two. For each color there is also a brush with the same name.
 
 - `Background` - background color of each control on that layer
 - `Border` - border color of each control on that layer
 - `Highlight` - background color when hovering over a control
 - `HighlightBorder` - border color when hovering over a control
-- `IntenseHighlight` - background color for [cursor spotlight](./cursor-spotlight)
-- `IntenseHighlightBorder` - border color for [cursor spotlight](./cursor-spotlight)
-- `Interaction` - background color when [clicking a control](./ripple)
-- `InteractionBorder` - border color when [clicking a control](./ripple)
-- `InteractionForeground` - foreground color when [clicking a control](./ripple)
+- `IntenseHighlight` - background color for [cursor spotlight](./cursor-spotlight.md)
+- `IntenseHighlightBorder` - border color for [cursor spotlight](./cursor-spotlight.md)
+- `Interaction` - background color when [clicking a control](./ripple.md)
+- `InteractionBorder` - border color when [clicking a control](./ripple.md)
+- `InteractionForeground` - foreground color when [clicking a control](./ripple.md)
 
 These colors and brushes are used by every style of AdonisUI. Changing the basic background color for example will affect the background of every button, text box, radio button and so on.
 

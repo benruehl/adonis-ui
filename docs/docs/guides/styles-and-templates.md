@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Styles and Templates
+parent: Guides
 ---
 
 # Styles and Templates
@@ -14,7 +15,7 @@ AdonisUI offers the following resource kinds:
 - **Styles** - accessible via `AdonisUI.Styles`
 - **Templates** - accessible via `AdonisUI.Templates`
 
-For brushes and colors see [here](colors-and-brushes). For dimensions see [here](dimensions). In this article, styles, templates and icons are addressed.
+For brushes and colors see [here](colors-and-brushes.md). For dimensions see [here](dimensions.md). In this article, styles, templates and icons are addressed.
 
 ## Usage
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Space
+parent: Guides
 ---
 
 # Space

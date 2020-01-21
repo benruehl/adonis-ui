@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Custom controls
+parent: Guides
 ---
 
 # Custom controls
@@ -11,9 +12,9 @@ All custom control live in the namespace `AdonisUI.Controls`.
 
 A button that has a small arrow part on the right side which opens a menu on click.
 
-[SplitButton collapsed](../img/adonis-demo-splitbutton-collapsed-light.png)
+[SplitButton collapsed](../../img/adonis-demo-splitbutton-collapsed-light.png)
 
-[SplitButton expanded](../img/adonis-demo-splitbutton-expanded-light.png)
+[SplitButton expanded](../../img/adonis-demo-splitbutton-expanded-light.png)
 
 ```xml
 <adonisControls:SplitButton Content="Split Button"
