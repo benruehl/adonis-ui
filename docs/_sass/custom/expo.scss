@@ -1,0 +1,14 @@
+.expo-item {
+    margin: 4rem 0;
+    
+    .expo-item-title {
+        @extend .text-small;
+        display: flex;
+        align-items: baseline;
+        color: $grey-dk-000;
+
+        h2 {
+            flex: 1;
+        }
+    }
+}

@@ -45,3 +45,7 @@ compress_html:
 
 plugins:
   - jekyll-redirect-from
+
+collections:
+  expo:
+    output: true

@@ -1,0 +1,23 @@
+<nav role="navigation" aria-label="Expo navigation">
+    <ul class="navigation-list">
+        <li class="navigation-list-item">
+            <div class="navigation-list-link">
+                Projects
+            </div>
+            <ul class="navigation-list-child-list ">
+                {%- assign exhibits = site.expo | sort:"order" -%}
+                {%- for exhibit in exhibits -%}
+                <li class="navigation-list-item">
+                    <a href="#{{ exhibit.name | relative_url | split: '/' | last | replace: ' ', '-' }}"
+                    class="navigation-list-link">{{ exhibit.name }}</a>
+                </li>
+                {%- endfor -%}
+            </ul>
+        </li>
+        <li class="navigation-list-item">
+            <a class="navigation-list-link" href="#suggest-a-project">
+                Suggest a project
+            </a>
+        </li>
+    </ul>
+</nav>
