@@ -62,9 +62,10 @@
                                    HorizontalAlignment="Left"/>
 
                             <!-- Text -->
-                            <TextBlock Grid.Column="1"
-                                       Text="{Binding Text}"
-                                       TextWrapping="Wrap"/>
+                            <TextBox Grid.Column="1"
+                                     Style="{DynamicResource {x:Static adonisUi:Styles.SelectableTextBlockTextBox}}"
+                                     Text="{Binding Text}"
+                                     TextWrapping="Wrap"/>
                         </Grid>
 
                         <!-- Buttons -->
