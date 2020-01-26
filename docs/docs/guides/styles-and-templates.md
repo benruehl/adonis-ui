@@ -28,6 +28,17 @@ Example:
 <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentButtonStyle}}"/>
 ```
 
+Templates and icons are usually of type `DataTemplate`. The easiest way to use them is via a `ContentControl`:
+
+```xml
+<!-- xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI" -->
+<ContentControl Content="{Binding}"
+                ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                Width="32"
+                Height="32"
+                Focusable="False"/>
+```
+
 ## Available styles
 
 - **`Styles.AccentButton`** - For buttons that should gain attention (accent color as background)
