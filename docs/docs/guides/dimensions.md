@@ -30,6 +30,8 @@ Dimensions are a set of values that specify sizes or distances in Adonis UI. Ove
 - **`Dimensions.BorderThickness`** - BorderThickness of every control styled by Adonis UI
 - **`Dimensions.CornerRadius`** - CornerRadius of every control styled by Adonis UI
 - **`Dimensions.CursorSpotlightRelativeSize`** - see [Cursor Spotlight](cursor-spotlight.md)
+- **`Dimensions.HorizontalSpace`** - horizontal space factor that is applied when using [`AdonisUI.Space`](space.md)
+- **`Dimensions.VerticalSpace`** - vertical space factor that is applied when using [`AdonisUI.Space`](space.md)
 
 ### Corner Radius
 
