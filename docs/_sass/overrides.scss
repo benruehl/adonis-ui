@@ -393,3 +393,9 @@ html[data-scroll="0"] {
         box-shadow: none;
     }
 }
+
+:target {
+    padding-top: $header-height;
+    margin-top: -$header-height;
+    display: inline-block;
+}
