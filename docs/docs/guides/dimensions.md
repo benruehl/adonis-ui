@@ -9,16 +9,17 @@ parent: Guides
 Dimensions are a set of values that specify sizes or distances in Adonis UI. Overriding the values will change them for all controls at once. To override them, new values have to be assigned to their keys *after* including Adonis UI in you application.
 
 ```xml
+<!-- xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI" -->
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.LightColorScheme}"/>
-            <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.ClassicTheme}"/>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/ColorSchemes/Light.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
         </ResourceDictionary.MergedDictionaries>
 
         <!-- Override dimensions as you like -->
-        <Color x:Key="{x:Static adonisUi:Dimensions.CornerRadius}">2</Color>
-        <Color x:Key="{x:Static adonisUi:Dimensions.BorderThickness}">2</Color>
+        <CornerRadius x:Key="{x:Static adonisUi:Dimensions.CornerRadius}">2</CornerRadius>
+        <Thickness x:Key="{x:Static adonisUi:Dimensions.BorderThickness}">1</Thickness>
 
     </ResourceDictionary>
 </Application.Resources>
