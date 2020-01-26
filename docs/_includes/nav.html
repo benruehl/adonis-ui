@@ -5,7 +5,7 @@
         <li class="header-navigation-list-item">
             {%- assign page_url_segments = page.url | split: "/" -%}
             {%- assign node_url_segments = node.url | split: "/" -%}
-            <a class="{% if page_url_segments[1] == node_url_segments[1] %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+            <a class="{% if page_url_segments[1] == node_url_segments[1] %} active{% endif %}" href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
         </li>
         {%- endfor -%}
     </ul>
