@@ -28,4 +28,4 @@ Showcase of applications using Adonis UI.
 
 ## Suggest a project
 
-To submit a site suggestion, please [open an issue](https://github.com/benruehl/adonis-ui/issues/new/) or create a pull request on [GitHub](https://github.com/benruehl/adonis-ui/).
+To submit a project suggestion, please [open an issue](https://github.com/benruehl/adonis-ui/issues/new/) or create a pull request on [GitHub](https://github.com/benruehl/adonis-ui/).
