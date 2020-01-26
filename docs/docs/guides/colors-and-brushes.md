@@ -105,8 +105,8 @@ To override single colors with custom values simply assign a new value to the co
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.LightColorScheme}"/>
-            <ResourceDictionary Source="{x:Static adonisUi:ResourceLocator.ClassicTheme}"/>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/ColorSchemes/Light.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
         </ResourceDictionary.MergedDictionaries>
 
         <!-- Override colors as you like -->
@@ -146,4 +146,34 @@ AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, replacing
 
 ## Custom color schemes
 
-Custom color schemes need to be defined the same way as the built-in color schemes. A single `ResourceDictionary` file should hold all colors and brushes that use the resource keys of Adonis UI. This `ResourceDictionary` can be included into the application resources instead of a built-in color scheme. To make sure every key has a color or brush assigned it is recommended to copy the contents of an existing color scheme file and set the preferred values.
+Custom color schemes need to be defined the same way as the built-in color schemes. A single `ResourceDictionary` file should hold all colors and brushes that use the resource keys of Adonis UI. This `ResourceDictionary` can be included into the application resources instead of a built-in color scheme.
+
+**If you want to create a whole new color scheme** you can create a new `ResourceDictionary` file and add a new `Color` for each key in `AdonisUI.Colors` and a new `Brush` (e.g. `SolidColorBrush`) for each key in `AdonisUI.Brushes`. To make sure every key has a color or brush assigned it is recommended to copy the contents of an existing color scheme file and set the preferred values:
+
+```xml
+<Color x:Key="{x:Static adonisUi:Colors.AccentColor}">#0BAC08</Color>
+<!-- all colors go here -->
+
+<SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+<!-- all brushes go here -->
+```
+
+**If you want to use a shipped color scheme and customize only some resources** you can create a new `ResourceDictionary` file and make it include the theme you want to derive from in its `ResourceDictionary.MergedDictionaries`. Afterwards, you can create colors as you like and assign the color keys you want to override.
+
+```xml
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUITest"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/ColorSchemes/Light.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Color x:Key="{x:Static adonisUi:Colors.AccentColor}">Green</Color>
+    <!-- additional colors or brushes go here -->
+    
+</ResourceDictionary>
+```
+
+The colors and brushes you did not specify are then taken from the included color scheme. You can include this ResourceDictionary in your `App.xaml` instead of the light and dark color schemes or in addition to them if you want to switch between those.
