@@ -6,7 +6,7 @@ parent: Guides
 
 # Dimensions
 
-Dimensions are a set of values that specify sizes or distances in AdonisUI. Overriding the values will change them for all controls at once. To override them, new values have to be assigned to their keys *after* including AdonisUI in you application.
+Dimensions are a set of values that specify sizes or distances in Adonis UI. Overriding the values will change them for all controls at once. To override them, new values have to be assigned to their keys *after* including Adonis UI in you application.
 
 ```xml
 <Application.Resources>
@@ -26,8 +26,8 @@ Dimensions are a set of values that specify sizes or distances in AdonisUI. Over
 
 ## Available dimensions
 
-- **`Dimensions.BorderThickness`** - BorderThickness of every control styled by AdonisUI
-- **`Dimensions.CornerRadius`** - CornerRadius of every control styled by AdonisUI
+- **`Dimensions.BorderThickness`** - BorderThickness of every control styled by Adonis UI
+- **`Dimensions.CornerRadius`** - CornerRadius of every control styled by Adonis UI
 - **`Dimensions.CursorSpotlightRelativeSize`** - see [Cursor Spotlight](cursor-spotlight.md)
 
 ### Corner Radius
@@ -39,4 +39,4 @@ In addition to the global value the corner radius can be set on each individual 
 <Button adonisExtensions:CornerRadiusExtension.CornerRadius="4"/>
 ```
 
-This is supported by all controls that have a default style shipping with AdonisUI like Buttons, TextBoxes, GroupBoxes and even controls like ListBoxItems and GridViewHeaders.
+This is supported by all controls that have a default style shipping with Adonis UI like Buttons, TextBoxes, GroupBoxes and even controls like ListBoxItems and GridViewHeaders.

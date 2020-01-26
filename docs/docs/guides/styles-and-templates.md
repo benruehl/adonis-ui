@@ -6,7 +6,7 @@ parent: Guides
 
 # Styles and Templates
 
-AdonisUI offers the following resource kinds:
+Adonis UI offers the following resource kinds:
 
 - **Brushes** - accessible via `AdonisUI.Brushes`
 - **Colors** - accessible via `AdonisUI.Colors`
@@ -19,7 +19,7 @@ For brushes and colors see [here](colors-and-brushes.md). For dimensions see [he
 
 ## Usage
 
-All resources of AdonisUI including styles, templates and icons can be referenced using *ComponentResourceKeys*.
+All resources of Adonis UI including styles, templates and icons can be referenced using *ComponentResourceKeys*.
 
 Example:
 
@@ -44,6 +44,6 @@ Example:
 
 ## Available Icons
 
-- **`Icons.AdonisUI`** - Favicon of AdonisUI
-- **`Icons.AdonisUIGrayscale`** - Favicon of AdonisUI in grayscale colors
+- **`Icons.AdonisUI`** - Favicon of Adonis UI
+- **`Icons.AdonisUIGrayscale`** - Favicon of Adonis UI in grayscale colors
 - **`Icons.Error`** - Error icon used for displaying validation errors

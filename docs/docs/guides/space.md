@@ -6,7 +6,7 @@ parent: Guides
 
 # Space
 
-Space between controls is typically controlled with margins, paddings and grid rows and columns. To make sure the space is consistent in every spot, a fixed size can be chosen that is used everywhere (or a multiple of it). AdonisUI provides a system supporting you in doing so. By default, the base value for space is `8`, but this can be adjusted for horizontal and vertical space separately.
+Space between controls is typically controlled with margins, paddings and grid rows and columns. To make sure the space is consistent in every spot, a fixed size can be chosen that is used everywhere (or a multiple of it). Adonis UI provides a system supporting you in doing so. By default, the base value for space is `8`, but this can be adjusted for horizontal and vertical space separately.
 
 ## Usage
 
@@ -39,16 +39,16 @@ Sometimes it is not clear to the system whether the horizontal or vertical space
 
 ## Customization
 
-The following resources can be placed in the application resources right after including AdonisUI in order to override the default base space values.
+The following resources can be placed in the application resources right after including Adonis UI in order to override the default base space values.
 
 ```xml
 <system:Double x:Key="{x:Static adonisUi:Dimensions.HorizontalSpace}">8</system:Double>
 <system:Double x:Key="{x:Static adonisUi:Dimensions.VerticalSpace}">8</system:Double>
 ```
 
-## Remarks when AdonisUI is not included in the application resources
+## Remarks when Adonis UI is not included in the application resources
 
-The following is only relevant if AdonisUI's resources have not been included in the application's resources but instead in the window's resources or the resources of some other control.
+The following is only relevant if Adonis UI's resources have not been included in the application's resources but instead in the window's resources or the resources of some other control.
 
 The space system does a resource lookup to find the globally configured space values. To be able to find the values in that case, a reference to the resource owner must be passed to the system manually. Otherwise, its usage and even the usage of controls depending on it throws exceptions. To avoid that, the following should be included before the visual tree is build:
 

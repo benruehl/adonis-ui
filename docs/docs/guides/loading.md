@@ -21,7 +21,7 @@ The determinate progress bar (left) has an additional ripple animation which can
 
 ## Content
 
-AdonisUI extends the default progress bars with properties for setting direct content. This eliminates the need of placing content on top of progress bars using grids. It further has the advantage that the content's foreground is adjusted when it intersects with the progress.
+Adonis UI extends the default progress bars with properties for setting direct content. This eliminates the need of placing content on top of progress bars using grids. It further has the advantage that the content's foreground is adjusted when it intersects with the progress.
 
 ![Progress bar with content](../../img/adonis-demo-progressbar-content-light.png)
 
