@@ -1,18 +1,19 @@
 ---
 layout: default
 title: Window
+parent: Guides
 ---
 
 # Window
 
-AdonisUI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages which are explained below. To make use of it, all your window classes have to be derived from `AdonisUI.Controls.AdonisWindow`.
+Adonis UI brings a custom window title bar which looks exactly like the Windows 10 title bar by default but has several advantages which are explained below. To make use of it, all your window classes have to be derived from `AdonisUI.Controls.AdonisWindow`.
 
 Be aware that even though the window mimics the look and behavior of the Windows 10 window, it is a complete rebuild whose look is no longer controlled by the operating system. This means that it will look like this on all operating systems and does not change to the Windows 7 aero style on Windows 7 for example.
 
-|  |  |
-| --- | --- |
-| ![Custom green title bar](../img/adonis-titlebar-green.png) | ![Custom yellow title bar](../img/adonis-titlebar-yellow.png)
-| ![Custom red title bar](../img/adonis-titlebar-red.png) | ![Custom gradient title bar](../img/adonis-titlebar-gradient.png)
+|                                                                |                                                                      |
+| -------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![Custom green title bar](../../img/adonis-titlebar-green.png) | ![Custom yellow title bar](../../img/adonis-titlebar-yellow.png)     |
+| ![Custom red title bar](../../img/adonis-titlebar-red.png)     | ![Custom gradient title bar](../../img/adonis-titlebar-gradient.png) |
 
 ## Colors
 

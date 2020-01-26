@@ -1,0 +1,20 @@
+<div class="feature-list">
+    {%- assign feature_list = site.data.features.items -%}
+    {%- for feature in feature_list -%}
+    <div class="feature-list-item item-{{ forloop.index }}">
+        <h3>{{ feature.title }}</h3>
+        <ul class="feature-content">
+            {%- assign feature_details_list = feature.items -%}
+            {%- for feature_detail in feature_details_list -%}
+            <li>
+                {% if feature_detail.url != nil %}
+                <a href="{{ feature_detail.url }}">{{ feature_detail.title }}</a>
+                {% else %}
+                {{ feature_detail.title }}
+                {% endif %}
+            </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+    {%- endfor -%}
+</div>

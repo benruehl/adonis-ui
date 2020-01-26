@@ -1,13 +1,14 @@
 ---
 layout: default
 title: Watermark
+parent: Guides
 ---
 
 # Watermark
 
 A pale rendered text that can be set on some controls. It disappears as soon as the users enters input.
 
-![Watermark examples](../img/adonis-demo-watermark-light.png)
+![Watermark examples](../../img/adonis-demo-watermark-light.png)
 
 Available for following controls:
 - `ComboBox`
