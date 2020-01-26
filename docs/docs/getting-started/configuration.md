@@ -58,10 +58,20 @@ While changing resources like brushes affects all controls, you can also change 
 
 ```xml
 <!-- xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI" -->
-<Style x:Key="{x:Type Button}"
-       TargetType="Button"
-       BasedOn="{StaticResource {x:Type Button}}">
-    <!-- Set properties as you like -->
-    <Setter Property="BorderThickness" Value="0"/>
-</Style>
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI;component/ColorSchemes/Light.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+
+        <!-- Override styles as you like -->
+        <Style x:Key="{x:Type Button}"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+    </ResourceDictionary>
+</Application.Resources>
 ```
