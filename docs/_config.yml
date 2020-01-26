@@ -5,6 +5,7 @@ description: >- # this means to ignore newlines until next key
 github_username:  benruehl
 remote_theme: pmarsceill/just-the-docs
 theme: "just-the-docs"
+baseurl: /adonis-ui
 
 repository: benruehl/adonis-ui
 nuget_url: https://www.nuget.org/packages/AdonisUI.ClassicTheme/
