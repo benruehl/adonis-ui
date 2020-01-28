@@ -68,7 +68,11 @@ blockquote {
 }
 
 .site-title {
-    padding: 0.2rem 0;
+    padding: 0.4rem 0;
+
+    @include mq(md) {
+        padding: 0.2rem 0;
+    }
 }
 
 // hack: somehow the site title receives height=0 when the menu is opened and only setting it explicitly seems to help
@@ -122,6 +126,11 @@ blockquote {
         font-size: 8rem;
         height: 8rem;
         width: 36rem;
+        display: none;
+
+        @include mq(md) {
+            display: block;
+        }
     }
 
     .external-links {
