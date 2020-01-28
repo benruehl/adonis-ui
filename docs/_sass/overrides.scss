@@ -134,7 +134,22 @@ blockquote {
     }
 
     .external-links {
+        display: flex;
+        flex-direction: column;
         margin-bottom: 4rem;
+
+        @include mq(sm) {
+            flex-direction: row;
+            margin-top: 1rem;
+        }
+
+        >.btn:not(:last-child) {
+            margin: 0 0 0.4rem 0;
+
+            @include mq(sm) {
+                margin: 0 0.4rem 0 0;
+            }
+        }
     }
 }
 
@@ -164,14 +179,6 @@ blockquote {
 
     @include mq(sm) {
         font-size: 22px!important;
-    }
-}
-
-.external-links {
-    margin: 0 0 0 1rem;
-
-    @include mq(sm) {
-        margin: 1rem 0 0 0;
     }
 }
 
@@ -350,6 +357,7 @@ blockquote {
     color: $grey-dk-100;
     background-color: $grey-lt-100;
     box-shadow: none;
+    text-align: center;
 
     &:hover {
         background-color: $grey-lt-300;
