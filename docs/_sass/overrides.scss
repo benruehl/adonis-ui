@@ -68,7 +68,11 @@ blockquote {
 }
 
 .site-title {
-    padding: 0.2rem 0;
+    padding: 0.4rem 0;
+
+    @include mq(md) {
+        padding: 0.2rem 0;
+    }
 }
 
 // hack: somehow the site title receives height=0 when the menu is opened and only setting it explicitly seems to help
@@ -122,10 +126,30 @@ blockquote {
         font-size: 8rem;
         height: 8rem;
         width: 36rem;
+        display: none;
+
+        @include mq(md) {
+            display: block;
+        }
     }
 
     .external-links {
+        display: flex;
+        flex-direction: column;
         margin-bottom: 4rem;
+
+        @include mq(sm) {
+            flex-direction: row;
+            margin-top: 1rem;
+        }
+
+        >.btn:not(:last-child) {
+            margin: 0 0 0.4rem 0;
+
+            @include mq(sm) {
+                margin: 0 0.4rem 0 0;
+            }
+        }
     }
 }
 
@@ -155,14 +179,6 @@ blockquote {
 
     @include mq(sm) {
         font-size: 22px!important;
-    }
-}
-
-.external-links {
-    margin: 0 0 0 1rem;
-
-    @include mq(sm) {
-        margin: 1rem 0 0 0;
     }
 }
 
@@ -341,6 +357,7 @@ blockquote {
     color: $grey-dk-100;
     background-color: $grey-lt-100;
     box-shadow: none;
+    text-align: center;
 
     &:hover {
         background-color: $grey-lt-300;
