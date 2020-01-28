@@ -3,6 +3,7 @@ layout: default
 title: Configuration
 tagline: Adapt Adonis UI to your style
 parent: Getting started
+nav_order: 1
 ---
 
 # Configuration

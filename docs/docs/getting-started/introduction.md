@@ -3,6 +3,7 @@ layout: default
 title: Introduction
 tagline: Get started with Adonis UI
 parent: Getting started
+nav_order: 0
 ---
 
 # Introduction
