@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace AdonisUI
 {
@@ -16,6 +11,8 @@ namespace AdonisUI
         public static ComponentResourceKey AccentToolbarButton => new ComponentResourceKey(typeof(Styles), "AccentToolbarButton");
 
         public static ComponentResourceKey ToolbarToggleButton => new ComponentResourceKey(typeof(Styles), "ToolbarToggleButton");
+
+        public static ComponentResourceKey AccentToggleButton => new ComponentResourceKey(typeof(Styles), "AccentToggleButton");
 
         public static ComponentResourceKey WindowButton => new ComponentResourceKey(typeof(Styles), "WindowButton");
 
