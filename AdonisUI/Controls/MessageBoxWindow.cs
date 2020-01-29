@@ -77,15 +77,14 @@ namespace AdonisUI.Controls
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Loaded += OnLoaded;
-
-            Rect screenBounds = GetCurrentScreenBounds();
-            MaxHeight = screenBounds.Height * MaxRelativeScreenHeight;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Rect screenBounds = GetCurrentScreenBounds();
-            MaxWidth = CalcMaxWidth(new Size(screenBounds.Width, screenBounds.Height));
+            Size transformedScreenBounds = TransformToWindowCoordinates(new Size(screenBounds.Width, screenBounds.Height));
+            MaxHeight = transformedScreenBounds.Height * MaxRelativeScreenHeight;
+            MaxWidth = CalcMaxWidth(transformedScreenBounds);
 
             AttachButtonClickHandlers();
 

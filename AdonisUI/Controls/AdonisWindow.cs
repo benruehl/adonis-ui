@@ -371,6 +371,16 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
+        /// Converts a <see cref="Size"/> that represents the native coordinate system of the screen
+        /// into a <see cref="Size"/> in device independent coordinates.
+        /// </summary>
+        protected Size TransformToWindowCoordinates(Size size)
+        {
+            Point transformedCoordinates = TransformToWindowCoordinates(new Point(size.Width, size.Height));
+            return new Size(transformedCoordinates.X, transformedCoordinates.Y);
+        }
+
+        /// <summary>
         /// Converts a Point that represents the native coordinate system of the screen
         /// into a Point in device independent coordinates.
         /// </summary>
