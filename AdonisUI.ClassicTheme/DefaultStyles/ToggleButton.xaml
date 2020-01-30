@@ -3,7 +3,7 @@
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
 
-    <Style x:Key="{x:Type ToggleButton}" TargetType="ToggleButton">
+    <Style x:Key="ToggleButtonBase" TargetType="ToggleButton">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
@@ -68,7 +68,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
 
+    <Style x:Key="{x:Type ToggleButton}" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonBase}">
         <Style.Triggers>
 
             <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">

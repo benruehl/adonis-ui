@@ -46,7 +46,7 @@
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
-                             Columns="4"
+                             Columns="6"
                              HorizontalAlignment="Left">
 
                     <Button Content="Default Button"/>
@@ -62,6 +62,13 @@
                     <Button Content="Accent Toolbar Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
                             Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                    <ToggleButton Content="ToggleButton"
+                                  Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                    <ToggleButton  Content="AccentToggleButton"  
+                                   Margin="{adonisUi:Space 1, 0, 0, 0}"
+                                   Style="{DynamicResource {x:Static adonisUi:Styles.AccentToggleButton}}"/>
 
                 </UniformGrid>
             </Grid>
