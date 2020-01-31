@@ -86,7 +86,7 @@
                                                   Content="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static adonisConverters:IsImmutableFilterConverter.Instance}}"
                                                   ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                   TextElement.Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type adonisControls:RippleHost}}}"
-												  RecognizesAccessKey="True"
+                                                  RecognizesAccessKey="True"
                                                   VerticalAlignment="Center" 
                                                   HorizontalAlignment="Stretch" 
                                                   Margin="{Binding Margin, ElementName=ItemHeader}"/>
