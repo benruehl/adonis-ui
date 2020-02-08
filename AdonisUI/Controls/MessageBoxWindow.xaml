@@ -20,20 +20,13 @@
         <Setter Property="WindowStyle" Value="ToolWindow"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
         <Setter Property="ShowInTaskbar" Value="False"/>
-        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinWidth" Value="400"/>
         <Setter Property="MinHeight" Value="60"/>
         <Setter Property="IconVisibility" Value="Collapsed"/>
         <Setter Property="Content" Value="{Binding}"/>
+        <Setter Property="MaxRelativeScreenWidth" Value="0.9"/>
         <Setter Property="MaxRelativeScreenHeight" Value="0.9"/>
-        <Setter Property="MaxRelativeScreenWidthThresholds">
-            <Setter.Value>
-                <x:Array Type="{x:Type sys:Double}">
-                    <sys:Double>0.2</sys:Double>
-                    <sys:Double>0.6</sys:Double>
-                    <sys:Double>0.9</sys:Double>
-                </x:Array>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="MaxWidthStep" Value="200"/>
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>

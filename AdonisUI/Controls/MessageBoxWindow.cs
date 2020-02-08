@@ -34,6 +34,15 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
+        /// A <see cref="double"/> that represents the maximum width of the message box relative to the current screen width.
+        /// </summary>
+        public double MaxRelativeScreenWidth
+        {
+            get => (double)GetValue(MaxRelativeScreenWidthProperty);
+            set => SetValue(MaxRelativeScreenWidthProperty, value);
+        }
+
+        /// <summary>
         /// A <see cref="double"/> that represents the maximum height of the message box relative to the current screen height.
         /// </summary>
         public double MaxRelativeScreenHeight
@@ -43,13 +52,13 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
-        /// A <see cref="T:double[]"/> that represents the available relative screen widths the message box can choose from when its size is calculated.
-        /// The message box will choose the smallest value where its height does not become larger than specified via <see cref="MaxRelativeScreenHeight"/>.
+        /// A <see cref="double"/> that represents the amount of which the maximum width is increased in case it does not fit the screen.
+        /// The message box will choose the smallest multiple of this value where its height does not become larger than specified via <see cref="MaxRelativeScreenHeightProperty"/>.
         /// </summary>
-        public double[] MaxRelativeScreenWidthThresholds
+        public double MaxWidthStep
         {
-            get => (double[])GetValue(MaxRelativeScreenWidthThresholdsProperty);
-            set => SetValue(MaxRelativeScreenWidthThresholdsProperty, value);
+            get => (double)GetValue(MaxWidthStepProperty);
+            set => SetValue(MaxWidthStepProperty, value);
         }
 
         public static readonly DependencyProperty DialogButtonsBackgroundProperty = DependencyProperty.Register(nameof(DialogButtonsBackground), typeof(Brush), typeof(MessageBoxWindow), new PropertyMetadata(null));
@@ -57,13 +66,18 @@ namespace AdonisUI.Controls
         /// <summary>
         /// A <see cref="double"/> that represents the maximum height of the message box relative to the current screen height.
         /// </summary>
+        public static readonly DependencyProperty MaxRelativeScreenWidthProperty = DependencyProperty.Register("MaxRelativeScreenWidth", typeof(double), typeof(MessageBoxWindow), new PropertyMetadata(0.9));
+
+        /// <summary>
+        /// A <see cref="double"/> that represents the maximum height of the message box relative to the current screen height.
+        /// </summary>
         public static readonly DependencyProperty MaxRelativeScreenHeightProperty = DependencyProperty.Register("MaxRelativeScreenHeight", typeof(double), typeof(MessageBoxWindow), new PropertyMetadata(0.9));
 
         /// <summary>
-        /// A <see cref="T:double[]"/> that represents the available relative screen widths the message box can choose from when its size is calculated.
-        /// The message box will choose the smallest value where its height does not become larger than specified via <see cref="MaxRelativeScreenHeightProperty"/>.
+        /// A <see cref="double"/> that represents the amount of which the maximum width is increased in case it does not fit the screen.
+        /// The message box will choose the smallest multiple of this value where its height does not become larger than specified via <see cref="MaxRelativeScreenHeightProperty"/>.
         /// </summary>
-        public static readonly DependencyProperty MaxRelativeScreenWidthThresholdsProperty = DependencyProperty.Register("MaxRelativeScreenWidthThresholds", typeof(double[]), typeof(MessageBoxWindow), new PropertyMetadata(new [] { 0.2, 0.6, 0.9 }));
+        public static readonly DependencyProperty MaxWidthStepProperty = DependencyProperty.Register("MaxWidthStep", typeof(double), typeof(MessageBoxWindow), new PropertyMetadata(200.0));
 
         static MessageBoxWindow()
         {
@@ -108,7 +122,8 @@ namespace AdonisUI.Controls
         /// <returns>A <see cref="double"/> that is used as the window's MaxWidth.</returns>
         protected virtual double CalcMaxWidth(Size availableSize)
         {
-            int currentRelativeWidthThresholdIndex = 0;
+            int maxWidthStepCounter = 0;
+            double maxAbsoluteScreenWidth = availableSize.Width * MaxRelativeScreenWidth;
 
             // save current max size
             double maxWidth = MaxWidth;
@@ -116,15 +131,15 @@ namespace AdonisUI.Controls
             
             // remove max height for calculation and test different max widths
             MaxHeight = double.PositiveInfinity;
-            MaxWidth = availableSize.Width * MaxRelativeScreenWidthThresholds[currentRelativeWidthThresholdIndex];
+            MaxWidth = Math.Min(MinWidth + MaxWidthStep * maxWidthStepCounter, maxAbsoluteScreenWidth);
 
             Size measuredSize = base.MeasureOverride(availableSize);
 
-            // measure with different max widths until the window fits the screen or the final maximum is reached
-            while (measuredSize.Height > availableSize.Height * MaxRelativeScreenHeight && currentRelativeWidthThresholdIndex + 1 < MaxRelativeScreenWidthThresholds.Length)
+            // measure with different max widths until the window fits the screen
+            while (measuredSize.Height > availableSize.Height * MaxRelativeScreenHeight && MaxWidth < maxAbsoluteScreenWidth)
             {
-                currentRelativeWidthThresholdIndex++;
-                MaxWidth = availableSize.Width * MaxRelativeScreenWidthThresholds[currentRelativeWidthThresholdIndex];
+                maxWidthStepCounter++;
+                MaxWidth = Math.Min(MinWidth + MaxWidthStep * maxWidthStepCounter, maxAbsoluteScreenWidth);
                 measuredSize = base.MeasureOverride(availableSize);
             }
 
@@ -135,7 +150,27 @@ namespace AdonisUI.Controls
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;
 
+            // increase width in case buttons are clipped
+            FrameworkElement buttonContainer = UINavigator.FindVisualChild<FrameworkElement>(this, PART_MessageBoxButtonContainer);
+            double additionalWidthRequiredForButtons = CalcDesiredActualSizeDiff(buttonContainer).Width;
+            fittingMaxWidth = Math.Min(fittingMaxWidth + additionalWidthRequiredForButtons, maxAbsoluteScreenWidth);
+
             return fittingMaxWidth;
+        }
+
+        /// <summary>
+        /// Calculates the difference between the desired size and actual size of a <see cref="FrameworkElement"/> measured against positive infinity.
+        /// </summary>
+        /// <param name="element">A <see cref="FrameworkElement"/> whose size difference is about to be measured.</param>
+        /// <returns>A <see cref="Size"/> that represents the calculated difference in width and height.</returns>
+        protected Size CalcDesiredActualSizeDiff(FrameworkElement element)
+        {
+            if (element == null)
+                return new Size(0, 0);
+
+            element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+
+            return new Size(element.DesiredSize.Width - element.ActualWidth, element.DesiredSize.Height - element.ActualHeight);
         }
 
         /// <summary>
