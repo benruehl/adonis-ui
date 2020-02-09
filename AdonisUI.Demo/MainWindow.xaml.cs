@@ -64,40 +64,6 @@ namespace AdonisUI.Demo
             _isDark = !_isDark;
         }
 
-        private void OpenMessageBox(object sender, RoutedEventArgs e)
-        {
-            Controls.MessageBox.Show(new MessageBoxModel
-            {
-                Text = CreateMessage(),
-                Caption = "Error",
-                Icon = Controls.MessageBoxImage.Error,
-                Buttons = new[]
-                {
-                    new MessageBoxButtonModel("Extra Cheese", MessageBoxResult.Custom),
-                    MessageBoxButtons.Custom("Extra Sauce"),
-                    MessageBoxButtons.Yes("Both please"),
-                    MessageBoxButtons.Cancel(),
-                }
-            });
-        }
-
-        private void OpenDefaultMessageBox(object sender, RoutedEventArgs e)
-        {
-            System.Windows.MessageBox.Show(CreateMessage(), "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
-        }
-
-        private string CreateMessage()
-        {
-            try
-            {
-                throw new Exception("Error");
-            }
-            catch (Exception e)
-            {
-                return String.Join(" ", Enumerable.Repeat(e.StackTrace, 20));
-            }
-        }
-
         private void OpenIssueDialog(object sender, RoutedEventArgs e)
         {
             Window issueDialog = new IssueDialog
