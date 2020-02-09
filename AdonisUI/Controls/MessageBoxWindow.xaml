@@ -58,7 +58,8 @@
                             <TextBox Grid.Column="1"
                                      Style="{DynamicResource {x:Static adonisUi:Styles.SelectableTextBlockTextBox}}"
                                      Text="{Binding Text}"
-                                     TextWrapping="Wrap"/>
+                                     TextWrapping="Wrap"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                         </Grid>
 
                         <!-- Buttons -->
