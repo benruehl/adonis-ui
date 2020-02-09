@@ -63,7 +63,6 @@
                         </Grid>
 
                         <!-- Buttons -->
-                        <!-- TODO: localization of buttons -->
                         <Border Grid.Row="3"
                                 Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                 extensions:LayerExtension.IncreaseLayer="True">
