@@ -157,7 +157,7 @@
 
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding (adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=(adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
@@ -171,7 +171,7 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2"/>
-                    <Condition Binding="{Binding (adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=(adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
@@ -185,7 +185,7 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3"/>
-                    <Condition Binding="{Binding (adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=(adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
@@ -199,7 +199,7 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4"/>
-                    <Condition Binding="{Binding (adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=(adonisExtensions:TreeViewItemMouseOverExtension.IsMouseDirectlyOverItem), RelativeSource={RelativeSource Self}}" Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
