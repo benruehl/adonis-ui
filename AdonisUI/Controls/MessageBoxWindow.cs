@@ -1,6 +1,7 @@
 ﻿using AdonisUI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -91,10 +92,14 @@ namespace AdonisUI.Controls
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Loaded += OnLoaded;
+            Closing += OnClosing;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            if (!CanCancel())
+                CloseButton.IsEnabled = false;
+
             Rect screenBounds = GetCurrentScreenBounds();
             Size transformedScreenBounds = TransformToWindowCoordinates(new Size(screenBounds.Width, screenBounds.Height));
             MaxHeight = transformedScreenBounds.Height * MaxRelativeScreenHeight;
@@ -104,6 +109,30 @@ namespace AdonisUI.Controls
 
             if (ViewModel != null && ViewModel.IsSoundEnabled)
                 PlayOpeningSound();
+        }
+
+        /// <summary>
+        /// Determines if the window can be cancelled via close button or keyboard shortcuts.
+        /// </summary>
+        /// <returns><see langword="true"/> if the window can be cancelled.</returns>
+        protected virtual bool CanCancel()
+        {
+            if (ViewModel == null)
+                return true;
+
+            if (!ViewModel.Buttons.Any())
+            {
+                return true;
+            }
+
+            if (ViewModel.Buttons.Any(btn =>
+                btn.CausedResult == MessageBoxResult.OK ||
+                btn.CausedResult == MessageBoxResult.Cancel))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -236,6 +265,38 @@ namespace AdonisUI.Controls
                     SystemSounds.Question.Play();
                     break;
             }
+        }
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            if (ViewModel == null)
+                return;
+
+            if (ViewModel.Result == MessageBoxResult.None)
+            {
+                if (!CanCancel())
+                    e.Cancel = true;
+                else
+                    ViewModel.Result = GetDefaultCancelResult();
+            }
+        }
+
+        /// <summary>
+        /// Gets the message box result used when the window is closed but no message box button has been clicked.
+        /// </summary>
+        /// <returns>A <see cref="MessageBoxResult"/> that represents the message box window's result.</returns>
+        protected virtual MessageBoxResult GetDefaultCancelResult()
+        {
+            if (ViewModel == null)
+                return MessageBoxResult.Cancel;
+
+            if (ViewModel.Buttons.Any(btn => btn.CausedResult == MessageBoxResult.Cancel))
+                return MessageBoxResult.Cancel;
+
+            if (ViewModel.Buttons.Any(btn => btn.CausedResult == MessageBoxResult.OK))
+                return MessageBoxResult.OK;
+
+            return MessageBoxResult.Cancel;
         }
     }
 }
