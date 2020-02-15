@@ -28,6 +28,8 @@
                 <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -107,6 +109,52 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <Label Content="Buttons"
+                       Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                <UniformGrid Grid.Row="2"
+                             Rows="1"
+                             HorizontalAlignment="Left">
+
+                    <Button Content="Ok"
+                            Command="{Binding ShowOkCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Cancel"
+                            Command="{Binding ShowCancelCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Ok / Cancel"
+                            Command="{Binding ShowOkCancelCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Yes / No"
+                            Command="{Binding ShowYesNoCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Yes / No / Cancel"
+                            Command="{Binding ShowYesNoCancelCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Custom Buttons"
+                            Command="{Binding ShowCustomButtonsCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                    <Button Content="Many Buttons"
+                            Command="{Binding ShowManyButtonsCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"/>
+
+                </UniformGrid>
+
+            </Grid>
+
+            <Grid Grid.Row="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
                 <Label Content="Content"
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
@@ -116,14 +164,6 @@
 
                     <Button Content="Empty"
                             Command="{Binding ShowEmptyCommand}"
-                            Style="{StaticResource MessageBoxButtonStyle}"/>
-
-                    <Button Content="Custom Buttons"
-                            Command="{Binding ShowCustomButtonsCommand}"
-                            Style="{StaticResource MessageBoxButtonStyle}"/>
-
-                    <Button Content="Many Buttons"
-                            Command="{Binding ShowManyButtonsCommand}"
                             Style="{StaticResource MessageBoxButtonStyle}"/>
 
                 </UniformGrid>

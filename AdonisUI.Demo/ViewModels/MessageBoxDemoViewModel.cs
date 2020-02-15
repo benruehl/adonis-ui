@@ -79,13 +79,49 @@ namespace AdonisUI.Demo.ViewModels
             MessageLength = 100000,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showEmptyCommand;
+        private MessageBoxDemoShowMessageBoxCommand _showOkCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowEmptyCommand => _showEmptyCommand ?? (_showEmptyCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxDemoShowMessageBoxCommand ShowOkCommand => _showOkCommand ?? (_showOkCommand = new MessageBoxDemoShowMessageBoxCommand(this)
         {
-            CaptionLength = 0,
-            MessageLength = 0,
-            Buttons = new IMessageBoxButtonModel[] { },
+            CaptionLength = 10,
+            MessageLength = 1000,
+            Buttons = new [] { MessageBoxButtons.Ok() },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showCancelCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCancelCommand => _showCancelCommand ?? (_showCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            Buttons = new[] { MessageBoxButtons.Cancel() },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showOkCancelCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowOkCancelCommand => _showOkCancelCommand ?? (_showOkCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            Buttons = MessageBoxButtons.OkCancel().ToArray(),
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showYesNoCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowYesNoCommand => _showYesNoCommand ?? (_showYesNoCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            Buttons = MessageBoxButtons.YesNo().ToArray(),
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showYesNoCancelCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowYesNoCancelCommand => _showYesNoCancelCommand ?? (_showYesNoCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            Buttons = MessageBoxButtons.YesNoCancel().ToArray(),
         });
 
         private MessageBoxDemoShowMessageBoxCommand _showCustomButtonsCommand;
@@ -118,6 +154,15 @@ namespace AdonisUI.Demo.ViewModels
                 MessageBoxButtons.Cancel(),
                 MessageBoxButtons.Cancel(),
             }
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showEmptyCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowEmptyCommand => _showEmptyCommand ?? (_showEmptyCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 0,
+            MessageLength = 0,
+            Buttons = new IMessageBoxButtonModel[] { },
         });
 
         public IApplicationContentView GetPreviousView()
