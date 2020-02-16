@@ -27,6 +27,11 @@ namespace AdonisUI.Controls
         IEnumerable<IMessageBoxButtonModel> Buttons { get; }
 
         /// <summary>
+        /// A collection of <see cref="IMessageBoxCheckBoxModel"/> that specifies which check boxes to display.
+        /// </summary>
+        IEnumerable<IMessageBoxCheckBoxModel> CheckBoxes { get; }
+
+        /// <summary>
         /// A <see cref="MessageBoxImage"/> value that specifies the icon to display.
         /// </summary>
         MessageBoxImage Icon { get; }

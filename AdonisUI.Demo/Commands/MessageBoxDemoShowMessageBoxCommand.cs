@@ -20,19 +20,26 @@ namespace AdonisUI.Demo.Commands
 
         public IMessageBoxButtonModel[] Buttons { get; set; } = { MessageBoxButtons.Cancel() };
 
+        public IMessageBoxCheckBoxModel[] CheckBoxes { get; set; } = {};
+
         public MessageBoxDemoShowMessageBoxCommand(MessageBoxDemoViewModel contextViewModel) : base(contextViewModel)
         {
         }
 
         public override void Execute(MessageBoxDemoViewModel contextViewModel, object parameter)
         {
-            MessageBox.Show(new MessageBoxModel
+            var messageBox = new MessageBoxModel
             {
                 Text = CreateMessage(MessageLength),
                 Caption = CreateMessage(CaptionLength),
                 Icon = Icon,
                 Buttons = Buttons,
-            });
+                CheckBoxes = CheckBoxes,
+            };
+
+            contextViewModel.CurrentMessageBox = messageBox;
+
+            MessageBox.Show(messageBox);
         }
 
         private string CreateMessage(int charCount)

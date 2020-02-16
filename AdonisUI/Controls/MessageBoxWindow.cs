@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
 
@@ -80,6 +81,16 @@ namespace AdonisUI.Controls
         /// </summary>
         public static readonly DependencyProperty MaxWidthStepProperty = DependencyProperty.Register("MaxWidthStep", typeof(double), typeof(MessageBoxWindow), new PropertyMetadata(200.0));
 
+        /// <summary>
+        /// A <see cref="ICollectionView"/> that represents the check boxes that are displayed below the message box text.
+        /// </summary>
+        public ICollectionView CheckBoxesBelowTextView { get; private set; }
+
+        /// <summary>
+        /// A <see cref="ICollectionView"/> that represents the check boxes that are displayed next to the message box buttons.
+        /// </summary>
+        public ICollectionView CheckBoxesNextToButtonsView { get; private set; }
+
         static MessageBoxWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessageBoxWindow), new FrameworkPropertyMetadata(typeof(MessageBoxWindow)));
@@ -93,6 +104,7 @@ namespace AdonisUI.Controls
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Loaded += OnLoaded;
             Closing += OnClosing;
+            DataContextChanged += OnDataContextChanged;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -109,6 +121,11 @@ namespace AdonisUI.Controls
 
             if (ViewModel != null && ViewModel.IsSoundEnabled)
                 PlayOpeningSound();
+        }
+
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            InitCheckBoxCollectionViews();
         }
 
         /// <summary>
@@ -181,7 +198,7 @@ namespace AdonisUI.Controls
 
             // increase width in case buttons are clipped
             FrameworkElement buttonContainer = UINavigator.FindVisualChild<FrameworkElement>(this, PART_MessageBoxButtonContainer);
-            double additionalWidthRequiredForButtons = CalcDesiredActualSizeDiff(buttonContainer).Width;
+            double additionalWidthRequiredForButtons = CalcDesiredActualSizeDiff(buttonContainer).X;
             fittingMaxWidth = Math.Min(fittingMaxWidth + additionalWidthRequiredForButtons, maxAbsoluteScreenWidth);
 
             return fittingMaxWidth;
@@ -192,14 +209,14 @@ namespace AdonisUI.Controls
         /// </summary>
         /// <param name="element">A <see cref="FrameworkElement"/> whose size difference is about to be measured.</param>
         /// <returns>A <see cref="Size"/> that represents the calculated difference in width and height.</returns>
-        protected Size CalcDesiredActualSizeDiff(FrameworkElement element)
+        protected Vector CalcDesiredActualSizeDiff(FrameworkElement element)
         {
             if (element == null)
-                return new Size(0, 0);
+                return new Vector(0, 0);
 
             element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-            return new Size(element.DesiredSize.Width - element.ActualWidth, element.DesiredSize.Height - element.ActualHeight);
+            return new Vector(element.DesiredSize.Width - element.ActualWidth, element.DesiredSize.Height - element.ActualHeight);
         }
 
         /// <summary>
@@ -265,6 +282,22 @@ namespace AdonisUI.Controls
                     SystemSounds.Question.Play();
                     break;
             }
+        }
+
+        private void InitCheckBoxCollectionViews()
+        {
+            if (ViewModel == null)
+            {
+                CheckBoxesBelowTextView = null;
+                CheckBoxesNextToButtonsView = null;
+                return;
+            }
+
+            CheckBoxesBelowTextView = new CollectionViewSource { Source = ViewModel.CheckBoxes }.View;
+            CheckBoxesBelowTextView.Filter = checkBox => ((IMessageBoxCheckBoxModel)checkBox).Placement == MessageBoxCheckBoxPlacement.BelowText;
+
+            CheckBoxesNextToButtonsView = new CollectionViewSource { Source = ViewModel.CheckBoxes }.View;
+            CheckBoxesNextToButtonsView.Filter = checkBox => ((IMessageBoxCheckBoxModel)checkBox).Placement == MessageBoxCheckBoxPlacement.NextToButtons;
         }
 
         private void OnClosing(object sender, CancelEventArgs e)

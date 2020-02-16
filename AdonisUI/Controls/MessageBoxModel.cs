@@ -43,6 +43,15 @@ namespace AdonisUI.Controls
             set => SetProperty(ref _buttons, value);
         }
 
+        private IEnumerable<IMessageBoxCheckBoxModel> _checkBoxes = new List<IMessageBoxCheckBoxModel>();
+
+        /// <inheritdoc/>
+        public IEnumerable<IMessageBoxCheckBoxModel> CheckBoxes
+        {
+            get => _checkBoxes;
+            set => SetProperty(ref _checkBoxes, value);
+        }
+
         private MessageBoxImage _icon;
 
         /// <inheritdoc/>

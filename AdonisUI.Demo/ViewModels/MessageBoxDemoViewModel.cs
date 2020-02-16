@@ -156,6 +156,73 @@ namespace AdonisUI.Demo.ViewModels
             }
         });
 
+        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxBelowTextCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxBelowTextCommand => _showCheckBoxBelowTextCommand ?? (_showCheckBoxBelowTextCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            CheckBoxes = new []
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.BelowText, IsChecked = true },
+            },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesBelowTextCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesBelowTextCommand => _showCheckBoxesBelowTextCommand ?? (_showCheckBoxesBelowTextCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            CheckBoxes = new[]
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.BelowText, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.BelowText },
+                new MessageBoxCheckBoxModel("Apply to all") { Placement = MessageBoxCheckBoxPlacement.BelowText },
+            },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxNextToButtonsCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxNextToButtonsCommand => _showCheckBoxNextToButtonsCommand ?? (_showCheckBoxNextToButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            CheckBoxes = new[]
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.NextToButtons, IsChecked = true },
+            },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesNextToButtonsCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesNextToButtonsCommand => _showCheckBoxesNextToButtonsCommand ?? (_showCheckBoxesNextToButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            CheckBoxes = new[]
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.NextToButtons, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.NextToButtons },
+                new MessageBoxCheckBoxModel("Apply to all") { Placement = MessageBoxCheckBoxPlacement.NextToButtons },
+            },
+        });
+
+        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesEverywhereCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesEverywhereCommand => _showCheckBoxesEverywhereCommand ?? (_showCheckBoxesEverywhereCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 10,
+            MessageLength = 1000,
+            CheckBoxes = new[]
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.BelowText, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.BelowText },
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.NextToButtons, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.NextToButtons },
+            },
+        });
+
         private MessageBoxDemoShowMessageBoxCommand _showEmptyCommand;
 
         public MessageBoxDemoShowMessageBoxCommand ShowEmptyCommand => _showEmptyCommand ?? (_showEmptyCommand = new MessageBoxDemoShowMessageBoxCommand(this)
@@ -164,6 +231,47 @@ namespace AdonisUI.Demo.ViewModels
             MessageLength = 0,
             Buttons = new IMessageBoxButtonModel[] { },
         });
+
+        private MessageBoxDemoShowMessageBoxCommand _showOnlyControlsCommand;
+
+        public MessageBoxDemoShowMessageBoxCommand ShowOnlyControlsCommand => _showOnlyControlsCommand ?? (_showOnlyControlsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        {
+            CaptionLength = 0,
+            MessageLength = 0,
+            Buttons = new[]
+            {
+                MessageBoxButtons.Custom("Light"),
+                MessageBoxButtons.Custom("Dark"),
+                MessageBoxButtons.Yes(),
+                MessageBoxButtons.Yes(),
+                MessageBoxButtons.No(),
+                MessageBoxButtons.No(),
+                MessageBoxButtons.Cancel(),
+                MessageBoxButtons.Cancel(),
+            },
+            CheckBoxes = new[]
+            {
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.BelowText, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.BelowText },
+                new MessageBoxCheckBoxModel("Don't show again") { Placement = MessageBoxCheckBoxPlacement.NextToButtons, IsChecked = true },
+                new MessageBoxCheckBoxModel("I accept that this very long labeled check box might cause issues to the message box's layout") { Placement = MessageBoxCheckBoxPlacement.NextToButtons },
+            },
+        });
+
+        private IMessageBoxModel _currentMessageBox;
+
+        public IMessageBoxModel CurrentMessageBox
+        {
+            get => _currentMessageBox;
+            set
+            {
+                if (_currentMessageBox != value)
+                {
+                    _currentMessageBox = value;
+                    RaisePropertyChanged(nameof(CurrentMessageBox));
+                }
+            }
+        }
 
         public IApplicationContentView GetPreviousView()
         {

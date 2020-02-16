@@ -54,40 +54,89 @@
                                    VerticalAlignment="Top"
                                    HorizontalAlignment="Left"/>
 
-                            <!-- Text -->
-                            <TextBox Grid.Column="1"
-                                     Style="{DynamicResource {x:Static adonisUi:Styles.SelectableTextBlockTextBox}}"
-                                     Text="{Binding Text}"
-                                     TextWrapping="Wrap"
-                                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Text -->
+                                <TextBox Style="{DynamicResource {x:Static adonisUi:Styles.SelectableTextBlockTextBox}}"
+                                         Text="{Binding Text}"
+                                         TextWrapping="Wrap"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+                                <ItemsControl x:Name="CheckBoxesBelowTextView"
+                                              Grid.Row="1"
+                                              ItemsSource="{Binding CheckBoxesBelowTextView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
+                                              Margin="0, 12, 0, 0"
+                                              Focusable="False">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsChecked}"
+                                                      Margin="{adonisUi:Space 0, 1, 0, 0}">
+                                                <TextBlock Text="{Binding Label}"
+                                                           TextWrapping="Wrap"/>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
                         </Grid>
 
                         <!-- Buttons -->
-                        <Border Grid.Row="3"
+                        <Border x:Name="PART_MessageBoxButtonContainer"
+                                Grid.Row="3"
                                 Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                 extensions:LayerExtension.IncreaseLayer="True">
 
-                            <ItemsControl x:Name="PART_MessageBoxButtonContainer"
-                                          ItemsSource="{Binding Buttons}"
-                                          HorizontalAlignment="Right"
-                                          Margin="30, 12, 6, 12"
-                                          Focusable="False">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Content="{Binding Label}"
-                                                IsDefault="{Binding IsDefault}"
-                                                IsCancel="{Binding IsCancel}"
-                                                MinWidth="78"
-                                                Margin="0, 0, 12, 0"
-                                                Padding="{adonisUi:Space 2, 0.5}"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <UniformGrid Rows="1"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
+                            <Grid Margin="30, 12, 6, 12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ItemsControl x:Name="CheckBoxesNextToButtonsView"
+                                              ItemsSource="{Binding CheckBoxesNextToButtonsView, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
+                                              VerticalAlignment="Center"
+                                              Focusable="False">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsChecked}"
+                                                      Margin="{adonisUi:Space 0, 0, 2, 0}">
+                                                <TextBlock Text="{Binding Label}"
+                                                           TextWrapping="Wrap"/>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <ItemsControl Grid.Column="1"
+                                              ItemsSource="{Binding Buttons}"
+                                              VerticalAlignment="Center"
+                                              Focusable="False">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Label}"
+                                                    IsDefault="{Binding IsDefault}"
+                                                    IsCancel="{Binding IsCancel}"
+                                                    MinWidth="78"
+                                                    Margin="0, 0, 12, 0"
+                                                    Padding="{adonisUi:Space 2, 0.5}"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Grid>
                         </Border>
                     </Grid>
 
@@ -132,6 +181,14 @@
                         </DataTrigger>
 
                         <!--#endregion-->
+
+                        <DataTrigger Binding="{Binding HasItems, ElementName=CheckBoxesBelowTextView}" Value="False">
+                            <Setter Property="Visibility" TargetName="CheckBoxesBelowTextView" Value="Collapsed"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding HasItems, ElementName=CheckBoxesNextToButtonsView}" Value="False">
+                            <Setter Property="Visibility" TargetName="CheckBoxesNextToButtonsView" Value="Collapsed"/>
+                        </DataTrigger>
 
                     </DataTemplate.Triggers>
                 </DataTemplate>
