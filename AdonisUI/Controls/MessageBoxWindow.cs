@@ -232,7 +232,7 @@ namespace AdonisUI.Controls
 
             // increase width in case buttons are clipped
             FrameworkElement buttonContainer = UINavigator.FindVisualChild<FrameworkElement>(this, PART_MessageBoxButtonContainer);
-            double additionalWidthRequiredForButtons = CalcDesiredActualSizeDiff(buttonContainer).X;
+            double additionalWidthRequiredForButtons = Math.Max(CalcDesiredActualSizeDiff(buttonContainer).X, 0);
             fittingMaxWidth = Math.Min(fittingMaxWidth + additionalWidthRequiredForButtons, maxAbsoluteScreenWidth);
 
             return fittingMaxWidth;
