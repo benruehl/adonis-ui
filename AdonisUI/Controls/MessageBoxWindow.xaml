@@ -15,7 +15,6 @@
     <Style TargetType="{x:Type local:MessageBoxWindow}"
            BasedOn="{StaticResource {x:Type local:AdonisWindow}}">
         <Setter Property="Title" Value="{Binding Caption}"/>
-        <Setter Property="DialogButtonsBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="WindowStyle" Value="ToolWindow"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
@@ -27,6 +26,31 @@
         <Setter Property="MaxRelativeScreenWidth" Value="0.9"/>
         <Setter Property="MaxRelativeScreenHeight" Value="0.9"/>
         <Setter Property="MaxWidthStep" Value="200"/>
+        <Setter Property="ButtonStyle">
+            <Setter.Value>
+                <Style TargetType="Button"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="MinWidth" Value="78"/>
+                    <Setter Property="Margin" Value="0, 0, 12, 0"/>
+                    <Setter Property="Padding" Value="{adonisUi:Space 2, 0.5}"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CheckBoxStyle">
+            <Setter.Value>
+                <Style TargetType="CheckBox"
+                       BasedOn="{StaticResource {x:Type CheckBox}}">
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ButtonContainerStyle">
+            <Setter.Value>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+                    <Setter Property="extensions:LayerExtension.IncreaseLayer" Value="True"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -74,6 +98,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <CheckBox IsChecked="{Binding IsChecked}"
+                                                      Style="{Binding CheckBoxStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                                       Margin="{adonisUi:Space 0, 1, 0, 0}">
                                                 <TextBlock Text="{Binding Label}"
                                                            TextWrapping="Wrap"/>
@@ -87,8 +112,7 @@
                         <!-- Buttons -->
                         <Border x:Name="PART_MessageBoxButtonContainer"
                                 Grid.Row="3"
-                                Background="{Binding DialogButtonsBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
-                                extensions:LayerExtension.IncreaseLayer="True">
+                                Style="{Binding ButtonContainerStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}">
 
                             <Grid Margin="30, 12, 6, 12">
                                 <Grid.ColumnDefinitions>
@@ -103,6 +127,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <CheckBox IsChecked="{Binding IsChecked}"
+                                                      Style="{Binding CheckBoxStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"
                                                       Margin="{adonisUi:Space 0, 0, 2, 0}">
                                                 <TextBlock Text="{Binding Label}"
                                                            TextWrapping="Wrap"/>
@@ -125,9 +150,7 @@
                                             <Button Content="{Binding Label}"
                                                     IsDefault="{Binding IsDefault}"
                                                     IsCancel="{Binding IsCancel}"
-                                                    MinWidth="78"
-                                                    Margin="0, 0, 12, 0"
-                                                    Padding="{adonisUi:Space 2, 0.5}"/>
+                                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageBoxWindow}}}"/>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                     <ItemsControl.ItemsPanel>

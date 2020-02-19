@@ -29,10 +29,31 @@ namespace AdonisUI.Controls
             set => DataContext = value;
         }
 
-        public Brush DialogButtonsBackground
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="Button"/> that represents the style of all buttons inside the message box.
+        /// </summary>
+        public Style ButtonStyle
         {
-            get => GetValue(DialogButtonsBackgroundProperty) as Brush;
-            set => SetValue(DialogButtonsBackgroundProperty, value);
+            get => GetValue(ButtonStyleProperty) as Style;
+            set => SetValue(ButtonStyleProperty, value);
+        }
+
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="CheckBox"/> that represents the style of all check boxes inside the message box.
+        /// </summary>
+        public Style CheckBoxStyle
+        {
+            get => GetValue(CheckBoxStyleProperty) as Style;
+            set => SetValue(CheckBoxStyleProperty, value);
+        }
+
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="Border"/> that represents the style of the button container row.
+        /// </summary>
+        public Style ButtonContainerStyle
+        {
+            get => GetValue(ButtonContainerStyleProperty) as Style;
+            set => SetValue(ButtonContainerStyleProperty, value);
         }
 
         /// <summary>
@@ -63,7 +84,20 @@ namespace AdonisUI.Controls
             set => SetValue(MaxWidthStepProperty, value);
         }
 
-        public static readonly DependencyProperty DialogButtonsBackgroundProperty = DependencyProperty.Register(nameof(DialogButtonsBackground), typeof(Brush), typeof(MessageBoxWindow), new PropertyMetadata(null));
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="Button"/> that represents the style of all buttons inside the message box.
+        /// </summary>
+        public static readonly DependencyProperty ButtonStyleProperty = DependencyProperty.Register(nameof(ButtonStyle), typeof(Style), typeof(MessageBoxWindow), new PropertyMetadata(null));
+
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="CheckBox"/> that represents the style of all check boxes inside the message box.
+        /// </summary>
+        public static readonly DependencyProperty CheckBoxStyleProperty = DependencyProperty.Register(nameof(CheckBoxStyle), typeof(Style), typeof(MessageBoxWindow), new PropertyMetadata(null));
+
+        /// <summary>
+        /// A <see cref="Style"/> targeting <see cref="Border"/> that represents the style of the button container row.
+        /// </summary>
+        public static readonly DependencyProperty ButtonContainerStyleProperty = DependencyProperty.Register(nameof(ButtonContainerStyle), typeof(Style), typeof(MessageBoxWindow), new PropertyMetadata(null));
 
         /// <summary>
         /// A <see cref="double"/> that represents the maximum height of the message box relative to the current screen height.
