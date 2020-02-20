@@ -365,7 +365,7 @@
                         <Trigger Property="IsEditable" Value="True">
                             <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
                             <Setter Property="UIElement.Visibility" TargetName="PART_EditableTextBox" Value="Visible"/>
-                            <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
+                            <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Collapsed"/>
                             <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
                             <Setter Property="HorizontalAlignment" TargetName="ToggleButton" Value="Right"/>
                         </Trigger>
