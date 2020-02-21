@@ -157,7 +157,7 @@ namespace AdonisUI.Controls
 
         private BitmapSource GetApplicationIcon()
         {
-            Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetEntryAssembly()?.ManifestModule.FullyQualifiedName);
+            Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly()?.ManifestModule.FullyQualifiedName);
 
             if (appIcon == null)
                 return null;
