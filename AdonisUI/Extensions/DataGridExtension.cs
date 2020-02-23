@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI.Helpers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,7 +92,7 @@ namespace AdonisUI.Extensions
         private static void OnIsReportingErrorsToDataGridPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DataGridRow dataGridRow = (DataGridRow) d;
-            DataGrid parentDataGrid = FindVisualParent<DataGrid>(dataGridRow);
+            DataGrid parentDataGrid = UINavigator.FindVisualParent<DataGrid>(dataGridRow);
             DependencyPropertyDescriptor hasErrorProperty = DependencyPropertyDescriptor.FromProperty(Validation.HasErrorProperty, typeof(DataGridRow));
 
             if (parentDataGrid != null)
@@ -112,7 +113,7 @@ namespace AdonisUI.Extensions
         private static void OnDataGridRowHasErrorChanged(object sender, EventArgs e)
         {
             DataGridRow dataGridRow = (DataGridRow) sender;
-            DataGrid parentDataGrid = FindVisualParent<DataGrid>(dataGridRow);
+            DataGrid parentDataGrid = UINavigator.FindVisualParent<DataGrid>(dataGridRow);
 
             if (parentDataGrid != null)
             {
@@ -139,21 +140,6 @@ namespace AdonisUI.Extensions
                 if (dataGrid.ItemContainerGenerator.ContainerFromItem(item) is DataGridRow row)
                     yield return row;
             }
-        }
-
-        private static T FindVisualParent<T>(DependencyObject current) where T : DependencyObject
-        {
-            current = VisualTreeHelper.GetParent(current);
-
-            while (current != null)
-            {
-                if (current is T)
-                    return (T)current;
-                
-                current = VisualTreeHelper.GetParent(current);
-            };
-
-            return null;
         }
     }
 }

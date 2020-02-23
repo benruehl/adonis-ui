@@ -24,5 +24,7 @@ namespace AdonisUI
         public static ComponentResourceKey WindowToggleButton => new ComponentResourceKey(typeof(Styles), "WindowToggleButton");
 
         public static ComponentResourceKey RippleListBoxItem => new ComponentResourceKey(typeof(Styles), "RippleListBoxItem");
+        
+        public static ComponentResourceKey SelectableTextBlockTextBox => new ComponentResourceKey(typeof(Styles), "SelectableTextBlockTextBox");
     }
 }

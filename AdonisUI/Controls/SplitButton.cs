@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AdonisUI.Helpers;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -54,25 +55,9 @@ namespace AdonisUI.Controls
 
         private void ResetRippleEffects(FrameworkElement rootElement)
         {
-            foreach (RippleHost rippleHost in FindVisualChildren<RippleHost>(rootElement))
+            foreach (RippleHost rippleHost in UINavigator.FindVisualChildren<RippleHost>(rootElement))
             {
                 rippleHost.Reset();
-            }
-        }
-
-        private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj == null)
-                yield break;
-            
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                if (child is T variable)
-                    yield return variable;
-
-                foreach (T childOfChild in FindVisualChildren<T>(child))
-                    yield return childOfChild;
             }
         }
     }

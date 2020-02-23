@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using AdonisUI.Controls;
 using AdonisUI.Demo.ViewModels;
 using IssueDialog = AdonisUI.Demo.Views.Issues.IssueDialog;
+using MessageBoxButton = System.Windows.MessageBoxButton;
+using MessageBoxImage = System.Windows.MessageBoxImage;
+using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
 namespace AdonisUI.Demo
 {

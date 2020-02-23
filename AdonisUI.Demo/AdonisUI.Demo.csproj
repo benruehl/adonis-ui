@@ -57,6 +57,7 @@
     <Compile Include="Commands\ApplicationNextViewCommand.cs" />
     <Compile Include="Commands\ApplicationToggleIsEnabledCommand.cs" />
     <Compile Include="Commands\CollectionDemoAddItemCommand.cs" />
+    <Compile Include="Commands\MessageBoxDemoShowMessageBoxCommand.cs" />
     <Compile Include="Framework\Command.cs" />
     <Compile Include="Framework\ViewModelCommand.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
@@ -107,6 +108,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\LayerSimpleDemoViewModel.cs" />
+    <Compile Include="ViewModels\MessageBoxDemoViewModel.cs" />
     <Compile Include="ViewModels\ValidationDemoViewModel.cs" />
     <Compile Include="ViewModels\WelcomeScreenViewModel.cs" />
     <Compile Include="Views\Issues\IssueControl.xaml.cs">
@@ -122,6 +124,10 @@
     <Page Include="Views.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageBoxDemo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ValidationDemo.xaml">
       <SubType>Designer</SubType>

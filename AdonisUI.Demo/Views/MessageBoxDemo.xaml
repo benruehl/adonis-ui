@@ -1,0 +1,367 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <Style x:Key="ItemGroupLabelStyle" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="{adonisUi:Space 0, 2, 0, 0.5}"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style x:Key="MessageBoxButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Margin" Value="{adonisUi:Space 0, 0, 1, 1}"/>
+    </Style>
+
+    <DataTemplate DataType="{x:Type viewModels:MessageBoxDemoViewModel}">
+
+        <Grid Margin="{adonisUi:Space 4}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 2}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Open Predefined Message Boxes"
+                       FontSize="18"/>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{adonisUi:Space 3}"/>
+                    <ColumnDefinition Width="{adonisUi:Space 50}"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Icons"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <UniformGrid Grid.Row="2"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
+
+                            <Button Command="{Binding ShowInfoCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Info"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowQuestionCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Question"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowWarningCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Warning"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowErrorCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Error"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                        </UniformGrid>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Sizes"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <UniformGrid Grid.Row="2"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
+
+                            <Button Command="{Binding ShowSmallCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Small"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowMediumCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Medium"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowLargeCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Large"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowHugeCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Huge"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                        </UniformGrid>
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Buttons"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <UniformGrid Grid.Row="2"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
+
+                            <Button Command="{Binding ShowOkCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Ok"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowOkCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Ok / Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowYesNoCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Yes / No"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowYesNoCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Yes / No / Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCustomButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Custom Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowManyButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Many Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                        </UniformGrid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Check Boxes"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <UniformGrid Grid.Row="2"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
+
+                            <Button Command="{Binding ShowCheckBoxBelowTextCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="1x Below Text"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCheckBoxesBelowTextCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="3x Below Text"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCheckBoxNextToButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="1x Next to Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCheckBoxesNextToButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="3x Next to Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowCheckBoxesEverywhereCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Everywhere"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                        </UniformGrid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Content"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <UniformGrid Grid.Row="2"
+                                     Rows="1"
+                                     HorizontalAlignment="Left">
+
+                            <Button Command="{Binding ShowEmptyCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Empty"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                            <Button Command="{Binding ShowOnlyControlsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Only Controls"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
+
+                        </UniformGrid>
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="2"
+                      VerticalAlignment="Top">
+
+                    <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="270"
+                                              Opacity="0.1"/>
+                        </Border.Effect>
+                    </Border>
+
+                    <Grid Margin="{adonisUi:Space 3, 2}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Content="Current / Last Message Box"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="{adonisUi:Space 1}"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="{adonisUi:Space 1}"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="{adonisUi:Space 1}"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="{adonisUi:Space 1}"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Content="Title"
+                                   HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="2"
+                                       Text="{Binding CurrentMessageBox.Caption}"/>
+
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   Content="Result"
+                                   HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="2"
+                                       Text="{Binding CurrentMessageBox.Result}"/>
+
+                            <Label Grid.Row="4"
+                                   Grid.Column="0"
+                                   Content="Button Pressed"
+                                   HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="2"
+                                       Text="{Binding CurrentMessageBox.ButtonPressed.Label}"/>
+
+                            <Label Grid.Row="6"
+                                   Grid.Column="0"
+                                   Content="Check Boxes"
+                                   HorizontalAlignment="Right"/>
+
+                            <ItemsControl Grid.Row="6"
+                                          Grid.Column="2"
+                                          ItemsSource="{Binding CurrentMessageBox.CheckBoxes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}"
+                                                  IsEnabled="False">
+                                            <TextBlock Text="{Binding Label}"
+                                                       TextWrapping="Wrap"/>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>

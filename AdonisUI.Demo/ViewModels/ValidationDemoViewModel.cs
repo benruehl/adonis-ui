@@ -14,7 +14,7 @@ namespace AdonisUI.Demo.ViewModels
 
         public bool HasPreviousView => true;
 
-        public bool HasNextView => false;
+        public bool HasNextView => true;
 
         private string _stringValue;
         public string StringValue
@@ -82,7 +82,7 @@ namespace AdonisUI.Demo.ViewModels
 
         public IApplicationContentView GetNextView()
         {
-            throw new InvalidOperationException();
+            return new MessageBoxDemoViewModel();
         }
     }
 }
