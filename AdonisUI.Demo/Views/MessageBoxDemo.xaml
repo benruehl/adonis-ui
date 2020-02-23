@@ -64,21 +64,29 @@
                                      Rows="1"
                                      HorizontalAlignment="Left">
 
-                            <Button Content="Info"
-                                    Command="{Binding ShowInfoCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowInfoCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Info"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Question"
-                                    Command="{Binding ShowQuestionCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowQuestionCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Question"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Warning"
-                                    Command="{Binding ShowWarningCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowWarningCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Warning"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Error"
-                                    Command="{Binding ShowErrorCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowErrorCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Error"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
                         </UniformGrid>
                     </Grid>
@@ -97,21 +105,29 @@
                                      Rows="1"
                                      HorizontalAlignment="Left">
 
-                            <Button Content="Small"
-                                    Command="{Binding ShowSmallCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowSmallCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Small"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Medium"
-                                    Command="{Binding ShowMediumCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowMediumCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Medium"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Large"
-                                    Command="{Binding ShowLargeCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowLargeCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Large"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Huge"
-                                    Command="{Binding ShowHugeCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowHugeCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Huge"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
                         </UniformGrid>
                     </Grid>
@@ -130,33 +146,47 @@
                                      Rows="1"
                                      HorizontalAlignment="Left">
 
-                            <Button Content="Ok"
-                                    Command="{Binding ShowOkCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowOkCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Ok"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Cancel"
-                                    Command="{Binding ShowCancelCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Ok / Cancel"
-                                    Command="{Binding ShowOkCancelCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowOkCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Ok / Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Yes / No"
-                                    Command="{Binding ShowYesNoCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowYesNoCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Yes / No"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Yes / No / Cancel"
-                                    Command="{Binding ShowYesNoCancelCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowYesNoCancelCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Yes / No / Cancel"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Custom Buttons"
-                                    Command="{Binding ShowCustomButtonsCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCustomButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Custom Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Many Buttons"
-                                    Command="{Binding ShowManyButtonsCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowManyButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Many Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
                         </UniformGrid>
 
@@ -176,25 +206,35 @@
                                      Rows="1"
                                      HorizontalAlignment="Left">
 
-                            <Button Content="1x Below Text"
-                                    Command="{Binding ShowCheckBoxBelowTextCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCheckBoxBelowTextCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="1x Below Text"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="3x Below Text"
-                                    Command="{Binding ShowCheckBoxesBelowTextCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCheckBoxesBelowTextCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="3x Below Text"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="1x Next to Buttons"
-                                    Command="{Binding ShowCheckBoxNextToButtonsCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCheckBoxNextToButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="1x Next to Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="3x Next to Buttons"
-                                    Command="{Binding ShowCheckBoxesNextToButtonsCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCheckBoxesNextToButtonsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="3x Next to Buttons"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Everywhere"
-                                    Command="{Binding ShowCheckBoxesEverywhereCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowCheckBoxesEverywhereCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Everywhere"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
                         </UniformGrid>
 
@@ -214,13 +254,17 @@
                                      Rows="1"
                                      HorizontalAlignment="Left">
 
-                            <Button Content="Empty"
-                                    Command="{Binding ShowEmptyCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowEmptyCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Empty"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
-                            <Button Content="Only Controls"
-                                    Command="{Binding ShowOnlyControlsCommand}"
-                                    Style="{StaticResource MessageBoxButtonStyle}"/>
+                            <Button Command="{Binding ShowOnlyControlsCommand}"
+                                    Style="{StaticResource MessageBoxButtonStyle}">
+                                <TextBlock Text="Only Controls"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Button>
 
                         </UniformGrid>
 
