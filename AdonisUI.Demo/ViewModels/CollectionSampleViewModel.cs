@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using System.Windows.Threading;
 using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class CollectionDemoViewModel
+    class CollectionSampleViewModel
         : ViewModel
         , IApplicationContentView
     {
         public string Name => "Collections";
 
-        public bool HasPreviousView => true;
+        public IApplicationContentView.NavigationGroup Group => IApplicationContentView.NavigationGroup.Samples;
 
-        public bool HasNextView => true;
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
 
         private readonly ObservableCollection<ItemViewModel> _items = new ObservableCollection<ItemViewModel>();
         public ReadOnlyObservableCollection<ItemViewModel> Items { get; set; }
 
-        public CollectionDemoViewModel()
+        public CollectionSampleViewModel()
         {
             Items = new ReadOnlyObservableCollection<ItemViewModel>(_items);
+        }
 
+        public void Init()
+        {
+            Dispatch(() => _items.Clear());
             AddDummyItems(50);
         }
 
@@ -32,7 +44,7 @@ namespace AdonisUI.Demo.ViewModels
         {
             foreach (ItemViewModel item in CreateDummyItems(count, 0.25, new Random()))
             {
-                _items.Add(item);
+                Dispatch(() => _items.Add(item));
             }
         }
 
@@ -89,18 +101,13 @@ namespace AdonisUI.Demo.ViewModels
             return $"Item {itemId}";
         }
 
-        private CollectionDemoAddItemCommand _addItemCommand;
-
-        public CollectionDemoAddItemCommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new CollectionDemoAddItemCommand(this));
-
-        public IApplicationContentView GetPreviousView()
+        private void Dispatch(Action action)
         {
-            return new WelcomeScreenViewModel();
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, action);
         }
 
-        public IApplicationContentView GetNextView()
-        {
-            return new LayerSimpleDemoViewModel();
-        }
+        private CollectionSampleAddItemCommand _addItemCommand;
+
+        public CollectionSampleAddItemCommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new CollectionSampleAddItemCommand(this));
     }
 }

@@ -9,124 +9,130 @@ using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class MessageBoxDemoViewModel
+    class MessageBoxSampleViewModel
         : ViewModel
         , IApplicationContentView
     {
         public string Name => "Message Box";
 
-        public bool HasPreviousView => true;
+        public IApplicationContentView.NavigationGroup Group => IApplicationContentView.NavigationGroup.Samples;
 
-        public bool HasNextView => false;
+        private bool _isLoading;
 
-        private MessageBoxDemoShowMessageBoxCommand _showInfoCommand;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
 
-        public MessageBoxDemoShowMessageBoxCommand ShowInfoCommand => _showInfoCommand ?? (_showInfoCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        private MessageBoxSampleShowMessageBoxCommand _showInfoCommand;
+
+        public MessageBoxSampleShowMessageBoxCommand ShowInfoCommand => _showInfoCommand ?? (_showInfoCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             Icon = MessageBoxImage.Information,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showQuestionCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showQuestionCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowQuestionCommand => _showQuestionCommand ?? (_showQuestionCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowQuestionCommand => _showQuestionCommand ?? (_showQuestionCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             Icon = MessageBoxImage.Question,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showWarningCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showWarningCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowWarningCommand => _showWarningCommand ?? (_showWarningCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowWarningCommand => _showWarningCommand ?? (_showWarningCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             Icon = MessageBoxImage.Warning,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showErrorCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showErrorCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowErrorCommand => _showErrorCommand ?? (_showErrorCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowErrorCommand => _showErrorCommand ?? (_showErrorCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             Icon = MessageBoxImage.Error,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showSmallCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showSmallCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowSmallCommand => _showSmallCommand ?? (_showSmallCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowSmallCommand => _showSmallCommand ?? (_showSmallCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 300,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showMediumCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showMediumCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowMediumCommand => _showMediumCommand ?? (_showMediumCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowMediumCommand => _showMediumCommand ?? (_showMediumCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 100,
             MessageLength = 5000,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showLargeCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showLargeCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowLargeCommand => _showLargeCommand ?? (_showLargeCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowLargeCommand => _showLargeCommand ?? (_showLargeCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 500,
             MessageLength = 10000,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showHugeCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showHugeCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowHugeCommand => _showHugeCommand ?? (_showHugeCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowHugeCommand => _showHugeCommand ?? (_showHugeCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 1000,
             MessageLength = 100000,
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showOkCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showOkCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowOkCommand => _showOkCommand ?? (_showOkCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowOkCommand => _showOkCommand ?? (_showOkCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
             Buttons = new [] { MessageBoxButtons.Ok() },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCancelCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCancelCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCancelCommand => _showCancelCommand ?? (_showCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCancelCommand => _showCancelCommand ?? (_showCancelCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
             Buttons = new[] { MessageBoxButtons.Cancel() },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showOkCancelCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showOkCancelCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowOkCancelCommand => _showOkCancelCommand ?? (_showOkCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowOkCancelCommand => _showOkCancelCommand ?? (_showOkCancelCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
             Buttons = MessageBoxButtons.OkCancel().ToArray(),
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showYesNoCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showYesNoCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowYesNoCommand => _showYesNoCommand ?? (_showYesNoCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowYesNoCommand => _showYesNoCommand ?? (_showYesNoCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
             Buttons = MessageBoxButtons.YesNo().ToArray(),
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showYesNoCancelCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showYesNoCancelCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowYesNoCancelCommand => _showYesNoCancelCommand ?? (_showYesNoCancelCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowYesNoCancelCommand => _showYesNoCancelCommand ?? (_showYesNoCancelCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
             Buttons = MessageBoxButtons.YesNoCancel().ToArray(),
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCustomButtonsCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCustomButtonsCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCustomButtonsCommand => _showCustomButtonsCommand ?? (_showCustomButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCustomButtonsCommand => _showCustomButtonsCommand ?? (_showCustomButtonsCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             MessageLength = 100,
             Buttons = new[]
@@ -138,9 +144,9 @@ namespace AdonisUI.Demo.ViewModels
             }
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showManyButtonsCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showManyButtonsCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowManyButtonsCommand => _showManyButtonsCommand ?? (_showManyButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowManyButtonsCommand => _showManyButtonsCommand ?? (_showManyButtonsCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             MessageLength = 100,
             Buttons = new[]
@@ -156,9 +162,9 @@ namespace AdonisUI.Demo.ViewModels
             }
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxBelowTextCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCheckBoxBelowTextCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxBelowTextCommand => _showCheckBoxBelowTextCommand ?? (_showCheckBoxBelowTextCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCheckBoxBelowTextCommand => _showCheckBoxBelowTextCommand ?? (_showCheckBoxBelowTextCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
@@ -168,9 +174,9 @@ namespace AdonisUI.Demo.ViewModels
             },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesBelowTextCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCheckBoxesBelowTextCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesBelowTextCommand => _showCheckBoxesBelowTextCommand ?? (_showCheckBoxesBelowTextCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCheckBoxesBelowTextCommand => _showCheckBoxesBelowTextCommand ?? (_showCheckBoxesBelowTextCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
@@ -182,9 +188,9 @@ namespace AdonisUI.Demo.ViewModels
             },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxNextToButtonsCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCheckBoxNextToButtonsCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxNextToButtonsCommand => _showCheckBoxNextToButtonsCommand ?? (_showCheckBoxNextToButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCheckBoxNextToButtonsCommand => _showCheckBoxNextToButtonsCommand ?? (_showCheckBoxNextToButtonsCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
@@ -194,9 +200,9 @@ namespace AdonisUI.Demo.ViewModels
             },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesNextToButtonsCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCheckBoxesNextToButtonsCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesNextToButtonsCommand => _showCheckBoxesNextToButtonsCommand ?? (_showCheckBoxesNextToButtonsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCheckBoxesNextToButtonsCommand => _showCheckBoxesNextToButtonsCommand ?? (_showCheckBoxesNextToButtonsCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
@@ -208,9 +214,9 @@ namespace AdonisUI.Demo.ViewModels
             },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showCheckBoxesEverywhereCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showCheckBoxesEverywhereCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowCheckBoxesEverywhereCommand => _showCheckBoxesEverywhereCommand ?? (_showCheckBoxesEverywhereCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowCheckBoxesEverywhereCommand => _showCheckBoxesEverywhereCommand ?? (_showCheckBoxesEverywhereCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 10,
             MessageLength = 1000,
@@ -223,18 +229,18 @@ namespace AdonisUI.Demo.ViewModels
             },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showEmptyCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showEmptyCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowEmptyCommand => _showEmptyCommand ?? (_showEmptyCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowEmptyCommand => _showEmptyCommand ?? (_showEmptyCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 0,
             MessageLength = 0,
             Buttons = new IMessageBoxButtonModel[] { },
         });
 
-        private MessageBoxDemoShowMessageBoxCommand _showOnlyControlsCommand;
+        private MessageBoxSampleShowMessageBoxCommand _showOnlyControlsCommand;
 
-        public MessageBoxDemoShowMessageBoxCommand ShowOnlyControlsCommand => _showOnlyControlsCommand ?? (_showOnlyControlsCommand = new MessageBoxDemoShowMessageBoxCommand(this)
+        public MessageBoxSampleShowMessageBoxCommand ShowOnlyControlsCommand => _showOnlyControlsCommand ?? (_showOnlyControlsCommand = new MessageBoxSampleShowMessageBoxCommand(this)
         {
             CaptionLength = 0,
             MessageLength = 0,
@@ -273,14 +279,8 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
-        public IApplicationContentView GetPreviousView()
+        public void Init()
         {
-            return new ValidationDemoViewModel();
-        }
-
-        public IApplicationContentView GetNextView()
-        {
-            throw new NotImplementedException();
         }
     }
 }

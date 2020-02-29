@@ -343,7 +343,7 @@
 
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:LayerDemoViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:LayerSampleViewModel}">
 
         <Grid>
 

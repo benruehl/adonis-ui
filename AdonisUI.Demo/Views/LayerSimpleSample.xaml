@@ -6,7 +6,7 @@
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <DataTemplate DataType="{x:Type viewModels:LayerSimpleDemoViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:LayerSimpleSampleViewModel}">
 
         <Grid>
             <Border HorizontalAlignment="Center"

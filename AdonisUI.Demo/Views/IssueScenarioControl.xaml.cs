@@ -3,14 +3,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace AdonisUI.Demo.Views.Issues
+namespace AdonisUI.Demo.Views
 {
     /// <summary>
-    /// Interaktionslogik für IssueControl.xaml
+    /// Interaktionslogik für IssueScenarioControl.xaml
     /// </summary>
-    public partial class IssueControl : UserControl
+    public partial class IssueScenarioControl : UserControl
     {
-        public IssueControl()
+        public IssueScenarioControl()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace AdonisUI.Demo.Views.Issues
             set { SetValue(IssueTitleProperty, value); }
         }
 
-        public static readonly DependencyProperty IssueTitleProperty = DependencyProperty.Register("IssueTitle", typeof(string), typeof(IssueControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty IssueTitleProperty = DependencyProperty.Register("IssueTitle", typeof(string), typeof(IssueScenarioControl), new PropertyMetadata(null));
 
 
 
@@ -32,7 +32,7 @@ namespace AdonisUI.Demo.Views.Issues
             set { SetValue(IssueDescriptionProperty, value); }
         }
 
-        public static readonly DependencyProperty IssueDescriptionProperty = DependencyProperty.Register("IssueDescription", typeof(string), typeof(IssueControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty IssueDescriptionProperty = DependencyProperty.Register("IssueDescription", typeof(string), typeof(IssueScenarioControl), new PropertyMetadata(null));
 
 
 
@@ -42,7 +42,7 @@ namespace AdonisUI.Demo.Views.Issues
             set { SetValue(StepsToReproduceProperty, value); }
         }
 
-        public static readonly DependencyProperty StepsToReproduceProperty = DependencyProperty.Register("StepsToReproduce", typeof(string), typeof(IssueControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty StepsToReproduceProperty = DependencyProperty.Register("StepsToReproduce", typeof(string), typeof(IssueScenarioControl), new PropertyMetadata(null));
 
 
 
@@ -52,7 +52,7 @@ namespace AdonisUI.Demo.Views.Issues
             set { SetValue(IssueLinkProperty, value); }
         }
 
-        public static readonly DependencyProperty IssueLinkProperty = DependencyProperty.Register("IssueLink", typeof(string), typeof(IssueControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty IssueLinkProperty = DependencyProperty.Register("IssueLink", typeof(string), typeof(IssueScenarioControl), new PropertyMetadata(null));
 
 
 
@@ -62,7 +62,7 @@ namespace AdonisUI.Demo.Views.Issues
             set { SetValue(IssueContentProperty, value); }
         }
 
-        public static readonly DependencyProperty IssueContentProperty = DependencyProperty.Register("IssueContent", typeof(DependencyObject), typeof(IssueControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty IssueContentProperty = DependencyProperty.Register("IssueContent", typeof(DependencyObject), typeof(IssueScenarioControl), new PropertyMetadata(null));
 
         private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
         {

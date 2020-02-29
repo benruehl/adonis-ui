@@ -6,15 +6,21 @@ using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class ValidationDemoViewModel
+    class ValidationSampleViewModel
         : ViewModel
         , IApplicationContentView
     {
         public string Name => "Validation";
 
-        public bool HasPreviousView => true;
+        public IApplicationContentView.NavigationGroup Group => IApplicationContentView.NavigationGroup.Samples;
 
-        public bool HasNextView => true;
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
 
         private string _stringValue;
         public string StringValue
@@ -50,7 +56,7 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
-        public ValidationDemoViewModel()
+        public void Init()
         {
             ValidateStringValue();
             ValidateBoolValue();
@@ -73,16 +79,6 @@ namespace AdonisUI.Demo.ViewModels
 
             if (!BoolValue)
                 AddValidationError("BoolValue", "Value must not be false.");
-        }
-
-        public IApplicationContentView GetPreviousView()
-        {
-            return new LayerDemoViewModel();
-        }
-
-        public IApplicationContentView GetNextView()
-        {
-            return new MessageBoxDemoViewModel();
         }
     }
 }

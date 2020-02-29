@@ -5,16 +5,20 @@ using System.Text;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    interface IApplicationContentView
+    public interface IApplicationContentView
     {
         string Name { get; }
 
-        bool HasPreviousView { get; }
+        NavigationGroup Group { get; }
 
-        bool HasNextView { get; }
+        bool IsLoading { get; set; }
 
-        IApplicationContentView GetPreviousView();
+        void Init();
 
-        IApplicationContentView GetNextView();
+        public enum NavigationGroup
+        {
+            Samples,
+            IssueScenarios,
+        }
     }
 }

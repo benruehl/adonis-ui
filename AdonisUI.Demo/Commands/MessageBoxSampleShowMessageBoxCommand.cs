@@ -9,8 +9,8 @@ using AdonisUI.Demo.ViewModels;
 
 namespace AdonisUI.Demo.Commands
 {
-    class MessageBoxDemoShowMessageBoxCommand
-        : ViewModelCommand<MessageBoxDemoViewModel>
+    class MessageBoxSampleShowMessageBoxCommand
+        : ViewModelCommand<MessageBoxSampleViewModel>
     {
         public int MessageLength { get; set; } = 100;
         
@@ -22,11 +22,11 @@ namespace AdonisUI.Demo.Commands
 
         public IMessageBoxCheckBoxModel[] CheckBoxes { get; set; } = {};
 
-        public MessageBoxDemoShowMessageBoxCommand(MessageBoxDemoViewModel contextViewModel) : base(contextViewModel)
+        public MessageBoxSampleShowMessageBoxCommand(MessageBoxSampleViewModel contextViewModel) : base(contextViewModel)
         {
         }
 
-        public override void Execute(MessageBoxDemoViewModel contextViewModel, object parameter)
+        public override void Execute(MessageBoxSampleViewModel contextViewModel, object parameter)
         {
             var messageBox = new MessageBoxModel
             {

@@ -1,18 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AdonisUI.Demo"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                    xmlns:issues="clr-namespace:AdonisUI.Demo.Views.Issues"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
-    <DataTemplate x:Key="Issue23Template">
+    <DataTemplate DataType="{x:Type viewModels:Issue23ScenarioViewModel}">
 
-        <issues:IssueControl IssueTitle="Style for bottom right corner in ScrollView is missing"
+        <local:IssueScenarioControl IssueTitle="Style for bottom right corner in ScrollView is missing"
                              IssueDescription="The corner rectangle in the bottom right that fills the space for both the vertical and horizontal scrollbar is tinted white in dark mode."
                              StepsToReproduce="Have visible scrollbars inside a TextBox."
                              IssueLink="https://github.com/benruehl/adonis-ui/issues/23">
 
-            <issues:IssueControl.IssueContent>
+            <local:IssueScenarioControl.IssueContent>
 
                 <TextBox Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                          Width="240"
@@ -23,8 +23,8 @@
                          VerticalScrollBarVisibility="Visible"
                          AcceptsReturn="True"/>
 
-            </issues:IssueControl.IssueContent>
-        </issues:IssueControl>
+            </local:IssueScenarioControl.IssueContent>
+        </local:IssueScenarioControl>
 
     </DataTemplate>
 

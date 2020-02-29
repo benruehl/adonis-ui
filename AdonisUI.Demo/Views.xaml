@@ -3,12 +3,16 @@
                     xmlns:local="clr-namespace:AdonisUI.Demo.Views">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Views/CollectionDemo.xaml"/>
-        <ResourceDictionary Source="Views/LayerDemo.xaml"/>
-        <ResourceDictionary Source="Views/LayerSimpleDemo.xaml"/>
-        <ResourceDictionary Source="Views/MessageBoxDemo.xaml"/>
-        <ResourceDictionary Source="Views/ValidationDemo.xaml"/>
-        <ResourceDictionary Source="Views/WelcomeScreen.xaml"/>
+        <ResourceDictionary Source="Views/CollectionSample.xaml"/>
+        <ResourceDictionary Source="Views/Issue23Scenario.xaml"/>
+        <ResourceDictionary Source="Views/Issue26Scenario.xaml"/>
+        <ResourceDictionary Source="Views/Issue5Scenario.xaml"/>
+        <ResourceDictionary Source="Views/IssueRippleContentInvisibleScenario.xaml"/>
+        <ResourceDictionary Source="Views/LayerSample.xaml"/>
+        <ResourceDictionary Source="Views/LayerSimpleSample.xaml"/>
+        <ResourceDictionary Source="Views/MessageBoxSample.xaml"/>
+        <ResourceDictionary Source="Views/ValidationSample.xaml"/>
+        <ResourceDictionary Source="Views/OverviewSample.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

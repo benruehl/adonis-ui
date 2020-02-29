@@ -4,7 +4,7 @@
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
-    <DataTemplate DataType="{x:Type viewModels:ValidationDemoViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:ValidationSampleViewModel}">
 
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"

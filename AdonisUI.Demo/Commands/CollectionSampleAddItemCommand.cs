@@ -8,14 +8,14 @@ using AdonisUI.Demo.ViewModels;
 
 namespace AdonisUI.Demo.Commands
 {
-    class CollectionDemoAddItemCommand
-        : ViewModelCommand<CollectionDemoViewModel>
+    class CollectionSampleAddItemCommand
+        : ViewModelCommand<CollectionSampleViewModel>
     {
-        public CollectionDemoAddItemCommand(CollectionDemoViewModel contextViewModel) : base(contextViewModel)
+        public CollectionSampleAddItemCommand(CollectionSampleViewModel contextViewModel) : base(contextViewModel)
         {
         }
 
-        public override void Execute(CollectionDemoViewModel contextViewModel, object parameter)
+        public override void Execute(CollectionSampleViewModel contextViewModel, object parameter)
         {
             contextViewModel.CreateItemInItems();
         }

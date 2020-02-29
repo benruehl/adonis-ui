@@ -1,18 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AdonisUI.Demo"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                    xmlns:issues="clr-namespace:AdonisUI.Demo.Views.Issues"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
-    <DataTemplate x:Key="IssueRippleContentInvisibleTemplate">
+    <DataTemplate DataType="{x:Type viewModels:IssueRippleContentInvisibleScenarioViewModel}">
 
-        <issues:IssueControl IssueTitle="Controls having a Ripple Layer like Button do not display content"
+        <local:IssueScenarioControl IssueTitle="Controls having a Ripple Layer like Button do not display content"
                              IssueDescription="Only in case the content is set to something different than a string like a panel containing further controls."
                              StepsToReproduce="Click the buttons. At least the lower one should have a white foreground. Open the context menu on the first button. At least content should be displayed for all items on mouse down.">
 
-            <issues:IssueControl.Resources>
+            <local:IssueScenarioControl.Resources>
 
                 <DataTemplate x:Key="ContextMenuIcon">
                     <Viewbox Width="16"
@@ -22,9 +22,9 @@
                     </Viewbox>
                 </DataTemplate>
 
-            </issues:IssueControl.Resources>
+            </local:IssueScenarioControl.Resources>
 
-            <issues:IssueControl.IssueContent>
+            <local:IssueScenarioControl.IssueContent>
 
                 <StackPanel Orientation="Vertical"
                             HorizontalAlignment="Center"
@@ -117,8 +117,8 @@
                     </ListBox>
 
                 </StackPanel>
-            </issues:IssueControl.IssueContent>
-        </issues:IssueControl>
+            </local:IssueScenarioControl.IssueContent>
+        </local:IssueScenarioControl>
 
     </DataTemplate>
 

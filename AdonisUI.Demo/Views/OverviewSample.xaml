@@ -13,7 +13,7 @@
         <Setter Property="Padding" Value="0"/>
     </Style>
 
-    <DataTemplate DataType="{x:Type viewModels:WelcomeScreenViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:OverviewSampleViewModel}">
         <Grid Margin="32">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -32,7 +32,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Welcome to AdonisUI Demo App"
+            <TextBlock Text="Welcome to Adonis UI Demo App"
                        FontSize="18"/>
 
             <Grid Grid.Row="2">
