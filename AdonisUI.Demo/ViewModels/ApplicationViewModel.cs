@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
 
@@ -15,6 +17,8 @@ namespace AdonisUI.Demo.ViewModels
         private readonly ObservableCollection<IApplicationContentView> _pages;
 
         public ReadOnlyObservableCollection<IApplicationContentView> Pages { get; }
+
+        public ICollectionView PagesCollectionView { get; }
 
         private IApplicationContentView _selectedPage;
 
@@ -49,13 +53,20 @@ namespace AdonisUI.Demo.ViewModels
         public bool IsDeveloperMode
         {
             get => _isDeveloperMode;
-            set => SetProperty(ref _isDeveloperMode, value);
+            set
+            {
+                SetProperty(ref _isDeveloperMode, value);
+                PagesCollectionView.Refresh();
+            }
         }
 
         public ApplicationViewModel()
         {
             _pages = new ObservableCollection<IApplicationContentView>(CreateAllPages());
             Pages = new ReadOnlyObservableCollection<IApplicationContentView>(_pages);
+            PagesCollectionView = CollectionViewSource.GetDefaultView(Pages);
+            PagesCollectionView.Filter = FilterPages;
+            PagesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(IApplicationContentView.Group)));
             SelectedPage = Pages.FirstOrDefault();
             IsEnabled = true;
         }
@@ -72,6 +83,16 @@ namespace AdonisUI.Demo.ViewModels
             yield return new Issue23ScenarioViewModel();
             yield return new Issue26ScenarioViewModel();
             yield return new IssueRippleContentInvisibleScenarioViewModel();
+        }
+
+        private bool FilterPages(object item)
+        {
+            var page = (IApplicationContentView)item;
+
+            if (!IsDeveloperMode)
+                return page.Group != IApplicationContentView.NavigationGroup.IssueScenarios;
+
+            return true;
         }
     }
 }

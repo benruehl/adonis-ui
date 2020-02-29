@@ -80,14 +80,6 @@
                 <Grid>
                     <GroupBox MinWidth="{adonisUi:Space 25}"
                               Padding="{adonisUi:Space 0, 1, 0, 0}">
-                        <GroupBox.Resources>
-                            <CollectionViewSource x:Key="PagesCollection"
-                                                  Source="{Binding Pages}">
-                                <CollectionViewSource.GroupDescriptions>
-                                    <PropertyGroupDescription PropertyName="Group"/>
-                                </CollectionViewSource.GroupDescriptions>
-                            </CollectionViewSource>
-                        </GroupBox.Resources>
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -146,7 +138,7 @@
                             </Grid>
 
                             <ListBox Grid.Row="2"
-                                     ItemsSource="{Binding Source={StaticResource PagesCollection}}"
+                                     ItemsSource="{Binding PagesCollectionView}"
                                      SelectedItem="{Binding SelectedPage}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
