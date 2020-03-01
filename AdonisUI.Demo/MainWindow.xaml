@@ -112,7 +112,7 @@
                         <ContentControl Style="{StaticResource BreadcrumbSeparatorStyle}"/>
 
                         <ComboBox ItemsSource="{Binding PagesInSelectedGroupCollectionView}"
-                                  SelectedItem="{Binding SelectedPage}"
+                                  SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
                                   DisplayMemberPath="Name"
                                   Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
                                   VerticalAlignment="Center"/>
@@ -239,7 +239,7 @@
 
                             <ListBox Grid.Row="2"
                                      ItemsSource="{Binding PagesCollectionView}"
-                                     SelectedItem="{Binding SelectedPage}">
+                                     SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>
@@ -315,7 +315,7 @@
                                     Height="600"
                                     Margin="0, 0, -64, -136"/>
 
-                    <ContentControl Content="{Binding SelectedPage}"
+                    <ContentControl Content="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
                                     IsEnabled="{Binding IsEnabled}"
                                     Margin="{adonisUi:Space 1}"/>
 
