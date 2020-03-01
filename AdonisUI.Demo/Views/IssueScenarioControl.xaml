@@ -10,50 +10,77 @@
              HorizontalAlignment="Stretch"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <GroupBox adonisExtensions:LayerExtension.Layer="1">
-            <GroupBox.Header>
-                <WrapPanel Orientation="Vertical">
+    <Grid Margin="{adonisUi:Space 4}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding IssueTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
-                                   FontWeight="Bold"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
-                        
-                        <TextBlock Text=" ("/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding IssueTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       FontSize="18"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"/>
 
-                        <TextBlock>
-                            <Hyperlink NavigateUri="{Binding IssueLink, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
-                                       RequestNavigate="Hyperlink_OnRequestNavigate">
-                                Link
-                            </Hyperlink>
-                        </TextBlock>
+            <TextBlock VerticalAlignment="Center"
+                       Margin="{adonisUi:Space 1, 0, 0, 0}">
+                <Hyperlink NavigateUri="{Binding IssueLink, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                           RequestNavigate="Hyperlink_OnRequestNavigate">
+                    (View on GitHub)
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
 
-                        <TextBlock Text=")"/>
-                    </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                    <TextBlock Text="{Binding IssueDescription, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
-                               TextWrapping="Wrap"
-                               HorizontalAlignment="Left"
-                               Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+            <Label Content="Issue description"/>
 
-                </WrapPanel>
-            </GroupBox.Header>
+            <TextBlock Grid.Row="2"
+                       Text="{Binding IssueDescription, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"
+                       Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+        </Grid>
 
-            <DockPanel HorizontalAlignment="Stretch"
-                       VerticalAlignment="Stretch">
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding StepsToReproduce, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
-                           TextWrapping="Wrap"
-                           DockPanel.Dock="Top"
-                           HorizontalAlignment="Left"
-                           Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+            <Label Content="Steps to reproduce"/>
 
-                <ContentPresenter Content="{Binding IssueContent, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"/>
+            <TextBlock Grid.Row="2"
+                       Text="{Binding StepsToReproduce, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"
+                       Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+        </Grid>
 
-            </DockPanel>
-        </GroupBox>
+        <Grid Grid.Row="6">
+            <Rectangle HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       Fill="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                       Stroke="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                       StrokeThickness="3"
+                       StrokeDashArray="4, 4"
+                       Opacity="0.1"/>
+
+            <ContentPresenter Content="{Binding IssueContent, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="{adonisUi:Space 2}"/>
+        </Grid>
     </Grid>
 </UserControl>
