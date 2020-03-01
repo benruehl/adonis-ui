@@ -70,7 +70,7 @@
 
                 <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
 
-                <Grid>
+                <Grid Margin="{adonisUi:Space 1, 0}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -79,14 +79,12 @@
 
                     <!-- Breadcrumbs -->
                     <StackPanel DockPanel.Dock="Left"
-                                Orientation="Horizontal"
-                                Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}">
+                                Orientation="Horizontal">
 
                         <ComboBox ItemsSource="{Binding NavigationGroupsCollectionView}"
                                   SelectedItem="{Binding SelectedNavigationGroup}"
                                   Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
-                                  VerticalAlignment="Center"
-                                  Margin="{adonisUi:Space 1, 0, 0, 0}">
+                                  VerticalAlignment="Center">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -134,6 +132,20 @@
                             <Path Data="M 0 0 L 4 0 L 0 8 Z"
                                   Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
                         </Viewbox>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+
+                        <TextBlock VerticalAlignment="Center">
+                            <Hyperlink NavigateUri="https://github.com/benruehl/adonis-ui"
+                                       RequestNavigate="Hyperlink_OnRequestNavigate"
+                                       Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}">
+                                ↪ Adonis UI on GitHub
+                            </Hyperlink>
+                        </TextBlock>
 
                     </StackPanel>
 
