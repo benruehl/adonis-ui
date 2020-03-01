@@ -19,6 +19,8 @@ namespace AdonisUI.Demo.ViewModels
         public ReadOnlyObservableCollection<IApplicationContentView> Pages { get; }
 
         public ICollectionView PagesCollectionView { get; }
+        
+        public ICollectionView PagesInSelectedGroupCollectionView { get; }
 
         private IApplicationContentView _selectedPage;
 
@@ -27,6 +29,8 @@ namespace AdonisUI.Demo.ViewModels
             get => _selectedPage;
             set
             {
+                value ??= Pages.FirstOrDefault();
+
                 if (value != null && !value.IsLoading)
                 {
                     Task.Run(() =>
@@ -37,6 +41,25 @@ namespace AdonisUI.Demo.ViewModels
                 }
 
                 SetProperty(ref _selectedPage, value);
+
+                PagesInSelectedGroupCollectionView.Refresh();
+                RaisePropertyChanged(nameof(SelectedNavigationGroup));
+            }
+        }
+
+        private readonly ObservableCollection<ApplicationNavigationGroup> _navigationGroups;
+
+        public ReadOnlyObservableCollection<ApplicationNavigationGroup> NavigationGroups { get; }
+
+        public ICollectionView NavigationGroupsCollectionView { get; }
+
+        public ApplicationNavigationGroup SelectedNavigationGroup
+        {
+            get => _selectedPage.Group;
+            set
+            {
+                SelectedPage = Pages.FirstOrDefault(p => p.Group == value);
+                PagesInSelectedGroupCollectionView.Refresh();
             }
         }
 
@@ -57,6 +80,7 @@ namespace AdonisUI.Demo.ViewModels
             {
                 SetProperty(ref _isDeveloperMode, value);
                 PagesCollectionView.Refresh();
+                NavigationGroupsCollectionView.Refresh();
             }
         }
 
@@ -67,7 +91,15 @@ namespace AdonisUI.Demo.ViewModels
             PagesCollectionView = CollectionViewSource.GetDefaultView(Pages);
             PagesCollectionView.Filter = FilterPages;
             PagesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(IApplicationContentView.Group)));
+            PagesInSelectedGroupCollectionView = new CollectionViewSource { Source = Pages }.View;
+            PagesInSelectedGroupCollectionView.Filter = FilterPagesInSelectedGroup;
             SelectedPage = Pages.FirstOrDefault();
+
+            _navigationGroups = new ObservableCollection<ApplicationNavigationGroup>(Enum.GetValues(typeof(ApplicationNavigationGroup)).Cast<ApplicationNavigationGroup>());
+            NavigationGroups = new ReadOnlyObservableCollection<ApplicationNavigationGroup>(_navigationGroups);
+            NavigationGroupsCollectionView = CollectionViewSource.GetDefaultView(NavigationGroups);
+            NavigationGroupsCollectionView.Filter = FilterNavigationGroups;
+
             IsEnabled = true;
         }
 
@@ -90,7 +122,27 @@ namespace AdonisUI.Demo.ViewModels
             var page = (IApplicationContentView)item;
 
             if (!IsDeveloperMode)
-                return page.Group != IApplicationContentView.NavigationGroup.IssueScenarios;
+                return page.Group != ApplicationNavigationGroup.IssueScenarios;
+
+            return true;
+        }
+
+        private bool FilterPagesInSelectedGroup(object item)
+        {
+            var page = (IApplicationContentView)item;
+
+            if (SelectedPage == null)
+                return false;
+
+            return page.Group == SelectedPage.Group && FilterPages(page);
+        }
+
+        private bool FilterNavigationGroups(object item)
+        {
+            var group = (ApplicationNavigationGroup)item;
+
+            if (!IsDeveloperMode)
+                return group != ApplicationNavigationGroup.IssueScenarios;
 
             return true;
         }

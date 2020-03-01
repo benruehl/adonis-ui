@@ -15,7 +15,7 @@ namespace AdonisUI.Demo.ViewModels
     {
         public string Name => "Message Box";
 
-        public IApplicationContentView.NavigationGroup Group => IApplicationContentView.NavigationGroup.Samples;
+        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.Samples;
 
         private bool _isLoading;
 

@@ -19,6 +19,10 @@ namespace AdonisUI
 
         public static ComponentResourceKey DefaultToAccentToggleButton => new ComponentResourceKey(typeof(Styles), "DefaultToAccentToggleButton");
 
+        public static ComponentResourceKey AccentComboBox => new ComponentResourceKey(typeof(Styles), "AccentComboBox");
+        
+        public static ComponentResourceKey AccentComboBoxItem => new ComponentResourceKey(typeof(Styles), "AccentComboBoxItem");
+
         public static ComponentResourceKey WindowButton => new ComponentResourceKey(typeof(Styles), "WindowButton");
 
         public static ComponentResourceKey WindowCloseButton => new ComponentResourceKey(typeof(Styles), "WindowCloseButton");

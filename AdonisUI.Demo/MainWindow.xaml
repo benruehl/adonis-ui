@@ -25,6 +25,38 @@
                 <Setter Property="FontFamily" Value="Cambria"/>
                 <Setter Property="Margin" Value="{adonisUi:Space 1, 3, 1, 1}"/>
             </Style>
+
+            <Style x:Key="BreadcrumbSeparatorStyle"
+                   TargetType="ContentControl">
+                <Setter Property="Margin" Value="{adonisUi:Space 1, 0, 0, 0}"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <Viewbox Stretch="UniformToFill">
+                                <Border Width="6"
+                                        Height="8"
+                                        Opacity="0.2">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+                                            <GradientStop Offset="0" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="0.5" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="0.5" Color="#d0000000"/>
+                                            <GradientStop Offset="0.55" Color="#80000000"/>
+                                            <GradientStop Offset="0.65" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="1" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <LinearGradientBrush.Transform>
+                                                <RotateTransform Angle="20"/>
+                                            </LinearGradientBrush.Transform>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Viewbox>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -33,23 +65,79 @@
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch">
 
-            <Grid DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Top"
+                  Height="{adonisUi:Space 5}">
 
-                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
-                        adonisExtensions:LayerExtension.Layer="3"
-                        VerticalAlignment="Top">
+                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
 
-                    <DockPanel LastChildFill="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <UniformGrid DockPanel.Dock="Left"
-                                     Rows="1"
-                                     Margin="{adonisUi:Space 1}">
+                    <!-- Breadcrumbs -->
+                    <StackPanel DockPanel.Dock="Left"
+                                Orientation="Horizontal"
+                                Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}">
 
-                        </UniformGrid>
+                        <ComboBox ItemsSource="{Binding NavigationGroupsCollectionView}"
+                                  SelectedItem="{Binding SelectedNavigationGroup}"
+                                  Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                  VerticalAlignment="Center"
+                                  Margin="{adonisUi:Space 1, 0, 0, 0}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.Samples}">
+                                                        <Setter Property="Text"
+                                                                 Value="Samples"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.IssueScenarios}">
+                                                        <Setter Property="Text"
+                                                                 Value="Issue Scenarios"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
-                    </DockPanel>
+                        <ContentControl Style="{StaticResource BreadcrumbSeparatorStyle}"/>
 
-                </Border>
+                        <ComboBox ItemsSource="{Binding PagesInSelectedGroupCollectionView}"
+                                  SelectedItem="{Binding SelectedPage}"
+                                  DisplayMemberPath="Name"
+                                  Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                  VerticalAlignment="Center"/>
+
+                        <ContentControl Style="{StaticResource BreadcrumbSeparatorStyle}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+
+                        <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
+                                Width="{adonisUi:Space 2}"/>
+
+                        <Viewbox Stretch="Uniform"
+                                 VerticalAlignment="Stretch">
+                            <Path Data="M 0 0 L 4 0 L 0 8 Z"
+                                  Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                        </Viewbox>
+
+                    </StackPanel>
+
+                </Grid>
 
             </Grid>
 
@@ -178,13 +266,13 @@
 
                                                             <ControlTemplate.Triggers>
                                                                 <DataTrigger Binding="{Binding Name}"
-                                                                             Value="{x:Static viewModels:IApplicationContentView+NavigationGroup.Samples}">
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.Samples}">
                                                                     <Setter Property="Text"
                                                                             TargetName="GroupHeader"
                                                                             Value="SAMPLES"/>
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding Name}"
-                                                                             Value="{x:Static viewModels:IApplicationContentView+NavigationGroup.IssueScenarios}">
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.IssueScenarios}">
                                                                     <Setter Property="Text"
                                                                             TargetName="GroupHeader"
                                                                             Value="ISSUE SCENARIOS"/>

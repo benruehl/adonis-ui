@@ -12,7 +12,7 @@ namespace AdonisUI.Demo.ViewModels
     {
         public string Name => "Ripple content visible";
 
-        public IApplicationContentView.NavigationGroup Group => IApplicationContentView.NavigationGroup.IssueScenarios;
+        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.IssueScenarios;
 
         private bool _isLoading;
 
