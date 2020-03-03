@@ -22,7 +22,8 @@
             <Style x:Key="NavigationGroupHeaderStyle"
                    TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-                <Setter Property="FontFamily" Value="Cambria"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="FontSize" Value="11"/>
                 <Setter Property="Margin" Value="{adonisUi:Space 1, 3, 1, 1}"/>
             </Style>
 
