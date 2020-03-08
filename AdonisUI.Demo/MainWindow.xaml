@@ -8,6 +8,7 @@
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                              xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                              xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                             xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors"
                              mc:Ignorable="d"
                              Title="Adonis UI"
                              Width="1280"
@@ -142,9 +143,9 @@
 
                         <TextBlock VerticalAlignment="Center">
                             <Hyperlink NavigateUri="https://github.com/benruehl/adonis-ui"
-                                       RequestNavigate="Hyperlink_OnRequestNavigate"
+                                       behaviors:HyperlinkExtension.IsExternal="True"
                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}">
-                                ↪ Adonis UI on GitHub
+                                🡲 Adonis UI on GitHub
                             </Hyperlink>
                         </TextBlock>
 

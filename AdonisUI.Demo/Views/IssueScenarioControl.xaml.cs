@@ -63,11 +63,5 @@ namespace AdonisUI.Demo.Views
         }
 
         public static readonly DependencyProperty IssueContentProperty = DependencyProperty.Register("IssueContent", typeof(DependencyObject), typeof(IssueScenarioControl), new PropertyMetadata(null));
-
-        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
-            e.Handled = true;
-        }
     }
 }

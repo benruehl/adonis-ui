@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AdonisUI.Demo.Views"
              xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
              xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+             xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors"
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch"
              mc:Ignorable="d" 
@@ -30,8 +31,8 @@
             <TextBlock VerticalAlignment="Center"
                        Margin="{adonisUi:Space 1, 0, 0, 0}">
                 <Hyperlink NavigateUri="{Binding IssueLink, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
-                           RequestNavigate="Hyperlink_OnRequestNavigate">
-                    (View on GitHub)
+                           behaviors:HyperlinkExtension.IsExternal="True">
+                    🡲 (View on GitHub)
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
