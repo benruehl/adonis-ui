@@ -42,21 +42,14 @@
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
-                             Columns="4"
+                             Rows="1"
                              HorizontalAlignment="Left">
 
-                    <Button Content="Default Button"/>
+                    <Button Content="Default Button"
+                            MinWidth="140"/>
 
                     <Button Content="Accent Button"
                             Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                    <Button Content="Toolbar Button"
-                            Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                    <Button Content="Accent Toolbar Button"
-                            Style="{DynamicResource {x:Static adonisUi:Styles.AccentToolbarButton}}"
                             Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                 </UniformGrid>
