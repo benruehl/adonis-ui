@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI.Controls;
 using AdonisUI.Demo.ViewModels;
-using IssueDialog = AdonisUI.Demo.Views.Issues.IssueDialog;
-using MessageBoxButton = System.Windows.MessageBoxButton;
-using MessageBoxImage = System.Windows.MessageBoxImage;
-using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
 namespace AdonisUI.Demo
 {
@@ -35,26 +32,16 @@ namespace AdonisUI.Demo
 
         private bool _isDark;
 
-        public bool IsAdonisUiIncluded
+        private void SetLightColorScheme(object sender, RoutedEventArgs e)
         {
-            get => (bool)GetValue(IsAdonisUiIncludedProperty);
-            set => SetValue(IsAdonisUiIncludedProperty, value);
+            if (_isDark)
+                ChangeTheme(sender, e);
         }
 
-        public static readonly DependencyProperty IsAdonisUiIncludedProperty = DependencyProperty.Register("IsAdonisUiIncluded", typeof(bool), typeof(MainWindow), new PropertyMetadata(true));
-
-        private void ToggleAdonisResources(object sender, RoutedEventArgs e)
+        private void SetDarkColorScheme(object sender, RoutedEventArgs e)
         {
-            if (IsAdonisUiIncluded)
-            {
-                ResourceLocator.RemoveAdonisResources(Application.Current.Resources);
-            }
-            else
-            {
-                ResourceLocator.AddAdonisResources(Application.Current.Resources);
-            }
-
-            IsAdonisUiIncluded = !IsAdonisUiIncluded;
+            if (!_isDark)
+                ChangeTheme(sender, e);
         }
 
         private void ChangeTheme(object sender, RoutedEventArgs e)
@@ -62,16 +49,6 @@ namespace AdonisUI.Demo
             ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
 
             _isDark = !_isDark;
-        }
-
-        private void OpenIssueDialog(object sender, RoutedEventArgs e)
-        {
-            Window issueDialog = new IssueDialog
-            {
-                DataContext = new IssueDialogViewModel()
-            };
-
-            issueDialog.ShowDialog();
         }
     }
 }

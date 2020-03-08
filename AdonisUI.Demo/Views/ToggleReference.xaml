@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:ToggleReferenceViewModel}">
+        
+        <views:ControlReferenceControl Title="{Binding Name}">
+            <StackPanel>
+                
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Toggle Buttons"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <WrapPanel HorizontalAlignment="Left"
+                               Orientation="Horizontal">
+
+                        <ToggleButton Content="Default Toggle Button"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <ToggleButton Content="Default to Accent Toggle Button"
+                                      Style="{DynamicResource {x:Static adonisUi:Styles.DefaultToAccentToggleButton}}"/>
+
+                    </WrapPanel>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Check Boxes"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <WrapPanel Orientation="Horizontal">
+
+                        <CheckBox Content="Checked"
+                                  IsChecked="True"
+                                  Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <CheckBox Content="Indeterminate"
+                                  IsChecked="{x:Null}"
+                                  IsThreeState="True"
+                                  Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <CheckBox Content="Unchecked"
+                                  IsChecked="False"/>
+
+                    </WrapPanel>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Radio Buttons"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <WrapPanel HorizontalAlignment="Left"
+                               Orientation="Horizontal">
+
+                        <RadioButton Content="Checked"
+                                     IsChecked="True"
+                                     Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <RadioButton Content="Unchecked"
+                                     IsChecked="False"/>
+
+                    </WrapPanel>
+
+                </GroupBox>
+
+            </StackPanel>
+        </views:ControlReferenceControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>

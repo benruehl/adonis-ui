@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <DataTemplate DataType="{x:Type viewModels:Issue26ScenarioViewModel}">
+
+        <local:IssueScenarioControl IssueTitle="Hovered ListBoxItem shows weird behaviour"
+                             IssueDescription="Controls having ripple effects like ListBoxItem change the content of inner controls when the ripple is active. Content that is set via bindings changes to the binding's default value. Additionally, the state of controls like CheckBoxes gets lost."
+                             StepsToReproduce="Click on all controls to make sure they do not change their content when the ripple effect is active."
+                             IssueLink="https://github.com/benruehl/adonis-ui/issues/26">
+
+            <local:IssueScenarioControl.IssueContent>
+
+                <StackPanel>
+                    <Button>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="Button with Content"
+                                      IsChecked="{Binding Items[0].Flag}"/>
+
+                            <TextBlock Text="{Binding Items[0].Name}"
+                                       Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Content="{Binding}"
+                            Margin="{adonisUi:Space 0, 1, 0, 0}">
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Content="Button with ContentTemplate"
+                                              IsChecked="{Binding Items[0].Flag}">
+                                        <CheckBox.Foreground>
+                                            <PriorityBinding>
+                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=Button}"/>
+                                            </PriorityBinding>
+                                        </CheckBox.Foreground>
+                                    </CheckBox>
+
+                                    <TextBlock Text="{Binding Items[0].Name}"
+                                               Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+
+                    <ListBox ItemsSource="{Binding Items}"
+                             Margin="{adonisUi:Space 0, 1, 0, 0}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding Flag}">
+                                        <TextBlock Text="CheckBox">
+                                            <TextBlock.Foreground>
+                                                <PriorityBinding>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
+                                                </PriorityBinding>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </CheckBox>
+
+                                    <TextBlock Text="{Binding Name}"
+                                               Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Items}"
+                             ItemContainerStyle="{DynamicResource {x:Static adonisUi:Styles.RippleListBoxItem}}"
+                             Margin="{adonisUi:Space 0, 1, 0, 0}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding Flag}">
+                                        <TextBlock Text="CheckBox">
+                                            <TextBlock.Foreground>
+                                                <PriorityBinding>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=adonisControls:RippleHost}"/>
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ListBoxItem}"/>
+                                                </PriorityBinding>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </CheckBox>
+
+                                    <TextBlock Text="{Binding Name}"
+                                               Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+            </local:IssueScenarioControl.IssueContent>
+        </local:IssueScenarioControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -7,6 +7,8 @@
                              xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                              xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                             xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                             xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors"
                              mc:Ignorable="d"
                              Title="Adonis UI"
                              Width="1280"
@@ -17,6 +19,46 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="NavigationGroupHeaderStyle"
+                   TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="Margin" Value="{adonisUi:Space 1, 3, 1, 1}"/>
+            </Style>
+
+            <Style x:Key="BreadcrumbSeparatorStyle"
+                   TargetType="ContentControl">
+                <Setter Property="Margin" Value="{adonisUi:Space 1, 0, 0, 0}"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <Viewbox Stretch="UniformToFill">
+                                <Border Width="6"
+                                        Height="8"
+                                        Opacity="0.2">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+                                            <GradientStop Offset="0" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="0.5" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="0.5" Color="#d0000000"/>
+                                            <GradientStop Offset="0.55" Color="#80000000"/>
+                                            <GradientStop Offset="0.65" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <GradientStop Offset="1" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
+                                            <LinearGradientBrush.Transform>
+                                                <RotateTransform Angle="20"/>
+                                            </LinearGradientBrush.Transform>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Viewbox>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -25,37 +67,113 @@
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch">
 
-            <Grid DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Top"
+                  Height="{adonisUi:Space 5}">
 
-                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
-                        adonisExtensions:LayerExtension.Layer="3"
-                        VerticalAlignment="Top">
+                <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
 
-                    <DockPanel LastChildFill="False">
+                <Grid Margin="{adonisUi:Space 1, 0}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <UniformGrid DockPanel.Dock="Right"
-                                     Columns="2"
-                                     Margin="{adonisUi:Space 1}">
+                    <!-- Breadcrumbs -->
+                    <StackPanel DockPanel.Dock="Left"
+                                Orientation="Horizontal">
 
-                            <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                                    Content="Previous"
-                                    Command="{Binding PreviousViewCommand}"
-                                    Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                        <ComboBox ItemsSource="{Binding NavigationGroupsCollectionView}"
+                                  SelectedItem="{Binding SelectedNavigationGroup}"
+                                  Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                  VerticalAlignment="Center">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.Samples}">
+                                                        <Setter Property="Text"
+                                                                 Value="Samples"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.IssueScenarios}">
+                                                        <Setter Property="Text"
+                                                                 Value="Issue Scenarios"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.Reference}">
+                                                        <Setter Property="Text"
+                                                                Value="Reference"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
-                            <Button Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                                    Content="Next"
-                                    Command="{Binding NextViewCommand}"/>
+                        <ContentControl Style="{StaticResource BreadcrumbSeparatorStyle}"/>
 
-                        </UniformGrid>
+                        <ComboBox ItemsSource="{Binding PagesInSelectedGroupCollectionView}"
+                                  SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
+                                  DisplayMemberPath="Name"
+                                  Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                  VerticalAlignment="Center"/>
 
-                    </DockPanel>
+                        <ContentControl Style="{StaticResource BreadcrumbSeparatorStyle}"/>
 
-                </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+
+                        <Border Background="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"
+                                Width="{adonisUi:Space 2}"/>
+
+                        <Viewbox Stretch="Uniform"
+                                 VerticalAlignment="Stretch">
+                            <Path Data="M 0 0 L 4 0 L 0 8 Z"
+                                  Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                        </Viewbox>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+
+                        <TextBlock VerticalAlignment="Center">
+                            <Hyperlink NavigateUri="https://github.com/benruehl/adonis-ui"
+                                       behaviors:HyperlinkExtension.IsExternal="True"
+                                       Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}">
+                                🡲 Adonis UI on GitHub
+                            </Hyperlink>
+                        </TextBlock>
+
+                    </StackPanel>
+
+                </Grid>
 
             </Grid>
 
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem Content="Ready"/>
+                <StatusBarItem>
+                    <StatusBarItem.Style>
+                        <Style TargetType="StatusBarItem"
+                               BasedOn="{StaticResource {x:Type StatusBarItem}}">
+                            <Setter Property="Content" Value="Ready"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedPage.IsLoading}" Value="True">
+                                    <Setter Property="Content" Value="Loading ..."/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StatusBarItem.Style>
+                </StatusBarItem>
             </StatusBar>
 
             <Grid>
@@ -65,88 +183,184 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- Side Bar Navigation -->
                 <Grid>
-                    <GroupBox Padding="0"
-                              MinWidth="132">
-                        <GroupBox.Header>
-                            <TextBlock Text="Actions"
-                                       Margin="{adonisUi:Space 1}"/>
-                        </GroupBox.Header>
+                    <GroupBox MinWidth="{adonisUi:Space 25}"
+                              Padding="{adonisUi:Space 0, 1, 0, 0}">
 
-                        <StackPanel Orientation="Vertical"
-                                    Margin="{adonisUi:Space 0, 1, 0, 0}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                            <Button Content="Change Theme"
-                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                                    Click="ChangeTheme"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    Padding="16, 8"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                            <Button Command="{Binding ToggleIsEnabledCommand}"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    Padding="16, 8">
-                                <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Static adonisUi:Styles.ToolbarButton}}">
-                                        <Setter Property="Content" Value="Disable All"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEnabled}" Value="False">
-                                                <Setter Property="Content" Value="Enable All"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
+                                <TextBlock Text="COLOR SCHEME"
+                                           Style="{StaticResource NavigationGroupHeaderStyle}"/>
+
+                                <Grid Grid.Row="1"
+                                      Margin="{adonisUi:Space 3, 0, 3, 0}">
+
+                                    <ComboBox SelectedIndex="0">
+                                        <ComboBoxItem Content="Light"
+                                                      Selected="SetLightColorScheme"/>
+                                        <ComboBoxItem Content="Dark"
+                                                      Selected="SetDarkColorScheme"/>
+                                    </ComboBox>
+                                    
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="SETTINGS"
+                                           Style="{StaticResource NavigationGroupHeaderStyle}"/>
+
+                                <Grid Grid.Row="1"
+                                      Margin="{adonisUi:Space 3, 0, 3, 0}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <CheckBox Grid.Row="0"
+                                              Content="Enable selected page"
+                                              IsChecked="{Binding IsEnabled}"/>
+
+                                    <CheckBox Grid.Row="2"
+                                              Content="Show developer views"
+                                              IsChecked="{Binding IsDeveloperMode}"/>
+                                </Grid>
+                            </Grid>
+
+                            <ListBox Grid.Row="2"
+                                     ItemsSource="{Binding PagesCollectionView}"
+                                     SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Padding" Value="{adonisUi:Space 3, 1, 2, 1}"/>
                                     </Style>
-                                </Button.Style>
-                            </Button>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.GroupStyle>
+                                    <GroupStyle>
+                                        <GroupStyle.Panel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </GroupStyle.Panel>
+                                        <GroupStyle.ContainerStyle>
+                                            <Style TargetType="{x:Type GroupItem}">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
 
-                            <Button Content="Check Issues"
-                                    Style="{DynamicResource {x:Static adonisUi:Styles.ToolbarButton}}"
-                                    Click="OpenIssueDialog"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    Padding="16, 8"/>
+                                                                <TextBlock x:Name="GroupHeader"
+                                                                           Style="{StaticResource NavigationGroupHeaderStyle}"/>
+                                                            
+                                                                <ItemsPresenter Grid.Row="1"/>
+                                                            </Grid>
 
-                            <Button Click="ToggleAdonisResources"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    Padding="16, 8">
-                                <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Static adonisUi:Styles.ToolbarButton}}">
-                                        <Setter Property="Content" Value="Restore Default Styles"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsAdonisUiIncluded, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}}" Value="False">
-                                                <Setter Property="Content" Value="Add AdonisUI Styles"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-
-                        </StackPanel>
+                                                            <ControlTemplate.Triggers>
+                                                                <DataTrigger Binding="{Binding Name}"
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.Samples}">
+                                                                    <Setter Property="Text"
+                                                                            TargetName="GroupHeader"
+                                                                            Value="SAMPLES"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Name}"
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.IssueScenarios}">
+                                                                    <Setter Property="Text"
+                                                                            TargetName="GroupHeader"
+                                                                            Value="ISSUE SCENARIOS"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Name}"
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.Reference}">
+                                                                    <Setter Property="Text"
+                                                                            TargetName="GroupHeader"
+                                                                            Value="REFERENCE"/>
+                                                                </DataTrigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </GroupStyle.ContainerStyle>
+                                    </GroupStyle>
+                                </ListBox.GroupStyle>
+                            </ListBox>
+                        </Grid>
                     </GroupBox>
                 </Grid>
 
+                <!-- Selected Page -->
                 <Grid Grid.Column="1"
                       ClipToBounds="True">
 
                     <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUIGrayscale}}"
+                                    Foreground="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"
                                     Focusable="False"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
-                                    Opacity="0.2"
+                                    Opacity="0.4"
                                     Width="600"
                                     Height="600"
                                     Margin="0, 0, -64, -136"/>
 
-                    <ContentControl Content="{Binding Content}"
+                    <ContentControl Content="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
                                     IsEnabled="{Binding IsEnabled}"
                                     Margin="{adonisUi:Space 1}"/>
+
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="FrameworkElement">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedPage.IsLoading}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        
+                        <Border Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                Opacity="0.5"/>
+
+                        <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Width="{adonisUi:Space 5}"
+                                        Height="{adonisUi:Space 5}"
+                                        Focusable="False"/>
+                    </Grid>
 
                 </Grid>
             </Grid>
         </DockPanel>
 
-        <Grid HorizontalAlignment="Center"
+        <!--<Grid HorizontalAlignment="Center"
               VerticalAlignment="Top">
 
             <Viewbox Stretch="Fill"
@@ -162,12 +376,12 @@
                       Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
             </Viewbox>
 
-            <TextBlock Text="{Binding Content.Name}"
+            <TextBlock Text="{Binding SelectedPage.Name}"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"
                        FontSize="14"/>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 

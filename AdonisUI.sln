@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdonisUI", "AdonisUI\AdonisUI.csproj", "{45E54988-48A0-43AB-810B-0EE50E77F8FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdonisUI", "AdonisUI\AdonisUI.csproj", "{45E54988-48A0-43AB-810B-0EE50E77F8FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdonisUI.Demo", "AdonisUI.Demo\AdonisUI.Demo.csproj", "{BB83094A-C51A-41DA-8A74-C0B41E84539A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdonisUI.Demo", "AdonisUI.Demo\AdonisUI.Demo.csproj", "{BB83094A-C51A-41DA-8A74-C0B41E84539A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdonisUI.ClassicTheme", "AdonisUI.ClassicTheme\AdonisUI.ClassicTheme.csproj", "{1C41D016-993D-41B5-B9DB-4581867829D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdonisUI.ClassicTheme", "AdonisUI.ClassicTheme\AdonisUI.ClassicTheme.csproj", "{1C41D016-993D-41B5-B9DB-4581867829D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

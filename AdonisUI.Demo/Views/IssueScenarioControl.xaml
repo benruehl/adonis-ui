@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="AdonisUI.Demo.Views.IssueScenarioControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+             xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+             xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="{adonisUi:Space 4}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{adonisUi:Space 4}"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding IssueTitle, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       FontSize="18"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"/>
+
+            <TextBlock VerticalAlignment="Center"
+                       Margin="{adonisUi:Space 1, 0, 0, 0}">
+                <Hyperlink NavigateUri="{Binding IssueLink, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                           behaviors:HyperlinkExtension.IsExternal="True">
+                    🡲 (View on GitHub)
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Issue description"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="{Binding IssueDescription, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"
+                       Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Steps to reproduce"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="{Binding StepsToReproduce, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"
+                       Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Rectangle HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       Fill="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                       Stroke="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                       StrokeThickness="3"
+                       StrokeDashArray="4, 4"
+                       Opacity="0.1"/>
+
+            <ContentPresenter Content="{Binding IssueContent, RelativeSource={RelativeSource FindAncestor, AncestorType=local:IssueScenarioControl}}"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="{adonisUi:Space 2}"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,128 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors">
+
+    <Style x:Key="CodeSpanStyle"
+           TargetType="Span">
+        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+        <Setter Property="FontFamily" Value="Courier New"/>
+    </Style>
+
+    <DataTemplate DataType="{x:Type viewModels:LayerSimpleSampleViewModel}">
+
+        <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="{adonisUi:Space 6}"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border MaxWidth="{Binding ActualWidth, ElementName=LayerColumnBorder}"
+                    Padding="{adonisUi:Space 2}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 2}"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Explanation"/>
+
+                    <StackPanel Grid.Row="2">
+                        <TextBlock TextWrapping="Wrap">
+                            Adonis UI introduces a simple layering system which automatically adjusts the colors of UI controls depending on the layer they belong to.
+                        </TextBlock>
+
+                        <TextBlock/>
+
+                        <TextBlock TextWrapping="Wrap">
+                            Without using the system all instances of <Span Style="{StaticResource CodeSpanStyle}">Button</Span> would have the same background color.
+                        </TextBlock>
+
+                        <TextBlock TextWrapping="Wrap">
+                            When using it the background colors of the <Span Style="{StaticResource CodeSpanStyle}">GroupBoxes</Span> are set automatically and the contained
+                            <Span Style="{StaticResource CodeSpanStyle}">Buttons</Span> are adjusted in their colors to increase contrast.
+                        </TextBlock>
+
+                        <TextBlock/>
+
+                        <TextBlock>
+                            <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/layers/"
+                                       behaviors:HyperlinkExtension.IsExternal="True">
+                                🡲 Read more
+                            </Hyperlink>
+                        </TextBlock>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border x:Name="LayerColumnBorder"
+                    Grid.Column="2"
+                    Background="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"
+                    BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}"
+                    Padding="{adonisUi:Space 2}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 2}"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 2}"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Background is Layer 0"/>
+
+                    <Button Grid.Row="2"
+                            Content="Button on Layer 1"/>
+
+                    <GroupBox Grid.Row="4"
+                              Header="GroupBox on Layer 1"
+                              Padding="{adonisUi:Space 2, 1.5}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="{adonisUi:Space 2}"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button Content="Button on Layer 2"/>
+
+                            <GroupBox Header="GroupBox on Layer 2"
+                                      Grid.Row="2"
+                                      Padding="{adonisUi:Space 2, 1.5}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="{adonisUi:Space 2}"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Button Content="Button on Layer 3"/>
+
+                                    <GroupBox Header="GroupBox on Layer 3"
+                                              Grid.Row="2"
+                                              Padding="{adonisUi:Space 2, 1.5}">
+
+                                        <Button Content="Button on Layer 4"/>
+
+                                    </GroupBox>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </Border>
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>

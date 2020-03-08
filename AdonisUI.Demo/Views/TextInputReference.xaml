@@ -1,0 +1,151 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:TextInputReferenceViewModel}">
+        
+        <views:ControlReferenceControl Title="{Binding Name}">
+            <StackPanel>
+                
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Text Boxes"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <UniformGrid HorizontalAlignment="Left"
+                                 Rows="1">
+
+                        <TextBox Text="Default Text Box"
+                                 adonisExtensions:WatermarkExtension.Watermark="Enter text"
+                                 Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <TextBox Text="Read-Only Text Box"
+                                 IsReadOnly="True"
+                                 Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <TextBox adonisExtensions:WatermarkExtension.Watermark="Text Box with watermark"
+                                 Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <PasswordBox Password="Password Box"
+                                     adonisExtensions:WatermarkExtension.Watermark="Enter password"/>
+
+                    </UniformGrid>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Combo Boxes"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Left"
+                                   Orientation="Horizontal"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}">
+
+                            <ComboBox SelectedIndex="0"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Default Combo Box"/>
+                                    <ComboBoxItem Content="Lorem Ipsum"/>
+                                    <ComboBoxItem Content="Dolor sit amet"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                            <ComboBox Text="Editable Combo Box"
+                                      IsEditable="True"
+                                      adonisExtensions:WatermarkExtension.Watermark="Select an option"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Item 1"/>
+                                    <ComboBoxItem Content="Item 2"/>
+                                    <ComboBoxItem Content="Item 3"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                            <ComboBox Text="Read-Only Editable Combo Box"
+                                      IsEditable="True"
+                                      IsReadOnly="True"
+                                      adonisExtensions:WatermarkExtension.Watermark="Select an option"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Item 1"/>
+                                    <ComboBoxItem Content="Item 2"/>
+                                    <ComboBoxItem Content="Item 3"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                            <ComboBox IsEditable="True"
+                                      adonisExtensions:WatermarkExtension.Watermark="Combo Box with watermark">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Item 1"/>
+                                    <ComboBoxItem Content="Item 2"/>
+                                    <ComboBoxItem Content="Item 3"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                        </WrapPanel>
+
+                        <WrapPanel HorizontalAlignment="Left"
+                                   Orientation="Horizontal">
+
+                            <ComboBox SelectedIndex="0"
+                                      Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Accent Combo Box"/>
+                                    <ComboBoxItem Content="Lorem Ipsum"/>
+                                    <ComboBoxItem Content="Dolor sit amet"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                            <ComboBox Text="Editable Accent Combo Box"
+                                      IsEditable="True"
+                                      Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Item 1"/>
+                                    <ComboBoxItem Content="Item 2"/>
+                                    <ComboBoxItem Content="Item 3"/>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                        </WrapPanel>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Date Pickers"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <WrapPanel>
+
+                        <DatePicker Text="Default Date Picker"
+                                    adonisExtensions:WatermarkExtension.Watermark="Select a date"/>
+
+                    </WrapPanel>
+
+                </GroupBox>
+
+            </StackPanel>
+        </views:ControlReferenceControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>

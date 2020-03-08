@@ -9,12 +9,10 @@ namespace AdonisUI.Demo.ViewModels
     {
         string Name { get; }
 
-        bool HasPreviousView { get; }
+        ApplicationNavigationGroup Group { get; }
 
-        bool HasNextView { get; }
+        bool IsLoading { get; set; }
 
-        IApplicationContentView GetPreviousView();
-
-        IApplicationContentView GetNextView();
+        void Init();
     }
 }
