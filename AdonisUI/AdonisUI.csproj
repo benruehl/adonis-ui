@@ -2,12 +2,12 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>1.13</Version>
+    <Version>1.14</Version>
     <Description>Core theme definitions for AdonisUI - a lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
     <PackageId>AdonisUI</PackageId>
-    <Copyright>Copyright ©  2019 Benjamin Rühl</Copyright>
+    <Copyright>Copyright ©  2020 Benjamin Rühl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/benruehl/adonis-ui</PackageProjectUrl>
     <RepositoryUrl>https://github.com/benruehl/adonis-ui.git</RepositoryUrl>
