@@ -9,13 +9,13 @@ using AdonisUI.Demo.Framework;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class MessageBoxSampleViewModel
+    class MessageBoxReferenceViewModel
         : ViewModel
         , IApplicationContentView
     {
         public string Name => "Message Box";
 
-        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.Samples;
+        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.Reference;
 
         private bool _isLoading;
 

@@ -2,15 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
-                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views">
 
-    <Style x:Key="ItemGroupLabelStyle" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="Margin" Value="{adonisUi:Space 0, 2, 0, 0.5}"/>
-        <Setter Property="Padding" Value="0"/>
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MessageBoxButtonStyle"
            TargetType="Button"
@@ -18,19 +16,11 @@
         <Setter Property="Margin" Value="{adonisUi:Space 0, 0, 1, 1}"/>
     </Style>
 
-    <DataTemplate DataType="{x:Type viewModels:MessageBoxSampleViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:MessageBoxReferenceViewModel}">
 
-        <Grid Margin="{adonisUi:Space 4}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 2}"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <views:ControlReferenceControl Title="{Binding Name}">
 
-            <TextBlock Text="Open Predefined Message Boxes"
-                       FontSize="18"/>
-
-            <Grid Grid.Row="2">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="{adonisUi:Space 3}"/>
@@ -360,7 +350,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </views:ControlReferenceControl>
 
     </DataTemplate>
 

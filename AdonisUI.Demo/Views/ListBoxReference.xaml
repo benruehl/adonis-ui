@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:ListBoxReferenceViewModel}">
+        
+        <views:ControlReferenceControl Title="{Binding Name}">
+            <StackPanel>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}"
+                          Grid.IsSharedSizeScope="True">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="DefaultStyleColumn"/>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="RippleStyleColumn"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Default Style"
+                                   Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                            <Label Grid.Column="1"
+                                   Content="Ripple List Box Style"
+                                   Style="{StaticResource ItemGroupLabelStyle}"/>
+                        </Grid>
+                    </GroupBox.Header>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="DefaultStyleColumn"/>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="RippleStyleColumn"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListBox HorizontalAlignment="Left"
+                                 MinWidth="{adonisUi:Space 20}">
+                            <ListBoxItem Content="Item 1"/>
+                            <ListBoxItem Content="Item 2"/>
+                            <ListBoxItem Content="Item 3"/>
+                            <ListBoxItem Content="Item 4"/>
+                            <ListBoxItem Content="Item 5"/>
+                            <ListBoxItem Content="Item 6"/>
+                            <ListBoxItem Content="Item 7"/>
+                            <ListBoxItem Content="Item 8"/>
+                            <ListBoxItem Content="Item 9"/>
+                            <ListBoxItem Content="Item 10"/>
+                        </ListBox>
+
+                        <ListBox Grid.Column="1"
+                                 HorizontalAlignment="Left"
+                                 MinWidth="{adonisUi:Space 20}"
+                                 ItemContainerStyle="{DynamicResource {x:Static adonisUi:Styles.RippleListBoxItem}}">
+                            <ListBoxItem Content="Item 1"/>
+                            <ListBoxItem Content="Item 2"/>
+                            <ListBoxItem Content="Item 3"/>
+                            <ListBoxItem Content="Item 4"/>
+                            <ListBoxItem Content="Item 5"/>
+                            <ListBoxItem Content="Item 6"/>
+                            <ListBoxItem Content="Item 7"/>
+                            <ListBoxItem Content="Item 8"/>
+                            <ListBoxItem Content="Item 9"/>
+                            <ListBoxItem Content="Item 10"/>
+                        </ListBox>
+                    </Grid>
+
+                </GroupBox>
+
+            </StackPanel>
+        </views:ControlReferenceControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>

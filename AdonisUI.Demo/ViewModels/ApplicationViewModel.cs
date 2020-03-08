@@ -110,11 +110,16 @@ namespace AdonisUI.Demo.ViewModels
             yield return new LayerSimpleSampleViewModel();
             yield return new LayerSampleViewModel();
             yield return new ValidationSampleViewModel();
-            yield return new MessageBoxSampleViewModel();
             yield return new Issue5ScenarioViewModel();
             yield return new Issue23ScenarioViewModel();
             yield return new Issue26ScenarioViewModel();
             yield return new IssueRippleContentInvisibleScenarioViewModel();
+            yield return new ButtonReferenceViewModel();
+            yield return new TextInputReferenceViewModel();
+            yield return new ToggleReferenceViewModel();
+            yield return new ListBoxReferenceViewModel();
+            yield return new LoadingReferenceViewModel();
+            yield return new MessageBoxReferenceViewModel();
         }
 
         private bool FilterPages(object item)

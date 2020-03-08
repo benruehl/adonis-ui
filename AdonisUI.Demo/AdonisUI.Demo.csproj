@@ -42,8 +42,4 @@
     <ProjectReference Include="..\AdonisUI\AdonisUI.csproj" />
     <ProjectReference Include="..\AdonisUI.ClassicTheme\AdonisUI.ClassicTheme.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
 </Project>

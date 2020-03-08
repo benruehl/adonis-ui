@@ -103,6 +103,11 @@
                                                         <Setter Property="Text"
                                                                  Value="Issue Scenarios"/>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding}"
+                                                                 Value="{x:Static viewModels:ApplicationNavigationGroup.Reference}">
+                                                        <Setter Property="Text"
+                                                                Value="Reference"/>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </TextBlock.Style>
@@ -290,6 +295,12 @@
                                                                     <Setter Property="Text"
                                                                             TargetName="GroupHeader"
                                                                             Value="ISSUE SCENARIOS"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Name}"
+                                                                             Value="{x:Static viewModels:ApplicationNavigationGroup.Reference}">
+                                                                    <Setter Property="Text"
+                                                                            TargetName="GroupHeader"
+                                                                            Value="REFERENCE"/>
                                                                 </DataTrigger>
                                                             </ControlTemplate.Triggers>
                                                         </ControlTemplate>

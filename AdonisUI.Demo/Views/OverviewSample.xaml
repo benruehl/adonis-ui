@@ -5,13 +5,9 @@
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
 
-    <Style x:Key="ItemGroupLabelStyle" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="Margin" Value="{adonisUi:Space 0, 2, 0, 0.5}"/>
-        <Setter Property="Padding" Value="0"/>
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:OverviewSampleViewModel}">
         <Grid Margin="32">
