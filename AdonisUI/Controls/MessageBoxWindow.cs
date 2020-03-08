@@ -100,7 +100,7 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty ButtonContainerStyleProperty = DependencyProperty.Register(nameof(ButtonContainerStyle), typeof(Style), typeof(MessageBoxWindow), new PropertyMetadata(null));
 
         /// <summary>
-        /// A <see cref="double"/> that represents the maximum height of the message box relative to the current screen height.
+        /// A <see cref="double"/> that represents the maximum width of the message box relative to the current screen width.
         /// </summary>
         public static readonly DependencyProperty MaxRelativeScreenWidthProperty = DependencyProperty.Register("MaxRelativeScreenWidth", typeof(double), typeof(MessageBoxWindow), new PropertyMetadata(0.9));
 
