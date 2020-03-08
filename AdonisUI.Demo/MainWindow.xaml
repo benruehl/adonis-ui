@@ -320,10 +320,11 @@
                       ClipToBounds="True">
 
                     <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUIGrayscale}}"
+                                    Foreground="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"
                                     Focusable="False"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
-                                    Opacity="0.2"
+                                    Opacity="0.4"
                                     Width="600"
                                     Height="600"
                                     Margin="0, 0, -64, -136"/>
