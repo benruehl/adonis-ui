@@ -168,12 +168,14 @@
                             <Setter Property="BorderBrush"
                                     TargetName="Border"
                                     Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter Property="Content"
+                            <Setter Property="ContentTemplate"
                                     TargetName="PART_MaximizeRestoreButton">
                                 <Setter.Value>
-                                    <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowRestore}}"
-                                                    Width="10"
-                                                    Height="10"/>
+                                    <DataTemplate>
+                                      <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowRestore}}"
+                                                      Width="10"
+                                                      Height="10"/>
+                                    </DataTemplate>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
