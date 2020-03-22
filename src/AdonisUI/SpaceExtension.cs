@@ -152,14 +152,17 @@ namespace AdonisUI
 
             char sign;
 
-            if (expression.Contains('+'))
+            if (expression.Substring(1).Contains('+'))
                 sign = '+';
-            else if (expression.Contains('-'))
+            else if (expression.Substring(1).Contains('-'))
                 sign = '-';
             else
                 return double.TryParse(expression, NumberStyles.Any, CultureInfo.InvariantCulture, out factor);
 
             string[] expressionParts = expression.Split(sign);
+
+            if (expressionParts[0] == String.Empty) // first char was <sign>
+                expressionParts = new[] { '-' + expressionParts[1], expressionParts[2] };
 
             if (expressionParts.Length != 2)
                 return false;
