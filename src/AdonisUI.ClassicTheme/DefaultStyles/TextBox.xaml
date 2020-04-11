@@ -146,7 +146,7 @@
                             <Setter Property="Visibility" TargetName="ErrorAlertHost" Value="Visible"/>
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding (adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource Self}}" Value="True">
                             <Setter Property="Visibility" TargetName="PlaceholderHost" Value="Visible"/>
                         </DataTrigger>
 

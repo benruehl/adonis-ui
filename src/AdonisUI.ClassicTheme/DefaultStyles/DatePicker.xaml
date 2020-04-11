@@ -20,7 +20,7 @@
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
                         <ContentPresenter x:Name="PlaceholderHost"
-                                          Content="{Binding (adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=DatePicker}}"
+                                          Content="{Binding Path=(adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=DatePicker}}"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch"
@@ -37,7 +37,7 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding (adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource FindAncestor, AncestorType=DatePicker}}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(adonisExtensions:WatermarkExtension.IsWatermarkVisible), RelativeSource={RelativeSource FindAncestor, AncestorType=DatePicker}}" Value="True">
                             <Setter Property="Visibility" TargetName="PlaceholderHost" Value="Visible"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
