@@ -203,8 +203,8 @@
                             <Setter Property="MinWidth" Value="0" TargetName="HeaderColumn"/>
                             <Setter Property="Width" Value="0" TargetName="InputGestureColumn"/>
                             <Setter Property="Padding" Value="4, 2"/>
-                            <Setter Property="CornerRadius" TargetName="Border" Value="{Binding (adonisExtensions:CornerRadiusExtension.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
-                            <Setter Property="CornerRadius" TargetName="SpotlightLayer" Value="{Binding (adonisExtensions:CornerRadiusExtension.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                            <Setter Property="CornerRadius" TargetName="Border" Value="{Binding Path=(adonisExtensions:CornerRadiusExtension.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                            <Setter Property="CornerRadius" TargetName="SpotlightLayer" Value="{Binding Path=(adonisExtensions:CornerRadiusExtension.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
                         </Trigger>
 
                         <Trigger Property="Role" Value="SubmenuItem">
@@ -244,7 +244,7 @@
 
                             <Setter Property="BorderBrush" TargetName="Border" Value="{Binding BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
                             <Setter Property="BorderThickness" TargetName="Border" Value="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
-                            <Setter Property="BorderBrush" TargetName="SpotlightLayer" Value="{Binding (adonisExtensions:CursorSpotlightExtension.BorderBrush), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
+                            <Setter Property="BorderBrush" TargetName="SpotlightLayer" Value="{Binding Path=(adonisExtensions:CursorSpotlightExtension.BorderBrush), RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
                             <Setter Property="BorderThickness" TargetName="SpotlightLayer" Value="{Binding BorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=MenuItem}}"/>
                         </MultiTrigger>
 
@@ -259,7 +259,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding HeaderTemplate, RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False"/>
-                                <Condition Binding="{Binding (adonisExtensions:MenuItemExtension.IconTemplate), RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False"/>
+                                <Condition Binding="{Binding Path=(adonisExtensions:MenuItemExtension.IconTemplate), RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="Visibility" TargetName="RippleLayerContent" Value="Visible"/>
@@ -281,7 +281,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Header, RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsImmutableToBoolConverter.Instance}}" Value="True"/>
-                                <Condition Binding="{Binding (adonisExtensions:MenuItemExtension.IconTemplate), RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False"/>
+                                <Condition Binding="{Binding Path=(adonisExtensions:MenuItemExtension.IconTemplate), RelativeSource={RelativeSource Self}, Converter={x:Static adonisConverters:IsNullToBoolConverter.Instance}}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="Visibility" TargetName="RippleLayerContent" Value="Visible"/>
