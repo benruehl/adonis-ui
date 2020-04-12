@@ -119,6 +119,7 @@ namespace AdonisUI.Demo.ViewModels
             yield return new TextInputReferenceViewModel();
             yield return new ToggleReferenceViewModel();
             yield return new ListBoxReferenceViewModel();
+            yield return new ScrollBarReferenceViewModel(new ItemGenerator());
             yield return new LoadingReferenceViewModel();
             yield return new MessageBoxReferenceViewModel();
         }
