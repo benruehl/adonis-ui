@@ -189,12 +189,12 @@
                 Background="Transparent">
 
             <Grid x:Name="Container"
-                  Tag="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-4}">
+                  Tag="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-7}">
                 <Grid.Margin>
                     <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                         <Binding Source="0"/>
-                        <Binding Source="0"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/3"/>
                         <Binding Source="0"/>
                     </MultiBinding>
                 </Grid.Margin>
@@ -334,13 +334,13 @@
                 Background="Transparent">
 
             <Grid x:Name="Container"
-                  Tag="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-4}">
+                  Tag="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-7}">
                 <Grid.Margin>
                     <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
                         <Binding Source="0"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                         <Binding Source="0"/>
-                        <Binding Source="0"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/3"/>
                     </MultiBinding>
                 </Grid.Margin>
                 <Grid.ColumnDefinitions>
