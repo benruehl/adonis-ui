@@ -299,7 +299,8 @@
                                Focusable="False"
                                AllowsTransparency="True"
                                IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
-                               PopupAnimation="Slide">
+                               PopupAnimation="Slide"
+                               adonisExtensions:LayerExtension.IncreaseLayer="True">
 
                             <Grid x:Name="DropDown" 
                                   SnapsToDevicePixels="True"
