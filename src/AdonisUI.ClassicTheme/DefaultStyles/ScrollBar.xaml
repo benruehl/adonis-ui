@@ -1,17 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
-                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI">
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="Width" Value="16" />
         <Setter Property="Height" Value="16" />
-        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}}"/>
+        <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
+        <Setter Property="BorderBrush" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-        <Setter Property="Padding" Value="3" />
+        <Setter Property="Padding" Value="4" />
         <Setter Property="Panel.ZIndex" Value="1" />
         <Setter Property="SnapsToDevicePixels" Value="{Binding SnapsToDevicePixels, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -47,8 +49,21 @@
         
         <Style.Triggers>
 
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="2">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="3">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}}"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}}"/>
+            </DataTrigger>
+
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}}"/>
             </Trigger>
 
@@ -58,7 +73,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BackgroundBrush}}"/>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}}"/>
                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
@@ -69,7 +85,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"/>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}}"/>
                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
@@ -80,7 +97,8 @@
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4BackgroundBrush}}"/>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}}"/>
                     <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
@@ -150,6 +168,7 @@
 
 
     <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}" />
         <Setter Property="Panel.ZIndex" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="{Binding SnapsToDevicePixels, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -158,7 +177,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
+                    <Border Background="{TemplateBinding Background}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -166,108 +185,312 @@
     
     
     <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Border>
+        <Border Margin="{TemplateBinding Padding}"
+                Background="Transparent">
 
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid x:Name="Container"
+                  Tag="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-4}">
+                <Grid.Margin>
+                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                        <Binding Source="0"/>
+                        <Binding Source="0"/>
+                        <Binding Source="0"/>
+                    </MultiBinding>
+                </Grid.Margin>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <RepeatButton Grid.Row="0"                          
+                <RepeatButton x:Name="ScrollUpButton"
+                              Grid.Row="0"                          
                               Style="{StaticResource ScrollBarButton}"
                               Command="ScrollBar.LineUpCommand"
-                              Content="M 0 8 L 10 8 L 5 0 Z"/>
+                              Content="M 0 6 L 10 6 L 5 0 Z"
+                              Visibility="Hidden"/>
 
                 <Track Name="PART_Track"
                        Grid.Row="1"
-                       Margin="5, 2"
                        IsDirectionReversed="true">
                     <Track.DecreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                        <RepeatButton x:Name="DecreaseRepeatButton"
+                                      Style="{StaticResource ScrollBarPageButton}"
                                       Command="ScrollBar.PageUpCommand"
-                                      Width="3"/>
+                                      Opacity="0"/>
                     </Track.DecreaseRepeatButton>
                     <Track.Thumb>
                         <Thumb x:Name="Thumb"
-                               Style="{StaticResource ScrollBarThumb}"/>
+                               Style="{StaticResource ScrollBarThumb}"
+                               adonisExtensions:CornerRadiusExtension.CornerRadius="{Binding Path=Tag,
+                                                                                             RelativeSource={RelativeSource Self},
+                                                                                             Converter={x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}}">
+                            <Thumb.Tag>
+                                <system:Double>2.0</system:Double>
+                            </Thumb.Tag>
+                        </Thumb>
                     </Track.Thumb>
                     <Track.IncreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                        <RepeatButton x:Name="IncreaseRepeatButton"
+                                      Style="{StaticResource ScrollBarPageButton}"
                                       Command="ScrollBar.PageDownCommand"
-                                      Width="3"/>
+                                      Opacity="0"/>
                     </Track.IncreaseRepeatButton>
                 </Track>
 
-                <RepeatButton Grid.Row="2"
+                <RepeatButton x:Name="ScrollDownButton"
+                              Grid.Row="2"
                               Style="{StaticResource ScrollBarButton}"
                               Command="ScrollBar.LineDownCommand"
-                              Content="M 0 0 L 5 8 L 10 0 Z"/>
+                              Content="M 0 0 L 5 6 L 10 0 Z"
+                              Visibility="Hidden"/>
             </Grid>
         </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard Name="MouseOverStoryboard">
+                        <Storyboard>
+                            <DecimalAnimation Storyboard.TargetName="Container"
+                                              Storyboard.TargetProperty="Tag"
+                                              To="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="Thumb"
+                                             Storyboard.TargetProperty="Tag"
+                                             To="0.0"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.1"/>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollUpButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                        Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollDownButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                        Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard HandoffBehavior="Compose">
+                        <Storyboard BeginTime="0:0:0.5">
+                            <DecimalAnimation Storyboard.TargetName="Container"
+                                              Storyboard.TargetProperty="Tag"
+                                              From="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="Thumb"
+                                             Storyboard.TargetProperty="Tag"
+                                             From="0.0"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="1"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="1"
+                                             Duration="0:0:0.1"/>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollUpButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                        Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollDownButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                        Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 
     <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Border>
+        <Border Margin="{TemplateBinding Padding}"
+                Background="Transparent">
 
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid x:Name="Container"
+                  Tag="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-4}">
+                <Grid.Margin>
+                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                        <Binding Source="0"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                        <Binding Source="0"/>
+                        <Binding Source="0"/>
+                    </MultiBinding>
+                </Grid.Margin>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <RepeatButton Grid.Row="0"                          
+                <RepeatButton x:Name="ScrollLeftButton"
+                              Grid.Row="0"                          
                               Style="{StaticResource ScrollBarButton}"
                               Command="ScrollBar.LineLeftCommand"
-                              Content="M 8 0 L 8 10 L 0 5 Z"/>
+                              Content="M 6 0 L 6 10 L 0 5 Z"
+                              Visibility="Hidden"/>
 
                 <Track Name="PART_Track"
                        Grid.Column="1"
-                       Margin="2, 5"
                        IsDirectionReversed="False">
                     <Track.DecreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                        <RepeatButton x:Name="DecreaseRepeatButton"
+                                      Style="{StaticResource ScrollBarPageButton}"
                                       Command="ScrollBar.PageLeftCommand"
-                                      Height="3"/>
+                                      Opacity="0"/>
                     </Track.DecreaseRepeatButton>
                     <Track.Thumb>
                         <Thumb x:Name="Thumb"
-                               Style="{StaticResource ScrollBarThumb}"/>
+                               Style="{StaticResource ScrollBarThumb}"
+                               adonisExtensions:CornerRadiusExtension.CornerRadius="{Binding Path=Tag,
+                                                                                             RelativeSource={RelativeSource Self},
+                                                                                             Converter={x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}}">
+                            <Thumb.Tag>
+                                <system:Double>2.0</system:Double>
+                            </Thumb.Tag>
+                        </Thumb>
                     </Track.Thumb>
                     <Track.IncreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                        <RepeatButton x:Name="IncreaseRepeatButton"
+                                      Style="{StaticResource ScrollBarPageButton}"
                                       Command="ScrollBar.PageRightCommand"
-                                      Height="3"/>
+                                      Opacity="0"/>
                     </Track.IncreaseRepeatButton>
                 </Track>
 
-                <RepeatButton Grid.Column="2"
+                <RepeatButton x:Name="ScrollRightButton"
+                              Grid.Column="2"
                               Style="{StaticResource ScrollBarButton}"
                               Command="ScrollBar.LineRightCommand"
-                              Content="M 0 0 L 8 5 L 0 10 Z"/>
+                              Content="M 0 0 L 6 5 L 0 10 Z"
+                              Visibility="Hidden"/>
             </Grid>
         </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard Name="MouseOverStoryboard">
+                        <Storyboard>
+                            <DecimalAnimation Storyboard.TargetName="Container"
+                                              Storyboard.TargetProperty="Tag"
+                                              To="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="Thumb"
+                                             Storyboard.TargetProperty="Tag"
+                                             To="0.0"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.1"/>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollLeftButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                        Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollRightButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                        Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard HandoffBehavior="Compose">
+                        <Storyboard BeginTime="0:0:0.5">
+                            <DecimalAnimation Storyboard.TargetName="Container"
+                                              Storyboard.TargetProperty="Tag"
+                                              From="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="Thumb"
+                                             Storyboard.TargetProperty="Tag"
+                                             From="0.0"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="1"
+                                             Duration="0:0:0.1"/>
+
+                            <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="1"
+                                             Duration="0:0:0.1"/>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollLeftButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                        Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollRightButton"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                        Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
-        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="False"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Style.Triggers>
 
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Height" Value="16" />
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
             </Trigger>
 
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Height" Value="Auto" />
+                <Setter Property="Width" Value="16" />
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
             </Trigger>
 
