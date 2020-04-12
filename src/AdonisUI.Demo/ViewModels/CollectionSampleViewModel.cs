@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Threading;
 using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
+using AdonisUI.Demo.Services;
 
 namespace AdonisUI.Demo.ViewModels
 {
@@ -29,8 +30,11 @@ namespace AdonisUI.Demo.ViewModels
         private readonly ObservableCollection<ItemViewModel> _items = new ObservableCollection<ItemViewModel>();
         public ReadOnlyObservableCollection<ItemViewModel> Items { get; set; }
 
-        public CollectionSampleViewModel()
+        private readonly IItemGenerator _itemGenerator;
+
+        public CollectionSampleViewModel(IItemGenerator itemGenerator)
         {
+            _itemGenerator = itemGenerator;
             Items = new ReadOnlyObservableCollection<ItemViewModel>(_items);
         }
 
@@ -42,63 +46,15 @@ namespace AdonisUI.Demo.ViewModels
 
         private void AddDummyItems(int count)
         {
-            foreach (ItemViewModel item in CreateDummyItems(count, 0.25, new Random()))
+            foreach (ItemViewModel item in _itemGenerator.CreateDummyItems(count, 0.25, new Random()))
             {
                 Dispatch(() => _items.Add(item));
             }
         }
 
-        private IEnumerable<ItemViewModel> CreateDummyItems(int count, double childCreationProbability, Random random)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                var item = new ItemViewModel
-                {
-                    Name = CreateItemName(i + 1),
-                    Weight = random.NextDouble(),
-                };
-
-                if (random.NextDouble() <= childCreationProbability)
-                {
-                    foreach (ItemViewModel child in CreateDummyItems(random.Next(count), childCreationProbability, random))
-                    {
-                        item.AddChild(child);
-                    }
-                }
-
-                yield return item;
-            }
-        }
-
         public ItemViewModel CreateItemInItems()
         {
-            var newItem = new ItemViewModel
-            {
-                Name = GetNextUniqueItemName(),
-                Weight = new Random().NextDouble(),
-            };
-
-            _items.Add(newItem);
-            return newItem;
-        }
-
-        private string GetNextUniqueItemName()
-        {
-            int iteration = 1;
-            string itemName = CreateItemName(iteration);
-
-            while (_items.Any(item => item.Name == itemName))
-            {
-                iteration++;
-                itemName = CreateItemName(iteration);
-            }
-
-            return itemName;
-        }
-
-        private string CreateItemName(int itemId)
-        {
-            return $"Item {itemId}";
+            return _itemGenerator.CreateItemInItems(_items);
         }
 
         private void Dispatch(Action action)
