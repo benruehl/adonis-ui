@@ -244,8 +244,15 @@
                        Style="{StaticResource ItemGroupLabelStyle}"/>
 
                 <UniformGrid Grid.Row="2"
-                             Columns="1"
+                             Rows="1"
                              HorizontalAlignment="Left">
+
+                    <ScrollViewer Width="240"
+                                  HorizontalScrollBarVisibility="Visible"
+                                  adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="AlwaysExpand"
+                                  Margin="{adonisUi:Space 0, 0, 1, 0}">
+                        <Border Width="400"/>
+                    </ScrollViewer>
 
                     <ScrollViewer Width="240"
                                   HorizontalScrollBarVisibility="Visible">
