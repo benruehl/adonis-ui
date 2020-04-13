@@ -25,7 +25,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
                 <Setter Property="FontWeight" Value="DemiBold"/>
                 <Setter Property="FontSize" Value="11"/>
-                <Setter Property="Margin" Value="{adonisUi:Space 1, 3, 1, 1}"/>
+                <Setter Property="Margin" Value="{adonisUi:Space 1, 1, 1, 1}"/>
             </Style>
 
             <Style x:Key="BreadcrumbSeparatorStyle"
@@ -199,6 +199,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="{adonisUi:Space 2}"/>
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="COLOR SCHEME"
@@ -221,6 +222,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="{adonisUi:Space 2}"/>
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="SETTINGS"
@@ -275,6 +277,7 @@
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="Auto"/>
                                                                     <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="{adonisUi:Space 2}"/>
                                                                 </Grid.RowDefinitions>
 
                                                                 <TextBlock x:Name="GroupHeader"
