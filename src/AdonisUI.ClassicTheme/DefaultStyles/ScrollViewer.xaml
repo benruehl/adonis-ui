@@ -12,6 +12,8 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="Padding" Value="{adonisUi:Space 0.5}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode" Value="ExpandOnHover"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollViewer">
@@ -46,7 +48,8 @@
                                        Maximum="{TemplateBinding ScrollableHeight}"
                                        Value="{TemplateBinding VerticalOffset}"
                                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                       ViewportSize="{TemplateBinding ViewportHeight}"/>
+                                       ViewportSize="{TemplateBinding ViewportHeight}"
+                                       adonisExtensions:ScrollBarExtension.ExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"/>
 
                             <ScrollBar x:Name="PART_HorizontalScrollBar"
                                        Grid.Column="0"
@@ -57,7 +60,8 @@
                                        Maximum="{TemplateBinding ScrollableWidth}"
                                        Value="{TemplateBinding HorizontalOffset}"
                                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                       ViewportSize="{TemplateBinding ViewportWidth}"/>
+                                       ViewportSize="{TemplateBinding ViewportWidth}"
+                                       adonisExtensions:ScrollBarExtension.ExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"/>
 
                         </Grid>
                     </Border>

@@ -249,8 +249,23 @@
         </Border>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Trigger.EnterActions>
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
+                         Value="{x:Static adonisExtensions:ScrollBarExpansionMode.AlwaysExpand}">
+                <Setter Property="Tag" TargetName="Container" Value="0"/>
+                <Setter Property="Tag" TargetName="Thumb" Value="0"/>
+                <Setter Property="Opacity" TargetName="IncreaseRepeatButton" Value="1"/>
+                <Setter Property="Opacity" TargetName="DecreaseRepeatButton" Value="1"/>
+                <Setter Property="Visibility" TargetName="ScrollUpButton" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="ScrollDownButton" Value="Visible"/>
+            </DataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                    <Condition Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
+                               Value="{x:Static adonisExtensions:ScrollBarExpansionMode.ExpandOnHover}"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
                         <Storyboard>
                             <DecimalAnimation Storyboard.TargetName="Container"
@@ -286,8 +301,8 @@
                             </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
+                </MultiDataTrigger.EnterActions>
+                <MultiDataTrigger.ExitActions>
                     <BeginStoryboard HandoffBehavior="Compose">
                         <Storyboard BeginTime="0:0:0.5">
                             <DecimalAnimation Storyboard.TargetName="Container"
@@ -323,8 +338,8 @@
                             </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
+                </MultiDataTrigger.ExitActions>
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -394,8 +409,23 @@
         </Border>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Trigger.EnterActions>
+            <DataTrigger Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
+                         Value="{x:Static adonisExtensions:ScrollBarExpansionMode.AlwaysExpand}">
+                <Setter Property="Tag" TargetName="Container" Value="0"/>
+                <Setter Property="Tag" TargetName="Thumb" Value="0"/>
+                <Setter Property="Opacity" TargetName="IncreaseRepeatButton" Value="1"/>
+                <Setter Property="Opacity" TargetName="DecreaseRepeatButton" Value="1"/>
+                <Setter Property="Visibility" TargetName="ScrollLeftButton" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="ScrollRightButton" Value="Visible"/>
+            </DataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                    <Condition Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
+                               Value="{x:Static adonisExtensions:ScrollBarExpansionMode.ExpandOnHover}"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
                         <Storyboard>
                             <DecimalAnimation Storyboard.TargetName="Container"
@@ -431,8 +461,8 @@
                             </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
+                </MultiDataTrigger.EnterActions>
+                <MultiDataTrigger.ExitActions>
                     <BeginStoryboard HandoffBehavior="Compose">
                         <Storyboard BeginTime="0:0:0.5">
                             <DecimalAnimation Storyboard.TargetName="Container"
@@ -468,8 +498,8 @@
                             </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
+                </MultiDataTrigger.ExitActions>
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -480,6 +510,7 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="False"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="adonisExtensions:ScrollBarExtension.ExpansionMode" Value="ExpandOnHover"/>
         <Style.Triggers>
 
             <Trigger Property="Orientation" Value="Horizontal">
