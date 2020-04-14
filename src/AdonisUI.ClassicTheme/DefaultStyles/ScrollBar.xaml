@@ -267,7 +267,7 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
-                        <Storyboard>
+                        <Storyboard BeginTime="0:0:0.1">
                             <DecimalAnimation Storyboard.TargetName="Container"
                                               Storyboard.TargetProperty="Tag"
                                               To="0.0"
@@ -303,26 +303,22 @@
                     </BeginStoryboard>
                 </MultiDataTrigger.EnterActions>
                 <MultiDataTrigger.ExitActions>
-                    <BeginStoryboard HandoffBehavior="Compose">
+                    <BeginStoryboard>
                         <Storyboard BeginTime="0:0:0.5">
                             <DecimalAnimation Storyboard.TargetName="Container"
                                               Storyboard.TargetProperty="Tag"
-                                              From="0.0"
                                               Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="Thumb"
                                              Storyboard.TargetProperty="Tag"
-                                             From="0.0"
                                              Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
                                              Storyboard.TargetProperty="Opacity"
-                                             From="1"
                                              Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
                                              Storyboard.TargetProperty="Opacity"
-                                             From="1"
                                              Duration="0:0:0.1"/>
 
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollUpButton"
@@ -427,7 +423,7 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
-                        <Storyboard>
+                        <Storyboard BeginTime="0:0:0.1">
                             <DecimalAnimation Storyboard.TargetName="Container"
                                               Storyboard.TargetProperty="Tag"
                                               To="0.0"
@@ -463,26 +459,22 @@
                     </BeginStoryboard>
                 </MultiDataTrigger.EnterActions>
                 <MultiDataTrigger.ExitActions>
-                    <BeginStoryboard HandoffBehavior="Compose">
+                    <BeginStoryboard>
                         <Storyboard BeginTime="0:0:0.5">
                             <DecimalAnimation Storyboard.TargetName="Container"
                                               Storyboard.TargetProperty="Tag"
-                                              From="0.0"
                                               Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="Thumb"
                                              Storyboard.TargetProperty="Tag"
-                                             From="0.0"
                                              Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="IncreaseRepeatButton"
                                              Storyboard.TargetProperty="Opacity"
-                                             From="1"
                                              Duration="0:0:0.1"/>
 
                             <DoubleAnimation Storyboard.TargetName="DecreaseRepeatButton"
                                              Storyboard.TargetProperty="Opacity"
-                                             From="1"
                                              Duration="0:0:0.1"/>
 
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollLeftButton"
