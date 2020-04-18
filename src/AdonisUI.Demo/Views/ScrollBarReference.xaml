@@ -116,6 +116,23 @@
                         </StackPanel>
 
                         <StackPanel>
+                            <Label Content="Always expand"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <ListBox ItemsSource="{Binding Items}"
+                                     MinWidth="{adonisUi:Space 10}"
+                                     MaxHeight="{adonisUi:Space 20}"
+                                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand"
+                                     Margin="{adonisUi:Space 0, 0, 10, 0}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+
+                        <StackPanel>
                             <Label Content="Never expand"
                                    Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
@@ -133,13 +150,14 @@
                         </StackPanel>
 
                         <StackPanel>
-                            <Label Content="Always expand"
+                            <Label Content="Never expand &amp; overlay"
                                    Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
                             <ListBox ItemsSource="{Binding Items}"
                                      MinWidth="{adonisUi:Space 10}"
                                      MaxHeight="{adonisUi:Space 20}"
-                                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand"
+                                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="NeverExpand"
+                                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
                                      Margin="{adonisUi:Space 0, 0, 10, 0}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
@@ -189,6 +207,33 @@
                         </StackPanel>
 
                         <StackPanel Margin="{adonisUi:Space 0, 0, 3, 0}">
+                            <Label Content="Always expand"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <ComboBox ItemsSource="{Binding Items}"
+                                      SelectedIndex="0"
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand"
+                                      Margin="{adonisUi:Space 0, 0, 0, 1}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <ComboBox Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                      ItemsSource="{Binding Items}"
+                                      SelectedIndex="0"
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Margin="{adonisUi:Space 0, 0, 3, 0}">
                             <Label Content="Never expand"
                                    Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
@@ -216,12 +261,13 @@
                         </StackPanel>
 
                         <StackPanel Margin="{adonisUi:Space 0, 0, 3, 0}">
-                            <Label Content="Always expand"
+                            <Label Content="Never expand &amp; overlay"
                                    Margin="{adonisUi:Space 0, 0, 0, 1}"/>
 
                             <ComboBox ItemsSource="{Binding Items}"
                                       SelectedIndex="0"
-                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand"
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="NeverExpand"
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
                                       Margin="{adonisUi:Space 0, 0, 0, 1}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
@@ -233,7 +279,8 @@
                             <ComboBox Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
                                       ItemsSource="{Binding Items}"
                                       SelectedIndex="0"
-                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand">
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="NeverExpand"
+                                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>

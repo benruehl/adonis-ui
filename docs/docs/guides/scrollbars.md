@@ -66,3 +66,28 @@ The default behavior can be changed for the **whole application** as well by ove
     </ResourceDictionary>
 </Application.Resources>
 ```
+
+## Placement
+
+The `ScrollBarPlacement` enum offers options for how to position a scroll bar in relation to the scrolled content.
+
+- `Docked` - Place the scroll bar next to the content (default)
+- `Overlay` - Place the scroll bar on top of the content
+
+![Scroll bar placement](../../img/adonis-demo-scrollbar-placement-light.png)
+
+For `ScrollViewers`:
+
+```xml
+<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
+<ScrollViewer adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
+              adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="Overlay"/>
+```
+
+For controls containing a `ScrollViewer` like `TextBox`, `ComboBox`, `ListBox`, etc.:
+
+```xml
+<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
+<ComboBox adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
+          adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="Overlay"/>
+```

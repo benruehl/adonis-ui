@@ -14,6 +14,8 @@
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode" Value="ExpandOnHover"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Docked"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollViewer">
@@ -65,6 +67,18 @@
 
                         </Grid>
                     </Border>
+
+                    <ControlTemplate.Triggers>
+                        
+                        <Trigger Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Overlay">
+                            <Setter Property="Grid.ColumnSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+                        </Trigger>
+
+                        <Trigger Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Overlay">
+                            <Setter Property="Grid.RowSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

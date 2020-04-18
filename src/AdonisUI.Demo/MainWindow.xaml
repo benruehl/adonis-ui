@@ -248,7 +248,8 @@
 
                             <ListBox Grid.Row="2"
                                      ItemsSource="{Binding PagesCollectionView}"
-                                     SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}">
+                                     SelectedItem="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
+                                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>
