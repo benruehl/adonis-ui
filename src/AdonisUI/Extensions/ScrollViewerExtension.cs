@@ -80,6 +80,22 @@ namespace AdonisUI.Extensions
         }
 
         /// <summary>
+        /// Gets the value of the <see cref="HideScrollBarsUntilMouseOverProperty"/> attached property of the specified ScrollViewer.
+        /// </summary>
+        public static bool GetHideScrollBarsUntilMouseOver(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HideScrollBarsUntilMouseOverProperty);
+        }
+
+        /// <summary>
+        /// Sets the value of the <see cref="HideScrollBarsUntilMouseOverProperty"/> attached property of the specified ScrollViewer.
+        /// </summary>
+        public static void SetHideScrollBarsUntilMouseOver(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HideScrollBarsUntilMouseOverProperty, value);
+        }
+
+        /// <summary>
         /// A DependencyProperty that controls when to expand and collapse the vertical scroll bar.
         /// </summary>
         public static readonly DependencyProperty VerticalScrollBarExpansionModeProperty = DependencyProperty.RegisterAttached("VerticalScrollBarExpansionMode", typeof(ScrollBarExpansionMode), typeof(ScrollViewerExtension), new PropertyMetadata(ScrollBarExpansionMode.ExpandOnHover));
@@ -98,5 +114,10 @@ namespace AdonisUI.Extensions
         /// A DependencyProperty that controls the placement of the horizontal scroll bar.
         /// </summary>
         public static readonly DependencyProperty HorizontalScrollBarPlacementProperty = DependencyProperty.RegisterAttached("HorizontalScrollBarPlacement", typeof(ScrollBarPlacement), typeof(ScrollViewerExtension), new PropertyMetadata(ScrollBarPlacement.Docked));
+
+        /// <summary>
+        /// A DependencyProperty that controls whether to set up fade-in and fade-out animations for both scroll bars when entering or leaving the scroll viewer.
+        /// </summary>
+        public static readonly DependencyProperty HideScrollBarsUntilMouseOverProperty = DependencyProperty.RegisterAttached("HideScrollBarsUntilMouseOver", typeof(bool), typeof(ScrollViewerExtension), new PropertyMetadata(false));
     }
 }

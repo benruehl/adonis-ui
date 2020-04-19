@@ -166,6 +166,23 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </StackPanel>
+
+                        <StackPanel>
+                            <Label Content="Hide on mouse leave"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <ListBox ItemsSource="{Binding Items}"
+                                     MinWidth="{adonisUi:Space 10}"
+                                     MaxHeight="{adonisUi:Space 20}"
+                                     adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"
+                                     Margin="{adonisUi:Space 0, 0, 10, 0}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
                     </WrapPanel>
 
                 </GroupBox>
@@ -281,6 +298,33 @@
                                       SelectedIndex="0"
                                       adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="NeverExpand"
                                       adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Margin="{adonisUi:Space 0, 0, 3, 0}">
+                            <Label Content="Hide on mouse leave"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <ComboBox ItemsSource="{Binding Items}"
+                                      SelectedIndex="0"
+                                      adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"
+                                      Margin="{adonisUi:Space 0, 0, 0, 1}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <ComboBox Style="{DynamicResource {x:Static adonisUi:Styles.AccentComboBox}}"
+                                      ItemsSource="{Binding Items}"
+                                      SelectedIndex="0"
+                                      adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>

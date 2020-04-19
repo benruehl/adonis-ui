@@ -79,6 +79,7 @@
         <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Docked"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="False"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="True"/>
         <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnMouseOver" Value="True"/>
@@ -141,6 +142,7 @@
                                               adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"
                                               adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="{Binding Path=(adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement), RelativeSource={RelativeSource TemplatedParent}}"
                                               adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement), RelativeSource={RelativeSource TemplatedParent}}"
+                                              adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="{Binding Path=(adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver), RelativeSource={RelativeSource TemplatedParent}}"
                                               Template="{StaticResource TextBoxScrollViewerTemplate}"/>
                             </Grid>
 

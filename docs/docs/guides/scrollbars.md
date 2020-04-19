@@ -91,3 +91,21 @@ For controls containing a `ScrollViewer` like `TextBox`, `ComboBox`, `ListBox`, 
 <ComboBox adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
           adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="Overlay"/>
 ```
+
+## Hide until hover
+
+ScrollViewers can be configured to hide their scroll bars until the cursor moves over the respective ScrollViewer. This is **disabled** by default. To enable it set `ScrollViewerExtension.HideScrollBarsUntilMouseOver` to `true` on the ScrollViewer or the parent element like a `TextBox`, `ComboBox`, `ListBox`, etc.
+
+For `ScrollViewers`:
+
+```xml
+<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
+<ScrollViewer adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"/>
+```
+
+For controls containing a `ScrollViewer` like `TextBox`, `ComboBox`, `ListBox`, etc.:
+
+```xml
+<!-- xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI" -->
+<ComboBox adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True"/>
+```
