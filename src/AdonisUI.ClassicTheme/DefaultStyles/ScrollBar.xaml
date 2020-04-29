@@ -5,15 +5,22 @@
                     xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+
+    <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">16</system:Double>
+    <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeight}">16</system:Double>
+    <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">16</system:Double>
+    <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">16</system:Double>
+
+
     <Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Width" Value="16" />
-        <Setter Property="Height" Value="16" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}}"/>
         <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
         <Setter Property="BorderBrush" Value="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
-        <Setter Property="Padding" Value="4" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="Panel.ZIndex" Value="1" />
         <Setter Property="SnapsToDevicePixels" Value="{Binding SnapsToDevicePixels, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollBar}}}"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -26,19 +33,18 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding adonisExtensions:CornerRadiusExtension.CornerRadius}"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}">
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}"
+                              MaxWidth="8"
+                              MaxHeight="8">
                             <Viewbox Stretch="Uniform">
                                 <Path x:Name="Arrow"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"
                                       Fill="{TemplateBinding Foreground}"
-                                      Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Margin="{TemplateBinding Padding}"/>
+                                      Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Viewbox>
                         </Grid>
                     </Border>
@@ -188,13 +194,12 @@
         <Border Margin="{TemplateBinding Padding}"
                 Background="Transparent">
 
-            <Grid x:Name="Container"
-                  Tag="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-7}">
+            <Grid>
                 <Grid.Margin>
                     <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                        <Binding Path="Tag" ElementName="LeftMarginHolder"/>
                         <Binding Source="0"/>
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/3"/>
+                        <Binding Path="Tag" ElementName="RightMarginHolder"/>
                         <Binding Source="0"/>
                     </MultiBinding>
                 </Grid.Margin>
@@ -204,9 +209,23 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <!-- LeftMarginHolder's only purpose is to hold the value of the grid's left margin in its Tag property so that it can be animated -->
+                <FrameworkElement x:Name="LeftMarginHolder"
+                                  Tag="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x/2}"
+                                  Visibility="Collapsed"/>
+
+                <!-- RightMarginHolder's only purpose is to hold the value of the grid's right margin in its Tag property so that it can be animated -->
+                <FrameworkElement x:Name="RightMarginHolder"
+                                  Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <system:Decimal>2.0</system:Decimal>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+
                 <RepeatButton x:Name="ScrollUpButton"
                               Grid.Row="0"                          
                               Style="{StaticResource ScrollBarButton}"
+                              Height="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"
                               Command="ScrollBar.LineUpCommand"
                               Content="M 0 6 L 10 6 L 5 0 Z"
                               Visibility="Hidden"/>
@@ -227,7 +246,7 @@
                                                                                              RelativeSource={RelativeSource Self},
                                                                                              Converter={x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}}">
                             <Thumb.Tag>
-                                <system:Double>2.0</system:Double>
+                                <system:Double>3.0</system:Double>
                             </Thumb.Tag>
                         </Thumb>
                     </Track.Thumb>
@@ -242,6 +261,7 @@
                 <RepeatButton x:Name="ScrollDownButton"
                               Grid.Row="2"
                               Style="{StaticResource ScrollBarButton}"
+                              Height="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"
                               Command="ScrollBar.LineDownCommand"
                               Content="M 0 0 L 5 6 L 10 0 Z"
                               Visibility="Hidden"/>
@@ -251,7 +271,8 @@
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
                          Value="{x:Static adonisExtensions:ScrollBarExpansionMode.AlwaysExpand}">
-                <Setter Property="Tag" TargetName="Container" Value="0"/>
+                <Setter Property="Tag" TargetName="LeftMarginHolder" Value="0"/>
+                <Setter Property="Tag" TargetName="RightMarginHolder" Value="0"/>
                 <Setter Property="Tag" TargetName="Thumb" Value="0"/>
                 <Setter Property="Opacity" TargetName="IncreaseRepeatButton" Value="1"/>
                 <Setter Property="Opacity" TargetName="DecreaseRepeatButton" Value="1"/>
@@ -268,7 +289,12 @@
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
                         <Storyboard BeginTime="0:0:0.1">
-                            <DecimalAnimation Storyboard.TargetName="Container"
+                            <DecimalAnimation Storyboard.TargetName="LeftMarginHolder"
+                                              Storyboard.TargetProperty="Tag"
+                                              To="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DecimalAnimation Storyboard.TargetName="RightMarginHolder"
                                               Storyboard.TargetProperty="Tag"
                                               To="0.0"
                                               Duration="0:0:0.1"/>
@@ -305,7 +331,11 @@
                 <MultiDataTrigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard BeginTime="0:0:0.5">
-                            <DecimalAnimation Storyboard.TargetName="Container"
+                            <DecimalAnimation Storyboard.TargetName="LeftMarginHolder"
+                                              Storyboard.TargetProperty="Tag"
+                                              Duration="0:0:0.1"/>
+
+                            <DecimalAnimation Storyboard.TargetName="RightMarginHolder"
                                               Storyboard.TargetProperty="Tag"
                                               Duration="0:0:0.1"/>
 
@@ -344,14 +374,13 @@
         <Border Margin="{TemplateBinding Padding}"
                 Background="Transparent">
 
-            <Grid x:Name="Container"
-                  Tag="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x-7}">
+            <Grid>
                 <Grid.Margin>
                     <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
                         <Binding Source="0"/>
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                        <Binding Path="Tag" ElementName="TopMarginHolder"/>
                         <Binding Source="0"/>
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" Converter="{adonisConverters:MathConverter}" ConverterParameter="x/3"/>
+                        <Binding Path="Tag" ElementName="BottomMarginHolder"/>
                     </MultiBinding>
                 </Grid.Margin>
                 <Grid.ColumnDefinitions>
@@ -360,9 +389,23 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- TopMarginHolder's only purpose is to hold the value of the grid's top margin in its Tag property so that it can be animated -->
+                <FrameworkElement x:Name="TopMarginHolder"
+                                  Tag="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Converter={adonisConverters:MathConverter}, ConverterParameter=x/2}"
+                                  Visibility="Collapsed"/>
+
+                <!-- BottomMarginHolder's only purpose is to hold the value of the grid's bottom margin in its Tag property so that it can be animated -->
+                <FrameworkElement x:Name="BottomMarginHolder"
+                                  Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <system:Decimal>2.0</system:Decimal>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+
                 <RepeatButton x:Name="ScrollLeftButton"
-                              Grid.Row="0"                          
+                              Grid.Column="0"
                               Style="{StaticResource ScrollBarButton}"
+                              Width="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"
                               Command="ScrollBar.LineLeftCommand"
                               Content="M 6 0 L 6 10 L 0 5 Z"
                               Visibility="Hidden"/>
@@ -383,7 +426,7 @@
                                                                                              RelativeSource={RelativeSource Self},
                                                                                              Converter={x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}}">
                             <Thumb.Tag>
-                                <system:Double>2.0</system:Double>
+                                <system:Double>3.0</system:Double>
                             </Thumb.Tag>
                         </Thumb>
                     </Track.Thumb>
@@ -398,6 +441,7 @@
                 <RepeatButton x:Name="ScrollRightButton"
                               Grid.Column="2"
                               Style="{StaticResource ScrollBarButton}"
+                              Width="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"
                               Command="ScrollBar.LineRightCommand"
                               Content="M 0 0 L 6 5 L 0 10 Z"
                               Visibility="Hidden"/>
@@ -407,7 +451,8 @@
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=(adonisExtensions:ScrollBarExtension.ExpansionMode), RelativeSource={RelativeSource Self}}"
                          Value="{x:Static adonisExtensions:ScrollBarExpansionMode.AlwaysExpand}">
-                <Setter Property="Tag" TargetName="Container" Value="0"/>
+                <Setter Property="Tag" TargetName="TopMarginHolder" Value="0"/>
+                <Setter Property="Tag" TargetName="BottomMarginHolder" Value="0"/>
                 <Setter Property="Tag" TargetName="Thumb" Value="0"/>
                 <Setter Property="Opacity" TargetName="IncreaseRepeatButton" Value="1"/>
                 <Setter Property="Opacity" TargetName="DecreaseRepeatButton" Value="1"/>
@@ -424,7 +469,12 @@
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard Name="MouseOverStoryboard">
                         <Storyboard BeginTime="0:0:0.1">
-                            <DecimalAnimation Storyboard.TargetName="Container"
+                            <DecimalAnimation Storyboard.TargetName="TopMarginHolder"
+                                              Storyboard.TargetProperty="Tag"
+                                              To="0.0"
+                                              Duration="0:0:0.1"/>
+
+                            <DecimalAnimation Storyboard.TargetName="BottomMarginHolder"
                                               Storyboard.TargetProperty="Tag"
                                               To="0.0"
                                               Duration="0:0:0.1"/>
@@ -461,7 +511,11 @@
                 <MultiDataTrigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard BeginTime="0:0:0.5">
-                            <DecimalAnimation Storyboard.TargetName="Container"
+                            <DecimalAnimation Storyboard.TargetName="TopMarginHolder"
+                                              Storyboard.TargetProperty="Tag"
+                                              Duration="0:0:0.1"/>
+
+                            <DecimalAnimation Storyboard.TargetName="BottomMarginHolder"
                                               Storyboard.TargetProperty="Tag"
                                               Duration="0:0:0.1"/>
 
@@ -507,13 +561,13 @@
 
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto"/>
-                <Setter Property="Height" Value="16" />
+                <Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeight}}" />
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
             </Trigger>
 
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Height" Value="Auto" />
-                <Setter Property="Width" Value="16" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
             </Trigger>
 

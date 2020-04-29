@@ -337,6 +337,34 @@
 
                 </GroupBox>
 
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Large Scroll Bars"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <ScrollViewer Width="{adonisUi:Space 50}"
+                                  Height="{adonisUi:Space 30}"
+                                  HorizontalAlignment="Left"
+                                  HorizontalScrollBarVisibility="Visible">
+                        <ScrollViewer.Resources>
+                            <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">32</system:Double>
+                            <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeight}">32</system:Double>
+                        </ScrollViewer.Resources>
+
+                        <ItemsControl ItemsSource="{Binding Items}"
+                                      ItemTemplate="{StaticResource DummyItemTemplate}"
+                                      Width="{adonisUi:Space 80}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="2"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                </GroupBox>
+
             </StackPanel>
         </views:ControlReferenceControl>
 
