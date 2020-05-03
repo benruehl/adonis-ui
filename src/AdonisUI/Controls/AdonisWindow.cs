@@ -116,6 +116,16 @@ namespace AdonisUI.Controls
             private set => SetValue(MaximizeBorderThicknessPropertyKey, value);
         }
 
+        /// <summary>
+        /// Controls whether to shrink the title bar height a little when the window is maximized.
+        /// The default is <see langword="true"/> as this is how native windows behave.
+        /// </summary>
+        public bool ShrinkTitleBarWhenMaximized
+        {
+            get => (bool)GetValue(ShrinkTitleBarWhenMaximizedProperty);
+            set => SetValue(ShrinkTitleBarWhenMaximizedProperty, value);
+        }
+
         public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
@@ -131,6 +141,8 @@ namespace AdonisUI.Controls
         protected internal static readonly DependencyPropertyKey MaximizeBorderThicknessPropertyKey = DependencyProperty.RegisterReadOnly("MaximizeBorderThickness", typeof(Thickness), typeof(AdonisWindow), new PropertyMetadata(new Thickness()));
 
         protected internal static readonly DependencyProperty MaximizeBorderThicknessProperty = MaximizeBorderThicknessPropertyKey.DependencyProperty;
+
+        public static readonly DependencyProperty ShrinkTitleBarWhenMaximizedProperty = DependencyProperty.Register("ShrinkTitleBarWhenMaximized", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(true));
 
         static AdonisWindow()
         {

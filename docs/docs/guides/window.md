@@ -23,7 +23,7 @@ To set the colors of the window's title bar the following properties can be used
 - `TitleBarBackground` - Sets the background brush of the window's title bar
 - `WindowButtonHighlightBrush` - Sets the background brush for the window buttons on hovering
 
-## Content
+## Title bar content
 
 By default, the title bar consists of the *application icon* on the left, the *window title* next to it and the *window buttons* on the right. The `AdonisWindow` class offers the following properties to modify this setup:
 
@@ -49,4 +49,14 @@ When adding buttons to the title bar, the `WindowButton` style can be used to ma
     </adonisControls:AdonisWindow.TitleBarContent>
     
 </adonisControls:AdonisWindow>
+```
+
+## Title bar size
+
+The title bar aims at behaving exactly like the default native title bar. That's why it shrinks a little when the window is maximized.
+
+This can be disabled by setting `ShrinkTitleBarWhenMaximized` on `AdonisWindow` to `false`.
+
+```xml
+<adonisControls:AdonisWindow ShrinkTitleBarWhenMaximized="False"/>
 ```
