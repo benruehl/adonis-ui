@@ -75,7 +75,7 @@ namespace AdonisUI.Controls
         /// </summary>
         public object TitleBarContent
         {
-            get => (object)GetValue(TitleBarContentProperty);
+            get => GetValue(TitleBarContentProperty);
             set => SetValue(TitleBarContentProperty, value);
         }
 
@@ -84,8 +84,8 @@ namespace AdonisUI.Controls
         /// </summary>
         public Brush TitleBarForeground
         {
-            get { return (Brush)GetValue(TitleBarForegroundProperty); }
-            set { SetValue(TitleBarForegroundProperty, value); }
+            get => (Brush)GetValue(TitleBarForegroundProperty);
+            set => SetValue(TitleBarForegroundProperty, value);
         }
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace AdonisUI.Controls
         /// </summary>
         public Brush TitleBarBackground
         {
-            get { return (Brush)GetValue(TitleBarBackgroundProperty); }
-            set { SetValue(TitleBarBackgroundProperty, value); }
+            get => (Brush)GetValue(TitleBarBackgroundProperty);
+            set => SetValue(TitleBarBackgroundProperty, value);
         }
 
         /// <summary>
@@ -103,8 +103,8 @@ namespace AdonisUI.Controls
         /// </summary>
         public Brush WindowButtonHighlightBrush
         {
-            get { return (Brush)GetValue(WindowButtonHighlightBrushProperty); }
-            set { SetValue(WindowButtonHighlightBrushProperty, value); }
+            get => (Brush)GetValue(WindowButtonHighlightBrushProperty);
+            set => SetValue(WindowButtonHighlightBrushProperty, value);
         }
 
         /// <summary>
