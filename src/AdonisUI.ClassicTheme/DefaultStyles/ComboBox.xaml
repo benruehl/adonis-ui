@@ -202,8 +202,8 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode" Value="ExpandOnHover"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
-        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Docked"/>
-        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Overlay"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Overlay"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="False"/>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
