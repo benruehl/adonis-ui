@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Threading;
-using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
 using AdonisUI.Demo.Services;
 
 namespace AdonisUI.Demo.ViewModels
 {
-    class CollectionSampleViewModel
+    class ScrollBarReferenceViewModel
         : ViewModel
         , IApplicationContentView
     {
-        public string Name => "Collections";
+        public string Name => "Scroll Bars";
 
-        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.Samples;
+        public ApplicationNavigationGroup Group => ApplicationNavigationGroup.Reference;
 
         private bool _isLoading;
 
@@ -32,7 +30,7 @@ namespace AdonisUI.Demo.ViewModels
 
         private readonly IItemGenerator _itemGenerator;
 
-        public CollectionSampleViewModel(IItemGenerator itemGenerator)
+        public ScrollBarReferenceViewModel(IItemGenerator itemGenerator)
         {
             _itemGenerator = itemGenerator;
             Items = new ReadOnlyObservableCollection<ItemViewModel>(_items);
@@ -41,29 +39,20 @@ namespace AdonisUI.Demo.ViewModels
         public void Init()
         {
             Dispatch(() => _items.Clear());
-            AddDummyItems(50);
+            AddDummyItems(25);
         }
 
         private void AddDummyItems(int count)
         {
-            foreach (ItemViewModel item in _itemGenerator.CreateDummyItems(count, 0.25, new Random()))
+            foreach (ItemViewModel item in _itemGenerator.CreateDummyItems(count, 0, new Random()))
             {
                 Dispatch(() => _items.Add(item));
             }
-        }
-
-        public ItemViewModel CreateItemInItems()
-        {
-            return _itemGenerator.CreateItemInItems(_items);
         }
 
         private void Dispatch(Action action)
         {
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, action);
         }
-
-        private CollectionSampleAddItemCommand _addItemCommand;
-
-        public CollectionSampleAddItemCommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new CollectionSampleAddItemCommand(this));
     }
 }

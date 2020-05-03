@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using AdonisUI.Demo.Commands;
 using AdonisUI.Demo.Framework;
+using AdonisUI.Demo.Services;
 
 namespace AdonisUI.Demo.ViewModels
 {
@@ -106,7 +107,7 @@ namespace AdonisUI.Demo.ViewModels
         private IEnumerable<IApplicationContentView> CreateAllPages()
         {
             yield return new OverviewSampleViewModel();
-            yield return new CollectionSampleViewModel();
+            yield return new CollectionSampleViewModel(new ItemGenerator());
             yield return new LayerSimpleSampleViewModel();
             yield return new LayerSampleViewModel();
             yield return new ValidationSampleViewModel();
@@ -118,6 +119,7 @@ namespace AdonisUI.Demo.ViewModels
             yield return new TextInputReferenceViewModel();
             yield return new ToggleReferenceViewModel();
             yield return new ListBoxReferenceViewModel();
+            yield return new ScrollBarReferenceViewModel(new ItemGenerator());
             yield return new LoadingReferenceViewModel();
             yield return new MessageBoxReferenceViewModel();
         }

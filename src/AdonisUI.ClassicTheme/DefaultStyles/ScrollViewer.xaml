@@ -12,6 +12,11 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="Padding" Value="{adonisUi:Space 0.5}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode" Value="ExpandOnHover"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollViewer">
@@ -46,7 +51,8 @@
                                        Maximum="{TemplateBinding ScrollableHeight}"
                                        Value="{TemplateBinding VerticalOffset}"
                                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                       ViewportSize="{TemplateBinding ViewportHeight}"/>
+                                       ViewportSize="{TemplateBinding ViewportHeight}"
+                                       adonisExtensions:ScrollBarExtension.ExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"/>
 
                             <ScrollBar x:Name="PART_HorizontalScrollBar"
                                        Grid.Column="0"
@@ -57,10 +63,61 @@
                                        Maximum="{TemplateBinding ScrollableWidth}"
                                        Value="{TemplateBinding HorizontalOffset}"
                                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                       ViewportSize="{TemplateBinding ViewportWidth}"/>
+                                       ViewportSize="{TemplateBinding ViewportWidth}"
+                                       adonisExtensions:ScrollBarExtension.ExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"/>
 
                         </Grid>
                     </Border>
+
+                    <ControlTemplate.Triggers>
+                        
+                        <Trigger Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Overlay">
+                            <Setter Property="Grid.ColumnSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+                        </Trigger>
+
+                        <Trigger Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Overlay">
+                            <Setter Property="Grid.RowSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+                        </Trigger>
+
+                        <Trigger Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="PART_VerticalScrollBar" Value="0"/>
+                            <Setter Property="Opacity" TargetName="PART_HorizontalScrollBar" Value="0"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_VerticalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_VerticalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
