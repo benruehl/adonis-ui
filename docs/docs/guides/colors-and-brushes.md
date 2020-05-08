@@ -177,3 +177,5 @@ Custom color schemes need to be defined the same way as the built-in color schem
 ```
 
 The colors and brushes you did not specify are then taken from the included color scheme. You can include this ResourceDictionary in your `App.xaml` instead of the light and dark color schemes or in addition to them if you want to switch between those.
+
+**If you want to adjust the hue value of all colors in a color theme** you might want to use [@alexhelms](https://github.com/alexhelms)' [python script](https://github.com/benruehl/adonis-ui/issues/90) to do so. (Thank you for the contribution!)
