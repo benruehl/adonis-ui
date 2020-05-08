@@ -8,7 +8,8 @@
                     xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
                     xmlns:views="clr-namespace:AdonisUI.Demo.Views"
                     xmlns:converters="clr-namespace:AdonisUI.Demo.Converters"
-                    xmlns:markupExtensions="clr-namespace:AdonisUI.Demo.MarkupExtensions">
+                    xmlns:markupExtensions="clr-namespace:AdonisUI.Demo.MarkupExtensions"
+                    xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
@@ -19,7 +20,54 @@
         
         <views:ControlReferenceControl Title="{Binding Name}">
             <StackPanel>
-                
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="{adonisUi:Space 10}"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel VerticalAlignment="Center"
+                                    MaxWidth="360">
+                            
+                            <Label Content="Interactive Demo"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <TextBlock TextWrapping="Wrap">
+                                Interact with the demo button to get a feeling for the layered brushes and their usage.
+                            </TextBlock>
+                            
+                            <TextBlock TextWrapping="Wrap">
+                                <Italic>Highlight</Italic> brushes are used on mouse over. <Italic>Intense highlight</Italic> brushes are used for the 
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/cursor-spotlight/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 cursor spotlight
+                                </Hyperlink>.
+                                <Italic>Interaction</Italic> brushes come in play when pressing the button 
+                                (see
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/ripple/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 ripple effect
+                                </Hyperlink>).
+                            </TextBlock>
+                            
+                            <TextBlock/>
+
+                            <TextBlock TextWrapping="Wrap">
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/colors-and-brushes/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 Read more
+                                </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <views:ControlBrushesBreakdown Grid.Column="2"/>
+
+                    </Grid>
+                </GroupBox>
+
                 <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
                     <GroupBox.Resources>
                         <CollectionViewSource x:Key="BrushesCollection"
