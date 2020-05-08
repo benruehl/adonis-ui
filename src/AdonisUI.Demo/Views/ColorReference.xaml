@@ -1,0 +1,171 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:converters="clr-namespace:AdonisUI.Demo.Converters"
+                    xmlns:markupExtensions="clr-namespace:AdonisUI.Demo.MarkupExtensions"
+                    xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:ColorReferenceViewModel}">
+        
+        <views:ControlReferenceControl Title="{Binding Name}">
+            <StackPanel>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="{adonisUi:Space 10}"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel VerticalAlignment="Center"
+                                    MaxWidth="360">
+                            
+                            <Label Content="Interactive Demo"
+                                   Margin="{adonisUi:Space 0, 0, 0, 1}"/>
+
+                            <TextBlock TextWrapping="Wrap">
+                                Interact with the demo button to get a feeling for the layered brushes and their usage.
+                            </TextBlock>
+                            
+                            <TextBlock TextWrapping="Wrap">
+                                <Italic>Highlight</Italic> brushes are used on mouse over. <Italic>Intense highlight</Italic> brushes are used for the 
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/cursor-spotlight/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 cursor spotlight
+                                </Hyperlink>.
+                                <Italic>Interaction</Italic> brushes come in play when pressing the button 
+                                (see
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/ripple/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 ripple effect
+                                </Hyperlink>).
+                            </TextBlock>
+                            
+                            <TextBlock/>
+
+                            <TextBlock TextWrapping="Wrap">
+                                <Hyperlink NavigateUri="https://benruehl.github.io/adonis-ui/docs/guides/colors-and-brushes/"
+                                           behaviors:HyperlinkExtension.IsExternal="True">
+                                    🡲 Read more
+                                </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <views:ControlBrushesBreakdown Grid.Column="2"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Resources>
+                        <CollectionViewSource x:Key="BrushesCollection"
+                                              Source="{Binding Brushes}">
+                            <CollectionViewSource.GroupDescriptions>
+                                <PropertyGroupDescription PropertyName="Group"/>
+                            </CollectionViewSource.GroupDescriptions>
+                            <CollectionViewSource.SortDescriptions>
+                                <scm:SortDescription PropertyName="Group"/>
+                                <scm:SortDescription PropertyName="ShortName"/>
+                            </CollectionViewSource.SortDescriptions>
+                        </CollectionViewSource>
+                    </GroupBox.Resources>
+
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource BrushesCollection}}"
+                                  Margin="3, 0, 0, 0"
+                                  Grid.IsSharedSizeScope="True">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="{adonisUi:Space 0, 0, 0, 1}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Color"/>
+                                        <ColumnDefinition Width="{adonisUi:Space 1}"/>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Hex"/>
+                                        <ColumnDefinition Width="{adonisUi:Space 3}"/>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="ShortName"/>
+                                        <ColumnDefinition Width="{adonisUi:Space 10}"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Ellipse Fill="{markupExtensions:ResourceBinding ResourceKey}"
+                                             Width="24"
+                                             Height="24">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect ShadowDepth="0"
+                                                              BlurRadius="6"
+                                                              Opacity="0.2"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                    <TextBlock Grid.Column="2"
+                                               Tag="{markupExtensions:ResourceBinding ResourceKey}"
+                                               Text="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={x:Static converters:ColorToHexStringConverter.Instance}}"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+
+                                    <TextBlock Grid.Column="4"
+                                               Text="{Binding ShortName}"
+                                               VerticalAlignment="Center"/>
+
+                                    <TextBlock Grid.Column="6"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}, {1}">
+                                                <Binding Path="Name"/>
+                                                <Binding Path="ColorName"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <ItemsControl.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="{adonisUi:Space 1}"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label Content="{Binding Name, Converter={x:Static converters:FormatCamelCaseConverter.Instance}}"
+                                                               Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                                                        <ItemsPresenter Grid.Row="2"/>
+
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ItemsControl.GroupStyle>
+                    </ItemsControl>
+
+                </GroupBox>
+
+            </StackPanel>
+        </views:ControlReferenceControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>
