@@ -5,6 +5,7 @@
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                     xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
                     xmlns:views="clr-namespace:AdonisUI.Demo.Views"
                     xmlns:converters="clr-namespace:AdonisUI.Demo.Converters"
                     xmlns:markupExtensions="clr-namespace:AdonisUI.Demo.MarkupExtensions">
@@ -26,6 +27,10 @@
                             <CollectionViewSource.GroupDescriptions>
                                 <PropertyGroupDescription PropertyName="Group"/>
                             </CollectionViewSource.GroupDescriptions>
+                            <CollectionViewSource.SortDescriptions>
+                                <scm:SortDescription PropertyName="Group"/>
+                                <scm:SortDescription PropertyName="ShortName"/>
+                            </CollectionViewSource.SortDescriptions>
                         </CollectionViewSource>
                     </GroupBox.Resources>
 
