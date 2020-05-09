@@ -75,13 +75,13 @@ AdonisUI.ResourceLocator.SetColorScheme(Application.Current.Resources, ResourceL
 
 The first parameter needs to be a reference to the `ResourceDictionary` containing the color scheme as part of its `MergedDictionaries`. The second parameter is a Uri to the color scheme that should be added.
 
-[Read more about switching color schemes](https://github.com/benruehl/adonis-ui/docs/guides/colors-and-brushes#switching-color-schemes-at-runtime)
+[Read more about switching color schemes](https://benruehl.github.io/adonis-ui/docs/guides/colors-and-brushes/#switching-color-schemes-at-runtime)
 
 ### Accent color
 
 While relying on uniform colors for background areas and borders, an accent color can be used for visual highlighting of important spots. By default, both color schemes use blue as their accent color. This can be changed by overriding the accent color values. A set of styles helps to display controls like Buttons on the accent color.
 
-[Read more about colors and brushes](https://github.com/benruehl/adonis-ui/docs/guides/colors-and-brushes)
+[Read more about colors and brushes](https://benruehl.github.io/adonis-ui/docs/guides/colors-and-brushes/)
 
 ### Custom window title bar
 
@@ -92,7 +92,7 @@ Adonis UI brings a custom window title bar which looks exactly like the Windows 
 | ![Custom green title bar](./docs/img/adonis-titlebar-green.png) | ![Custom yellow title bar](./docs/img/adonis-titlebar-yellow.png)     |
 | ![Custom red title bar](./docs/img/adonis-titlebar-red.png)     | ![Custom gradient title bar](./docs/img/adonis-titlebar-gradient.png) |
 
-[Read more about windows](https://github.com/benruehl/adonis-ui/docs/guides/window)
+[Read more about windows](https://benruehl.github.io/adonis-ui/docs/guides/window/)
 
 ### Cursor Spotlight hover effect
 
@@ -104,7 +104,7 @@ UI Controls like Buttons, TextBoxes, ComboBoxes, ListBoxes etc. that rely on int
 
 Because it works with `OpacityMasks` it is not limited to lightening up UI controls. It can be used to show an hide pretty much everything that can be rendered with WPF.
 
-[Read more about the Cursor Spotlight effect](https://github.com/benruehl/adonis-ui/docs/guides/cursor-spotlight)
+[Read more about the Cursor Spotlight effect](https://benruehl.github.io/adonis-ui/docs/guides/cursor-spotlight/)
 
 ### Ripple effect
 
@@ -114,7 +114,7 @@ Buttons and ContextMenuItems show a ripple effect on click by default. ListBoxIt
 | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | ![Cursor spotlight in light color scheme](./docs/img/adonis-demo-ripple-light.gif) | ![Cursor spotlight in dark color scheme](./docs/img/adonis-demo-ripple-dark.gif) |
 
-[Read more about the ripple effect](https://github.com/benruehl/adonis-ui/docs/guides/ripple)
+[Read more about the ripple effect](https://benruehl.github.io/adonis-ui/docs/guides/ripple/)
 
 ### Layers
 
@@ -130,7 +130,7 @@ The images show a simple layout consisting of Buttons and GroupBoxes. All contro
 
 The system is fully customizable. It works for all controls and not just for Buttons, of course. Every control can be configured to increase the layer for its children, but it is already enabled by default for some controls like GroupBoxes. Controls can also be forced to reside on a specific layer.
 
-[Read more about the layering system](https://github.com/benruehl/adonis-ui/docs/guides/layers)
+[Read more about the layering system](https://benruehl.github.io/adonis-ui/docs/guides/layers/)
 
 ### Data validation support
 
@@ -142,13 +142,13 @@ The data validation mechanism of WPF provides the ability to validate property v
 
 By default the error message popup is displayed on keyboard focus and mouse hover. Both can be disabled separately.
 
-[Read more about data validation](https://github.com/benruehl/adonis-ui/docs/guides/data-validation)
+[Read more about data validation](https://benruehl.github.io/adonis-ui/docs/guides/data-validation/)
 
 ### ComponentResourceKeys
 
 Resources that are provided by Adonis UI have a ComponentResourceKey assigned to make use of them in a simple way. Resources exist in the categories _Colors_, _Brushes_, _Dimensions_, _Styles_, _Templates_ and _Icons_. The foreground brush of the current color scheme for example can be used by referring to its resource key like `Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"`. ComponentResourceKeys allow auto-completion with IntelliSense which comes in handy when exploring the available resources.
 
-[Read more about resources](https://github.com/benruehl/adonis-ui/docs/guides/styles-and-templates)
+[Read more about resources](https://benruehl.github.io/adonis-ui/docs/guides/styles-and-templates/)
 
 ### Space
 
@@ -171,11 +171,13 @@ The same works also for thicknesses like margin and padding:
 <Button Margin="{adonisUi:Space 1, 1+2, 2, 3}"/> <!-- equals Margin="8,10,16,24" -->
 ```
 
-[Read more about space](https://github.com/benruehl/adonis-ui/docs/guides/space)
+[Read more about space](https://benruehl.github.io/adonis-ui/docs/guides/space/)
 
 ## Demo
 
-There is a WPF demo application on board that shows most features of Adonis UI in action. Please don't hesitate to give it a try. More examples, screenshots and documentation are following soon.
+There is a WPF demo application on board that shows most features of Adonis UI in action. Please don't hesitate to give it a try.
+
+[Download here](https://github.com/benruehl/adonis-ui/releases/download/1.15/AdonisUI.Demo.zip)
 
 ## License
 
