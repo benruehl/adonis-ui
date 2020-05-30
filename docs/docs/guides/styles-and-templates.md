@@ -49,6 +49,7 @@ Templates and icons are usually of type `DataTemplate`. The easiest way to use t
 - **`Styles.ToolbarToggleButton`** - For toggle buttons being placed in a toolbar (transparent background until hovering)
 - **`Styles.AccentComboBox`** - For combo boxes that should gain attention (accent color as background)
 - **`Styles.AccentComboBoxItem`** - Matching combo box item style for `AccentComboBox`
+- **`Styles.ToggleSwitch`** - Alternative look for check boxes and toggle buttons
 - **`Styles.WindowButton`** - For buttons placed in the window's title bar
 - **`Styles.WindowToggleButton`** - For toggle buttons placed in the window's title bar
 
