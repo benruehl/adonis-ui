@@ -54,13 +54,15 @@ namespace AdonisUI
 
             ResourceDictionary currentTheme = FindFirstContainedResourceDictionaryByUri(rootResourceDictionary, knownColorSchemes);
 
+            // It is important to add the new resource dictionary before removing the old one.
+            // Removing it first would decrease performance significantly because warnings for missing resources are created.
+            rootResourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = colorSchemeResourceUri });
+
             if (currentTheme != null)
             {
                 if (!RemoveResourceDictionaryFromResourcesDeep(currentTheme, rootResourceDictionary))
                     throw new Exception("The currently active color scheme was found but could not be removed.");
             }
-
-            rootResourceDictionary.MergedDictionaries.Add(new ResourceDictionary { Source = colorSchemeResourceUri });
         }
 
         private static ResourceDictionary FindFirstContainedResourceDictionaryByUri(ResourceDictionary resourceDictionary, Uri[] knownColorSchemes)
