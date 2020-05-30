@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:adonisUi="clr-namespace:AdonisUI">
 
     <!-- colors -->
@@ -71,69 +72,69 @@
 
     <!-- brushes -->
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentIntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentIntenseHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentIntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentIntenseHighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentInteractionColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentInteractionBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.AccentInteractionForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentIntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentIntenseHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentIntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentIntenseHighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentInteractionColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentInteractionBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentInteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.AccentInteractionForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer0BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer0BackgroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer0BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer0BorderColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer0BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer0BackgroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer0BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer0BorderColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BackgroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1IntenseHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1IntenseHighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BackgroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1BorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1HighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1IntenseHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer1IntenseHighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer1InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer1InteractionForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BackgroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2IntenseHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2IntenseHighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BackgroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2BorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2HighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2IntenseHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer2IntenseHighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer2InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer2InteractionForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BackgroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3IntenseHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3IntenseHighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BackgroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3BorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3HighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3IntenseHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer3IntenseHighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer3InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer3InteractionForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BackgroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4IntenseHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4IntenseHighlightBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionBorderColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BackgroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BackgroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4BorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4BorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4HighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4HighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4IntenseHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4IntenseHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4IntenseHighlightBorderBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.Layer4IntenseHighlightBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionBorderBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionBorderColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.Layer4InteractionForegroundBrush}" Color="{StaticResource {x:Static adonisUi:Colors.Layer4InteractionForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ForegroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ForegroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AccentForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledForegroundColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledAccentForegroundColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledForegroundColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.DisabledAccentForegroundBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.DisabledAccentForegroundColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.SuccessBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.SuccessColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.SuccessBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.SuccessColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.ErrorBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.ErrorColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.AlertBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.AlertColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.HyperlinkBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.HyperlinkColor}}" presentationOptions:Freeze="True"/>
 
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonHighlightColor}}"/>
-    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonInteractionColor}}"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonHighlightBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonHighlightColor}}" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="{x:Static adonisUi:Brushes.WindowButtonInteractionBrush}" Color="{DynamicResource {x:Static adonisUi:Colors.WindowButtonInteractionColor}}" presentationOptions:Freeze="True"/>
     
 </ResourceDictionary>
