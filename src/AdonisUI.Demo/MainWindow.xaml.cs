@@ -24,31 +24,28 @@ namespace AdonisUI.Demo
     /// </summary>
     public partial class MainWindow : AdonisWindow
     {
+        public bool IsDark
+        {
+            get => (bool)GetValue(IsDarkProperty);
+            set => SetValue(IsDarkProperty, value);
+        }
+
+        public static readonly DependencyProperty IsDarkProperty = DependencyProperty.Register("IsDark", typeof(bool), typeof(MainWindow), new PropertyMetadata(false, OnIsDarkChanged));
+
+        private static void OnIsDarkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((MainWindow) d).ChangeTheme((bool)e.OldValue);
+        }
+
         public MainWindow()
         {
             DataContext = new ApplicationViewModel();
             InitializeComponent();
         }
 
-        private bool _isDark;
-
-        private void SetLightColorScheme(object sender, RoutedEventArgs e)
+        private void ChangeTheme(bool oldValue)
         {
-            if (_isDark)
-                ChangeTheme(sender, e);
-        }
-
-        private void SetDarkColorScheme(object sender, RoutedEventArgs e)
-        {
-            if (!_isDark)
-                ChangeTheme(sender, e);
-        }
-
-        private void ChangeTheme(object sender, RoutedEventArgs e)
-        {
-            ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
-
-            _isDark = !_isDark;
+            ResourceLocator.SetColorScheme(Application.Current.Resources, oldValue ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
         }
     }
 }

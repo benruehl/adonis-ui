@@ -64,12 +64,12 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
-        private bool _isEnabled;
+        private bool _isReadOnly;
 
-        public bool IsEnabled
+        public bool IsReadOnly
         {
-            get => _isEnabled;
-            set => SetProperty(ref _isEnabled, value);
+            get => _isReadOnly;
+            set => SetProperty(ref _isReadOnly, value);
         }
 
         private bool _isDeveloperMode;
@@ -100,8 +100,6 @@ namespace AdonisUI.Demo.ViewModels
             NavigationGroups = new ReadOnlyObservableCollection<ApplicationNavigationGroup>(_navigationGroups);
             NavigationGroupsCollectionView = CollectionViewSource.GetDefaultView(NavigationGroups);
             NavigationGroupsCollectionView.Filter = FilterNavigationGroups;
-
-            IsEnabled = true;
         }
 
         private IEnumerable<IApplicationContentView> CreateAllPages()

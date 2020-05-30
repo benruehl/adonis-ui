@@ -9,6 +9,7 @@
                              xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                              xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
                              xmlns:behaviors="clr-namespace:AdonisUI.Demo.Behaviors"
+                             xmlns:converters="clr-namespace:AdonisUI.Demo.Converters"
                              mc:Ignorable="d"
                              Title="Adonis UI"
                              Width="1280"
@@ -208,13 +209,18 @@
                                 <Grid Grid.Row="1"
                                       Margin="{adonisUi:Space 3, 0, 3, 0}">
 
-                                    <ComboBox SelectedIndex="0">
-                                        <ComboBoxItem Content="Light"
-                                                      Selected="SetLightColorScheme"/>
-                                        <ComboBoxItem Content="Dark"
-                                                      Selected="SetDarkColorScheme"/>
-                                    </ComboBox>
-                                    
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="Light"
+                                                   VerticalAlignment="Center"
+                                                   Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                                        <ToggleButton Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
+                                                      IsChecked="{Binding IsDark, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}}"
+                                                      Content="Dark"/>
+
+                                    </StackPanel>
+
                                 </Grid>
                             </Grid>
 
@@ -237,12 +243,14 @@
                                     </Grid.RowDefinitions>
 
                                     <CheckBox Grid.Row="0"
-                                              Content="Enable selected page"
-                                              IsChecked="{Binding IsEnabled}"/>
+                                              Content="Read-only"
+                                              IsChecked="{Binding IsReadOnly}"
+                                              Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
 
                                     <CheckBox Grid.Row="2"
-                                              Content="Show developer views"
-                                              IsChecked="{Binding IsDeveloperMode}"/>
+                                              Content="Dev mode"
+                                              IsChecked="{Binding IsDeveloperMode}"
+                                              Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
                                 </Grid>
                             </Grid>
 
@@ -335,7 +343,7 @@
                                     Margin="0, 0, -64, -136"/>
 
                     <ContentControl Content="{Binding SelectedPage, ValidatesOnDataErrors=False, ValidatesOnNotifyDataErrors=False}"
-                                    IsEnabled="{Binding IsEnabled}"
+                                    IsEnabled="{Binding IsReadOnly, Converter={x:Static converters:BoolToInverseBoolConverter.Instance}}"
                                     Margin="{adonisUi:Space 1}"/>
 
                     <Grid>
@@ -364,29 +372,6 @@
                 </Grid>
             </Grid>
         </DockPanel>
-
-        <!--<Grid HorizontalAlignment="Center"
-              VerticalAlignment="Top">
-
-            <Viewbox Stretch="Fill"
-                     Height="46"
-                     Width="192">
-                <Viewbox.Effect>
-                    <DropShadowEffect ShadowDepth="2"
-                                      BlurRadius="10"
-                                      Opacity="0.2"/>
-                </Viewbox.Effect>
-
-                <Path Data="M 0 0 L 20 0 L 18 8 L 2 8 Z"
-                      Fill="{DynamicResource {x:Static adonisUi:Brushes.AccentHighlightBrush}}"/>
-            </Viewbox>
-
-            <TextBlock Text="{Binding SelectedPage.Name}"
-                       TextAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"
-                       FontSize="14"/>
-        </Grid>-->
 
     </Grid>
 
