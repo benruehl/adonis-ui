@@ -132,6 +132,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="{adonisUi:Space 1}"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{adonisUi:Space 1}"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -207,8 +209,27 @@
                              IsChecked="False"
                              IsEnabled="False"/>
             </StackPanel>
+
+            <StackPanel Grid.Row="6"
+                        Grid.Column="0"
+                        Orientation="Vertical">
+
+                <CheckBox Content="ToggleSwitch"
+                          IsChecked="False"
+                          Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
+
+                <ToggleButton Content="ToggleSwitch"
+                              IsChecked="True"
+                              Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
+
+                <ToggleButton Content="ToggleSwitch"
+                              IsChecked="False"
+                              IsEnabled="False"
+                              Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
+
+            </StackPanel>
             
-            <Slider Grid.Row="6"
+            <Slider Grid.Row="8"
                     Grid.Column="0"
                     Minimum="0"
                     Maximum="100"
@@ -216,7 +237,7 @@
                     TickPlacement="BottomRight"
                     TickFrequency="10"/>
             
-            <ProgressBar Grid.Row="6"
+            <ProgressBar Grid.Row="8"
                          Grid.Column="2"
                          Minimum="0"
                          Maximum="100"

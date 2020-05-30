@@ -62,6 +62,27 @@
 
                 <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
                     <GroupBox.Header>
+                        <Label Content="Switches"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <WrapPanel Orientation="Horizontal">
+
+                        <CheckBox Content="Checked"
+                                  IsChecked="True"
+                                  Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
+                                  Margin="{adonisUi:Space 0, 0, 1, 0}"/>
+
+                        <ToggleButton Content="Unchecked"
+                                      IsChecked="False"
+                                      Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
+
+                    </WrapPanel>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
                         <Label Content="Radio Buttons"
                                Style="{StaticResource ItemGroupLabelStyle}"/>
                     </GroupBox.Header>
