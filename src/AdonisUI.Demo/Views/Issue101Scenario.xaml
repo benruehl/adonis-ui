@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdonisUI.Demo.Views"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
+
+    <DataTemplate DataType="{x:Type viewModels:Issue101ScenarioViewModel}">
+
+        <local:IssueScenarioControl IssueTitle="Changing progress bar from determinate to indeterminate leaves the animation on"
+                             IssueDescription="When changing a progress bar to indeterminate through a bound property, the progress animation remains active which it should not."
+                             StepsToReproduce="Click the button to toggle the progress bar's IsIndeterminate property and check if the progress bar's filling-up animation is still visible."
+                             IssueLink="https://github.com/benruehl/adonis-ui/issues/101">
+
+            <local:IssueScenarioControl.IssueContent>
+
+                <StackPanel Orientation="Vertical">
+                    
+                    <ProgressBar Width="240"
+                                 Height="{adonisUi:Space 1}"
+                                 Value="50"
+                                 IsIndeterminate="{Binding IsIndeterminate}"/>
+
+                    <ToggleButton Content="Toggle IsIndeterminate"
+                                  IsChecked="{Binding IsIndeterminate}"
+                                  Margin="{adonisUi:Space 0, 2, 0, 0}"
+                                  HorizontalAlignment="Center"/>
+
+                </StackPanel>
+
+            </local:IssueScenarioControl.IssueContent>
+        </local:IssueScenarioControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>

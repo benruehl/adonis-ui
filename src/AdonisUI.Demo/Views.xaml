@@ -6,6 +6,7 @@
         <ResourceDictionary Source="Views/ButtonReference.xaml"/>
         <ResourceDictionary Source="Views/CollectionSample.xaml"/>
         <ResourceDictionary Source="Views/ColorReference.xaml"/>
+        <ResourceDictionary Source="Views/Issue101Scenario.xaml"/>
         <ResourceDictionary Source="Views/Issue23Scenario.xaml"/>
         <ResourceDictionary Source="Views/Issue26Scenario.xaml"/>
         <ResourceDictionary Source="Views/Issue5Scenario.xaml"/>
