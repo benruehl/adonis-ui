@@ -13,7 +13,7 @@
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="adonisExtensions:LayerExtension.IncreaseLayer" Value="True"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="{adonisUi:Space 1}"/>
+        <Setter Property="Padding" Value="{adonisUi:Space 1, 1}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Template">
