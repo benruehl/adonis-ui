@@ -112,6 +112,7 @@ namespace AdonisUI.Demo.ViewModels
             yield return new Issue5ScenarioViewModel();
             yield return new Issue23ScenarioViewModel();
             yield return new Issue26ScenarioViewModel();
+            yield return new Issue101ScenarioViewModel();
             yield return new IssueRippleContentInvisibleScenarioViewModel();
             yield return new ColorReferenceViewModel();
             yield return new ButtonReferenceViewModel();

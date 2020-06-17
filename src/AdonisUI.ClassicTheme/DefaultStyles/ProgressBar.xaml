@@ -120,6 +120,7 @@
                                     <Storyboard RepeatBehavior="Forever">
                                         <DoubleAnimation Storyboard.TargetName="HighlightEllipseBrush"
                                                          Storyboard.TargetProperty="(RadialGradientBrush.RadiusX)"
+                                                         From="0"
                                                          To="1"
                                                          BeginTime="0:00:1"
                                                          Duration="0:00:2">
@@ -129,6 +130,7 @@
                                         </DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetName="HighlightEllipseBrush"
                                                          Storyboard.TargetProperty="Opacity"
+                                                         From="1"
                                                          To="0"
                                                          BeginTime="0:00:2"
                                                          Duration="0:00:1"/>
@@ -139,23 +141,28 @@
 
                         <Trigger Property="IsIndeterminate" Value="True">
                             <Setter TargetName="DeterminateContentPresenter" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="HighlightEllipseContainer" Property="Visibility" Value="Collapsed"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard RepeatBehavior="Forever">
                                         <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop2"
                                                          Storyboard.TargetProperty="Offset"
+                                                         From="-0.3"
                                                          To="1"
                                                          Duration="0:00:2"/>
                                         <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop3"
                                                          Storyboard.TargetProperty="Offset"
+                                                         From="-0.3"
                                                          To="1"
                                                          Duration="0:00:2"/>
                                         <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop4"
                                                          Storyboard.TargetProperty="Offset"
+                                                         From="0"
                                                          To="1.3"
                                                          Duration="0:00:2"/>
                                         <DoubleAnimation Storyboard.TargetName="AnimatedGradientStop5"
                                                          Storyboard.TargetProperty="Offset"
+                                                         From="0"
                                                          To="1.3"
                                                          Duration="0:00:2"/>
                                     </Storyboard>
