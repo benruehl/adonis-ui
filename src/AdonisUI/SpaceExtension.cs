@@ -1,7 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -11,6 +11,12 @@ namespace AdonisUI
     public class SpaceExtension
         : MarkupExtension
     {
+        private const double DesignModeHorizontalSpace = 8;
+
+        private const double DesignModeVerticalSpace = 8;
+
+        private static readonly bool IsInDesignMode = DesignerProperties.GetIsInDesignMode(new DependencyObject());
+
         private static double? _cachedHorizontalSpace;
 
         private static double? _cachedVerticalSpace;
@@ -226,7 +232,17 @@ namespace AdonisUI
             if (_cachedHorizontalSpace.HasValue)
                 return _cachedHorizontalSpace.Value;
 
-            FindAndCacheSpaceResources(service);
+            try
+            {
+                FindAndCacheSpaceResources(service);
+            }
+            catch
+            {
+                if (IsInDesignMode)
+                    return DesignModeHorizontalSpace;
+
+                throw;
+            }
 
             if (!_cachedHorizontalSpace.HasValue)
                 throw new Exception("Dimensions.HorizontalSpace could not be retrieved.");
@@ -239,7 +255,17 @@ namespace AdonisUI
             if (_cachedVerticalSpace.HasValue)
                 return _cachedVerticalSpace.Value;
 
-            FindAndCacheSpaceResources(service);
+            try
+            {
+                FindAndCacheSpaceResources(service);
+            }
+            catch
+            {
+                if (IsInDesignMode)
+                    return DesignModeVerticalSpace;
+
+                throw;
+            }
 
             if (!_cachedVerticalSpace.HasValue)
                 throw new Exception("Dimensions.VerticalSpace could not be retrieved.");
