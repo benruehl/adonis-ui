@@ -177,7 +177,7 @@ The same works also for thicknesses like margin and padding:
 
 There is a WPF demo application on board that shows most features of Adonis UI in action. Please don't hesitate to give it a try.
 
-[Download here](https://github.com/benruehl/adonis-ui/releases/download/1.15/AdonisUI.Demo.zip)
+[Download here](https://github.com/benruehl/adonis-ui/releases/download/1.16/AdonisUI.Demo.zip)
 
 ## License
 
