@@ -3,7 +3,7 @@ description: >- # this means to ignore newlines until next key
   Lightweight UI toolkit for WPF applications offering classic but enhanced windows visuals
 
 github_username:  benruehl
-remote_theme: pmarsceill/just-the-docs
+remote_theme: pmarsceill/just-the-docs@v0.2.8
 theme: "just-the-docs"
 baseurl: /adonis-ui
 
