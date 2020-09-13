@@ -112,7 +112,20 @@
                                               Grid.Row="2"
                                               Padding="{adonisUi:Space 2, 1.5}">
 
-                                        <Button Content="Button on Layer 4"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="{adonisUi:Space 2}"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Button Content="Button on Layer 4"/>
+
+                                            <GroupBox Header="GroupBox on Layer 4"
+                                                      Grid.Row="2"
+                                                      Padding="{adonisUi:Space 2, 1.5}"/>
+
+                                        </Grid>
 
                                     </GroupBox>
                                 </Grid>
