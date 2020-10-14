@@ -12,6 +12,8 @@
         <Setter Property="BorderThickness" Value="{DynamicResource {x:Static adonisUi:Dimensions.BorderThickness}}"/>
         <Setter Property="adonisExtensions:CornerRadiusExtension.CornerRadius" Value="{DynamicResource {x:Static adonisUi:Dimensions.CornerRadius}}"/>
         <Setter Property="Padding" Value="{adonisUi:Space 0.5, 0, 0, 0}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="False"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
@@ -21,6 +23,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
                     <BulletDecorator Background="Transparent"
+                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                      SnapsToDevicePixels="False">
                         <BulletDecorator.Bullet>
                             <Border x:Name="Border"
@@ -87,8 +90,8 @@
                                                                      Margin="4, 0, 0, 0"/>
 
                             <ContentPresenter Margin="{TemplateBinding Padding}"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               RecognizesAccessKey="True"/>
 
                         </DockPanel>
