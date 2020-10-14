@@ -129,8 +129,8 @@
                             <Grid>
                                 <ContentPresenter x:Name="PlaceholderHost"
                                                   Content="{TemplateBinding adonisExtensions:WatermarkExtension.Watermark}"
-                                                  HorizontalAlignment="Stretch"
-                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   Opacity="0.5"
                                                   IsHitTestVisible="False"
                                                   Visibility="Collapsed"/>
