@@ -274,8 +274,8 @@
                                             <Grid>
                                                 <ContentPresenter x:Name="PlaceholderHost"
                                                                   Content="{Binding Path=(adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}"
-                                                                  HorizontalAlignment="Stretch"
-                                                                  VerticalAlignment="Stretch"
+                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                                   Opacity="0.5"
                                                                   IsHitTestVisible="False"
                                                                   Visibility="Collapsed"/>

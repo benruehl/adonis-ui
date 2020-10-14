@@ -22,8 +22,8 @@
                         <ContentPresenter x:Name="PlaceholderHost"
                                           Content="{Binding Path=(adonisExtensions:WatermarkExtension.Watermark), RelativeSource={RelativeSource FindAncestor, AncestorType=DatePicker}}"
                                           Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="Stretch"
-                                          VerticalAlignment="Stretch"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Opacity="0.5"
                                           IsHitTestVisible="False"
                                           Visibility="Collapsed"/>
