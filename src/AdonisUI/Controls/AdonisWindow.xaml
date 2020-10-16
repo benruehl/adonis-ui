@@ -57,18 +57,25 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Grid VerticalAlignment="Center"
-                                                  Margin="8, 0, 0, 0">
+                                                  Margin="3, 0, 0, 0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
+
+                                                <Grid.Visibility>
+                                                    <MultiBinding Converter="{x:Static adonisConverters:AllVisibilitiesToVisibilityConverter.Instance}">
+                                                        <Binding Path="IconVisibility" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                                        <Binding Path="TitleVisibility" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                                    </MultiBinding>
+                                                </Grid.Visibility>
 
                                                 <Image x:Name="PART_IconPresenter"
                                                        Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                        Visibility="{Binding IconVisibility, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                        Width="16"
                                                        Height="16"
-                                                       Margin="0, 0, 5, 0"/>
+                                                       Margin="5, 0, 0, 0"/>
 
                                                 <TextBlock Grid.Column="1"
                                                            Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -77,7 +84,8 @@
                                                            FontSize="11.5"
                                                            RenderOptions.ClearTypeHint="Auto"
                                                            TextOptions.TextRenderingMode="Auto"
-                                                           TextOptions.TextFormattingMode="Display"/>
+                                                           TextOptions.TextFormattingMode="Display"
+                                                           Margin="5, 0, 0, 0"/>
                                             </Grid>
 
                                             <ContentPresenter Grid.Column="1"
