@@ -98,6 +98,15 @@ namespace AdonisUI.Controls
         }
 
         /// <summary>
+        /// Gets or sets the visibility of the title component of the window.
+        /// </summary>
+        public Visibility TitleVisibility
+        {
+            get => (Visibility)GetValue(TitleVisibilityProperty);
+            set => SetValue(TitleVisibilityProperty, value);
+        }
+
+        /// <summary>
         /// Gets or sets the background brush of the minimize, maximize and restore
         /// buttons when they are hovered.
         /// </summary>
@@ -135,6 +144,8 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty TitleBarForegroundProperty = DependencyProperty.Register("TitleBarForeground", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarBackgroundProperty = DependencyProperty.Register("TitleBarBackground", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleVisibilityProperty = DependencyProperty.Register("TitleVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         public static readonly DependencyProperty WindowButtonHighlightBrushProperty = DependencyProperty.Register("WindowButtonHighlightBrush", typeof(Brush), typeof(AdonisWindow), new PropertyMetadata(null));
 

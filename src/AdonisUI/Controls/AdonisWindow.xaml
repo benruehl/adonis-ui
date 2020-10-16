@@ -72,6 +72,7 @@
 
                                                 <TextBlock Grid.Column="1"
                                                            Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                           Visibility="{Binding TitleVisibility, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                                            VerticalAlignment="Center"
                                                            FontSize="11.5"
                                                            RenderOptions.ClearTypeHint="Auto"
