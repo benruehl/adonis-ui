@@ -33,10 +33,20 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 UseLayoutRounding="True">
 
-                            <DockPanel LastChildFill="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Border x:Name="ClientArea"
+                                        Grid.Row="1"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
 
                                 <Border x:Name="TitleBar"
-                                        DockPanel.Dock="Top"
+                                        Grid.Row="0"
                                         KeyboardNavigation.TabNavigation="None"
                                         KeyboardNavigation.DirectionalNavigation="None"
                                         Background="{TemplateBinding TitleBarBackground}"
@@ -145,11 +155,7 @@
                                         </Grid>
                                     </Grid>
                                 </Border>
-
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter />
-                                </Border>
-                            </DockPanel>
+                            </Grid>
                         </Border>
                     </AdornerDecorator>
 
@@ -211,6 +217,14 @@
                             <Setter TargetName="TitleBar" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
 
+                        <Trigger Property="RenderTitleBarOverClientArea" Value="True">
+                            <Setter TargetName="ClientArea" 
+                                    Property="Grid.Row" 
+                                    Value="0" />
+                            <Setter TargetName="ClientArea"
+                                    Property="Grid.RowSpan"
+                                    Value="2" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

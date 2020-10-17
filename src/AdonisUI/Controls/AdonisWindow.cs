@@ -135,6 +135,25 @@ namespace AdonisUI.Controls
             set => SetValue(ShrinkTitleBarWhenMaximizedProperty, value);
         }
 
+        /// <summary>
+        /// Controls whether the title bar should be drawn over the client area instead of above it.
+        /// </summary>
+        public bool RenderTitleBarOverClientArea
+        {
+            get => (bool)GetValue(RenderTitleBarOverClientAreaProperty);
+            set => SetValue(RenderTitleBarOverClientAreaProperty, value);
+        }
+
+
+        public double? GetTitleBarActualHeight
+        {
+            get
+            {
+                var titleBar = GetTemplateChild("TitleBar") as Border;
+                return titleBar?.ActualHeight;
+            }
+        }
+
         public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
@@ -154,6 +173,8 @@ namespace AdonisUI.Controls
         protected internal static readonly DependencyProperty MaximizeBorderThicknessProperty = MaximizeBorderThicknessPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty ShrinkTitleBarWhenMaximizedProperty = DependencyProperty.Register("ShrinkTitleBarWhenMaximized", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty RenderTitleBarOverClientAreaProperty = DependencyProperty.Register("RenderTitleBarOverClientArea", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(false));
 
         static AdonisWindow()
         {
