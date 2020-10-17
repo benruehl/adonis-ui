@@ -28,6 +28,7 @@ To set the colors of the window's title bar the following properties can be used
 By default, the title bar consists of the *application icon* on the left, the *window title* next to it and the *window buttons* on the right. The `AdonisWindow` class offers the following properties to modify this setup:
 
 - `IconVisibility` - Sets the visibility of the application icon
+- `TitleVisibility` - Sets the visibility of the window title
 - `TitleBarContent` - Sets content into the area between the title and the window buttons
 
 When adding buttons to the title bar, the `WindowButton` style can be used to make them appear equal to the default window buttons.
