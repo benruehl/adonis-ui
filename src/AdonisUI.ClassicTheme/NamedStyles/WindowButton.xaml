@@ -11,7 +11,6 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Width" Value="45"/>
-        <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="1, 0, 0, 1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -79,15 +78,7 @@
             <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
             </DataTrigger>
-
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Value="Maximized"/>
-                    <Condition Binding="{Binding ShrinkTitleBarWhenMaximized, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:AdonisWindow}}" Value="True"/>
-                </MultiDataTrigger.Conditions>
-                <Setter Property="Height" Value="22"/>
-            </MultiDataTrigger>
-
+            
         </Style.Triggers>
     </Style>
 

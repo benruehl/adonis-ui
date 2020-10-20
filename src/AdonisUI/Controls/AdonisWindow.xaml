@@ -51,7 +51,8 @@
                                         KeyboardNavigation.TabNavigation="None"
                                         KeyboardNavigation.DirectionalNavigation="None"
                                         Background="{TemplateBinding TitleBarBackground}"
-                                        TextElement.Foreground="{TemplateBinding TitleBarForeground}">
+                                        TextElement.Foreground="{TemplateBinding TitleBarForeground}"
+                                        MinHeight="30">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -105,9 +106,7 @@
                                                               VerticalAlignment="Stretch"/>
                                         </Grid>
 
-                                        <Grid x:Name="TitleBarButtonsContainer"
-                                              Grid.Column="1"
-                                              VerticalAlignment="Top">
+                                        <Grid Grid.Column="1">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="Auto"/>
@@ -195,13 +194,15 @@
                                     </DataTemplate>
                                 </Setter.Value>
                             </Setter>
-
-                            <!-- Workaround for title bar not shrinking properly when maximized by dragging it to the
-                                 top of the screen, when `PlaceTitleBarOverContent` is set to `true` -->
-                            <Setter TargetName="TitleBarButtonsContainer"
-                                    Property="Height"
-                                    Value="{Binding ElementName=PART_CloseButton, Path=Height}" />
                         </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Maximized" />
+                                <Condition Property="ShrinkTitleBarWhenMaximized" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="TitleBar" Property="MinHeight" Value="22" />
+                        </MultiTrigger>
 
                         <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed" />
