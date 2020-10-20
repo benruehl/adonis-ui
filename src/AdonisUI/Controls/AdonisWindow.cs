@@ -135,6 +135,15 @@ namespace AdonisUI.Controls
             set => SetValue(ShrinkTitleBarWhenMaximizedProperty, value);
         }
 
+        /// <summary>
+        /// Controls whether the title bar should be drawn over the window content instead of being stacked on top of it.
+        /// </summary>
+        public bool PlaceTitleBarOverContent
+        {
+            get => (bool)GetValue(PlaceTitleBarOverContentProperty);
+            set => SetValue(PlaceTitleBarOverContentProperty, value);
+        }
+
         public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
@@ -154,6 +163,8 @@ namespace AdonisUI.Controls
         protected internal static readonly DependencyProperty MaximizeBorderThicknessProperty = MaximizeBorderThicknessPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty ShrinkTitleBarWhenMaximizedProperty = DependencyProperty.Register("ShrinkTitleBarWhenMaximized", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty PlaceTitleBarOverContentProperty = DependencyProperty.Register("PlaceTitleBarOverContent", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(false));
 
         static AdonisWindow()
         {

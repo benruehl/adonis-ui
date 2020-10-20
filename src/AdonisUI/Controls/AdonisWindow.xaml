@@ -33,10 +33,21 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 UseLayoutRounding="True">
 
-                            <DockPanel LastChildFill="True">
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Border x:Name="WindowContent"
+                                        Grid.Row="1"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
 
                                 <Border x:Name="TitleBar"
-                                        DockPanel.Dock="Top"
+                                        Grid.Row="0"
                                         KeyboardNavigation.TabNavigation="None"
                                         KeyboardNavigation.DirectionalNavigation="None"
                                         Background="{TemplateBinding TitleBarBackground}"
@@ -94,7 +105,8 @@
                                                               VerticalAlignment="Stretch"/>
                                         </Grid>
 
-                                        <Grid Grid.Column="1"
+                                        <Grid x:Name="TitleBarButtonsContainer"
+                                              Grid.Column="1"
                                               VerticalAlignment="Top">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
@@ -145,11 +157,7 @@
                                         </Grid>
                                     </Grid>
                                 </Border>
-
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter />
-                                </Border>
-                            </DockPanel>
+                            </Grid>
                         </Border>
                     </AdornerDecorator>
 
@@ -187,6 +195,12 @@
                                     </DataTemplate>
                                 </Setter.Value>
                             </Setter>
+
+                            <!-- Workaround for title bar not shrinking properly when maximized by dragging it to the
+                                 top of the screen, when `PlaceTitleBarOverContent` is set to `true` -->
+                            <Setter TargetName="TitleBarButtonsContainer"
+                                    Property="Height"
+                                    Value="{Binding ElementName=PART_CloseButton, Path=Height}" />
                         </Trigger>
 
                         <Trigger Property="WindowStyle" Value="ToolWindow">
@@ -209,6 +223,11 @@
 
                         <Trigger Property="WindowStyle" Value="None">
                             <Setter TargetName="TitleBar" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="PlaceTitleBarOverContent" Value="True">
+                            <Setter TargetName="WindowContent" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="WindowContent" Property="Grid.RowSpan" Value="2" />
                         </Trigger>
 
                     </ControlTemplate.Triggers>
