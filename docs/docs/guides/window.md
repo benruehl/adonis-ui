@@ -94,6 +94,7 @@ Note that you will likely have to set the correct margin for some of your window
     </Grid>
 </adonisControls:AdonisWindow>
 ```
+`TitleBarActualHeight` will conveniently return 0 if `PlaceTitleBarOverContent` is disabled.
 
 |                                                                |                                                                      |
 | -------------------------------------------------------------- | -------------------------------------------------------------------- |
