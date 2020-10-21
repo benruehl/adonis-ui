@@ -502,7 +502,9 @@ namespace AdonisUI.Controls
 
             titleBarHeightPropertyDescriptor.AddValueChanged(titleBar, (sender, e) =>
             {
-                TitleBarActualHeight = titleBar.ActualHeight;
+                TitleBarActualHeight = PlaceTitleBarOverContent
+                    ? titleBar.ActualHeight
+                    : 0.0d;
             });
         }
     }
