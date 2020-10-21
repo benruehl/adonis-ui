@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -67,6 +68,15 @@ namespace AdonisUI.Controls
         {
             get => (ImageSource)GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
+        }
+
+        /// <summary>
+        /// Gets the title bar actual height.
+        /// </summary>
+        public double TitleBarActualHeight
+        {
+            get => (double)GetValue(TitleBarActualHeightProperty);
+            private set => SetValue(TitleBarActualHeightPropertyKey, value);
         }
 
         /// <summary>
@@ -147,6 +157,10 @@ namespace AdonisUI.Controls
         public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        protected internal static readonly DependencyPropertyKey TitleBarActualHeightPropertyKey = DependencyProperty.RegisterReadOnly("TitleBarActualHeight", typeof(double), typeof(AdonisWindow), new PropertyMetadata(0.0d));
+
+        protected internal static readonly DependencyProperty TitleBarActualHeightProperty = TitleBarActualHeightPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty TitleBarContentProperty = DependencyProperty.Register("TitleBarContent", typeof(object), typeof(AdonisWindow), new PropertyMetadata(null));
 
@@ -243,6 +257,7 @@ namespace AdonisUI.Controls
 
             UpdateLayoutForSizeToContent();
             HwndInterop.PositionChanging += DisableSizeToContentWhenMaximizing;
+            HandleTitleBarActualHeightChanged();
         }
 
         /// <summary>
@@ -474,6 +489,21 @@ namespace AdonisUI.Controls
             {
                 SizeToContent = SizeToContent.Manual;
             }
+        }
+
+        private void HandleTitleBarActualHeightChanged()
+        {
+            if (!(GetTemplateChild("TitleBar") is Border titleBar))
+            {
+                return;
+            };
+
+            var titleBarHeightPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(ActualHeightProperty, typeof(Border));
+
+            titleBarHeightPropertyDescriptor.AddValueChanged(titleBar, (sender, e) =>
+            {
+                TitleBarActualHeight = titleBar.ActualHeight;
+            });
         }
     }
 }
