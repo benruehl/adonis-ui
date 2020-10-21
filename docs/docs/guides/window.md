@@ -64,7 +64,7 @@ This can be disabled by setting `ShrinkTitleBarWhenMaximized` on `AdonisWindow` 
 
 ## Title bar over content
 
-By default, the title bar is stacked on top of the window contents. You might want to draw it directly over the window contents for a blending effect. You can do this by enabling the `PlaceTitleBarOverContent` property and setting the `TitleBarBackground` property value to `Transparent`.
+By default, the title bar is stacked on top of the window contents. You might want to draw it directly over the window contents for a blending effect. You can do this by enabling the `PlaceTitleBarOverContent` property. Unless specified otherwise, when enabling this property, the title bar background will also be set to transparent.
 
 Note that you will likely have to set the correct margin for some of your window elements as well. You can do so by binding to the `TitleBarActualHeight` property:
 
@@ -73,8 +73,7 @@ Note that you will likely have to set the correct margin for some of your window
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                              xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-                             PlaceTitleBarOverContent="True"
-                             TitleBarBackground="Transparent">
+                             PlaceTitleBarOverContent="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="256" />
