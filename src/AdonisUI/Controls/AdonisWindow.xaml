@@ -33,14 +33,26 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 UseLayoutRounding="True">
 
-                            <DockPanel LastChildFill="True">
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Border x:Name="WindowContent"
+                                        Grid.Row="1"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
 
                                 <Border x:Name="TitleBar"
-                                        DockPanel.Dock="Top"
+                                        Grid.Row="0"
                                         KeyboardNavigation.TabNavigation="None"
                                         KeyboardNavigation.DirectionalNavigation="None"
                                         Background="{TemplateBinding TitleBarBackground}"
-                                        TextElement.Foreground="{TemplateBinding TitleBarForeground}">
+                                        TextElement.Foreground="{TemplateBinding TitleBarForeground}"
+                                        MinHeight="30">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -94,8 +106,7 @@
                                                               VerticalAlignment="Stretch"/>
                                         </Grid>
 
-                                        <Grid Grid.Column="1"
-                                              VerticalAlignment="Top">
+                                        <Grid Grid.Column="1">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="Auto"/>
@@ -145,11 +156,7 @@
                                         </Grid>
                                     </Grid>
                                 </Border>
-
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter />
-                                </Border>
-                            </DockPanel>
+                            </Grid>
                         </Border>
                     </AdornerDecorator>
 
@@ -189,6 +196,14 @@
                             </Setter>
                         </Trigger>
 
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Maximized" />
+                                <Condition Property="ShrinkTitleBarWhenMaximized" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="TitleBar" Property="MinHeight" Value="22" />
+                        </MultiTrigger>
+
                         <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_MaximizeRestoreButton" Property="Visibility" Value="Collapsed" />
@@ -209,6 +224,11 @@
 
                         <Trigger Property="WindowStyle" Value="None">
                             <Setter TargetName="TitleBar" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="PlaceTitleBarOverContent" Value="True">
+                            <Setter TargetName="WindowContent" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="WindowContent" Property="Grid.RowSpan" Value="2" />
                         </Trigger>
 
                     </ControlTemplate.Triggers>
