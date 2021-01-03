@@ -4,7 +4,7 @@
                     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI">
 
     <DataTemplate x:Key="{x:Static adonisUi:Icons.AdonisUI}">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Canvas Width="512"
                     Height="512">
                 <Canvas.Clip>
@@ -48,7 +48,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="{x:Static adonisUi:Icons.AdonisUIGrayscale}">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Canvas Width="144"
                     Height="144">
 
@@ -60,7 +60,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="{x:Static adonisUi:Icons.Error}">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Canvas Width="256"
                   Height="256">
                 <Path Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Control}}"

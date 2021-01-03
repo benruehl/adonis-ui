@@ -1,0 +1,131 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:AdonisUI.Demo.ViewModels"
+                    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                    xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:views="clr-namespace:AdonisUI.Demo.Views">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ControlReferenceSectionStyle.xaml"/>
+        <ResourceDictionary Source="../Styles/ItemGroupLabelStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:ToolBarReferenceViewModel}">
+        
+        <views:ControlReferenceControl Title="{Binding Name}">
+            <StackPanel>
+                
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Horizontal Tool Bar"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <StackPanel HorizontalAlignment="Left">
+
+                        <ToolBarTray>
+
+                            <ToolBar>
+                                <Button Content="New" />
+                                <Button Content="Open" />
+                                <Button Content="Save" />
+                            </ToolBar>
+
+                            <ToolBar>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUI}}"
+                                        Width="23"/>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                                        Width="23"/>
+                                <Separator/>
+                                <CheckBox Content="Check Box"/>
+                                <RadioButton Content="Radio Button"/>
+                                <TextBox MinWidth="24"
+                                         adonisExtensions:WatermarkExtension.Watermark="Search ..."/>
+                                <Button Content="Cut"
+                                        ToolBar.OverflowMode="Always"/>
+                                <Button Content="Copy"
+                                        ToolBar.OverflowMode="Always"/>
+                                <Button Content="Paste"
+                                        ToolBar.OverflowMode="Always"/>
+                            </ToolBar>
+
+                        </ToolBarTray>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+                <GroupBox Style="{StaticResource ControlReferenceSectionStyle}">
+                    <GroupBox.Header>
+                        <Label Content="Vertical Tool Bar"
+                               Style="{StaticResource ItemGroupLabelStyle}"/>
+                    </GroupBox.Header>
+
+                    <StackPanel HorizontalAlignment="Left"
+                                Orientation="Horizontal">
+
+                        <ToolBarTray Orientation="Vertical"
+                                     Margin="{adonisUi:Space 0, 0, 2, 0}">
+
+                            <ToolBar>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.AdonisUI}}"
+                                        Width="23"
+                                        Height="23"/>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                                        Width="23"
+                                        Height="23"/>
+                            </ToolBar>
+
+                            <ToolBar>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMinimize}}"
+                                        Width="23"
+                                        Height="23"/>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowRestore}}"
+                                        Width="23"
+                                        Height="23"/>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowMaximize}}"
+                                        Width="23"
+                                        Height="23"/>
+                                <Button ContentTemplate="{DynamicResource {x:Static adonisUi:Icons.WindowClose}}"
+                                        Width="23"
+                                        Height="23"/>
+                            </ToolBar>
+
+                        </ToolBarTray>
+
+                        <ToolBarTray Orientation="Vertical">
+
+                            <ToolBar>
+                                <Button Content="New" />
+                                <Button Content="Open" />
+                                <Button Content="Save" />
+                            </ToolBar>
+
+                            <ToolBar>
+                                <CheckBox Content="Check Box"/>
+                                <RadioButton Content="Radio Button"/>
+                                <Separator/>
+                                <TextBox MinWidth="24"
+                                         adonisExtensions:WatermarkExtension.Watermark="Search ..."/>
+                                <Button Content="Cut"
+                                        ToolBar.OverflowMode="Always"/>
+                                <Button Content="Copy"
+                                        ToolBar.OverflowMode="Always"/>
+                                <Button Content="Paste"
+                                        ToolBar.OverflowMode="Always"/>
+                            </ToolBar>
+
+                        </ToolBarTray>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+            </StackPanel>
+        </views:ControlReferenceControl>
+
+    </DataTemplate>
+
+</ResourceDictionary>
