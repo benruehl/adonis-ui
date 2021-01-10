@@ -9,7 +9,7 @@
                     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI">
 
     <DataTemplate DataType="{x:Type viewModels:CollectionSampleViewModel}">
-        <Grid>
+        <Grid Margin="32">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="{adonisUi:Space 1}"/>
