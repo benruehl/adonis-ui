@@ -21,8 +21,6 @@ namespace AdonisUI.Demo.ViewModels
 
         public ICollectionView PagesCollectionView { get; }
         
-        public ICollectionView PagesInSelectedGroupCollectionView { get; }
-
         private IApplicationContentView _selectedPage;
 
         public IApplicationContentView SelectedPage
@@ -43,7 +41,6 @@ namespace AdonisUI.Demo.ViewModels
 
                 SetProperty(ref _selectedPage, value);
 
-                PagesInSelectedGroupCollectionView.Refresh();
                 RaisePropertyChanged(nameof(SelectedNavigationGroup));
             }
         }
@@ -60,7 +57,6 @@ namespace AdonisUI.Demo.ViewModels
             set
             {
                 SelectedPage = Pages.FirstOrDefault(p => p.Group == value);
-                PagesInSelectedGroupCollectionView.Refresh();
             }
         }
 
@@ -85,6 +81,14 @@ namespace AdonisUI.Demo.ViewModels
             }
         }
 
+        private bool _isTitleBarVisible;
+
+        public bool IsTitleBarVisible
+        {
+            get => _isTitleBarVisible;
+            set => SetProperty(ref _isTitleBarVisible, value);
+        }
+
         public ApplicationViewModel()
         {
             _pages = new ObservableCollection<IApplicationContentView>(CreateAllPages());
@@ -92,8 +96,6 @@ namespace AdonisUI.Demo.ViewModels
             PagesCollectionView = CollectionViewSource.GetDefaultView(Pages);
             PagesCollectionView.Filter = FilterPages;
             PagesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(IApplicationContentView.Group)));
-            PagesInSelectedGroupCollectionView = new CollectionViewSource { Source = Pages }.View;
-            PagesInSelectedGroupCollectionView.Filter = FilterPagesInSelectedGroup;
             SelectedPage = Pages.FirstOrDefault();
 
             _navigationGroups = new ObservableCollection<ApplicationNavigationGroup>(Enum.GetValues(typeof(ApplicationNavigationGroup)).Cast<ApplicationNavigationGroup>());

@@ -10,259 +10,261 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:OverviewSampleViewModel}">
-        <Grid Margin="32">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 2}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 1}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 1}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 1}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 1}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="{adonisUi:Space 1}"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Text="Welcome to Adonis UI Demo App"
-                       FontSize="18"/>
-
-            <Grid Grid.Row="2">
+        <ScrollViewer>
+            <Grid Margin="32">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="{adonisUi:Space 2}"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                
-                <Label Content="Buttons"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
-
-                <UniformGrid Grid.Row="2"
-                             Rows="1"
-                             HorizontalAlignment="Left">
-
-                    <Button Content="Default Button"
-                            MinWidth="140"/>
-
-                    <Button Content="Accent Button"
-                            Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                </UniformGrid>
-            </Grid>
-
-            <Grid Grid.Row="4">
-                <Grid.RowDefinitions>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Content="Inputs"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
-
-                <UniformGrid Grid.Row="2"
-                             Rows="1"
-                             HorizontalAlignment="Left">
-
-                    <TextBox Text="Text Box"
-                             adonisExtensions:WatermarkExtension.Watermark="Search ..."
-                             MinWidth="160"/>
-
-                    <PasswordBox Password="Password Box"
-                                 adonisExtensions:WatermarkExtension.Watermark="Enter password"
-                                 MinWidth="160"
-                                 Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                    <ComboBox Text="Combo Box"
-                              adonisExtensions:WatermarkExtension.Watermark="Select an option"
-                              IsEditable="True"
-                              Margin="{adonisUi:Space 1, 0, 0, 0}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Item 1"/>
-                            <ComboBoxItem Content="Item 2"/>
-                            <ComboBoxItem Content="Item 3"/>
-                        </ComboBox.Items>
-                    </ComboBox>
-
-                    <DatePicker adonisExtensions:WatermarkExtension.Watermark="Select a date"
-                                Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                </UniformGrid>
-            </Grid>
-
-            <Grid Grid.Row="6">
-                <Grid.RowDefinitions>
+                    <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="{adonisUi:Space 1}"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Toggles"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
-
-                <StackPanel Grid.Row="2"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-
-                    <CheckBox IsChecked="True"
-                              Content="Check Box"/>
-
-                    <CheckBox IsChecked="False"
-                              Content="Check Box"
-                              Margin="{adonisUi:Space 2, 0, 0, 0}"/>
-
-                    <RadioButton IsChecked="True"
-                                 Content="Radio Button"
-                                 Margin="{adonisUi:Space 2, 0, 0, 0}"/>
-
-                    <RadioButton IsChecked="False"
-                                 Content="Radio Button"
-                                 Margin="{adonisUi:Space 2, 0, 0, 0}"/>
-
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Row="8">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="{adonisUi:Space 1}"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Content="Loading"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
+                <TextBlock Text="Welcome to Adonis UI Demo App"
+                           FontSize="18"/>
 
                 <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Content="Buttons"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
 
-                    <UniformGrid Columns="2"
+                    <UniformGrid Grid.Row="2"
+                                 Rows="1"
                                  HorizontalAlignment="Left">
 
-                        <ProgressBar Width="120"
-                                     Height="16"
-                                     Minimum="0"
-                                     Maximum="100"
-                                     Value="70"/>
+                        <Button Content="Default Button"
+                                MinWidth="140"/>
 
-                        <ProgressBar Width="120"
-                                     Height="16"
-                                     IsIndeterminate="True"
-                                     Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+                        <Button Content="Accent Button"
+                                Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                                Margin="{adonisUi:Space 1, 0, 0, 0}"/>
 
                     </UniformGrid>
+                </Grid>
 
-                    <StackPanel Grid.Column="1"
+                <Grid Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Inputs"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                    <UniformGrid Grid.Row="2"
+                                 Rows="1"
+                                 HorizontalAlignment="Left">
+
+                        <TextBox Text="Text Box"
+                                 adonisExtensions:WatermarkExtension.Watermark="Search ..."
+                                 MinWidth="160"/>
+
+                        <PasswordBox Password="Password Box"
+                                     adonisExtensions:WatermarkExtension.Watermark="Enter password"
+                                     MinWidth="160"
+                                     Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                        <ComboBox Text="Combo Box"
+                                  adonisExtensions:WatermarkExtension.Watermark="Select an option"
+                                  IsEditable="True"
+                                  Margin="{adonisUi:Space 1, 0, 0, 0}">
+                            <ComboBox.Items>
+                                <ComboBoxItem Content="Item 1"/>
+                                <ComboBoxItem Content="Item 2"/>
+                                <ComboBoxItem Content="Item 3"/>
+                            </ComboBox.Items>
+                        </ComboBox>
+
+                        <DatePicker adonisExtensions:WatermarkExtension.Watermark="Select a date"
+                                    Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                    </UniformGrid>
+                </Grid>
+
+                <Grid Grid.Row="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Toggles"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                    <StackPanel Grid.Row="2"
                                 Orientation="Horizontal"
-                                Margin="{adonisUi:Space 3, 0, 0, 0}">
+                                HorizontalAlignment="Left">
 
-                        <ContentControl Focusable="False"
-                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
-                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
-                                        Width="24"
-                                        Height="24"/>
+                        <CheckBox IsChecked="True"
+                                  Content="Check Box"/>
 
-                        <ContentControl Focusable="False"
-                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingBars}}"
-                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
-                                        Width="24"
-                                        Height="24"
-                                        Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+                        <CheckBox IsChecked="False"
+                                  Content="Check Box"
+                                  Margin="{adonisUi:Space 2, 0, 0, 0}"/>
 
-                        <ContentControl Focusable="False"
-                                        ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingDots}}"
-                                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
-                                        Width="32"
-                                        Height="24"
-                                        Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+                        <RadioButton IsChecked="True"
+                                     Content="Radio Button"
+                                     Margin="{adonisUi:Space 2, 0, 0, 0}"/>
+
+                        <RadioButton IsChecked="False"
+                                     Content="Radio Button"
+                                     Margin="{adonisUi:Space 2, 0, 0, 0}"/>
+
                     </StackPanel>
                 </Grid>
+
+                <Grid Grid.Row="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Loading"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <UniformGrid Columns="2"
+                                     HorizontalAlignment="Left">
+
+                            <ProgressBar Width="120"
+                                         Height="16"
+                                         Minimum="0"
+                                         Maximum="100"
+                                         Value="70"/>
+
+                            <ProgressBar Width="120"
+                                         Height="16"
+                                         IsIndeterminate="True"
+                                         Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                        </UniformGrid>
+
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Margin="{adonisUi:Space 3, 0, 0, 0}">
+
+                            <ContentControl Focusable="False"
+                                            ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                                            Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                            Width="24"
+                                            Height="24"/>
+
+                            <ContentControl Focusable="False"
+                                            ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingBars}}"
+                                            Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                            Width="24"
+                                            Height="24"
+                                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+
+                            <ContentControl Focusable="False"
+                                            ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingDots}}"
+                                            Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                                            Width="32"
+                                            Height="24"
+                                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Sliders"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+
+                        <Slider Width="120"
+                                Minimum="0"
+                                Maximum="100"
+                                Value="70"
+                                VerticalAlignment="Top"/>
+
+                        <Slider Width="120"
+                                Minimum="0"
+                                Maximum="100"
+                                Value="30"
+                                TickFrequency="10"
+                                TickPlacement="BottomRight"
+                                Height="22"
+                                Margin="{adonisUi:Space 1, 0, 0, 0}"/>
+
+                        <Slider Minimum="0"
+                                Maximum="100"
+                                Value="0"
+                                Orientation="Vertical"
+                                Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+
+                        <Slider Minimum="0"
+                                Maximum="100"
+                                Value="100"
+                                Orientation="Vertical"
+                                TickPlacement="BottomRight"
+                                TickFrequency="50"
+                                Width="22"
+                                Margin="{adonisUi:Space 3, 0, 0, 0}"/>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="{adonisUi:Space 1}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Scroll Bars"
+                           Style="{StaticResource ItemGroupLabelStyle}"/>
+
+                    <UniformGrid Grid.Row="2"
+                                 Rows="1"
+                                 HorizontalAlignment="Left">
+
+                        <ScrollViewer Width="240"
+                                      HorizontalScrollBarVisibility="Visible"
+                                      adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="AlwaysExpand"
+                                      Margin="{adonisUi:Space 0, 0, 1, 0}">
+                            <Border Width="400"/>
+                        </ScrollViewer>
+
+                        <ScrollViewer Width="240"
+                                      HorizontalScrollBarVisibility="Visible">
+                            <Border Width="400"/>
+                        </ScrollViewer>
+
+                    </UniformGrid>
+                </Grid>
+
             </Grid>
-
-            <Grid Grid.Row="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="{adonisUi:Space 1}"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Content="Sliders"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
-
-                <StackPanel Grid.Row="2"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-
-                    <Slider Width="120"
-                            Minimum="0"
-                            Maximum="100"
-                            Value="70"
-                            VerticalAlignment="Top"/>
-
-                    <Slider Width="120"
-                            Minimum="0"
-                            Maximum="100"
-                            Value="30"
-                            TickFrequency="10"
-                            TickPlacement="BottomRight"
-                            Height="22"
-                            Margin="{adonisUi:Space 1, 0, 0, 0}"/>
-
-                    <Slider Minimum="0"
-                            Maximum="100"
-                            Value="0"
-                            Orientation="Vertical"
-                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
-
-                    <Slider Minimum="0"
-                            Maximum="100"
-                            Value="100"
-                            Orientation="Vertical"
-                            TickPlacement="BottomRight"
-                            TickFrequency="50"
-                            Width="22"
-                            Margin="{adonisUi:Space 3, 0, 0, 0}"/>
-
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Row="12">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="{adonisUi:Space 1}"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Content="Scroll Bars"
-                       Style="{StaticResource ItemGroupLabelStyle}"/>
-
-                <UniformGrid Grid.Row="2"
-                             Rows="1"
-                             HorizontalAlignment="Left">
-
-                    <ScrollViewer Width="240"
-                                  HorizontalScrollBarVisibility="Visible"
-                                  adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="AlwaysExpand"
-                                  Margin="{adonisUi:Space 0, 0, 1, 0}">
-                        <Border Width="400"/>
-                    </ScrollViewer>
-
-                    <ScrollViewer Width="240"
-                                  HorizontalScrollBarVisibility="Visible">
-                        <Border Width="400"/>
-                    </ScrollViewer>
-
-                </UniformGrid>
-            </Grid>
-
-        </Grid>
+        </ScrollViewer>
     </DataTemplate>
 
 </ResourceDictionary>

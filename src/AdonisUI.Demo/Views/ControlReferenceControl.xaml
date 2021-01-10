@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Margin="{adonisUi:Space 4}">
+    <Grid Margin="{adonisUi:Space 4, 1, 0, 0}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="{adonisUi:Space 2}"/>
@@ -18,11 +18,8 @@
         <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=local:ControlReferenceControl}}"
                    FontSize="18"/>
 
-        <ScrollViewer Grid.Row="2"
-                      Padding="0">
-
+        <ScrollViewer Grid.Row="2">
             <ContentPresenter Content="{Binding ReferenceContent, RelativeSource={RelativeSource FindAncestor, AncestorType=local:ControlReferenceControl}}"/>
-
         </ScrollViewer>
     </Grid>
 
