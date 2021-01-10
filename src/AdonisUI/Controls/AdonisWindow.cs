@@ -2,19 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using System.Xml.Serialization;
 using AdonisUI.Helpers;
 using Brush = System.Windows.Media.Brush;
 using Point = System.Windows.Point;
@@ -268,7 +263,7 @@ namespace AdonisUI.Controls
         {
             dragMoveThumb.MouseLeftButtonDown += (s, e) =>
             {
-                if (e.ChangedButton == MouseButton.Left)
+                if (e.ChangedButton == MouseButton.Left && e.ClickCount == 1)
                 {
                     if (WindowState == WindowState.Maximized)
                         dragMoveThumb.MouseMove += RestoreOnMouseMove;

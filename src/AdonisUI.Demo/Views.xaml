@@ -20,6 +20,7 @@
         <ResourceDictionary Source="Views/ScrollBarReference.xaml"/>
         <ResourceDictionary Source="Views/TextInputReference.xaml"/>
         <ResourceDictionary Source="Views/ToggleReference.xaml"/>
+        <ResourceDictionary Source="Views/ToolBarReference.xaml"/>
         <ResourceDictionary Source="Views/ValidationSample.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
