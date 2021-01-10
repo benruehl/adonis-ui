@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>AdonisUI.Demo</RootNamespace>
     <StartupObject>AdonisUI.Demo.App</StartupObject>
-    <Version>1.16</Version>
+    <Version>1.17</Version>
     <Description>Demo application demonstrating AdonisUI's look and feel.</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
