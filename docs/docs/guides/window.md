@@ -61,3 +61,40 @@ This can be disabled by setting `ShrinkTitleBarWhenMaximized` on `AdonisWindow` 
 ```xml
 <adonisControls:AdonisWindow ShrinkTitleBarWhenMaximized="False"/>
 ```
+
+## Title bar over content
+
+By default, the title bar is stacked on top of the window contents. You might want to draw it directly over the window contents for a blending effect. You can do this by enabling the `PlaceTitleBarOverContent` property. Unless specified otherwise, when enabling this property, the title bar background will also be set to transparent.
+
+Note that you will likely have to set the correct margin for some of your window elements as well. You can do so by binding to the `TitleBarActualHeight` property:
+
+```xml
+<adonisControls:AdonisWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                             xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             PlaceTitleBarOverContent="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0"
+                  Padding="0">
+            <StackPanel>
+                <Border Height="{Binding Path=TitleBarActualHeight, RelativeSource={RelativeSource AncestorType={x:Type adonisControls:AdonisWindow}}}" />
+                <TextBlock Margin="{adonisUi:Space}">Sidebar content</TextBlock>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Grid.Column="1">
+            <Border Height="{Binding Path=TitleBarActualHeight, RelativeSource={RelativeSource AncestorType={x:Type adonisControls:AdonisWindow}}}" />
+            <TextBlock Margin="{adonisUi:Space}">Main content</TextBlock>
+        </StackPanel>
+    </Grid>
+</adonisControls:AdonisWindow>
+```
+`TitleBarActualHeight` will conveniently return 0 if `PlaceTitleBarOverContent` is disabled.
+
+|                                                                |                                                                      |
+| -------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![PlaceTitleBarOverContent disabled](../../img/adonis-titlebar-place-over-false.png) | ![PlaceTitleBarOverContent enabled](../../img/adonis-titlebar-place-over-true.png)     |

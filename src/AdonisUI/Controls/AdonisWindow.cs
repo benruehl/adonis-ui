@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows;
@@ -61,6 +63,15 @@ namespace AdonisUI.Controls
         {
             get => (ImageSource)GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
+        }
+
+        /// <summary>
+        /// Gets the title bar actual height.
+        /// </summary>
+        public double TitleBarActualHeight
+        {
+            get => (double)GetValue(TitleBarActualHeightProperty);
+            private set => SetValue(TitleBarActualHeightPropertyKey, value);
         }
 
         /// <summary>
@@ -129,9 +140,22 @@ namespace AdonisUI.Controls
             set => SetValue(ShrinkTitleBarWhenMaximizedProperty, value);
         }
 
+        /// <summary>
+        /// Controls whether the title bar should be drawn over the window content instead of being stacked on top of it.
+        /// </summary>
+        public bool PlaceTitleBarOverContent
+        {
+            get => (bool)GetValue(PlaceTitleBarOverContentProperty);
+            set => SetValue(PlaceTitleBarOverContentProperty, value);
+        }
+
         public static readonly DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(AdonisWindow), new PropertyMetadata(Visibility.Visible));
 
         protected internal static readonly DependencyProperty IconSourceProperty = DependencyProperty.Register("IconSource", typeof(ImageSource), typeof(AdonisWindow), new PropertyMetadata(null));
+
+        protected internal static readonly DependencyPropertyKey TitleBarActualHeightPropertyKey = DependencyProperty.RegisterReadOnly("TitleBarActualHeight", typeof(double), typeof(AdonisWindow), new PropertyMetadata(0.0d));
+
+        protected internal static readonly DependencyProperty TitleBarActualHeightProperty = TitleBarActualHeightPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty TitleBarContentProperty = DependencyProperty.Register("TitleBarContent", typeof(object), typeof(AdonisWindow), new PropertyMetadata(null));
 
@@ -148,6 +172,8 @@ namespace AdonisUI.Controls
         protected internal static readonly DependencyProperty MaximizeBorderThicknessProperty = MaximizeBorderThicknessPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty ShrinkTitleBarWhenMaximizedProperty = DependencyProperty.Register("ShrinkTitleBarWhenMaximized", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty PlaceTitleBarOverContentProperty = DependencyProperty.Register("PlaceTitleBarOverContent", typeof(bool), typeof(AdonisWindow), new PropertyMetadata(false));
 
         static AdonisWindow()
         {
@@ -226,6 +252,7 @@ namespace AdonisUI.Controls
 
             UpdateLayoutForSizeToContent();
             HwndInterop.PositionChanging += DisableSizeToContentWhenMaximizing;
+            HandleTitleBarActualHeightChanged();
         }
 
         /// <summary>
@@ -457,6 +484,23 @@ namespace AdonisUI.Controls
             {
                 SizeToContent = SizeToContent.Manual;
             }
+        }
+
+        private void HandleTitleBarActualHeightChanged()
+        {
+            if (!(GetTemplateChild("TitleBar") is Border titleBar))
+            {
+                return;
+            };
+
+            var titleBarHeightPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(ActualHeightProperty, typeof(Border));
+
+            titleBarHeightPropertyDescriptor.AddValueChanged(titleBar, (sender, e) =>
+            {
+                TitleBarActualHeight = PlaceTitleBarOverContent
+                    ? titleBar.ActualHeight
+                    : 0.0d;
+            });
         }
     }
 }
