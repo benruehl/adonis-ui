@@ -4,18 +4,18 @@ items:
   - title: 30+ styles
   - title: Light and dark color scheme
   - title: Cursor Spotlight hover effect
-    url: /docs/guides/cursor-spotlight
+    url: /adonis-ui/docs/guides/cursor-spotlight
   - title: Ripple effect
-    url: /docs/guides/ripple
+    url: /adonis-ui/docs/guides/ripple
   - title: Data validation support
-    url: /docs/guides/data-validation
+    url: /adonis-ui/docs/guides/data-validation
 - title: Convenient UI development
   items:
   - title: Reusable and configurable colors
-    url: /docs/guides/colors-and-brushes
+    url: /adonis-ui/docs/guides/colors-and-brushes
   - title: Customizable window title bar
-    url: /docs/guides/window
+    url: /adonis-ui/docs/guides/window
   - title: Layering system
-    url: /docs/guides/layers
+    url: /adonis-ui/docs/guides/layers
   - title: Space system
-    url: /docs/guides/space
+    url: /adonis-ui/docs/guides/space
