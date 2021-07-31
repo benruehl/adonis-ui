@@ -209,7 +209,7 @@ namespace AdonisUI.Controls
         private BitmapSource GetApplicationIcon()
         {
             string appFilePath = Process.GetCurrentProcess().MainModule.FileName;
-            if (File.Exists(appFilePath))
+            if (!File.Exists(appFilePath))
                 return null;
 
             Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(appFilePath);
