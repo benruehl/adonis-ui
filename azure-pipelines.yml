@@ -12,10 +12,11 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
-- task: DotNetCoreInstaller@0
-  displayName: 'Install .NET Core 3.1'
+- task: UseDotNet@2
+  displayName: 'Install .NET'
   inputs:
-    version: '3.1.102'
+    packageType: 'sdk'
+    useGlobalJson: true
 
 - task: NuGetToolInstaller@1
 
@@ -23,7 +24,7 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task:  VSBuild@1
+- task: VSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
