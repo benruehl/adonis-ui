@@ -29,3 +29,10 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: 'Pack NuGet packages'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/AdonisUI.csproj;**/AdonisUI.ClassicTheme.csproj'
+    versioningScheme: 'off'
