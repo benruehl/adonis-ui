@@ -10,7 +10,7 @@
 
   <!-- Package metadata -->
   <PropertyGroup>
-    <Version>1.17</Version>
+    <Version>1.17.1</Version>
     <Description>Styles implementing AdonisUI's theme definitions to provide classic look and feel.</Description>
     <Company>benruehl</Company>
     <Authors>benruehl</Authors>
