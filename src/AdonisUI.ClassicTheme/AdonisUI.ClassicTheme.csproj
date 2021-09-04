@@ -40,10 +40,7 @@
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageReference Include="AdonisUI" Version="1.17" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+  <ItemGroup>
     <ProjectReference Include="..\AdonisUI\AdonisUI.csproj" />
   </ItemGroup>
 </Project>
