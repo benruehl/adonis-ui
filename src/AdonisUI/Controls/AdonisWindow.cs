@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -206,7 +208,11 @@ namespace AdonisUI.Controls
 
         private BitmapSource GetApplicationIcon()
         {
-            Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetEntryAssembly()?.ManifestModule.FullyQualifiedName);
+            string appFilePath = Process.GetCurrentProcess().MainModule.FileName;
+            if (!File.Exists(appFilePath))
+                return null;
+
+            Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(appFilePath);
 
             if (appIcon == null)
                 return null;
