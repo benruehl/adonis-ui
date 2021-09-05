@@ -3,7 +3,8 @@
 [![Build Status](https://dev.azure.com/devruehl/AdonisUI/_apis/build/status/benruehl.adonis-ui?branchName=master)](https://dev.azure.com/devruehl/AdonisUI/_build/latest?definitionId=1&branchName=master)
 [![NuGet version](https://img.shields.io/nuget/v/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
 [![NuGet downloads](https://img.shields.io/nuget/dt/AdonisUi.ClassicTheme.svg)](https://www.nuget.org/packages/AdonisUI.ClassicTheme/)
-![.NET Core Version: >= 3.0](https://img.shields.io/badge/.NET%20Core-%3E%3D%203.0-green.svg)
+![.NET Version: >= 5.0](https://img.shields.io/badge/.NET-%3E%3D%205.0-green.svg)
+![.NET Core Version: >= 3.1](https://img.shields.io/badge/.NET%20Core-%3E%3D%203.1-green.svg)
 ![.NET Framework version: >= 4.5](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.5-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)	
 
