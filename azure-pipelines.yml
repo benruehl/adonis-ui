@@ -39,3 +39,11 @@ steps:
     command: 'pack'
     packagesToPack: '**/AdonisUI.csproj;**/AdonisUI.ClassicTheme.csproj'
     versioningScheme: 'off'
+    configuration: '$(buildConfiguration)'
+    packDestination: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish build artifacts'
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: drop
