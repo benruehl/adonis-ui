@@ -147,6 +147,7 @@
 
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsLoaded, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}" Value="True" />
                     <Condition Binding="{Binding Items.Count, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}" Value="1" />
                 </MultiDataTrigger.Conditions>
