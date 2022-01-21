@@ -11,6 +11,7 @@
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/RadioButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/TextBox.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/ToggleButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/DefaultStyles/ComboBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static ToolBar.ButtonStyleKey}"
@@ -47,6 +48,23 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{x:Static ToolBar.ComboBoxStyleKey}"
+           BasedOn="{StaticResource {x:Type ComboBox}}"
+           TargetType="{x:Type ComboBox}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="4, 2"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style x:Key="{x:Static ToolBar.CheckBoxStyleKey}"
            BasedOn="{StaticResource {x:Type CheckBox}}"
            TargetType="{x:Type CheckBox}">
