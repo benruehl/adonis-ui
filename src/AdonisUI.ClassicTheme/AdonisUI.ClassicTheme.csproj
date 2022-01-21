@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <!-- Build Settings -->
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
