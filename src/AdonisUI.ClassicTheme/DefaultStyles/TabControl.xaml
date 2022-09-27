@@ -71,14 +71,217 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left">
+                            <Setter Property="BorderThickness" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            
+                            <Setter Property="BorderThickness" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
 
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Margin" TargetName="OuterGrid" Value="0, 0, 0, -1"/>
-                        </Trigger>
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right">
+                            <Setter Property="BorderThickness" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
 
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Margin" TargetName="OuterGrid" Value="0, 2, 0, 0"/>
-                        </Trigger>
+                            <Setter Property="BorderThickness" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Top" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).TopRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom">
+                            <Setter Property="BorderThickness" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="Border">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="BorderThickness" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToThicknessConverter.Instance}">
+                                        <Binding Path="BorderThickness.Left" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="BorderThickness.Right" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="BorderThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="CornerRadius" TargetName="SpotlightLayer">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{x:Static adonisConverters:ValuesToCornerRadiusConverter.Instance}">
+                                        <Binding Source="0"/>
+                                        <Binding Source="0"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomLeft" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="(adonisExtensions:CornerRadiusExtension.CornerRadius).BottomRight" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, 0, 0, -1"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, 2, 0, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, 0, -1, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="2, 0, 0, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="-1, 0, 0, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, 0, 2, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, -1, 0, 0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Margin" TargetName="OuterGrid" Value="0, 0, 0, 2"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
 
                         <Trigger Property="IsMouseOver" SourceName="TabPanel" Value="True">
                             <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1HighlightBrush}}"/>
@@ -205,9 +408,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
                     <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="ColumnDefinition0" Width="*"/>
+                            <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition x:Name="RowDefinition0" Height="Auto" />
+                            <RowDefinition x:Name="RowDefinition1" Height="*" />
                         </Grid.RowDefinitions>
 
                         <TabPanel x:Name="HeaderPanel"
@@ -268,6 +475,40 @@
                         <DataTrigger Binding="{Binding Path=(adonisExtensions:LayerExtension.ComputedLayer), RelativeSource={RelativeSource Self}}" Value="4">
                             <Setter Property="Background" TargetName="SelectedItemHighlight" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer4HighlightBrush}}"/>
                         </DataTrigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
+                            <Setter Property="Grid.Row" TargetName="Border" Value="0"/>
+                            <Setter Property="Grid.Row" TargetName="SelectedItemHighlight" Value="0"/>
+                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                            <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+                        </Trigger>
+                        
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+                            <Setter Property="Grid.Row" TargetName="Border" Value="0"/>
+                            <Setter Property="Grid.Row" TargetName="SelectedItemHighlight" Value="0"/>
+                            <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+                            <Setter Property="Grid.Column" TargetName="Border" Value="1"/>
+                            <Setter Property="Grid.Column" TargetName="SelectedItemHighlight" Value="1"/>
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+                            <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                            <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+                            <Setter Property="Grid.Row" TargetName="Border" Value="0"/>
+                            <Setter Property="Grid.Row" TargetName="SelectedItemHighlight" Value="0"/>
+                            <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
+                            <Setter Property="Grid.Column" TargetName="Border" Value="0"/>
+                            <Setter Property="Grid.Column" TargetName="SelectedItemHighlight" Value="0"/>
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                            <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                            <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
