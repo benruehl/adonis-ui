@@ -238,7 +238,8 @@
 
                         <Border Margin="0, 0, 11, 0">
 
-                            <DockPanel Margin="{TemplateBinding Padding}">
+                            <DockPanel x:Name="DockPanel0" 
+                                       Margin="{TemplateBinding Padding}">
 
                                 <adonisControls:ValidationErrorIndicator x:Name="ErrorAlertHost"
                                                                          ValidatedElement="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
@@ -263,6 +264,9 @@
                                          IsReadOnly="{TemplateBinding IsReadOnly}"
                                          Background="{TemplateBinding Background}"
                                          Foreground="{TemplateBinding Foreground}"
+                                         Height="{Binding ActualHeight, ElementName=DockPanel0}"
+                                         Width="{Binding ActualWidth, ElementName=DockPanel0}"
+                                         Margin="0"
                                          Visibility="Hidden" 
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Stretch"
