@@ -42,6 +42,8 @@
                        Cursor="Arrow"
                        Maximum="{TemplateBinding ScrollableHeight}"
                        Minimum="0"
+                       Margin="0, 0, -7, 0"
+                       adonisExtensions:ScrollBarExtension.ExpansionMode="{TemplateBinding adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode}"
                        ViewportSize="{TemplateBinding ViewportHeight}"
                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                        Value="{Binding VerticalOffset,
@@ -55,13 +57,63 @@
                        Cursor="Arrow"
                        Maximum="{TemplateBinding ScrollableWidth}"
                        Minimum="0"
+                       Margin="0, 0, 0, -3"
                        Orientation="Horizontal"
+                       adonisExtensions:ScrollBarExtension.ExpansionMode="{TemplateBinding adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode}"                                  
                        ViewportSize="{TemplateBinding ViewportWidth}"
                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                        Value="{Binding HorizontalOffset,
                                        Mode=OneWay,
                                        RelativeSource={RelativeSource TemplatedParent}}" />
         </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Overlay">
+                <Setter Property="Grid.ColumnSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+            </Trigger>
+
+            <Trigger Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Overlay">
+                <Setter Property="Grid.RowSpan" TargetName="PART_ScrollContentPresenter" Value="2"/>
+            </Trigger>
+
+            <Trigger Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="PART_VerticalScrollBar" Value="0"/>
+                <Setter Property="Opacity" TargetName="PART_HorizontalScrollBar" Value="0"/>
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_VerticalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_VerticalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetName="PART_HorizontalScrollBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="TextBoxDefaultStyle" TargetType="Control">
@@ -77,8 +129,8 @@
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode" Value="ExpandOnHover"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode" Value="ExpandOnHover"/>
-        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Docked"/>
-        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Docked"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement" Value="Overlay"/>
+        <Setter Property="adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement" Value="Overlay"/>
         <Setter Property="adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver" Value="False"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="adonisExtensions:ValidationExtension.IsErrorMessageVisibleOnFocus" Value="True"/>
@@ -126,7 +178,8 @@
                                                                      DockPanel.Dock="Left"
                                                                      Margin="0, 0, 4, 0"/>
 
-                            <Grid>
+                            <Grid x:Name="Grid0"
+                                  Margin="0, 0, 0, 0">
                                 <ContentPresenter x:Name="PlaceholderHost"
                                                   Content="{TemplateBinding adonisExtensions:WatermarkExtension.Watermark}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -136,13 +189,14 @@
                                                   Visibility="Collapsed"/>
 
                                 <ScrollViewer x:Name="PART_ContentHost"
+                                              Height="{Binding ActualHeight, ElementName=Grid0}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"
-                                              adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode), RelativeSource={RelativeSource TemplatedParent}}"
-                                              adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="{Binding Path=(adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement), RelativeSource={RelativeSource TemplatedParent}}"
-                                              adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="{Binding Path=(adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement), RelativeSource={RelativeSource TemplatedParent}}"
-                                              adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="{Binding Path=(adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver), RelativeSource={RelativeSource TemplatedParent}}"
+                                              adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="{TemplateBinding adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode}"
+                                              adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode="{TemplateBinding adonisExtensions:ScrollViewerExtension.HorizontalScrollBarExpansionMode}"
+                                              adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="{TemplateBinding adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement}"
+                                              adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement="{TemplateBinding adonisExtensions:ScrollViewerExtension.HorizontalScrollBarPlacement}"
+                                              adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="{TemplateBinding adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver}"
                                               Template="{StaticResource TextBoxScrollViewerTemplate}"/>
                             </Grid>
 
